@@ -1,0 +1,16 @@
+<navi class="navi navi--footer js-navi-footer" data-content-field="navigation-navi-footer">
+    <ul class="navi__ul">
+        {.repeated section items}
+            {.section collection}
+                <li class="navi__li navi__li--{title|slugify}">
+                    <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} p" href="{fullUrl}">{title}</a>
+                </li>
+            {.end}
+            {.section externalLink}
+                <li class="navi__li navi__li--{title|slugify}">
+                    <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} p" href="{url}" {.section newWindow}target="_blank"{.end}>{title}</a>
+                </li>
+            {.end}
+        {.end}
+    </ul>
+</navi>

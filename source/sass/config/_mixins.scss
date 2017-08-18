@@ -1,0 +1,79 @@
+/******************************************************************************
+ * Fonts: Util
+*******************************************************************************/
+@mixin font-normal() {
+    font-stretch: normal;
+    font-style: normal;
+}
+
+
+/******************************************************************************
+ * Fonts: Styles
+*******************************************************************************/
+@mixin font-sans() {
+    font-family: $font-family-sans;
+    @include font-normal();
+}
+
+
+/******************************************************************************
+ * Type
+*******************************************************************************/
+@mixin p() {
+    font-size: $p-size;
+    line-height: $p-line;
+    @include font-sans();
+}
+@mixin a() {
+    display: inline;
+    text-decoration: none;
+    @include font-sans();
+}
+@mixin h1() {
+    font-size: $h1-size;
+    line-height: $h1-line;
+    @include font-sans();
+}
+@mixin h2() {
+    font-size: $h2-size;
+    line-height: $h2-line;
+    @include font-sans();
+}
+@mixin h3() {
+    font-size: $h3-size;
+    line-height: $h3-line;
+    @include font-sans();
+}
+@mixin h4() {
+    font-size: $h4-size;
+    line-height: $h4-line;
+    @include font-sans();
+}
+@mixin h5() {
+    font-size: $h5-size;
+    line-height: $h5-line;
+    @include font-sans();
+}
+@mixin h6() {
+    font-size: $h6-size;
+    line-height: $h6-line;
+    @include font-sans();
+}
+
+
+/******************************************************************************
+ * Wraps
+*******************************************************************************/
+@mixin wrap () {
+    padding-left: $padding-wrap;
+    padding-right: $padding-wrap;
+}
+@mixin wrap-copy () {
+    display: inline-block;
+    max-width: $wrap-copy;
+    width: 100%;
+}
+@mixin wrap-index () {
+    padding-left: $padding-index;
+    padding-right: $padding-index;
+}
