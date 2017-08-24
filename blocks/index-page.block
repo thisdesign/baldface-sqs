@@ -1,0 +1,20 @@
+{.section collection}
+    {.repeated section collections}
+        {.equal? typeName "gallery-hero"}
+            {@|apply hero.block}
+        {.end}
+    {.end}
+    {.repeated section collections}
+        {.equal? typeName "gallery-hero"}{.or}
+            {.equal? typeName "gallery"}
+                {@|apply gallery.block}
+            {.end}
+            {.equal? typeName "gallery-sections"}
+                {@|apply sections.block}
+            {.end}
+            {.equal? typeName "page"}
+                {@|apply page.block}
+            {.end}
+        {.end}
+    {.end}
+{.end}

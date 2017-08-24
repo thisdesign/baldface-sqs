@@ -1,0 +1,3 @@
+<section class="hero -wrap -exp-1 js-hero">
+    <div class="h1">{title}</div>
+</section>

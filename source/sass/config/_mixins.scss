@@ -29,6 +29,22 @@
     text-decoration: none;
     @include font-sans();
 }
+@mixin b() {
+    font-weight: bold;
+}
+@mixin li() {
+    padding-left: 20px;
+    @include p();
+}
+@mixin ol-li() {
+    list-style: decimal;
+}
+@mixin ul-li() {
+    list-style: disc;
+}
+@mixin pp() {
+    margin-top: $expander-mobile / 2;
+}
 @mixin h1() {
     font-size: $h1-size;
     line-height: $h1-line;
@@ -61,6 +77,43 @@
 }
 
 
+
+/******************************************************************************
+ * Buttons
+*******************************************************************************/
+@mixin btn() {
+    background: none;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-size: $btn-size;
+    letter-spacing: normal;
+    line-height: 1;
+    outline: 0;
+    padding: 0;
+    text-transform: uppercase;
+    -webkit-appearance: none;
+    @include font-sans();
+}
+@mixin btn-style () {
+    border: 2px solid $black;
+    color: $black;
+    transition: background-color $base-duration $ease;
+}
+@mixin btn-large () {
+    background-color: $white;
+    padding: 20px;
+}
+@mixin btn-medium () {
+    background-color: $white;
+    padding: 16px;
+}
+@mixin btn-small () {
+    background-color: $white;
+    padding: 12px;
+}
+
+
 /******************************************************************************
  * Wraps
 *******************************************************************************/
@@ -72,8 +125,4 @@
     display: inline-block;
     max-width: $wrap-copy;
     width: 100%;
-}
-@mixin wrap-index () {
-    padding-left: $padding-index;
-    padding-right: $padding-index;
 }

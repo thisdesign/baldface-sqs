@@ -1,0 +1,8 @@
+<section class="sections -wrap -exp-1 js-sections">
+    {.repeated section items}
+        <div class="section section--{urlId} js-section" data-uid="{urlId}">
+            <div class="h2">{title}</div>
+            {body}
+        </div>
+    {.end}
+</section>
