@@ -7,25 +7,8 @@
     margin: 0 !important;
     }
 
-// Grid handling
-// [class*=sqs-col] {
-//     display: inline-block;
-//     float: none !important;
-//     padding: 0 !important;
-// }
-// [class*="sqs-col"]:not( .sqs-col-12 ) {
-//     .sqs-block-content {
-//         padding-left: $expander-mobile / 2;
-//         padding-right: $expander-mobile / 2;
-//         }
-// }
 
-// Block / Row handling
-// .sqs-block + .sqs-row,
-// .sqs-row + .sqs-block,
-// .sqs-block + .sqs-block {
-//     margin-top: $expander-mobile;
-//     }
+
 .sqs-block {
     padding: 0 !important;
 
@@ -129,4 +112,17 @@
             color: $black;
             }
     }
+}
+
+
+
+.sqs-block-html,
+.sqs-block-button {
+    .sqs-block-content {
+        text-align: left;
+        @include wrap-copy();
+        }
+}
+.sqs-block-html + .sqs-block-button {
+    @include pp();
 }

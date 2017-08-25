@@ -1,22 +1,25 @@
 /******************************************************************************
  * Document States
 *******************************************************************************/
-.is-navi-open {
-    .icon--list {
-        .top,
-        .mid,
-        .bot {
-            opacity: 0;
+.is-hoverable {
+    .navi__a:hover {
+        color: $grey;
+    }
+    // .navi__a--book-now:hover {
+    //     background-color: $black;
+    //     color: $white;
+    // }
+    .footer {
+        .a:hover {
+            color: $white;
             }
-        .ex1,
-        .ex2 {
-            opacity: 1;
+        .a:hover:after {
+            width: 100%;
             }
-        .ex1 {
-            transform: rotate( -45deg );
-            }
-        .ex2 {
-            transform: rotate( 45deg );
-            }
+    }
+    .btn:hover {
+        background-color: $grey-bd-hover;
+        border-color: $grey-bd-hover;
+        color: $white;
     }
 }

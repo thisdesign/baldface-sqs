@@ -1,3 +1,11 @@
-<section class="hero -wrap -exp-1 js-hero">
-    <div class="h1">{title}</div>
+<section class="hero js-hero">
+    {.repeated section items}
+        <div class="hero__item ghost">
+            <div class="hero__img js-lazy-image -cover" data-img-src="{assetUrl}" data-variants="{systemDataVariants}"></div>
+            <div class="hero__main -wrap ghost__child">
+                <div class="hero__title h1 -light">{title}</div>
+                <div class="hero__copy p -light">{description}</div>
+            </div>
+        </div>
+    {.end}
 </section>

@@ -3,10 +3,6 @@
 *******************************************************************************/
 .btn {
     @include btn();
-    }
-.btn--small,
-.btn--medium,
-.btn--large {
     @include btn-style();
     }
 .btn--large {
@@ -37,38 +33,38 @@
  * Paragraphs
 *******************************************************************************/
 .p,
-.cms p,
-.li,
-.cms li {
+.li, {
     @include p();
 
     a {
-        border-bottom: 1px solid inherit;
-        font-weight: bold;
+        @include bs();
         }
     em {
         font-style: italic;
         }
     strong {
-        font-weight: bold;
+        @include bs();
         }
-    }
-.cms li {
-    line-height: 1.5;
     }
 
 
 /******************************************************************************
  * Links
 *******************************************************************************/
-.a,
-.cms a {
-    border-bottom: 1px solid transparent;
-    transition: border-bottom-color $fast-duration $ease;
-    @include a();
+.a {
+    position: relative;
+    transition: color $base-duration $ease;
 
-    &:hover {
-        border-bottom-color: $black;
+    &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 0;
+        background-color: $black;
+        transition: width $base-duration $ease;
         }
     }
 
@@ -76,27 +72,12 @@
 /******************************************************************************
  * Headlines
 *******************************************************************************/
-.h1,
-.cms h1 {
+.h1 {
     @include h1();
     }
-.h2,
-.cms h2 {
+.h2 {
     @include h2();
     }
-.h3,
-.cms h3 {
+.h3 {
     @include h3();
-    }
-.h4,
-.cms h4 {
-    @include h4();
-    }
-.h5,
-.cms h5 {
-    @include h5();
-    }
-.h6,
-.cms h6 {
-    @include h6();
     }

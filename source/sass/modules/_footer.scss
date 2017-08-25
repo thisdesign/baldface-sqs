@@ -1,0 +1,19 @@
+.footer {
+    background-color: $grey-bg;
+    color: $white;
+    font-size: $footer-font-size;
+
+    .p {
+        font-size: $footer-font-size;
+        }
+
+    .a {
+        &:after {
+            background-color: $white;
+            }
+    }
+}
+.footer__copy {
+    padding-top: $expander-two;
+    text-align: right;
+}

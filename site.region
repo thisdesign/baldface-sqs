@@ -17,12 +17,11 @@
         <meta name="msapplication-square150x150logo" content="/assets/touch/mediumtile.png?v={squarespace.template-revision}" />
         <meta name="msapplication-wide310x150logo" content="/assets/touch/widetile.png?v={squarespace.template-revision}" />
         <meta name="msapplication-square310x310logo" content="/assets/touch/largetile.png?v={squarespace.template-revision}" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700|Source+Serif+Pro:400,600,700" rel="stylesheet" />
         {squarespace-headers}
     </head>
     <body class="-fzero">
-        <header class="header js-header -wrap -exp">
-            <squarespace:navigation navigationId="navi" template="navi" />
-        </header>
+        <squarespace:navigation navigationId="navi" template="navi" />
         <main class="main js-main" data-content-field="main-content" data-website-id="{website.id}" {.section collection}data-collection-id="{collection.id}" data-collection-title="{.if collection.homepage}{website.siteTitle}{.or}{collection.title} – {website.siteTitle}{.end}"{.end} {.section item}data-item-id="{item.id}" data-item-title="{item.title} – {collection.title} – {website.siteTitle}"{.end}>
             {.equal? collection.typeName "page"}
                 {.section collection}
@@ -32,8 +31,35 @@
                 {squarespace.main-content}
             {.end}
         </main>
-        <footer class="footer js-footer -wrap -exp">
-            <squarespace:navigation navigationId="navi-footer" template="navi-footer" />
+        <footer class="footer js-footer -wrap -exp-1">
+            <div class="footer__main">
+                <div class="footer__col footer__logo -column -vtop -wrap">
+                    <a class="" href="/">
+                        {@|apply logo-footer.block}
+                    </a>
+                </div>
+                <div class="footer__col -column -vtop -wrap">
+                    <squarespace:navigation navigationId="navi-footer" template="navi-footer" />
+                </div>
+                <div class="footer__col -column -vtop -wrap">
+                    <div class="p b">{website.location.addressTitle}</div>
+                    <div class="p">{website.location.addressLine1}</div>
+                    <div class="p">{website.location.addressLine2}</div>
+                    <div class="p">
+                        <a class="a" href="tel:{websiteSettings.contactPhoneNumber}">
+                            {websiteSettings.contactPhoneNumber}
+                        </a>
+                    </div>
+                    <div class="p">
+                        <a class="a" href="mailto:{websiteSettings.contactEmail}">
+                            {websiteSettings.contactEmail}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__copy">
+                <div class="p">&copy; Copyright 2017 {website.location.addressTitle}.</div>
+            </div>
         </footer>
         {@|apply intro.block}
         <script type="text/javascript" src="/scripts/app.js?v={squarespace.template-revision}"></script>

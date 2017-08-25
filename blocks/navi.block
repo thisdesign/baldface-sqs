@@ -1,15 +1,18 @@
-<navi class="navi js-navi" data-content-field="navigation-navi">
+<navi class="navi navi--header js-navi" data-content-field="navigation-navi">
     <ul class="navi__ul">
         {.repeated section items}
             {.section collection}
-                <li class="navi__li navi__li--{title|slugify}">
-                    <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} p" href="{fullUrl}">{title}</a>
-                </li>
-            {.end}
-            {.section externalLink}
-                <li class="navi__li navi__li--{title|slugify}">
-                    <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} p" href="{url}" {.section newWindow}target="_blank"{.end}>{title}</a>
-                </li>
+                {.if homepage}
+                    <li class="navi__li navi__li--home">
+                        <a class="navi__a navi__a--home js-navi-a js-navi--home" href="{fullUrl}">
+                            <img class="navi__logo" src="{website.logoImageUrl}" />
+                        </a>
+                    </li>
+                {.or}
+                    <li class="navi__li navi__li--{title|slugify}">
+                        <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end}" href="{fullUrl}">{title}</a>
+                    </li>
+                {.end}
             {.end}
         {.end}
     </ul>

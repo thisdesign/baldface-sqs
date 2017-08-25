@@ -3,12 +3,12 @@
         {.repeated section items}
             {.section collection}
                 <li class="navi__li navi__li--{title|slugify}">
-                    <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} p" href="{fullUrl}">{title}</a>
+                    <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} p a" href="{fullUrl}">{title}</a>
                 </li>
             {.end}
             {.section externalLink}
                 <li class="navi__li navi__li--{title|slugify}">
-                    <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} p" href="{url}" {.section newWindow}target="_blank"{.end}>{title}</a>
+                    <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} p a" href="{url}" {.section newWindow}target="_blank"{.end}>{title}</a>
                 </li>
             {.end}
         {.end}

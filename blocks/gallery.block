@@ -1,4 +1,4 @@
-<div class="gallery js-gallery -wrap" data-uid="{collection.urlId}">
+<div class="gallery js-gallery" data-uid="{collection.urlId}">
     {.repeated section items}
         <div class="gallery__item js-item -column -column--1of3">
             {@|apply image.block}

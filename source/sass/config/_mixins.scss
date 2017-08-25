@@ -4,6 +4,7 @@
 @mixin font-normal() {
     font-stretch: normal;
     font-style: normal;
+    font-weight: 400;
 }
 
 
@@ -12,6 +13,10 @@
 *******************************************************************************/
 @mixin font-sans() {
     font-family: $font-family-sans;
+    @include font-normal();
+}
+@mixin font-serif() {
+    font-family: $font-family-serif;
     @include font-normal();
 }
 
@@ -30,7 +35,10 @@
     @include font-sans();
 }
 @mixin b() {
-    font-weight: bold;
+    font-weight: 700;
+}
+@mixin bs() {
+    font-weight: 600;
 }
 @mixin li() {
     padding-left: 20px;
@@ -46,34 +54,25 @@
     margin-top: $expander-mobile / 2;
 }
 @mixin h1() {
+    color: $charcoal;
     font-size: $h1-size;
     line-height: $h1-line;
-    @include font-sans();
+    @include font-serif();
+    @include b();
 }
 @mixin h2() {
+    color: $charcoal;
     font-size: $h2-size;
     line-height: $h2-line;
     @include font-sans();
+    @include bs();
 }
 @mixin h3() {
+    color: $charcoal;
     font-size: $h3-size;
     line-height: $h3-line;
     @include font-sans();
-}
-@mixin h4() {
-    font-size: $h4-size;
-    line-height: $h4-line;
-    @include font-sans();
-}
-@mixin h5() {
-    font-size: $h5-size;
-    line-height: $h5-line;
-    @include font-sans();
-}
-@mixin h6() {
-    font-size: $h6-size;
-    line-height: $h6-line;
-    @include font-sans();
+    @include bs();
 }
 
 
@@ -94,11 +93,14 @@
     text-transform: uppercase;
     -webkit-appearance: none;
     @include font-sans();
+    @include b();
 }
 @mixin btn-style () {
-    border: 2px solid $black;
-    color: $black;
-    transition: background-color $base-duration $ease;
+    border: 1px solid $grey-bd;
+    color: $charcoal;
+    transition: color $base-duration $ease,
+                border-color $base-duration $ease,
+                background-color $base-duration $ease;
 }
 @mixin btn-large () {
     background-color: $white;

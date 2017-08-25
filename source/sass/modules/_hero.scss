@@ -1,1 +1,16 @@
-.hero {}
+.hero {
+    height: 100vh;
+    position: relative;
+    width: 100vw;
+    }
+.hero__img,
+.hero__item {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    }
+.hero__main {
+    position: relative;
+    }

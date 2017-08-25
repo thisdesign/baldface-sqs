@@ -5,19 +5,14 @@
         {.end}
     {.end}
     <menu class="filter js-filter -wrap -exp" data-target="collections">
-        {.repeated section collections}
-            {.equal? typeName "gallery-hero"}
-                <a class="filter__link js-filter-link p" href="#all">All</a>
-            {.or}
-                <a class="filter__link js-filter-link p" href="#{urlId}">{title}</a>
-            {.end}
-        {.end}
+        <a class="filter__link js-filter-link p a" href="#all">All</a>
     </menu>
     <section class="collections -wrap -exp-1 js-collections">
         {.repeated section collections}
             {.equal? typeName "gallery-hero"}{.or}
-                <div class="collection collection--{urlId} js-gallery" data-uid="{urlId}">
-                    <div class="h2">{title}</div>
+                <div class="collection collection--{urlId} js-gallery -exp" data-uid="{urlId}">
+                    <div class="h3">{title}</div>
+                    {mainContent}
                 </div>
             {.end}
         {.end}

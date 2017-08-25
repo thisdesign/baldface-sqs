@@ -5,4 +5,11 @@
         opacity: 0;
         pointer-events: none;
         }
+
+    > .gallery:first-child {
+        padding-top: $navi-height;
+    }
+    > .page:first-child {
+        padding-top: $expander-one + $navi-height;
+    }
 }
