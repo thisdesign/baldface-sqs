@@ -95,22 +95,22 @@
     @include font-sans();
     @include b();
 }
-@mixin btn-style () {
+@mixin btn-style() {
     border: 1px solid $grey-bd;
     color: $charcoal;
     transition: color $base-duration $ease,
                 border-color $base-duration $ease,
                 background-color $base-duration $ease;
 }
-@mixin btn-large () {
+@mixin btn-large() {
     background-color: $white;
     padding: 20px;
 }
-@mixin btn-medium () {
+@mixin btn-medium() {
     background-color: $white;
     padding: 16px;
 }
-@mixin btn-small () {
+@mixin btn-small() {
     background-color: $white;
     padding: 12px;
 }
@@ -119,12 +119,39 @@
 /******************************************************************************
  * Wraps
 *******************************************************************************/
-@mixin wrap () {
+@mixin wrap() {
     padding-left: $padding-wrap;
     padding-right: $padding-wrap;
 }
-@mixin wrap-copy () {
+@mixin wrap-copy() {
     display: inline-block;
     max-width: $wrap-copy;
     width: 100%;
+}
+
+
+/******************************************************************************
+ * Document states
+*******************************************************************************/
+@mixin state( $module, $state ) {
+    .is-#{$module}-#{$state} & {
+        @content;
+    }
+}
+
+
+/******************************************************************************
+ * Media queries
+ *
+ * @see ../config/_variables.scss for Breakpoints
+*******************************************************************************/
+@mixin respond( $width ) {
+    @media only screen and ( max-width: $width ) {
+        @content;
+    }
+}
+@mixin respond-min( $width ) {
+    @media only screen and ( min-width: $width ) {
+        @content;
+    }
 }

@@ -1,9 +1,12 @@
+// Load the SASS
 require( "../sass/screen.scss" );
 
 
+// Load the JS
 import router from "./router";
 import * as core from "./core";
 import intro from "./intro";
+import navi from "./navi";
 import Analytics from "./class/Analytics";
 
 
@@ -17,10 +20,23 @@ import Analytics from "./class/Analytics";
 class App {
     constructor () {
         this.core = core;
+        this.navi = navi;
         this.intro = intro;
         this.router = router;
 
-        this.initModules();
+        this.bind();
+        this.init();
+    }
+
+
+    bind () {
+        this.core.emitter.on( "app--intro-teardown", () => {
+            this.core.log( "App Intro Teardown" );
+        });
+
+        this.core.emitter.on( "app--page-teardown", () => {
+            this.core.log( "App Page Teardown" );
+        });
     }
 
 
@@ -28,18 +44,19 @@ class App {
      *
      * @public
      * @instance
-     * @method initModules
+     * @method init
      * @memberof App
      * @description Initialize application modules.
      *
      */
-    initModules () {
+    init () {
         // Core
         this.core.detect.init();
 
         // Utility ?
 
         // Views
+        this.navi.init();
         this.intro.init();
 
         // Controller
@@ -51,13 +68,9 @@ class App {
 }
 
 
-/******************************************************************************
- * Expose
-*******************************************************************************/
+// Create {app} instance
 window.app = new App();
 
 
-/******************************************************************************
- * Export
-*******************************************************************************/
+// Export {app} instance
 export default window.app;

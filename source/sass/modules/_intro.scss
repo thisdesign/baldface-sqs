@@ -1,5 +1,12 @@
 .intro {}
 .intro__logo {
+    animation: logo 2000ms 1;
     width: $logo-width;
     max-width: 100%;
     }
+
+
+
+@keyframes logo {
+    0% {}
+}
