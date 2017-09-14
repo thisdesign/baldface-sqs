@@ -139,6 +139,12 @@ class Carousel {
             this.active
         );
     }
+
+
+    destroy () {
+        this.clear();
+        this.clearAuto();
+    }
 }
 
 
