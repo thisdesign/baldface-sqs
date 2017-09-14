@@ -2,6 +2,15 @@
  * Squarespace Block Spacing
 *******************************************************************************/
 
+// Edit mode
+.sqs-edit-mode {
+    [data-type="block-field"] {
+        padding: 40px;
+        outline: 1px solid #14aaff;
+        width: 100%;
+    }
+}
+
 // Layout handling
 .sqs-layout > .sqs-row {
     margin: 0 !important;

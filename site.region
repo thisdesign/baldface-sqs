@@ -21,7 +21,9 @@
         {squarespace-headers}
     </head>
     <body class="-fzero">
-        <squarespace:navigation navigationId="navi" template="navi" />
+        <header class="header js-header">
+            <squarespace:navigation navigationId="navi" template="navi" />
+        </header>
         <main class="main js-main" data-content-field="main-content" data-website-id="{website.id}" {.section collection}data-collection-id="{collection.id}" data-collection-title="{.if collection.homepage}{website.siteTitle}{.or}{collection.title} – {website.siteTitle}{.end}"{.end} {.section item}data-item-id="{item.id}" data-item-title="{item.title} – {collection.title} – {website.siteTitle}"{.end}>
             {.equal? collection.typeName "page"}
                 {.section collection}
@@ -33,15 +35,15 @@
         </main>
         <footer class="footer js-footer -wrap -exp-1">
             <div class="footer__main">
-                <div class="footer__col footer__logo -column -vtop -wrap">
+                <div class="footer__col footer__logo -column -vtop -wrap-2">
                     <a class="" href="/">
                         {@|apply logo-footer.block}
                     </a>
                 </div>
-                <div class="footer__col -column -vtop -wrap">
+                <div class="footer__col footer__links -column -vtop -wrap-2">
                     <squarespace:navigation navigationId="navi-footer" template="navi-footer" />
                 </div>
-                <div class="footer__col -column -vtop -wrap">
+                <div class="footer__col footer__links -column -vtop -wrap-2">
                     <div class="p b">{website.location.addressTitle}</div>
                     <div class="p">{website.location.addressLine1}</div>
                     <div class="p">{website.location.addressLine2}</div>
@@ -55,6 +57,18 @@
                             {websiteSettings.contactEmail}
                         </a>
                     </div>
+                </div>
+                <div class="footer__col footer__social -column -vtop -wrap-2">
+                    <div class="subscriber js-subscriber">
+                        <div class="subscriber__cta p">
+                            <div class="subscriber__a">Subscribe to Newsletter</div>
+                            <div class="subscriber__b">Totes subscribed broh!</div>
+                        </div>
+                        <form class="subscriber__form form js-form" action="http://campaign.theoutlawpartners.com/t/r/s/najtj/" method="post">
+                            <input class="form__input js-form-field" name="cm-najtj-najtj" type="email" required placeholder="Your email" />
+                        </form>
+                    </div>
+                    <squarespace:block-field id="footer-blocks" columns="1" />
                 </div>
             </div>
             <div class="footer__copy">

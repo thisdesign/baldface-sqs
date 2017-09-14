@@ -119,10 +119,6 @@
 /******************************************************************************
  * Wraps
 *******************************************************************************/
-@mixin wrap() {
-    padding-left: $padding-wrap;
-    padding-right: $padding-wrap;
-}
 @mixin wrap-copy() {
     display: inline-block;
     max-width: $wrap-copy;

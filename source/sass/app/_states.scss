@@ -18,6 +18,16 @@
         border-color: $grey-bd-hover;
         color: $white;
     }
+    .subscriber:not( .is-subscribed ):hover {
+        .subscriber__cta {
+            opacity: 0;
+            transform: translate3d( 0, -100%, 0 );
+            }
+        .subscriber__form {
+            opacity: 1;
+            transform: translate3d( 0, 0, 0 );
+            }
+    }
 }
 
 

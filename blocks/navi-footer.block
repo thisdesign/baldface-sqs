@@ -1,4 +1,4 @@
-<navi class="navi navi--footer js-navi-footer" data-content-field="navigation-navi-footer">
+<nav class="navi navi--footer js-navi-footer" data-content-field="navigation-navi-footer">
     <ul class="navi__ul">
         {.repeated section items}
             {.section collection}
@@ -13,4 +13,4 @@
             {.end}
         {.end}
     </ul>
-</navi>
+</nav>
