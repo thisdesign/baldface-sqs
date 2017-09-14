@@ -9,17 +9,36 @@ import * as core from "./core";
  *
  */
 const navi = {
-    /**
-     *
-     * @public
-     * @method init
-     * @memberof navi
-     * @description Method initializes navi node in DOM.
-     *
-     */
     init () {
         this.element = core.dom.navi;
         this.items = this.element.find( ".js-navi-a" );
+        this.mobileNav = this.element.find( ".js-navi-mobile" );
+        this.mobileLink = this.element.find( ".js-navi-link-mobile" );
+        this.mobileized = false;
+
+        this.bind();
+    },
+
+
+    bind () {
+        this.mobileLink.on( "click", () => {
+            if ( this.mobileized ) {
+                this.mobileized = false;
+                core.dom.html.removeClass( "is-navi-mobile" );
+
+            } else {
+                this.mobileized = true;
+                core.dom.html.addClass( "is-navi-mobile" );
+            }
+        });
+    },
+
+
+    close () {
+        if ( this.mobileized ) {
+            this.mobileized = false;
+            core.dom.html.removeClass( "is-navi-mobile" );
+        }
     },
 
 

@@ -171,6 +171,7 @@ const router = {
         core.dom.main.addClass( "is-inactive" );
 
         this.controllers.destroy();
+        navi.close();
     },
 
 

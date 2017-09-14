@@ -1,9 +1,9 @@
 <nav class="navi navi--header js-navi" data-content-field="navigation-navi">
-    <ul class="navi__ul">
+    <ul class="navi__main navi__ul">
         {.repeated section items}
             {.section collection}
                 {.if homepage}
-                    <li class="navi__li navi__li--home">
+                    <li class="navi__li navi__li--home js-navi-home">
                         <a class="navi__a navi__a--home js-navi-a js-navi--home" href="{fullUrl}">
                             <img class="navi__logo" src="{website.logoImageUrl}" />
                         </a>
@@ -15,5 +15,30 @@
                 {.end}
             {.end}
         {.end}
+        <li class="navi__li navi__li--mobile">
+            <div class="icon-wrap js-navi-link-mobile">
+                <span class="icon icon--list">
+                    <span class="top"></span>
+                    <span class="mid"></span>
+                    <span class="bot"></span>
+                    <span class="ex1"></span>
+                    <span class="ex2"></span>
+                </span>
+            </div>
+        </li>
     </ul>
+    <div class="navi__mobile js-navi-mobile screen screen--light ghost">
+        <ul class="navi__mobile__ul ghost__child">
+            {.repeated section items}
+                {.section collection}
+                    {.if homepage}
+                    {.or}
+                        <li class="navi__mobile__li navi__mobile__li--{title|slugify}">
+                            <a class="navi__mobile__a navi__mobile__a--{title|slugify} js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end}" href="{fullUrl}">{title}</a>
+                        </li>
+                    {.end}
+                {.end}
+            {.end}
+        </ul>
+    </div>
 </nav>

@@ -16,14 +16,7 @@
     z-index: $z_layer_behind;
 
     &.is-active {
-        opacity: 1;
-        visibility: visible;
-        z-index: $z_layer_infront;
-        -webkit-overflow-scrolling: touch;
-
-        .screen__wrap {
-            pointer-events: auto;
-            }
+        @include screen-active();
         }
     }
 .screen--dark {

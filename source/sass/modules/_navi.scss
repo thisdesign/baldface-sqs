@@ -1,3 +1,23 @@
+@mixin navi-btn() {
+    background-color: rgba( 154, 154, 154, 0.5 );
+    color: $white;
+    padding: 22px 30px;
+}
+@mixin navi-txt() {
+    display: block;
+    font-size: $navi-font-size;
+    line-height: 1;
+    padding: 22px 20px;
+    transition: color $base-duration $ease;
+    @include bs();
+}
+
+
+
+$mobile-breakpoint: $break-tablet-small;
+
+
+
 .navi {}
 .navi--header {
     background-color: $white;
@@ -7,35 +27,77 @@
     width: 100%;
     z-index: $z_layer_infront;
 
+    .navi__main {
+        position: relative;
+        z-index: $z_layer_infront + 1;
+        }
     .navi__ul {
         text-align: right;
         }
     .navi__li {
         display: inline-block;
         vertical-align: middle;
+
+        @include respond( $mobile-breakpoint ) {
+            display: none;
         }
+    }
     .navi__li--home {
         left: 0;
         position: absolute;
+        transition: opacity $fast-duration $ease;
+
+        @include state( "navi", "mobile" ) {
+            opacity: 0;
+            pointer-events: none;
         }
+
+        @include respond( $mobile-breakpoint ) {
+            display: block;
+        }
+    }
     .navi__a {
-        display: block;
-        font-size: $navi-font-size;
-        line-height: 1;
-        padding: 22px 20px;
-        transition: color $base-duration $ease;
-        @include bs();
+        @include navi-txt();
         }
     .navi__a--home {
         font-size: 0;
         padding: 0;
         }
     .navi__a--book-now {
-        background-color: rgba( 154, 154, 154, 0.5 );
-        color: $white;
-        padding: 22px 30px;
+        @include navi-btn();
         }
     .navi__logo {
         height: $navi-height;
         }
+
+    // Mobile
+    .navi__li--mobile {
+        display: none;
+
+        @include respond( $mobile-breakpoint ) {
+            display: block;
+        }
+    }
+    .navi__mobile {
+        display: none;
+        text-align: center;
+
+        @include state( "navi", "mobile" ) {
+            @include screen-active();
+        }
+
+        @include respond( $mobile-breakpoint ) {
+            display: block;
+        }
+    }
+    .navi__mobile__a {
+        @include navi-txt();
+    }
+    .navi__mobile__a--book-now {
+        bottom: 0;
+        left: 0;
+        position: fixed;
+        right: 0;
+        @include navi-btn();
+    }
 }

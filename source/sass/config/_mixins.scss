@@ -155,3 +155,16 @@
         @content;
     }
 }
+
+
+
+/******************************************************************************
+ * Module utility
+*******************************************************************************/
+@mixin screen-active() {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    z-index: $z_layer_infront;
+    -webkit-overflow-scrolling: touch;
+}
