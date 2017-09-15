@@ -1,4 +1,6 @@
 import * as core from "../core";
+import VideoFS from "./VideoFS";
+// import $ from "properjs-hobo";
 
 
 
@@ -15,9 +17,10 @@ class Carousel {
         this.element = element;
         this.items = this.element.find( ".js-carousel-item" );
         this.images = this.element.find( ".js-carousel-image" );
+        this.videos = this.element.find( ".js-carousel-video" );
         this.active = this.items.eq( 0 );
         this.auto = {
-            enabled: true,
+            enabled: false,
             duration: 5000,
             timeout: null
         };
@@ -33,10 +36,27 @@ class Carousel {
 
 
     load () {
+        this.videos.forEach(( el, i ) => {
+            const elem = this.videos.eq( i );
+            const data = elem.data();
+            const uid = data.url.split( "/" ).pop();
+
+            if ( data.provider === "vimeo" ) {
+                const url = `https://player.vimeo.com/video/${uid}?wmode=opaque&autoplay=1&loop=1`;
+                const embed = elem.find( ".js-embed" );
+                const embedAspect = embed.find( ".js-embed-aspect" );
+
+                embedAspect[ 0 ].style.paddingBottom = `${data.height / data.width * 100}%`;
+                embedAspect[ 0 ].innerHTML = `<iframe class="embed__element" src="${url}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
+
+                elem.data( "videoFS", new VideoFS( elem, embed, data ) );
+            }
+        });
+
         core.util.loadImages( this.images, core.util.noop )
-            .on( "load", ( img ) => {
-                core.log( "[Carousel]::Loaded image", img );
-            })
+            // .on( "load", ( img ) => {
+            //     core.log( "[Carousel]::Loaded image", img );
+            // })
             .on( "done", () => {
                 this.active.addClass( "is-active" );
 
