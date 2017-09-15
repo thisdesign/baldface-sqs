@@ -5,6 +5,7 @@ import CoverController from "./CoverController";
 import QueryController from "./QueryController";
 import CarouselController from "./CarouselController";
 import FormController from "./FormController";
+import FeedController from "./FeedController";
 
 
 /**
@@ -62,6 +63,7 @@ class Controllers {
         this.push( "cover", this.element.find( core.config.coverSelector ), CoverController, true );
         this.push( "carousel", this.element.find( core.config.carouselSelector ), CarouselController, true );
         this.push( "form", core.dom.body.find( core.config.formSelector ), FormController, true );
+        this.push( "feed", this.element.find( core.config.feedSelector ), FeedController, true );
         this.push( "query", ["q"], QueryController, true );
 
         this.images = this.element.find( core.config.lazyImageSelector );

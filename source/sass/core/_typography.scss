@@ -36,9 +36,6 @@
 .li, {
     @include p();
 
-    a {
-        @include bs();
-        }
     em {
         font-style: italic;
         }
@@ -54,6 +51,7 @@
 .a {
     position: relative;
     transition: color $base-duration $ease;
+    @include bs();
 
     &:after {
         position: absolute;

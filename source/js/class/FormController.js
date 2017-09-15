@@ -15,7 +15,7 @@ class FormController {
     constructor ( element ) {
         this.element = element;
         this.fields = this.element.find( ".js-form-field" );
-        this.subscriber = this.element.closest( ".js-subscriber" );
+        this.placeholder = this.element.closest( ".js-placeholder" );
         this.validations = {
             email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         };
@@ -85,8 +85,8 @@ class FormController {
         .then(( /*response*/ ) => {
             this.clear();
 
-            if ( this.subscriber.length ) {
-                this.subscriber.addClass( "is-subscribed" );
+            if ( this.placeholder.length ) {
+                this.placeholder.addClass( "is-placeholder" );
             }
         })
         .catch(( error ) => {

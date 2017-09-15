@@ -279,14 +279,44 @@ const getOriginalDims = function ( original ) {
 
 
 
+/**
+ *
+ * @description Randomize array element order in-place.
+ * Using Fisher-Yates shuffle algorithm.
+ * @method shuffle
+ * @param {object} arr The array to shuffle
+ * @memberof util
+ * @returns {array}
+ *
+ */
+const shuffle = function ( arr ) {
+    let i = arr.length - 1;
+    let j = 0;
+    let temp = arr[ i ];
+
+    for ( i; i > 0; i-- ) {
+        j = Math.floor( Math.random() * (i + 1) );
+        temp = arr[ i ];
+
+        arr[ i ] = arr[ j ];
+        arr[ j ] = temp;
+    }
+
+    return arr;
+};
+
+
+
 /******************************************************************************
  * Export
 *******************************************************************************/
 export {
     px,
     noop,
+    shuffle,
     loadImages,
     translate3d,
+    getOriginalDims,
     isElementLoadable,
     isElementVisible,
     getElementsInView,

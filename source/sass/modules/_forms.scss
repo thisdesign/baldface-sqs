@@ -13,18 +13,18 @@
 
 
 
-.subscriber {
+.placeholder {
     border-bottom: 1px solid $white;
     overflow: hidden;
     position: relative;
     padding: 8px 0;
     }
-.subscriber__cta {
+.placeholder__cta {
     @include bs();
     transition: opacity $fast-duration $ease,
                 transform $fast-duration $ease;
     }
-.subscriber__form {
+.placeholder__form {
     bottom: 0;
     left: 0;
     opacity: 0;
@@ -35,14 +35,14 @@
     transition: opacity $fast-duration $ease,
                 transform $fast-duration $ease;
     }
-.subscriber__b {
+.placeholder__b {
     display: none;
     }
-.subscriber.is-subscribed {
-    .subscriber__a {
+.placeholder.is-placeholder {
+    .placeholder__a {
         display: none;
         }
-    .subscriber__b {
+    .placeholder__b {
         display: block;
         }
 }

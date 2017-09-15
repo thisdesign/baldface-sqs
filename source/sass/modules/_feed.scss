@@ -1,0 +1,51 @@
+$gutter: 5px;
+$columns: 3;
+
+
+
+.feed {
+    .form__input {
+        border-left: 1px solid $medium;
+        border-top: 1px solid $medium;
+        border-right: 1px solid $medium;
+        padding: 8px 16px;
+        text-align: center;
+        }
+}
+.feed__filter {
+    @include flex-space();
+    }
+.feed__categories {
+    @include respond( $break-tablet-full ) {
+        text-align: center;
+        width: 100%;
+    }
+}
+.feed__category {
+    padding: 5px 10px;
+
+    &.is-active {
+        border-bottom: 1px solid $medium;
+        }
+}
+.feed__search {
+    .placeholder {
+        border-bottom: 1px solid $medium;
+        text-align: center;
+        width: 192px;
+        }
+
+    @include respond( $break-tablet-full ) {
+        padding-top: $expander-mobile;
+        text-align: center;
+        width: 100%;
+    }
+}
+.feed__layout {
+    column-count: $columns;
+    column-gap: $gutter;
+    }
+.feed__item {
+    margin-bottom: $gutter;
+    width: 100%;
+    }

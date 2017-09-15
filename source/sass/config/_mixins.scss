@@ -164,3 +164,9 @@
     z-index: $z_layer_infront;
     -webkit-overflow-scrolling: touch;
 }
+@mixin flex-space() {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
