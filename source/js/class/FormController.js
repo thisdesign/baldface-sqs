@@ -82,7 +82,7 @@ class FormController {
             data,
             headers
         })
-        .then(( response ) => {
+        .then(( /*response*/ ) => {
             this.clear();
 
             if ( this.subscriber.length ) {
