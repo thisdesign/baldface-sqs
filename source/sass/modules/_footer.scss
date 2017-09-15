@@ -1,6 +1,4 @@
-@mixin links-pad() {
-    padding-top: 29px;
-}
+$links-pad: 29px;
 
 
 
@@ -30,23 +28,56 @@
     .form__input::-webkit-input-placeholder {
         color: $white;
     }
+
+    .social-icon-alignment-right .sqs-svg-icon--list {
+        @include respond( $break-tablet-medium ) {
+            text-align: left;
+        }
+    }
+
+    .social-icons-size-medium.social-icons-style-regular.social-icon-alignment-right .sqs-svg-icon--wrapper {
+        @include respond( $break-tablet-medium ) {
+            margin: 0 14px 0 0;
+        }
+    }
+}
+.footer__logo {
+    @include respond( $break-tablet-medium ) {
+        padding-bottom: $expander-one;
+        width: 100%;
+    }
+}
+.footer__links {
+    padding-top: $links-pad;
+
+    @include respond( $break-tablet-medium ) {
+        padding-right: $padding-wrap * 2;
+        padding-top: 0;
+        width: auto;
+    }
+}
+.footer__social {
+    padding-top: $links-pad;
+    text-align: right;
+
+    @include respond( $break-tablet-medium ) {
+        padding-top: $expander-one;
+        text-align: left;
+        width: 100%;
+    }
 }
 .footer__copy {
     padding-top: $expander-two;
     text-align: right;
+
+    @include respond( $break-tablet-medium ) {
+        padding-top: $expander-one;
+        text-align: left;
     }
-.footer__links {
-    @include links-pad();
-    }
-.footer__social {
-    @include links-pad();
-    box-sizing: content-box;
-    min-width: 144px;
-    text-align: right;
-    }
+}
 
 
 
 #footer-blocks {
-    padding-top: 20px;
+    padding-top: $links-pad;
 }
