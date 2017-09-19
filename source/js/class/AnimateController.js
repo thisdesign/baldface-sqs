@@ -16,8 +16,20 @@ class AnimateController extends Controller {
         super();
 
         this.elements = elements;
+        this.intros = this.elements.filter( ".js-animate--intro" );
+        this.animates = this.elements.not( ".js-animate--intro" );
 
+        this.bind();
         this.start();
+    }
+
+
+    bind () {
+        this._onIntroTeardown = () => {
+            this.intros.addClass( "is-animate" );
+        };
+
+        core.emitter.on( "app--page-teardown", this._onIntroTeardown );
     }
 
 
@@ -32,14 +44,18 @@ class AnimateController extends Controller {
     start () {
         // Call on parent cycle
         this.go(() => {
-            this.elements.forEach(( element, i ) => {
-                if ( core.util.isElementVisible( element ) ) {
-                    this.elements.eq( i ).addClass( "is-animate" );
+            const anims = this.animates.not( ".is-animate" );
 
-                } else {
-                    this.elements.eq( i ).removeClass( "is-animate" );
-                }
-            });
+            if ( anims.length ) {
+                anims.forEach(( element, i ) => {
+                    if ( core.util.isElementVisible( element ) ) {
+                        anims.eq( i ).addClass( "is-animate" );
+                    }
+                });
+
+            } else {
+                this.stop();
+            }
         });
     }
 
@@ -54,6 +70,10 @@ class AnimateController extends Controller {
      */
     destroy () {
         this.stop();
+
+        if ( this._onIntroTeardown ) {
+            core.emitter.off( "app--page-teardown", this._onIntroTeardown );
+        }
     }
 }
 
