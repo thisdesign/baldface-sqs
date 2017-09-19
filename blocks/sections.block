@@ -1,6 +1,6 @@
-<section class="sections -wrap -exp-1 js-sections">
+<section class="sections sections--{title|slugify} -wrap -exp-1">
     {.repeated section items}
-        <div class="section section--{urlId} js-section" data-uid="{urlId}">
+        <div class="section section--{title|slugify}">
             {body}
         </div>
     {.end}

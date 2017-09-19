@@ -1,4 +1,4 @@
-<div class="page -wrap -exp-1" data-uid="{urlId}">
+<div class="page page--{title|slugify} -wrap -exp-1">
     {.if mainContent}
         {mainContent}
     {.or}

@@ -1,4 +1,4 @@
-<section class="carousel js-carousel hero">
+<section class="carousel js-carousel hero hero--{title|slugify}">
     {.repeated section items}
         <div class="carousel__item js-carousel-item hero__item ghost">
             {.equal? recordTypeLabel "video"}
