@@ -2,7 +2,7 @@
  * Document States
 *******************************************************************************/
 .is-hoverable {
-    .navi__a:hover {
+    .navi__a:not( .is-active ):hover {
         color: $grey;
     }
     .footer {

@@ -21,6 +21,7 @@ $mobile-breakpoint: $break-tablet-small;
 .navi {}
 .navi--header {
     background-color: $white;
+    height: $navi-height;
     left: 0;
     position: fixed;
     top: 0;
@@ -28,14 +29,17 @@ $mobile-breakpoint: $break-tablet-small;
     z-index: $z_layer_infront;
 
     .navi__main {
+        align-items: flex-end;
+        display: flex;
+        height: $navi-height;
+        justify-content: flex-end;
         position: relative;
         z-index: $z_layer_infront + 1;
         }
-    .navi__ul {
-        text-align: right;
-        }
+    .navi__ul {}
     .navi__li {
         display: inline-block;
+        height: $navi-height;
         vertical-align: middle;
 
         @include respond( $mobile-breakpoint ) {
@@ -57,8 +61,13 @@ $mobile-breakpoint: $break-tablet-small;
         }
     }
     .navi__a {
+        height: $navi-height;
         @include navi-txt();
-        }
+
+        &.is-active {
+            color: $black;
+            }
+    }
     .navi__a--home {
         font-size: 0;
         padding: 0;
