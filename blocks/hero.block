@@ -2,10 +2,10 @@
     {.repeated section items}
         <div class="carousel__item js-carousel-item hero__item ghost">
             {.equal? recordTypeLabel "video"}
-                <div class="carousel__vid hero__vid js-carousel-video" data-url="{oembed.url}" data-provider="{oembed.resolvedBy}" data-width="{oembed.width}" data-height="{oembed.height}">
-                    <div class="embed js-embed"> <!-- This gets dynamic width -->
-                        <div class="embed__aspect js-embed-aspect"> <!-- This gets dynamic aspect -->
-                            <!-- <iframe> -->
+                <div class="carousel__vid hero__vid js-carousel-video js-video" data-url="{oembed.url}" data-provider="{oembed.resolvedBy}" data-width="{oembed.width}" data-height="{oembed.height}">
+                    <div class="embed js-embed"> {# This gets dynamic width #}
+                        <div class="embed__aspect js-embed-aspect"> {# This gets dynamic aspect #}
+                            {# <iframe> #}
                         </div>
                     </div>
                 </div>

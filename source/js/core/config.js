@@ -167,6 +167,17 @@ const config = {
     /**
      *
      * @public
+     * @member videoSelector
+     * @memberof core.config
+     * @description The string selector used for <video>.
+     *
+     */
+    videoSelector: ".js-video",
+
+
+    /**
+     *
+     * @public
      * @member lazyImageAttr
      * @memberof core.config
      * @description The string attribute for lazy image source URLs.

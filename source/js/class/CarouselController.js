@@ -1,6 +1,5 @@
-import * as core from "../core";
-import VideoFS from "./VideoFS";
 // import $ from "properjs-hobo";
+import * as core from "../core";
 
 
 
@@ -36,23 +35,6 @@ class Carousel {
 
 
     load () {
-        this.videos.forEach(( el, i ) => {
-            const elem = this.videos.eq( i );
-            const data = elem.data();
-            const uid = data.url.split( "/" ).pop();
-
-            if ( data.provider === "vimeo" ) {
-                const url = `https://player.vimeo.com/video/${uid}?wmode=opaque&autoplay=1&loop=1`;
-                const embed = elem.find( ".js-embed" );
-                const embedAspect = embed.find( ".js-embed-aspect" );
-
-                embedAspect[ 0 ].style.paddingBottom = `${data.height / data.width * 100}%`;
-                embedAspect[ 0 ].innerHTML = `<iframe class="embed__element" src="${url}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
-
-                elem.data( "videoFS", new VideoFS( elem, embed, data ) );
-            }
-        });
-
         core.util.loadImages( this.images, core.util.noop )
             // .on( "load", ( img ) => {
             //     core.log( "[Carousel]::Loaded image", img );
@@ -174,6 +156,7 @@ class Carousel {
  * @public
  * @global
  * @class CarouselController
+ * @param {Hobo} elements The carousel modules
  * @classdesc Handle carousels of various kinds and sorts.
  *
  */
@@ -193,14 +176,6 @@ class CarouselController {
     }
 
 
-    /**
-     *
-     * @instance
-     * @description Teardown
-     * @memberof CarouselController
-     * @method destroy
-     *
-     */
     destroy () {
         this.instances.forEach(( instance ) => {
             instance.destroy();
