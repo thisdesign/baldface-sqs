@@ -60,14 +60,14 @@
                 </div>
                 <div class="footer__col footer__social -column -vtop -column--2of4">
                     <div class="-column">
-                        <div class="placeholder js-placeholder">
-                            <div class="placeholder__cta p">
-                                <div class="placeholder__a">Subscribe to Newsletter</div>
-                                <div class="placeholder__b">Totes subscribed broh!</div>
-                            </div>
-                            <form class="placeholder__form form js-form" action="http://campaign.theoutlawpartners.com/t/r/s/najtj/" method="post">
+                        <div class="button button--itzel button--border-thin placeholder js-placeholder">
+                            <form class="button__hover form js-form" action="http://campaign.theoutlawpartners.com/t/r/s/najtj/" method="post">
                                 <input class="form__input js-form-field" name="cm-najtj-najtj" type="email" required placeholder="Your email dude" />
                             </form>
+                            <span class="placeholder__cta p">
+                                <span class="placeholder__a">Subscribe to Newsletter</span>
+                                <span class="placeholder__b">Totes subscribed broh!</span>
+                            </span>
                         </div>
                         <squarespace:block-field id="footer-blocks" columns="1" />
                     </div>

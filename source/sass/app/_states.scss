@@ -18,15 +18,17 @@
         border-color: $grey-bd-hover;
         color: $white;
     }
-    .placeholder:not( .is-placeholder ):hover {
-        .placeholder__cta {
-            opacity: 0;
-            transform: translate3d( 0, -100%, 0 );
-            }
-        .placeholder__form {
+    .placeholder.is-placeholder:hover {
+        &:before {
+            transform: translate3d( 0, 100%, 0 ) translate3d( 0, -1px, 0 );
+        }
+        .button__hover {
+            transform: translate3d( -50%, 0, 0 );
+        }
+        > span {
             opacity: 1;
             transform: translate3d( 0, 0, 0 );
-            }
+        }
     }
 }
 

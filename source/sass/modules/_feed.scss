@@ -29,11 +29,11 @@ $columns: 3;
         }
 }
 .feed__search {
-    .placeholder {
-        border-bottom: 1px solid $medium;
-        text-align: center;
-        width: 192px;
-        }
+    // .placeholder {
+    //     border-bottom: 1px solid $medium;
+    //     text-align: center;
+    //     width: 192px;
+    //     }
 
     @include respond( $break-tablet-full ) {
         padding-top: $expander-mobile;

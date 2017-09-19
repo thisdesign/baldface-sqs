@@ -76,46 +76,6 @@
 }
 
 
-
-/******************************************************************************
- * Buttons
-*******************************************************************************/
-@mixin btn() {
-    background: none;
-    border: 0;
-    cursor: pointer;
-    display: inline-block;
-    font-size: $btn-size;
-    letter-spacing: normal;
-    line-height: 1;
-    outline: 0;
-    padding: 0;
-    text-transform: uppercase;
-    -webkit-appearance: none;
-    @include font-sans();
-    @include b();
-}
-@mixin btn-style() {
-    border: 1px solid $grey-bd;
-    color: $charcoal;
-    transition: color $base-duration $ease,
-                border-color $base-duration $ease,
-                background-color $base-duration $ease;
-}
-@mixin btn-large() {
-    background-color: $white;
-    padding: 20px;
-}
-@mixin btn-medium() {
-    background-color: $white;
-    padding: 16px;
-}
-@mixin btn-small() {
-    background-color: $white;
-    padding: 12px;
-}
-
-
 /******************************************************************************
  * Wraps
 *******************************************************************************/

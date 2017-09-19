@@ -60,6 +60,26 @@ $mobile-breakpoint: $break-tablet-small;
             display: block;
         }
     }
+    .navi__li--book-now {
+        .button {
+            height: $navi-height;
+            text-align: center;
+            text-transform: capitalize;
+
+            span {
+                @include navi-btn();
+                font-size: $navi-font-size;
+                height: $navi-height;
+                line-height: 1;
+                }
+            .button__hover {
+                font-size: $navi-font-size;
+                height: $navi-height;
+                line-height: 1;
+                padding: 22px 30px;
+                }
+        }
+    }
     .navi__a {
         height: $navi-height;
         @include navi-txt();
@@ -71,9 +91,6 @@ $mobile-breakpoint: $break-tablet-small;
     .navi__a--home {
         font-size: 0;
         padding: 0;
-        }
-    .navi__a--book-now {
-        @include navi-btn();
         }
     .navi__logo {
         height: $navi-height;

@@ -8,14 +8,7 @@
         <menu class="feed__filter -wrap -exp">
             <div class="feed__categories js-feed-filter -column"></div>
             <div class="feed__search -column">
-                <div class="placeholder js-placeholder -column">
-                    <div class="placeholder__cta p">
-                        <div class="placeholder__a">Try searching 2017</div>
-                    </div>
-                    <div class="placeholder__form">
-                        <input class="form__input js-feed-search" type="text" placeholder="Your search bruh" />
-                    </div>
-                </div>
+                
             </div>
         </menu>
         <section class="feed__layout js-feed-layout -wrap -exp-1"></section>

@@ -1,35 +1,4 @@
 /******************************************************************************
- * Button / Labels
-*******************************************************************************/
-.btn {
-    @include btn();
-    @include btn-style();
-    }
-.btn--large {
-    @include btn-large();
-    }
-.btn--medium {
-    @include btn-medium();
-    }
-.btn--small {
-    @include btn-small();
-    }
-.btn__icon {
-    margin-right: 10px;
-    width: 20px;
-
-    svg {
-        fill: $white;
-        }
-}
-.btn__icon,
-.btn__text {
-    display: inline-block;
-    vertical-align: middle;
-    }
-
-
-/******************************************************************************
  * Paragraphs
 *******************************************************************************/
 .p,
