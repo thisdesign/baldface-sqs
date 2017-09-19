@@ -1,4 +1,5 @@
 .main {
+    // padding-top: $navi-height;
     transition: opacity $fast-duration $ease;
 
     &.is-inactive {
