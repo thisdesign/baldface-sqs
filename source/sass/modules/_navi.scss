@@ -64,7 +64,6 @@ $mobile-breakpoint: $break-tablet-small;
         .button {
             height: $navi-height;
             text-align: center;
-            text-transform: capitalize;
 
             span {
                 @include navi-btn();

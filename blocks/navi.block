@@ -13,7 +13,7 @@
                         {# Book Now Button #}
                         {.equal? id "59975d4459cc681e873ee431"}
                             <a href="{fullUrl}" class="button button--size-large button--naira">
-                                <div class="button__hover">SFD</div>
+                                <div class="button__hover">SFD!</div>
                                 <span>{title}</span>
                             </a>
                         {.or}

@@ -25,16 +25,10 @@ $columns: 3;
     padding: 5px 10px;
 
     &.is-active {
-        border-bottom: 1px solid $medium;
+        color: $black;
         }
 }
 .feed__search {
-    // .placeholder {
-    //     border-bottom: 1px solid $medium;
-    //     text-align: center;
-    //     width: 192px;
-    //     }
-
     @include respond( $break-tablet-full ) {
         padding-top: $expander-mobile;
         text-align: center;
