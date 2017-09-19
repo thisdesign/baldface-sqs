@@ -38,6 +38,9 @@ class Video {
             core.log( "warn", "[Video]YouTube not supported yet..." );
         }
     }
+
+
+    destroy () {}
 }
 
 
