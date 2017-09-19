@@ -8,9 +8,9 @@
         <menu class="feed__filter -wrap -exp">
             <div class="feed__categories js-feed-filter -column"></div>
             <div class="feed__search -column">
-                
+
             </div>
         </menu>
-        <section class="feed__layout js-feed-layout -wrap -exp-1"></section>
+        <section class="grid grid--feed feed__layout js-feed-layout -wrap -exp-1"></section>
     </div>
 {.end}

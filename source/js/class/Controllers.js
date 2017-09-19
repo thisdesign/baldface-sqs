@@ -6,6 +6,7 @@ import CarouselController from "./CarouselController";
 import FormController from "./FormController";
 import FeedController from "./FeedController";
 import VideoController from "./VideoController";
+import AspectController from "./AspectController";
 
 
 /**
@@ -64,6 +65,7 @@ class Controllers {
         this.push( "form", core.dom.body.find( core.config.formSelector ), FormController, true );
         this.push( "feed", this.element.find( core.config.feedSelector ), FeedController, true );
         this.push( "video", this.element.find( core.config.videoSelector ), VideoController, true );
+        this.push( "aspect", this.element.find( core.config.aspectSelector ), AspectController, true );
         this.push( "query", ["q"], QueryController, true );
 
         this.images = this.element.find( core.config.lazyImageSelector );

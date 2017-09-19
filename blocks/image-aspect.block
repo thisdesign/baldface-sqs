@@ -1,0 +1,3 @@
+<div class="aspect js-aspect" data-original="{originalSize}">
+    <div class="aspect__media js-lazy-image -cover" data-img-src="{assetUrl}" data-variants="{systemDataVariants}"></div>
+</div>

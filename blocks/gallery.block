@@ -1,7 +1,7 @@
-<div class="gallery js-gallery" data-uid="{collection.urlId}">
+<div class="grid grid--{collection.title|slugify}">
     {.repeated section items}
-        <div class="gallery__item js-item -column -column--1of3">
-            {@|apply image.block}
+        <div class="grid__item -column animate js-animate">
+            {@|apply image-aspect.block}
         </div>
     {.end}
 </div>

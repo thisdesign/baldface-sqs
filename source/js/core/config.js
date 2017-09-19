@@ -178,6 +178,17 @@ const config = {
     /**
      *
      * @public
+     * @member aspectSelector
+     * @memberof core.config
+     * @description The string selector used for <aspect>.
+     *
+     */
+    aspectSelector: ".js-aspect",
+
+
+    /**
+     *
+     * @public
      * @member lazyImageAttr
      * @memberof core.config
      * @description The string attribute for lazy image source URLs.

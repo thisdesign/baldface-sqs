@@ -2,6 +2,7 @@ import $ from "properjs-hobo";
 import * as core from "../core";
 import feedFilterView from "../views/feed-filter";
 import feedLayoutView from "../views/feed-layout";
+import AnimateController from "./AnimateController";
 
 
 /**
@@ -66,6 +67,7 @@ class FeedController {
         this.views.layout = feedLayoutView( items );
         this.layoutEl[ 0 ].innerHTML = this.views.layout;
         this.imageLoader = core.util.loadImages( this.element.find( ".js-feed-image" ) );
+        this.animController = new AnimateController( this.element.find( ".js-feed-anim" ) );
     }
 
 
