@@ -12,7 +12,7 @@
                     <li class="navi__li navi__li--{title|slugify}">
                         {# Book Now Button #}
                         {.equal? id "59975d4459cc681e873ee431"}
-                            <a href="{fullUrl}" class="button button--size-large button--naira">
+                            <a href="{fullUrl}" class="button button--size-large button--naira button--naira-up">
                                 <div class="button__hover">SFD!</div>
                                 <span>{title}</span>
                             </a>
