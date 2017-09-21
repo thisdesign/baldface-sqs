@@ -62,12 +62,13 @@ class Controllers {
 
         this.push( "animate", this.element.find( core.config.animSelector ), AnimateController, true );
         this.push( "carousel", this.element.find( core.config.carouselSelector ), CarouselController, true );
-        this.push( "form", core.dom.body.find( core.config.formSelector ), FormController, true );
         this.push( "feed", this.element.find( core.config.feedSelector ), FeedController, true );
         this.push( "video", this.element.find( core.config.videoSelector ), VideoController, true );
-        this.push( "aspect", this.element.find( core.config.aspectSelector ), AspectController, true );
+        this.push( "form", core.dom.body.find( core.config.formSelector ), FormController, true );
         this.push( "query", ["q"], QueryController, true );
 
+        this.aspect = this.element.find( core.config.aspectSelector );
+        this.aspectController = new AspectController( this.aspect );
         this.images = this.element.find( core.config.lazyImageSelector );
         this.imageController = new ImageController( this.images );
         this.imageController.on( "preloaded", () => {
@@ -81,6 +82,10 @@ class Controllers {
 
 
     destroy () {
+        if ( this.aspectController ) {
+            this.aspectController.destroy();
+        }
+
         if ( this.imageController ) {
             this.imageController.destroy();
         }
