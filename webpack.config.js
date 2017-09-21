@@ -5,6 +5,7 @@ const nodeModules = "node_modules";
 const webpack = require( "webpack" );
 const autoprefixer = require( "autoprefixer" );
 const execSync = require( "child_process" ).execSync;
+const BrowserSyncPlugin = require( "browser-sync-webpack-plugin" );
 
 
 
@@ -13,6 +14,15 @@ module.exports = {
 
 
     plugins: [
+        new BrowserSyncPlugin({
+            open: true,
+            host: "localhost",
+            port: 9001,
+            proxy: `http://localhost:9000`,
+            files: [
+                "build"
+            ]
+        }),
         new webpack.LoaderOptionsPlugin({
             options: {
                 postcss: [autoprefixer( { browsers: ["last 2 versions"] } )]
