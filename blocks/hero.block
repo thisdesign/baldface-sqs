@@ -1,6 +1,6 @@
 <section class="carousel js-carousel hero hero--{title|slugify}">
     {.repeated section items}
-        <div class="carousel__item js-carousel-item hero__item ghost">
+        <div class="carousel__item js-carousel-item hero__item ghost {.equal? @index 1}is-active{.end}">
             {.equal? recordTypeLabel "video"}
                 <div class="carousel__vid hero__vid js-carousel-video js-video" data-url="{oembed.url}" data-provider="{oembed.resolvedBy}" data-width="{oembed.width}" data-height="{oembed.height}">
                     <div class="embed js-embed"> {# This gets dynamic width #}
@@ -10,7 +10,7 @@
                     </div>
                 </div>
             {.or}
-                <div class="carousel__img hero__img js-carousel-image -cover" data-img-src="{assetUrl}" data-variants="{systemDataVariants}"></div>
+                <div class="carousel__img hero__img js-carousel-image js-lazy-image -cover" data-img-src="{assetUrl}" data-variants="{systemDataVariants}"></div>
             {.end}
             <div class="carousel__main hero__main -wrap ghost__child">
                 <div class="carousel__title hero__title h1 -light">{title}</div>

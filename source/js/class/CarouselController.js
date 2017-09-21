@@ -1,4 +1,3 @@
-// import $ from "properjs-hobo";
 import * as core from "../core";
 
 
@@ -30,24 +29,11 @@ class Carousel {
             duration: core.util.getElementDuration( this.active[ 0 ] )
         };
 
-        this.load();
-    }
+        this.bind();
 
-
-    load () {
-        core.util.loadImages( this.images, core.util.noop )
-            // .on( "load", ( img ) => {
-            //     core.log( "[Carousel]::Loaded image", img );
-            // })
-            .on( "done", () => {
-                this.active.addClass( "is-active" );
-
-                this.bind();
-
-                if ( this.auto.enabled ) {
-                    this.update();
-                }
-            });
+        if ( this.auto.enabled ) {
+            this.update();
+        }
     }
 
 
@@ -68,11 +54,14 @@ class Carousel {
         try {
             clearTimeout( this.auto.timeout );
 
-            this.items.removeClass( "is-entering is-exiting is-active" );
-
         } catch ( error ) {
             core.log( "warn", error );
         }
+    }
+
+
+    clearClass () {
+        this.items.removeClass( "is-entering is-exiting is-active" );
     }
 
 
@@ -111,6 +100,7 @@ class Carousel {
 
     advance () {
         this.clear();
+        this.clearClass();
 
         if ( this.data.index === (this.data.length - 1) ) {
             this.data.index = 0;
@@ -128,6 +118,7 @@ class Carousel {
 
     rewind () {
         this.clear();
+        this.clearClass();
 
         if ( this.data.index === 0 ) {
             this.data.index = (this.data.length - 1);
