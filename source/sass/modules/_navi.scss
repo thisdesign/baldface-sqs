@@ -1,7 +1,9 @@
 @mixin navi-btn() {
-    background-color: rgba( 154, 154, 154, 0.5 );
     color: $white;
     padding: 22px 30px;
+}
+@mixin navi-btn-bg() {
+    background-color: rgba( 154, 154, 154, 0.5 );
 }
 @mixin navi-txt() {
     display: block;
@@ -62,6 +64,7 @@ $mobile-breakpoint: $break-tablet-small;
     }
     .navi__li--book-now {
         .button {
+            @include navi-btn-bg();
             height: $navi-height;
             text-align: center;
 
@@ -124,5 +127,6 @@ $mobile-breakpoint: $break-tablet-small;
         position: fixed;
         right: 0;
         @include navi-btn();
+        @include navi-btn-bg();
     }
 }
