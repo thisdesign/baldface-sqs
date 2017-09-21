@@ -189,6 +189,17 @@ const config = {
     /**
      *
      * @public
+     * @member trannySelector
+     * @memberof core.config
+     * @description The string selector used for <tranny>.
+     *
+     */
+    trannySelector: ".js-tranny",
+
+
+    /**
+     *
+     * @public
      * @member lazyImageAttr
      * @memberof core.config
      * @description The string attribute for lazy image source URLs.

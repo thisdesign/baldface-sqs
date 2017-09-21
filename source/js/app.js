@@ -3,10 +3,10 @@ require( "../sass/screen.scss" );
 
 
 // Load the JS
+import navi from "./navi";
+import tranny from "./tranny";
 import router from "./router";
 import * as core from "./core";
-import intro from "./intro";
-import navi from "./navi";
 import Analytics from "./class/Analytics";
 
 
@@ -21,7 +21,7 @@ class App {
     constructor () {
         this.core = core;
         this.navi = navi;
-        this.intro = intro;
+        this.tranny = tranny;
         this.router = router;
 
         this.bind();
@@ -57,7 +57,7 @@ class App {
 
         // Views
         this.navi.init();
-        this.intro.init();
+        this.tranny.init();
 
         // Controller
         this.router.init();

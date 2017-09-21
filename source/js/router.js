@@ -3,6 +3,7 @@ import PageController from "properjs-pagecontroller";
 import Controllers from "./class/Controllers";
 import * as core from "./core";
 import navi from "./navi";
+import tranny from "./tranny";
 
 
 /**
@@ -23,7 +24,7 @@ const router = {
      */
     init () {
         this.pageClass = "";
-        this.pageDuration = core.util.getElementDuration( core.dom.main[ 0 ] );
+        this.pageDuration = core.util.getElementDuration( core.dom.html[ 0 ] );
         this.controllers = new Controllers({
             el: core.dom.main,
             cb: () => {
@@ -73,11 +74,11 @@ const router = {
 
         // this.controller.setModules( [] );
 
+        this.controller.on( "page-controller-initialized-page", this.initPage.bind( this ) );
         //this.controller.on( "page-controller-router-samepage", () => {} );
         this.controller.on( "page-controller-router-transition-out", this.changePageOut.bind( this ) );
         this.controller.on( "page-controller-router-refresh-document", this.changeContent.bind( this ) );
         this.controller.on( "page-controller-router-transition-in", this.changePageIn.bind( this ) );
-        this.controller.on( "page-controller-initialized-page", this.initPage.bind( this ) );
 
         this.controller.initPage();
     },
@@ -167,11 +168,10 @@ const router = {
      *
      */
     changePageOut ( /* data */ ) {
-        core.dom.html.addClass( "is-routing" );
-        core.dom.main.addClass( "is-inactive" );
-
         this.controllers.destroy();
         navi.close();
+
+        tranny.in();
     },
 
 
@@ -208,12 +208,12 @@ const router = {
      *
      */
     changePageIn ( /* data */ ) {
-        core.dom.html.removeClass( "is-routing" );
-        core.dom.main.removeClass( "is-inactive" );
-
         this.controllers.exec();
         this.execSquarespace();
+
+        setTimeout( () => tranny.out(), this.pageDuration );
     },
+
 
     /**
      *

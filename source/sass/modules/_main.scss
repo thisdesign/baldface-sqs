@@ -1,12 +1,4 @@
 .main {
-    // padding-top: $navi-height;
-    transition: opacity $fast-duration $ease;
-
-    &.is-inactive {
-        opacity: 0;
-        pointer-events: none;
-        }
-
     > .grid:first-child {
         padding-top: $navi-height;
     }

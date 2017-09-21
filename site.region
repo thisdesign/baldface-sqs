@@ -77,7 +77,7 @@
                 <div class="p">&copy; Copyright 2017 {website.location.addressTitle}.</div>
             </div>
         </footer>
-        {@|apply intro.block}
+        {@|apply tranny.block}
         <script type="text/javascript" src="/scripts/app.js?v={squarespace.template-revision}"></script>
         {@|apply google.block}
         {squarespace-footers}

@@ -1,0 +1,52 @@
+$tilt-degrees: 10deg;
+
+
+
+.tranny {
+    background-color: $white;
+    display: none;
+    height: 200%;
+    left: -50%;
+    position: fixed;
+    top: -50%;
+    transform: translate3d( 0, 100%, 0) rotate3d(0, 0, 1, $tilt-degrees );
+    width: 200%;
+    z-index: -1;
+    }
+.tranny.is-tranny-once,
+.tranny.is-tranny-in,
+.tranny.is-tranny-out {
+    display: block;
+    z-index: $z_layer_infront + 1;
+    }
+.tranny.is-tranny-once {
+    transform: translate3d( 0, 0, 0 ) rotate3d( 0, 0, 1, -$tilt-degrees );
+    }
+.tranny.is-tranny-in {
+    animation: tranny-in $base-duration forwards ease-in;
+    }
+.tranny.is-tranny-out {
+    transform: translate3d( 0, 0, 0 ) rotate3d( 0, 0, 1, -$tilt-degrees );
+    animation: tranny-out $base-duration forwards ease-in;
+    }
+
+
+
+@keyframes tranny-in {
+    50% {
+        transform: translate3d( 0, 50%, 0 ) rotate3d( 0, 0, 1, $tilt-degrees );
+        animation-timing-function: ease-out;
+    }
+    100% {
+        transform: translate3d( 0, 0, 0 ) rotate3d( 0, 0, 1, 0deg );
+    }
+}
+@keyframes tranny-out {
+    50% {
+        transform: translate3d( 0, 50%, 0 ) rotate3d( 0, 0, 1, -$tilt-degrees );
+        animation-timing-function: ease-out;
+    }
+    100% {
+        transform: translate3d( 0, 100%, 0 ) rotate3d( 0, 0, 1, 0deg );
+    }
+}

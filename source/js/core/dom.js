@@ -74,7 +74,18 @@ const dom = {
      * @description The cached <nav> nodes.
      *
      */
-    navi: $( config.naviSelector )
+    navi: $( config.naviSelector ),
+
+
+    /**
+     *
+     * @public
+     * @member tranny
+     * @memberof core.dom
+     * @description The cached tranny> nodes.
+     *
+     */
+    tranny: $( config.trannySelector )
 };
 
 
