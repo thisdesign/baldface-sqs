@@ -31,4 +31,18 @@
     }
 }
 .feed__layout {}
-.feed__item {}
+.feed__item {
+    cursor: pointer;
+    position: relative;
+    }
+.feed__icon {
+    left: 16px;
+    position: absolute;
+    top: 16px;
+    width: 10px;
+
+    .-svg {
+        fill: $white;
+        width: 100%;
+        }
+}

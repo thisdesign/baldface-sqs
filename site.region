@@ -37,7 +37,7 @@
             <div class="footer__main -fzero">
                 <div class="footer__col footer__logo -column -vtop -column--1of6">
                     <a class="" href="/">
-                        {@|apply logo-footer.block}
+                        {@|apply svg-footer-logo.block}
                     </a>
                 </div>
                 <div class="footer__col footer__links -column -vtop -column--1of6">
@@ -77,7 +77,7 @@
                 <div class="p">&copy; Copyright 2017 {website.location.addressTitle}.</div>
             </div>
         </footer>
-        {@|apply tranny.block}
+        {@|apply screens.block}
         <script type="text/javascript" src="/scripts/app.js?v={squarespace.template-revision}"></script>
         {@|apply google.block}
         {squarespace-footers}
