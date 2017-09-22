@@ -1,7 +1,10 @@
 import $ from "properjs-hobo";
 import * as core from "../core";
+import overlay from "../overlay";
 import feedFilterView from "../views/feed-filter";
 import feedLayoutView from "../views/feed-layout";
+import overlayImageView from "../views/overlay-image";
+import overlayVideoView from "../views/overlay-video";
 import AnimateController from "./AnimateController";
 
 
@@ -40,7 +43,6 @@ class FeedController {
         this.query = "";
         this.channel = this.all;
         this.element = element;
-        this.views = {};
         this.data = core.cache.get( "feed" ) || {
             items: [],
             categories: [],
@@ -184,6 +186,8 @@ class FeedController {
         this.searchInp[ 0 ].placeholder = `Try searching "${this.getTag()}"`;
         this.filterList[ 0 ].innerHTML = feedFilterView( this.data.categories );
         this.filterCats = this.filterEl.find( ".js-feed-filter-cat" );
+
+        console.log( this );
     }
 
 
@@ -225,8 +229,20 @@ class FeedController {
             const elem = $( e.target );
             const data = elem.data();
             const item = this.find( data.id );
+            let node = null;
 
-            alert( `BK Says: This will load the item with ID "${item.id}" in an overlay...` );
+            // Video
+            if ( item.video && item.video.provider ) {
+                node = $( overlayVideoView( item ) );
+
+                overlay.open( node );
+
+            // Image
+            } else {
+                node = $( overlayImageView( item ) );
+
+                core.util.loadImages( node, core.util.noop ).on( "done", () => overlay.open( node ) );
+            }
         });
     }
 
@@ -262,8 +278,7 @@ class FeedController {
             return item.categories.indexOf( cat ) !== -1;
         });
 
-        this.views.layout = feedLayoutView( items );
-        this.layoutEl[ 0 ].innerHTML = this.views.layout;
+        this.layoutEl[ 0 ].innerHTML = feedLayoutView( items );
         this.imageLoader = core.util.loadImages( this.element.find( ".js-feed-image" ) );
         this.animController = new AnimateController( this.element.find( ".js-feed-anim" ) );
     }
@@ -287,8 +302,7 @@ class FeedController {
             return false;
         });
 
-        this.views.layout = feedLayoutView( items );
-        this.layoutEl[ 0 ].innerHTML = this.views.layout;
+        this.layoutEl[ 0 ].innerHTML = feedLayoutView( items );
         this.imageLoader = core.util.loadImages( this.element.find( ".js-feed-image" ) );
         this.animController = new AnimateController( this.element.find( ".js-feed-anim" ) );
     }

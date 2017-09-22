@@ -82,10 +82,21 @@ const dom = {
      * @public
      * @member tranny
      * @memberof core.dom
-     * @description The cached tranny> nodes.
+     * @description The cached <tranny> nodes.
      *
      */
-    tranny: $( config.trannySelector )
+    tranny: $( config.trannySelector ),
+
+
+    /**
+     *
+     * @public
+     * @member overlay
+     * @memberof core.dom
+     * @description The cached <overlay> nodes.
+     *
+     */
+    overlay: $( config.overlaySelector )
 };
 
 

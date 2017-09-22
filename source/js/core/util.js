@@ -307,6 +307,29 @@ const shuffle = function ( arr ) {
 
 
 
+/**
+ *
+ * @method getAspectRatioFit
+ * @memberof util
+ * @param {number} srcWidth The node width
+ * @param {number} srcHeight The node height
+ * @param {number} maxWidth The bounds width
+ * @param {number} maxHeight The bounds height
+ * @description Get optimum size for the given bounds and node dimensions
+ * @returns {object}
+ *
+ */
+const getAspectRatioFit = function ( srcWidth, srcHeight, maxWidth, maxHeight ) {
+    const ratio = Math.min( (maxWidth / srcWidth), (maxHeight / srcHeight) );
+
+    return {
+        width: srcWidth * ratio,
+        height: srcHeight * ratio
+    };
+};
+
+
+
 /******************************************************************************
  * Export
 *******************************************************************************/
@@ -317,6 +340,7 @@ export {
     loadImages,
     translate3d,
     getOriginalDims,
+    getAspectRatioFit,
     isElementLoadable,
     isElementVisible,
     getElementsInView,

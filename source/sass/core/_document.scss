@@ -6,7 +6,11 @@ html {
     box-sizing: border-box;
     overflow-x: hidden;
     transition-duration: $base-duration;
-    }
+
+    &.is-clipped {
+        overflow: hidden;
+        }
+}
 
 
 

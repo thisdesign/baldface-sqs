@@ -200,6 +200,17 @@ const config = {
     /**
      *
      * @public
+     * @member overlaySelector
+     * @memberof core.config
+     * @description The string selector used for <overlay>.
+     *
+     */
+    overlaySelector: ".js-overlay",
+
+
+    /**
+     *
+     * @public
      * @member lazyImageAttr
      * @memberof core.config
      * @description The string attribute for lazy image source URLs.

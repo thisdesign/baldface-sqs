@@ -9,9 +9,9 @@
     position: fixed;
     right: 0;
     top: 0;
-    transition: opacity $fast-duration $ease,
-                z-index $fast-duration $ease,
-                visibility $fast-duration $ease;
+    transition: opacity $base-duration $ease,
+                z-index $base-duration $ease,
+                visibility $base-duration $ease;
     visibility: hidden;
     z-index: $z_layer_behind;
 
@@ -25,3 +25,38 @@
 .screen--light {
     background-color: $white;
     }
+
+
+
+.overlay {
+    &.is-active {
+        z-index: $z_layer_infront + 2;
+        }
+
+    .overlay__video,
+    .overlay__image {
+        left: 50%;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateX( -50% ) translateY( -40% );
+        transition: opacity $fast-duration $ease,
+                    transform $fast-duration $ease;
+
+        &.is-active {
+            opacity: 1;
+            transform: translateX( -50% ) translateY( -50% );
+            }
+    }
+    .overlay__video {
+        width: 80vw;
+        }
+    .overlay__image--wide {
+        max-width: 80vw;
+        height: auto;
+        }
+    .overlay__image--tall {
+        max-height: 80vh;
+        width: auto;
+        }
+}
