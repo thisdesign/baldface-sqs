@@ -1,36 +1,97 @@
-.feed {
-    .form__input {
-        border-left: 1px solid $medium;
-        border-top: 1px solid $medium;
-        border-right: 1px solid $medium;
-        padding: 8px 16px;
-        text-align: center;
-        }
-}
-.feed__filter {
+.feed__actions {
     @include flex-space();
     }
-.feed__categories {
-    @include respond( $break-tablet-full ) {
-        text-align: center;
-        width: 100%;
+.feed__filter-toggle {
+    margin-right: 10px;
+
+    .-svg {
+        width: 22px;
+
+        rect:nth-child( 1 ) {
+            transform-origin: bottom right;
+            }
+        rect:nth-child( 2 ) {
+            transform-origin: bottom left;
+            }
+        rect:nth-child( 1 ),
+        rect:nth-child( 2 ) {
+            transition: transform $fast-duration $ease;
+            }
+    }
+}
+.feed__category-list {
+
+}
+.feed__category-list.is-active {
+    .feed__category {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translate3d( 0, 0, 0 );
+        }
+    .feed__filter-toggle {
+        .-svg {
+            rect:nth-child( 1 ) {
+                transform: rotate( -45deg ) translateX( 2px ) translateY( -2px );
+                }
+            rect:nth-child( 2 ) {
+                transform: rotate( 45deg ) translateX( -2px ) translateY( -2px);
+                }
+            rect:nth-child( 3 ),
+            rect:nth-child( 4 ),
+            rect:nth-child( 5 ),
+            rect:nth-child( 6 ) {
+                display: none;
+                }
+        }
     }
 }
 .feed__category {
-    padding: 5px 10px;
+    opacity: 0;
+    padding: 0 10px;
+    pointer-events: none;
+    transform: translate3d( 0, 50%, 0 );
+    transition: color $fast-duration $ease,
+                opacity $fast-duration $ease,
+                transform $fast-duration $ease;
+
+    @include respond( $break-tablet-full ) {
+        padding: 0 5px;
+    }
+    @include hover() {
+        color: $black;
+    }
 
     &.is-active {
         color: $black;
         }
 }
-.feed__search {
-    @include respond( $break-tablet-full ) {
-        padding-top: $expander-mobile;
-        text-align: center;
-        width: 100%;
+@for $i from 2 through 20 {
+    .feed__category-list.is-active {
+        .feed__category:nth-child( #{$i} ) {
+            transition-delay: 20ms * $i;
+        }
     }
 }
-.feed__layout {}
+.feed__search {
+    position: relative;
+
+    .-svg {
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY( -50% );
+        width: 22px;
+        }
+    .form__input {
+        padding: 0 32px 0 0;
+        text-align: right;
+        width: 224px;
+        }
+}
+.feed__layout {
+    padding-bottom: $expander-mobile;
+}
 .feed__item {
     cursor: pointer;
     position: relative;
@@ -46,3 +107,67 @@
         width: 100%;
         }
 }
+// .feed__search.is-active {
+//     .feed__search-text {
+//         display: none;
+//         }
+// }
+// .feed__search-text {
+//     @include bs();
+//     height: 100%;
+//     left: 0;
+//     padding: 0 32px 0 0;
+//     pointer-events: none;
+//     position: absolute;
+//     text-align: right;
+//     top: 50%;
+//     transform: translateY( -50% );
+//     white-space: nowrap;
+//     width: 100%;
+//         display: none;
+// }
+// .feed__search-tag {
+//     border-bottom: 1px solid $medium;
+//     display: inline-block;
+//     line-height: 1;
+//     padding-bottom: 5px;
+//     position: relative;
+//     text-align: left;
+//     width: 128px;
+//
+//     &:before,
+//     &:after {
+//         line-height: 1;
+//     }
+//
+//     &:before {
+//         content: attr( data-curr );
+//         opacity: 1;
+//         position: relative;
+//         transform: translate3d( 0, 0, 0 );
+//         }
+//     &:after {
+//         content: attr( data-next );
+//         left: 0;
+//         opacity: 0;
+//         position: absolute;
+//         top: 50%;
+//         transform: translate3d( 0, 100%, 0 );
+//         }
+//
+//     &.is-switch {
+//         &:before,
+//         &:after {
+//             transition: opacity $fast-duration $ease,
+//                         transform $fast-duration $ease;
+//             }
+//         &:before {
+//             opacity: 0;
+//             transform: translate3d( 0, -100%, 0 );
+//             }
+//         &:after {
+//             opacity: 1;
+//             transform: translate3d( 0, -50%, 0 );
+//             }
+//     }
+// }

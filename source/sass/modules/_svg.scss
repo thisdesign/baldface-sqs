@@ -1,5 +1,10 @@
 .-svg {
+    max-width: 100%;
     transition: fill $fast-duration $ease;
+    }
+.-svg--search,
+.-svg--filters {
+    fill: $medium;
     }
 .-svg--footer-logo {
     fill: $white;

@@ -37,6 +37,7 @@ class FeedController {
     constructor ( element ) {
         this.ig = "#Instagram";
         this.all = "#All";
+        this.query = "";
         this.channel = this.all;
         this.element = element;
         this.views = {};
@@ -46,7 +47,10 @@ class FeedController {
             tags: []
         };
         this.filterEl = this.element.find( ".js-feed-filter" );
+        this.filterList = this.filterEl.find( ".js-feed-filter-list" );
         this.searchEl = this.element.find( ".js-feed-search" );
+        this.searchInp = this.searchEl.find( ".js-feed-search-input" );
+        this.searchTxt = this.searchEl.find( ".js-feed-search-text" );
         this.layoutEl = this.element.find( ".js-feed-layout" );
         this.instagram = {
             userId: "297115335",
@@ -176,24 +180,46 @@ class FeedController {
         this.bind();
         this.sort();
         this.filter();
-
-        this.views.filter = feedFilterView( this.data.categories );
-        this.filterEl[ 0 ].innerHTML = this.views.filter;
+        // this.initTagCron();
+        this.searchInp[ 0 ].placeholder = `Try searching "${this.getTag()}"`;
+        this.filterList[ 0 ].innerHTML = feedFilterView( this.data.categories );
+        this.filterCats = this.filterEl.find( ".js-feed-filter-cat" );
     }
 
 
     bind () {
-        this.element.on( "click", ".js-feed-filter-link", ( e ) => {
-            const links = this.element.find( ".js-feed-filter-link" );
+        this.element.on( "click", ".js-feed-filter-toggle", () => {
+            this.filterList.toggleClass( "is-active" );
+        });
+
+        this.element.on( "click", ".js-feed-filter-cat", ( e ) => {
             const target = $( e.target );
 
-            links.removeClass( "is-active" );
+            this.filterCats.removeClass( "is-active" );
             target.addClass( "is-active" );
 
+            this.resetSearch();
             this.channel = e.target.hash;
-
             this.filter();
         });
+
+        this.searchInp.on( "keydown", ( e ) => {
+            // Enter key
+            if ( e.keyCode === 13 ) {
+                e.preventDefault();
+                this.resetFilter();
+                this.query = this.searchEl[ 0 ].value;
+                this.search();
+            }
+        });
+
+        // this.searchInp.on( "focus", () => {
+        //     this.stopTagCron();
+        // });
+
+        // this.searchInp.on( "blur", () => {
+        //     this.initTagCron();
+        // });
 
         this.element.on( "click", ".js-feed-modal-link", ( e ) => {
             const elem = $( e.target );
@@ -243,8 +269,87 @@ class FeedController {
     }
 
 
+    resetFilter () {
+        this.channel = this.all;
+        this.filterCats.removeClass( "is-active" );
+        this.filterCats.filter( `[href="${this.all}"]` ).addClass( "is-active" );
+        this.filterEl.removeClass( "is-active" );
+    }
+
+
+    search () {
+        const regex = new RegExp( this.query, "gi" );
+        const items = this.data.items.filter(( item ) => {
+            if ( item.tags.length && regex.test( item.tags.join( "" ).toLowerCase() ) ) {
+                return true;
+            }
+
+            return false;
+        });
+
+        this.views.layout = feedLayoutView( items );
+        this.layoutEl[ 0 ].innerHTML = this.views.layout;
+        this.imageLoader = core.util.loadImages( this.element.find( ".js-feed-image" ) );
+        this.animController = new AnimateController( this.element.find( ".js-feed-anim" ) );
+    }
+
+
+    resetSearch () {
+        this.query = "";
+        this.searchEl[ 0 ].value = "";
+    }
+
+
     find ( id ) {
         return this.data.items.find(( item ) => (id === item.id) );
+    }
+
+
+    // initTagCron () {
+    //     const getTag = () => {
+    //         return this.data.tags[ Math.floor( Math.random() * this.data.tags.length ) ];
+    //     };
+    //     const doSwap = () => {
+    //         this.searchTxt.attr( "data-curr", `"${tag}"` );
+    //
+    //         this.searchTimer = setTimeout(() => {
+    //             while ( tag === lastTag ) {
+    //                 tag = getTag();
+    //             }
+    //
+    //             this.searchTxt.attr( "data-next", `"${tag}"` );
+    //             this.searchTxt.addClass( "is-switch" );
+    //
+    //             this.searchTimer = setTimeout(() => {
+    //                 this.searchTxt.attr( "data-curr", `"${tag}"` );
+    //                 this.searchTxt.removeClass( "is-switch" );
+    //
+    //                 doSwap();
+    //
+    //             }, 200 );
+    //
+    //             lastTag = tag;
+    //
+    //         }, 3000 );
+    //     };
+    //     let tag = getTag();
+    //     let lastTag = tag;
+    //
+    //     this.searchEl.removeClass( "is-active" );
+    //
+    //     doSwap();
+    // }
+    //
+    //
+    // stopTagCron () {
+    //     clearTimeout( this.searchTimer );
+    //     this.searchTimer = null;
+    //     this.searchEl.addClass( "is-active" );
+    // }
+
+
+    getTag () {
+        return this.data.tags[ Math.floor( Math.random() * this.data.tags.length ) ];
     }
 
 

@@ -5,12 +5,21 @@
         {.end}
     {.end}
     <section class="feed js-feed">
-        <menu class="feed__filter -wrap -exp">
-            <div class="feed__categories js-feed-filter -column"></div>
-            <div class="feed__search -column">
-
+        <menu class="feed__actions -wrap -exp">
+            <div class="feed__filter js-feed-filter -column">
+                <a class="feed__filter-toggle js-feed-filter-toggle -column" href="#">
+                    {@|apply svg-filters.block}
+                </a>
+                <div class="feed__category-list js-feed-filter-list -column"></div>
+            </div>
+            <div class="feed__search js-feed-search -column">
+                <input placeholder="" type="text" class="form__input feed__search-input js-feed-search-input -column" />
+                {#<span class="feed__search-text p">
+                    <span>Try searching</span>&nbsp;<span data-curr="" data-next="" class="feed__search-tag js-feed-search-text"></span>
+                </span>#}
+                {@|apply svg-search.block}
             </div>
         </menu>
-        <section class="grid grid--feed feed__layout js-feed-layout -wrap -exp-1"></section>
+        <section class="grid grid--feed feed__layout js-feed-layout -wrap"></section>
     </div>
 {.end}
