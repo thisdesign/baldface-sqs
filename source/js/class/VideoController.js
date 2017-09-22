@@ -1,6 +1,7 @@
-// import $ from "properjs-hobo";
-import * as core from "../core";
+import $ from "properjs-hobo";
+// import * as core from "../core";
 import VideoFS from "./VideoFS";
+import embedVideoView from "../views/embed-video";
 
 
 
@@ -16,27 +17,9 @@ class Video {
     constructor ( element ) {
         this.element = element;
         this.data = this.element.data();
-        this.videoFS = null;
-
-        this.load();
-    }
-
-
-    load () {
-        if ( this.data.provider === "vimeo" ) {
-            const uid = this.data.url.split( "/" ).pop();
-            const url = `https://player.vimeo.com/video/${uid}?wmode=opaque&autoplay=1&loop=1&background=1`;
-            const embed = this.element.find( ".js-embed" );
-            const embedAspect = embed.find( ".js-embed-aspect" );
-
-            embedAspect[ 0 ].style.paddingBottom = `${this.data.height / this.data.width * 100}%`;
-            embedAspect[ 0 ].innerHTML = `<iframe class="embed__element" src="${url}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
-
-            this.videoFS = new VideoFS( this.element, embed, this.data );
-
-        } else if ( this.data.provider === "youtube" ) {
-            core.log( "warn", "[Video]YouTube not supported yet..." );
-        }
+        this.embed = $( embedVideoView( this.data ) );
+        this.element.append( this.embed );
+        this.videoFS = new VideoFS( this.element, this.embed, this.data );
     }
 
 

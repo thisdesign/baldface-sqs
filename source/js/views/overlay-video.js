@@ -3,7 +3,7 @@ import paramalama from "paramalama";
 
 
 export default ( item ) => {
-    const url = (item.video.provider === "youtube" ? `https://www.youtube.com/embed/${paramalama( item.video.url ).v}?autoplay=1` : `https://player.vimeo.com/video/${item.video.url.split( "/" ).pop()}?autoplay=1`);
+    const url = (item.video.provider === "youtube" ? `https://www.youtube.com/embed/${paramalama( item.video.url ).v}?autoplay=1&modestbranding=1` : `https://player.vimeo.com/video/${item.video.url.split( "/" ).pop()}?autoplay=1`);
 
     return `
         <div class="overlay__video embed">
