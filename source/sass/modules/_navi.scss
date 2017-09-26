@@ -68,6 +68,10 @@ $mobile-breakpoint: $break-tablet-small;
             height: $navi-height;
             text-align: center;
 
+            &:before {
+                background-color: orange;
+                }
+
             span {
                 @include navi-btn();
                 font-size: $navi-font-size;
