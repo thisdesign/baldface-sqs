@@ -130,7 +130,8 @@ class FeedController {
                 timestamp: post.created_time,
                 icon: "instagram",
                 url: post.link,
-                id: post.id
+                id: post.id,
+                caption: post.caption.text
             };
 
             if ( post.videos ) {
@@ -144,6 +145,7 @@ class FeedController {
 
 
     createSqs ( json ) {
+        console.log( json );
         this.data.categories = json.collection.categories;
         this.data.tags = this.data.tags.concat( json.collection.tags );
 
@@ -161,7 +163,8 @@ class FeedController {
                 timestamp: post.updatedOn,
                 icon: getIcon( post.categories, post.tags ),
                 url: post.fullUrl,
-                id: post.id
+                id: post.id,
+                caption: post.body
             };
 
             if ( post.recordTypeLabel === "video" ) {

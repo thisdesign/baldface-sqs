@@ -9,7 +9,7 @@ $tilt-degrees: 10deg;
     left: -50%;
     position: fixed;
     top: -50%;
-    transform: translate3d( 0, 100%, 0) rotate3d(0, 0, 1, $tilt-degrees );
+    transform: translate3d( 0, 100%, 0 ) rotate3d( 0, 0, 1, $tilt-degrees );
     width: 200%;
     z-index: -1;
     }

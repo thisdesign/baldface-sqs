@@ -94,6 +94,7 @@
 }
 .feed__item {
     cursor: pointer;
+    overflow: hidden;
     position: relative;
     }
 .feed__icon {
@@ -101,11 +102,33 @@
     position: absolute;
     top: 16px;
     width: 10px;
+    z-index: 2;
 
     .-svg {
         fill: $white;
         width: 100%;
         }
+}
+.feed__hover {
+    @include font-sans();
+    background-color: rgba( 0, 0, 0, 0.85 );
+    bottom: 10px;
+    color: $white;
+    font-size: 15px;
+    left: 10px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: 10px;
+    transition: opacity $fast-duration $ease,
+                transform $fast-duration $ease;
+    z-index: 1;
+}
+.is-hoverable .feed__item:hover .feed__hover {
+    opacity: 1;
 }
 // .feed__search.is-active {
 //     .feed__search-text {
