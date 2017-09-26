@@ -145,7 +145,6 @@ class FeedController {
 
 
     createSqs ( json ) {
-        console.log( json );
         this.data.categories = json.collection.categories;
         this.data.tags = this.data.tags.concat( json.collection.tags );
 
@@ -246,6 +245,25 @@ class FeedController {
 
                 core.util.loadImages( node, core.util.noop ).on( "done", () => overlay.open( node ) );
             }
+        });
+
+        this.element.on( "mouseenter", ".js-feed-modal-link", ( e ) => {
+            const elem = $( e.target );
+            const data = elem.data();
+
+            if ( data.timeout ) {
+                clearTimeout( data.timeout );
+                elem.removeClass( "is-hover is-unhover" )
+            }
+
+            elem.addClass( "is-hover" );
+
+        }).on( "mouseleave", ".js-feed-modal-link", ( e ) => {
+            const elem = $( e.target );
+
+            elem.addClass( "is-unhover" );
+
+            elem.data( "timeout", setTimeout(() => elem.removeClass( "is-hover is-unhover" ), 600 ) );
         });
     }
 
