@@ -53,6 +53,7 @@ class FeedController {
         this.searchEl = this.element.find( ".js-feed-search" );
         this.searchInp = this.searchEl.find( ".js-feed-search-input" );
         this.searchTxt = this.searchEl.find( ".js-feed-search-text" );
+        this.searchShim = this.searchEl.find( ".js-feed-search-shim" );
         this.layoutEl = this.element.find( ".js-feed-layout" );
         this.instagram = {
             userId: "297115335",
@@ -181,19 +182,50 @@ class FeedController {
 
 
     init () {
-        this.bind();
+        this.bindFeed();
+        this.bindSearch();
+        this.bindFilter();
         this.sort();
         this.filter();
-        // this.initTagCron();
-        this.searchInp[ 0 ].placeholder = `Try searching "${this.getTag()}"`;
         this.filterList[ 0 ].innerHTML = feedFilterView( this.data.categories );
         this.filterCats = this.filterEl.find( ".js-feed-filter-cat" );
+
+        if ( !core.detect.isDevice() ) {
+            this.initTagCron();
+        }
 
         // console.log( this );
     }
 
 
-    bind () {
+    bindSearch () {
+        this.searchInp.on( "keydown", ( e ) => {
+            // Enter key
+            if ( e.keyCode === 13 ) {
+                e.preventDefault();
+                this.resetFilter();
+                this.query = this.searchEl[ 0 ].value;
+                this.search();
+            }
+        });
+
+        this.searchInp.on( "focus", () => {
+            if ( !core.detect.isDevice() ) {
+                this.stopTagCron();
+            }
+        });
+
+        this.searchInp.on( "blur", () => {
+            if ( !core.detect.isDevice() ) {
+                if ( this.searchInp[ 0 ].value === "" ) {
+                    this.initTagCron();
+                }
+            }
+        });
+    }
+
+
+    bindFilter () {
         this.element.on( "click", ".js-feed-filter-toggle", () => {
             this.filterList.toggleClass( "is-active" );
         });
@@ -208,25 +240,10 @@ class FeedController {
             this.channel = e.target.hash;
             this.filter();
         });
+    }
 
-        this.searchInp.on( "keydown", ( e ) => {
-            // Enter key
-            if ( e.keyCode === 13 ) {
-                e.preventDefault();
-                this.resetFilter();
-                this.query = this.searchEl[ 0 ].value;
-                this.search();
-            }
-        });
 
-        // this.searchInp.on( "focus", () => {
-        //     this.stopTagCron();
-        // });
-
-        // this.searchInp.on( "blur", () => {
-        //     this.initTagCron();
-        // });
-
+    bindFeed () {
         this.element.on( "click", ".js-feed-modal-link", ( e ) => {
             const elem = $( e.target );
             const data = elem.data();
@@ -331,7 +348,13 @@ class FeedController {
 
     resetSearch () {
         this.query = "";
-        this.searchEl[ 0 ].value = "";
+        this.searchInp[ 0 ].value = "";
+
+        if ( this.searchEl.is( ".is-active" ) ) {
+            if ( !core.detect.isDevice() ) {
+                this.initTagCron();
+            }
+        }
     }
 
 
@@ -340,47 +363,61 @@ class FeedController {
     }
 
 
-    // initTagCron () {
-    //     const getTag = () => {
-    //         return this.data.tags[ Math.floor( Math.random() * this.data.tags.length ) ];
-    //     };
-    //     const doSwap = () => {
-    //         this.searchTxt.attr( "data-curr", `"${tag}"` );
-    //
-    //         this.searchTimer = setTimeout(() => {
-    //             while ( tag === lastTag ) {
-    //                 tag = getTag();
-    //             }
-    //
-    //             this.searchTxt.attr( "data-next", `"${tag}"` );
-    //             this.searchTxt.addClass( "is-switch" );
-    //
-    //             this.searchTimer = setTimeout(() => {
-    //                 this.searchTxt.attr( "data-curr", `"${tag}"` );
-    //                 this.searchTxt.removeClass( "is-switch" );
-    //
-    //                 doSwap();
-    //
-    //             }, 200 );
-    //
-    //             lastTag = tag;
-    //
-    //         }, 3000 );
-    //     };
-    //     let tag = getTag();
-    //     let lastTag = tag;
-    //
-    //     this.searchEl.removeClass( "is-active" );
-    //
-    //     doSwap();
-    // }
-    //
-    //
-    // stopTagCron () {
-    //     clearTimeout( this.searchTimer );
-    //     this.searchTimer = null;
-    //     this.searchEl.addClass( "is-active" );
-    // }
+    initTagCron () {
+        const doSwap = () => {
+            // Ensure current tag is present
+            this.searchTxt.attr( "data-curr", `"${tag}"` );
+
+            // Set the timeout for the transition
+            this.searchTimer = setTimeout(() => {
+                // Ensure we always get a different tag
+                while ( tag === lastTag ) {
+                    tag = this.getTag();
+                }
+
+                // Shim process for style width calculation
+                this.searchShim[ 0 ].innerHTML = `"${tag}"`;
+                this.searchTxt[ 0 ].style.width = core.util.px( this.searchShim[ 0 ].getBoundingClientRect().width );
+
+                // Apply the `next` attribute text value and trigger animation
+                this.searchTxt.attr( "data-next", `"${tag}"` );
+                this.searchTxt.addClass( "is-switch" );
+
+                // Set timeout for animation then reset all text values
+                this.searchTimer = setTimeout(() => {
+                    this.searchTxt.attr( "data-curr", `"${tag}"` );
+                    this.searchTxt.removeClass( "is-switch" );
+
+                    // Do it again
+                    doSwap();
+
+                }, 200 );
+
+                lastTag = tag;
+
+            }, 3000 );
+        };
+        let tag = this.getTag();
+        let lastTag = tag;
+
+        this.searchEl.removeClass( "is-active" );
+
+        doSwap();
+    }
+
+
+    stopTagCron () {
+        this.searchEl.addClass( "is-active" );
+        clearTimeout( this.searchTimer );
+        this.searchTimer = null;
+        this.searchShim[ 0 ].innerHTML = "";
+        this.searchTxt[ 0 ].innerHTML = "";
+        this.searchTxt[ 0 ].style.width = "auto";
+        this.searchTxt
+            .attr( "data-next", "" )
+            .attr( "data-curr", "" )
+            .removeClass( "is-switch" );
+    }
 
 
     getTag () {
