@@ -4,12 +4,23 @@ $columns: 3;
 
 
 /******************************************************************************
- * Containers
+ * Grids
 *******************************************************************************/
 .grid {
     column-count: $columns;
     column-gap: $gutter;
+
+    @include respond( $break-mobile-full ) {
+        column-count: 1;
     }
+}
+.grid--staff {
+    column-count: 5;
+
+    @include respond( $break-mobile-full ) {
+        column-count: 1;
+    }
+}
 .grid__item {
     margin-bottom: $gutter;
     width: 100%;
