@@ -253,7 +253,7 @@ class FeedController {
 
             if ( data.timeout ) {
                 clearTimeout( data.timeout );
-                elem.removeClass( "is-hover is-unhover" )
+                elem.removeClass( "is-hover is-unhover" );
             }
 
             elem.addClass( "is-hover" );
