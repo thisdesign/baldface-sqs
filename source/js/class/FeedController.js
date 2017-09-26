@@ -189,7 +189,7 @@ class FeedController {
         this.filterList[ 0 ].innerHTML = feedFilterView( this.data.categories );
         this.filterCats = this.filterEl.find( ".js-feed-filter-cat" );
 
-        console.log( this );
+        // console.log( this );
     }
 
 
@@ -247,7 +247,7 @@ class FeedController {
             }
         });
 
-        this.element.on( "mouseenter", ".js-feed-modal-link", ( e ) => {
+        this.element.on( "mouseenter", ".js-feed-item", ( e ) => {
             const elem = $( e.target );
             const data = elem.data();
 
@@ -258,12 +258,12 @@ class FeedController {
 
             elem.addClass( "is-hover" );
 
-        }).on( "mouseleave", ".js-feed-modal-link", ( e ) => {
+        }).on( "mouseleave", ".js-feed-item", ( e ) => {
             const elem = $( e.target );
 
             elem.addClass( "is-unhover" );
 
-            elem.data( "timeout", setTimeout(() => elem.removeClass( "is-hover is-unhover" ), 600 ) );
+            elem.data( "timeout", setTimeout(() => elem.removeClass( "is-hover is-unhover" ), core.config.defaultDuration ) );
         });
     }
 

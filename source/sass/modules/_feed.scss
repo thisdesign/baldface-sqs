@@ -94,8 +94,9 @@
 }
 .feed__item {
     cursor: pointer;
-    overflow: hidden;
     position: relative;
+    transition: box-shadow $base-duration $ease;
+    z-index: 1;
     }
 .feed__icon {
     left: 16px;
@@ -111,6 +112,7 @@
 }
 .feed__hover {
     @include font-sans();
+    @include bs();
     background-color: rgba( 0, 0, 0, 0.85 );
     color: $white;
     font-size: 15px;
@@ -119,24 +121,25 @@
     text-align: center;
     z-index: 1;
 
+    // animation styles...
     left: 50%;
     position: absolute;
     top: 50%;
     width: 0;
     height: 0;
-    transform: translate( -50%, -50% );
+    transform: translate3d( -50%, -50%, 0 );
 
     .is-hover & {
-        animation: feed-hover $long-duration forwards;
+        animation: feed-hover $base-duration forwards;
     }
     .is-unhover & {
-        animation: feed-unhover $long-duration forwards;
+        animation: feed-unhover $base-duration forwards;
     }
     .is-hover & .feed__hover__el {
-        animation: feed-hover-el $long-duration forwards;
+        animation: feed-hover-el $base-duration forwards;
     }
     .is-unhover & .feed__hover__el {
-        animation: feed-unhover-el $long-duration forwards;
+        animation: feed-unhover-el $base-duration forwards;
     }
 }
 @keyframes feed-hover {
