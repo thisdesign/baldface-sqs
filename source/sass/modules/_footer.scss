@@ -17,6 +17,10 @@ $links-pad: 29px;
             }
     }
 
+    .form__input {
+        font-size: $footer-font-size;
+        }
+
     .form__input,
     .form__input::-webkit-input-placeholder {
         color: $white;
