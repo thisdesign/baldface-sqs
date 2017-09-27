@@ -1,0 +1,22 @@
+.section {
+    // Squarespace layout overrides
+    > .sqs-layout {
+        .sqs-block-gallery + .sqs-row,
+        .sqs-block-gallery + .sqs-block-html .sqs-block-content {
+            @include exp-1();
+        }
+        // Text + Button
+        .sqs-block-gallery + .sqs-row {
+            .col,
+            .sqs-col-6 {
+                width: auto;
+                }
+            .sqs-block-html .sqs-block-content {
+                padding-right: $expander-one;
+                }
+            .sqs-block-button .sqs-block-content {
+                padding-top: 70px;
+                }
+        }
+    }
+}

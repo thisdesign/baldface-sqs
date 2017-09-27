@@ -1,10 +1,11 @@
 /* Common button styles */
 .button {
     // float: left;
-    min-width: 150px;
-    max-width: 250px;
-    display: block;
-    padding: 1em 2em;
+    // min-width: 150px;
+    // max-width: 250px;
+    // display: block;
+    display: inline-block;
+    padding: 1em 3em;
     border: none;
     background: none;
     color: inherit;
@@ -17,6 +18,7 @@
     cursor: pointer;
     text-align: center;
     -webkit-appearance: none;
+    width: auto;
     @include font-sans();
     @include b();
 }
@@ -1178,7 +1180,7 @@
 }
 .button--naira > span,
 .button--naira .button__hover {
-    padding: 1em 2em;
+    padding: 1em 3em;
     transition: transform 0.3s;
     transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
 }

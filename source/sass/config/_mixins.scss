@@ -77,16 +77,6 @@
 
 
 /******************************************************************************
- * Wraps
-*******************************************************************************/
-@mixin wrap-copy() {
-    display: inline-block;
-    max-width: $wrap-copy;
-    width: 100%;
-}
-
-
-/******************************************************************************
  * Document states
 *******************************************************************************/
 @mixin state( $module, $state ) {
@@ -134,4 +124,25 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+@mixin wrap-copy() {
+    display: inline-block;
+    max-width: $wrap-copy;
+    width: 100%;
+}
+@mixin wrap() {
+    padding-left: $padding-wrap;
+    padding-right: $padding-wrap;
+}
+@mixin exp() {
+    padding-bottom: $expander-mobile;
+    padding-top: $expander-mobile;
+}
+@mixin exp-1() {
+    padding-bottom: $expander-one;
+    padding-top: $expander-one;
+}
+@mixin exp-2() {
+    padding-bottom: $expander-two;
+    padding-top: $expander-two;
 }

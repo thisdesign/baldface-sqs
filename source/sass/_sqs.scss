@@ -1,8 +1,6 @@
 /******************************************************************************
- * Squarespace Block Spacing
+ * Edit mode
 *******************************************************************************/
-
-// Edit mode
 .sqs-edit-mode {
     [data-type="block-field"] {
         padding: 40px;
@@ -11,16 +9,38 @@
     }
 }
 
-// Layout handling
+
+/******************************************************************************
+ * Layout resets
+*******************************************************************************/
 .sqs-layout > .sqs-row {
-    margin: 0 !important;
+    margin-left: 0;
+    margin-right: 0;
+    }
+[class*=sqs-col] {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+    }
+[class*=sqs-col] .sqs-block {
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    }
+.sqs-layout:not(.sqs-editing) .sqs-block + .sqs-row .sqs-block:not(.float):first-child {
+    padding-top: 0;
+    }
+.sqs-layout:not( .sqs-editing ) .sqs-block + .sqs-row .sqs-block:not( .float ):last-child,
+.sqs-layout:not( .sqs-editing ) > .sqs-row:first-child > [class*=sqs-col]:first-child > .sqs-block:last-child {
+    padding-bottom: 0;
     }
 
 
-
+/******************************************************************************
+ * Layout typography
+*******************************************************************************/
 .sqs-block {
-    padding: 0 !important;
-
     h1 {
         @include h1();
         }
@@ -124,7 +144,9 @@
 }
 
 
-
+/******************************************************************************
+ * Layout copy width
+*******************************************************************************/
 .sqs-block-html,
 .sqs-block-button {
     .sqs-block-content {
@@ -132,18 +154,18 @@
         @include wrap-copy();
         }
 }
-.sqs-block-html + .sqs-block-button {
-    @include pp();
-}
 
 
 
-@media only screen and ( max-width: $break-mobile-full ) {
-    [class*=sqs-col] {
-        display: block;
-        width: 100% !important;
-        }
-    [class*=sqs-col] + [class*=sqs-col] {
-        margin-top: $expander-mobile;
-        }
-}
+/******************************************************************************
+ * Layout responsive
+*******************************************************************************/
+// @media only screen and ( max-width: $break-mobile-full ) {
+//     [class*=sqs-col] {
+//         display: block;
+//         width: 100% !important;
+//         }
+//     [class*=sqs-col] + [class*=sqs-col] {
+//         margin-top: $expander-mobile;
+//         }
+// }

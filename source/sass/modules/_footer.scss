@@ -35,12 +35,12 @@ $links-pad: 29px;
         width: 100%;
         }
 
+    // Squarespace social icons override
     .social-icon-alignment-right .sqs-svg-icon--list {
         @include respond( $break-tablet-medium ) {
             text-align: left;
         }
     }
-
     .social-icons-size-medium.social-icons-style-regular.social-icon-alignment-right .sqs-svg-icon--wrapper {
         @include respond( $break-tablet-medium ) {
             margin: 0 14px 0 0;
