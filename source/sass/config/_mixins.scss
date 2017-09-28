@@ -27,6 +27,7 @@
 @mixin p() {
     font-size: $p-size;
     line-height: $p-line;
+    letter-spacing: $track-1;
     @include font-sans();
 }
 @mixin a() {
@@ -54,22 +55,22 @@
     margin-top: $expander-mobile / 2;
 }
 @mixin h1() {
-    color: $charcoal;
     font-size: $h1-size;
     line-height: $h1-line;
+    letter-spacing: $track-2;
     @include font-serif();
     @include b();
 }
 @mixin h2() {
-    color: $charcoal;
     font-size: $h2-size;
     line-height: $h2-line;
+    letter-spacing: $track-2;
     @include font-sans();
     @include bs();
 }
 @mixin h3() {
-    color: $charcoal;
     font-size: $h3-size;
+    letter-spacing: $track-2;
     line-height: $h3-line;
     @include font-sans();
     @include bs();

@@ -8,6 +8,7 @@
 @mixin navi-txt() {
     display: block;
     font-size: $navi-font-size;
+    letter-spacing: $track-1;
     line-height: 1;
     padding: 22px 20px;
     transition: color $base-duration $ease;

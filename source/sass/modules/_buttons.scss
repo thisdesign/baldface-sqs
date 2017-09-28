@@ -21,6 +21,7 @@
     width: auto;
     @include font-sans();
     @include b();
+    letter-spacing: $track-1;
 }
 .button:focus {
     outline: none;
