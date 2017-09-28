@@ -22,26 +22,26 @@
         transform: translateX( -50% ) translateY( -50% );
         }
 }
-.hero__title {
+.hero__main {
     opacity: 0;
     transition: opacity $fast-duration $ease,
                 transform $fast-duration $ease;
     transform: translate3d( 0, 50%, 0 );
 }
 .hero__item.is-exiting {
-    .hero__title {
+    .hero__main {
         opacity: 0;
         transform: translate3d( 0, -50%, 0 );
         }
 }
 .hero__item.is-entering {
-    .hero__title {
+    .hero__main {
         transition-delay: $base-duration;
         }
 }
 .hero__item.is-active,
 .hero__item.is-entering {
-    .hero__title {
+    .hero__main {
         opacity: 1;
         transform: translate3d( 0, 0, 0 );
         }
