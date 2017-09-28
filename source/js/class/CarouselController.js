@@ -16,6 +16,7 @@ class Carousel {
         this.items = this.element.find( ".js-carousel-item" );
         this.images = this.element.find( ".js-carousel-image" );
         this.videos = this.element.find( ".js-carousel-video" );
+        this.copy = this.element.find( ".js-carousel-copy" );
         this.active = this.items.eq( 0 );
         this.auto = {
             enabled: false,
@@ -30,10 +31,25 @@ class Carousel {
         };
 
         this.bind();
+        this.prep();
 
         if ( this.auto.enabled ) {
             this.update();
         }
+    }
+
+
+    prep () {
+        const btns = this.copy.find( "a" );
+
+        btns.forEach(( el, i ) => {
+            const elem = btns.eq( i );
+            const text = elem[ 0 ].innerText.replace( /^\s+|\s$|\n|\t/g, "" );
+
+            elem.addClass( "button button--size-large button--naira button--naira-up" );
+
+            elem[ 0 ].innerHTML = `<div class="button__hover">${text}</div><div class="button__main">${text}</div>`;
+        });
     }
 
 

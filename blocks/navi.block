@@ -14,7 +14,7 @@
                         {.equal? id "59975d4459cc681e873ee431"}
                             <a href="{fullUrl}" class="button button--size-large button--naira button--naira-up">
                                 <div class="button__hover">SFD!</div>
-                                <span>{title}</span>
+                                <div class="button__main">{title}</div>
                             </a>
                         {.or}
                             <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end}" href="{fullUrl}">{title}</a>

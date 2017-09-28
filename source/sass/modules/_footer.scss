@@ -28,10 +28,10 @@ $links-pad: 29px;
         }
 
     .form__input,
-    .button--itzel > span {
+    .button--itzel .button__main {
         padding: 12px 24px;
         }
-    .button--itzel > span {
+    .button--itzel .button__main {
         pointer-events: none;
         }
     .button--itzel .button__hover {

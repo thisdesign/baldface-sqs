@@ -75,6 +75,24 @@
     @include font-sans();
     @include bs();
 }
+@mixin btn() {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    display: inline-block;
+    letter-spacing: $track-1;
+    line-height: 1;
+    padding: $btn-pad;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: auto;
+    z-index: 1;
+    -webkit-appearance: none;
+    @include font-sans();
+    @include b();
+}
 
 
 /******************************************************************************

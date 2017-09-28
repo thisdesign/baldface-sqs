@@ -8,7 +8,7 @@
             {.end}
             <div class="carousel__main hero__main -wrap ghost__child">
                 <div class="carousel__title hero__title h1 -light -cutoff">{title}</div>
-                <div class="carousel__copy hero__copy p -light -cutoff">{body|safe}</div>
+                <div class="carousel__copy hero__copy js-carousel-copy p -light -cutoff">{body}</div>
             </div>
         </div>
     {.end}

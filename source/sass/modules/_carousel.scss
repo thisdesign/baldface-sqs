@@ -28,5 +28,19 @@
     position: relative;
     }
 .carousel__copy {
-    margin-top: $expander-mobile;
+    margin-top: $expander-mobile / 2;
+
+    .button--naira {
+        background-color: $white;
+        font-size: $navi-font-size;
+
+        .button__main,
+        .button__hover {
+            padding: $navi-pad;
+        }
     }
+
+    p + p {
+        margin-top: $expander-mobile / 2;
+    }
+}

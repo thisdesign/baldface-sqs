@@ -1,4 +1,4 @@
 <a href="{buttonLink}" class="button button--size-{buttonSize} button--naira button--naira-up button--border-medium" {.if newWindow}target="_blank"{.end}>
     <div class="button__hover">{buttonText}</div>
-    <span>{buttonText}</span>
+    <div class="button__main">{buttonText}</div>
 </a>
