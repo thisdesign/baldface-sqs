@@ -110,14 +110,14 @@
         width: 100%;
         }
 }
+.feed__title + .feed__caption {
+    margin-top: 10px;
+    }
 .feed__hover {
-    @include font-sans();
-    @include bs();
     background-color: rgba( 0, 0, 0, 0.85 );
     color: $white;
-    font-size: 15px;
     overflow: hidden;
-    padding: 0 20px;
+    padding: 0 $expander-mobile;
     text-align: center;
     z-index: 1;
 

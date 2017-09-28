@@ -7,8 +7,8 @@
                 <div class="carousel__img hero__img js-carousel-image js-lazy-image -cover" data-img-src="{assetUrl}" data-variants="{systemDataVariants}"></div>
             {.end}
             <div class="carousel__main hero__main -wrap ghost__child">
-                <div class="carousel__title hero__title h1 -light">{title}</div>
-                <div class="carousel__copy hero__copy p -light">{description}</div>
+                <div class="carousel__title hero__title h1 -light -cutoff">{title}</div>
+                <div class="carousel__copy hero__copy p -light -cutoff">{body|safe}</div>
             </div>
         </div>
     {.end}

@@ -132,6 +132,7 @@ class FeedController {
                 icon: "instagram",
                 url: post.link,
                 id: post.id,
+                title: "",
                 caption: post.caption.text
             };
 
@@ -164,6 +165,7 @@ class FeedController {
                 icon: getIcon( post.categories, post.tags ),
                 url: post.fullUrl,
                 id: post.id,
+                title: post.title,
                 caption: post.body
             };
 
