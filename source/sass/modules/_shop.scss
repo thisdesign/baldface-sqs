@@ -2,7 +2,7 @@
     padding-top: $navi-height;
     }
 .shop__wall {
-    margin: 0 (-$grid-gutter);
+    margin: -$grid-gutter;
     }
 .product {
     padding: $grid-gutter;
@@ -38,6 +38,14 @@
         margin-top: $expander-mobile / 2;
         }
 }
+.product__price {
+    .sqs-money-native {
+        &:before {
+            content: "$";
+            display: inline;
+            }
+    }
+}
 .product__infocard {
     background-color: $white;
     padding: $expander-mobile $expander-mobile / 2 $expander-one;
@@ -53,6 +61,7 @@
             }
     }
     .-column:last-child {
+        text-align: right;
         width: 30%;
         }
 }

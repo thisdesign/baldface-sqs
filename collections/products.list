@@ -1,47 +1,10 @@
 <div class="shop js-shop -wrap">
     <div class="shop__wall">
-        {# Featured products #}
         {.repeated section items}
             {.if starred}
-                <div class="product product--starred animate js-animate js-shop-product">
-                    <div class="product__wall">
-                        <div class="product__image -column">
-                            {@|apply image-aspect.block}
-                        </div>
-                        <div class="product__info -column">
-                            <div class="product__title h2 -dark">{title}</div>
-                            {.repeated section variants}
-                                {.if attributes.Style}
-                                    {.equal? @index 1}
-                                        <div class="product__style p -meta">{attributes.Style}</div>
-                                    {.end}
-                                {.end}
-                            {.end}
-                            {.if excerpt}
-                                <div class="product__excerpt p">
-                                    {excerpt}
-                                </div>
-                            {.end}
-                            <div class="product__price h3 -dark">
-                                {@|product-price}
-                            </div>
-                            <div class="product__checkout">
-                                <button class="button button--size-medium button--naira button--naira-up js-shop-addbutton" data-item-id="{id}" data-sku="{sku}">
-                                    <div class="button__hover">{customAddButtonText}</div>
-                                    <div class="button__main">{customAddButtonText}</div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            {.end}
-        {.end}
-        {# Regular products #}
-        {.repeated section items}
-            {.if starred}
-                {# :D Shhhhh! #}
+                {@|apply product-starred.block}
             {.or}
-                <a href="{fullUrl}" class="product -column -column--1of3 animate js-animate">
+                <a href="{fullUrl}" class="product -column -column--1of3 -vtop animate js-animate">
                     <div class="product__image">
                         {@|apply image-aspect.block}
                     </div>
@@ -53,6 +16,8 @@
                                     {.equal? @index 1}
                                         <div class="product__style p">{attributes.Style}</div>
                                     {.end}
+                                {.or}
+                                    <div class="product__style p">&nbsp;</div>
                                 {.end}
                             {.end}
                         </div>

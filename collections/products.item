@@ -1,0 +1,7 @@
+<div class="shop js-shop">
+    <div class="shop__wall">
+        {.section item}
+            {@|apply product-starred.block}
+        {.end}
+    </div>
+</div>

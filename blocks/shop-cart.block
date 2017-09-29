@@ -1,0 +1,6 @@
+<div class="shop js-shop -wrap">
+    <div class="-exp-2">
+        <div class="h1">Your Shop Cart</div>
+    </div>
+    <div class="shop__wall shop__cart js-shop-cart"></div>
+</div>
