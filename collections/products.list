@@ -1,9 +1,9 @@
-<div class="-wrap">
-    <div class="shop">
+<div class="shop js-shop -wrap">
+    <div class="shop__wall">
         {# Featured products #}
         {.repeated section items}
             {.if starred}
-                <div class="product product--starred animate js-animate">
+                <div class="product product--starred animate js-animate js-shop-product">
                     <div class="product__wall">
                         <div class="product__image -column">
                             {@|apply image-aspect.block}
@@ -26,10 +26,10 @@
                                 {@|product-price}
                             </div>
                             <div class="product__checkout">
-                                <div class="button button--size-medium button--naira button--naira-up">
-                                    <div class="button__hover">{@|product-checkout}</div>
+                                <button class="button button--size-medium button--naira button--naira-up js-shop-addbutton" data-item-id="{id}" data-sku="{sku}">
+                                    <div class="button__hover">{customAddButtonText}</div>
                                     <div class="button__main">{customAddButtonText}</div>
-                                </div>
+                                </button>
                             </div>
                         </div>
                     </div>

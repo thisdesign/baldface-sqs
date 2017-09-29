@@ -7,6 +7,7 @@ import FormController from "./FormController";
 import FeedController from "./FeedController";
 import VideoController from "./VideoController";
 import AspectController from "./AspectController";
+import ShopController from "./ShopController";
 
 
 /**
@@ -65,6 +66,7 @@ class Controllers {
         this.push( "feed", this.element.find( core.config.feedSelector ), FeedController, true );
         this.push( "video", this.element.find( core.config.videoSelector ), VideoController, true );
         this.push( "form", core.dom.body.find( core.config.formSelector ), FormController, true );
+        this.push( "shop", core.dom.body.find( core.config.shopSelector ), ShopController, true );
         this.push( "query", ["q"], QueryController, true );
 
         this.aspect = this.element.find( core.config.aspectSelector );

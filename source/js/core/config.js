@@ -211,6 +211,17 @@ const config = {
     /**
      *
      * @public
+     * @member shopSelector
+     * @memberof core.config
+     * @description The string selector used for <shop>.
+     *
+     */
+    shopSelector: ".js-shop",
+
+
+    /**
+     *
+     * @public
      * @member lazyImageAttr
      * @memberof core.config
      * @description The string attribute for lazy image source URLs.
