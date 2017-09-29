@@ -24,8 +24,8 @@ $grey-bd-hover: #666;
 /******************************************************************************
  * Grid
 *******************************************************************************/
-$grid-length: 12;
-$grid-columns: 12 11 10 9 8 7 6 5 4 3 2 1;
+$grid-gutter: 5px;
+$grid-columns: 3;
 
 
 
@@ -70,6 +70,7 @@ $btn-size-medium: 16px;
 $btn-size-large: 18px;
 $btn-pad: 1em 3em;
 $navi-pad: 22px 30px;
+$meta-size: 15px;
 
 
 

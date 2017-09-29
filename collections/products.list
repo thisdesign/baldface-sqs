@@ -1,0 +1,69 @@
+<div class="-wrap">
+    <div class="shop">
+        {# Featured products #}
+        {.repeated section items}
+            {.if starred}
+                <div class="product product--starred animate js-animate">
+                    <div class="product__wall">
+                        <div class="product__image -column">
+                            {@|apply image-aspect.block}
+                        </div>
+                        <div class="product__info -column">
+                            <div class="product__title h2 -dark">{title}</div>
+                            {.repeated section variants}
+                                {.if attributes.Style}
+                                    {.equal? @index 1}
+                                        <div class="product__style p -meta">{attributes.Style}</div>
+                                    {.end}
+                                {.end}
+                            {.end}
+                            {.if excerpt}
+                                <div class="product__excerpt p">
+                                    {excerpt}
+                                </div>
+                            {.end}
+                            <div class="product__price h3 -dark">
+                                {@|product-price}
+                            </div>
+                            <div class="product__checkout">
+                                <div class="button button--size-medium button--naira button--naira-up">
+                                    <div class="button__hover">{@|product-checkout}</div>
+                                    <div class="button__main">{customAddButtonText}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {.end}
+        {.end}
+        {# Regular products #}
+        {.repeated section items}
+            {.if starred}
+                {# :D Shhhhh! #}
+            {.or}
+                <a href="{fullUrl}" class="product -column -column--1of3 animate js-animate">
+                    <div class="product__image">
+                        {@|apply image-aspect.block}
+                    </div>
+                    <div class="product__infocard">
+                        <div class="-column">
+                            <div class="product__title h3 -dark">{title}</div>
+                            {.repeated section variants}
+                                {.if attributes.Style}
+                                    {.equal? @index 1}
+                                        <div class="product__style p">{attributes.Style}</div>
+                                    {.end}
+                                {.end}
+                            {.end}
+                        </div>
+                        <div class="-column">
+                            <div class="product__price h3 -dark">
+                                {@|product-price}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {.end}
+        {.end}
+    </div>
+</div>

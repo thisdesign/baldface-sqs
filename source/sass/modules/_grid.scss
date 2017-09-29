@@ -1,14 +1,9 @@
-$gutter: 5px;
-$columns: 3;
-
-
-
 /******************************************************************************
  * Grids
 *******************************************************************************/
 .grid {
-    column-count: $columns;
-    column-gap: $gutter;
+    column-count: $grid-columns;
+    column-gap: $grid-gutter;
 
     @include respond( $break-mobile-full ) {
         column-count: 1;
@@ -22,7 +17,7 @@ $columns: 3;
     }
 }
 .grid__item {
-    margin-bottom: $gutter;
+    margin-bottom: $grid-gutter;
     width: 100%;
     }
 
