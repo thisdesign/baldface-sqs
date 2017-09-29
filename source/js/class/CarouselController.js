@@ -1,4 +1,5 @@
 import * as core from "../core";
+import $ from "properjs-hobo";
 
 
 
@@ -17,7 +18,7 @@ class Carousel {
         this.images = this.element.find( ".js-carousel-image" );
         this.videos = this.element.find( ".js-carousel-video" );
         this.copy = this.element.find( ".js-carousel-copy" );
-        this.active = this.items.eq( 0 );
+        this.active = this.items.eq( 0 ).addClass( "is-active" );
         this.auto = {
             enabled: false,
             duration: 5000,
@@ -54,14 +55,19 @@ class Carousel {
 
 
     bind () {
-        this.element.on( "click", () => {
+        this.element.on( "click", ( e ) => {
+            const target = $( e.target );
+            const suppress = target.is( ".js-carousel-suppress" ) ? target : target.closest( ".js-carousel-suppress" );
+
             if ( this.auto.enabled ) {
                 this.auto.enabled = false;
 
                 core.log( "[Carousel]::Disable auto transition" );
             }
 
-            this.advance();
+            if ( !suppress.length ) {
+                this.advance();
+            }
         });
     }
 

@@ -3,7 +3,7 @@
         <div class="product__image -column">
             {@|apply image-aspect.block}
         </div>
-        <div class="product__info -column">
+        <div class="product__info -column -cutoff">
             <div class="product__title h2 -dark">{title}</div>
             {.repeated section variants}
                 {.if attributes.Style}
@@ -21,7 +21,7 @@
                 {@|product-price}
             </div>
             <div class="product__checkout">
-                <button class="button button--size-medium button--naira button--naira-up js-shop-addbutton" data-item-id="{id}">
+                <button class="button button--size-medium button--naira button--naira-up js-shop-addbutton js-carousel-suppress" data-item-id="{id}">
                     <div class="button__hover">{customAddButtonText}</div>
                     <div class="button__main">{customAddButtonText}</div>
                 </button>

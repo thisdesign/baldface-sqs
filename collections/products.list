@@ -1,34 +1,42 @@
-<div class="shop js-shop -wrap">
-    <div class="shop__wall">
+<section class="shop js-shop">
+    <div class="carousel js-carousel hero hero--{collection.title|slugify} shop__hero">
         {.repeated section items}
             {.if starred}
-                {@|apply product-starred.block}
-            {.or}
-                <a href="{fullUrl}" class="product -column -column--1of3 -vtop animate js-animate">
-                    <div class="product__image">
-                        {@|apply image-aspect.block}
-                    </div>
-                    <div class="product__infocard">
-                        <div class="-column">
-                            <div class="product__title h3 -dark">{title}</div>
-                            {.repeated section variants}
-                                {.if attributes.Style}
-                                    {.equal? @index 1}
-                                        <div class="product__style p">{attributes.Style}</div>
-                                    {.end}
-                                {.or}
-                                    <div class="product__style p">&nbsp;</div>
-                                {.end}
-                            {.end}
-                        </div>
-                        <div class="-column">
-                            <div class="product__price h3 -dark">
-                                {@|product-price}
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                <div class="carousel__item js-carousel-item hero__item ghost">
+                    {@|apply product-starred.block}
+                </div>
             {.end}
         {.end}
     </div>
-</div>
+    <div class="-exp -wrap">
+        <div class="shop__wall">
+            {.repeated section items}
+                {.if starred}
+                {.or}
+                    <a href="{fullUrl}" class="product -column -column--1of3 -vtop animate js-animate">
+                        <div class="product__image">
+                            {@|apply image-aspect.block}
+                        </div>
+                        <div class="product__infocard">
+                            <div class="-column -vtop">
+                                <div class="product__title h3 -dark">{title}</div>
+                                {.repeated section variants}
+                                    {.if attributes.Style}
+                                        {.equal? @index 1}
+                                            <div class="product__style p">{attributes.Style}</div>
+                                        {.end}
+                                    {.end}
+                                {.end}
+                            </div>
+                            <div class="-column -vtop">
+                                <div class="product__price h3 -dark">
+                                    {@|product-price}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                {.end}
+            {.end}
+        </div>
+    </div>
+</section>

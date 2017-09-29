@@ -1,14 +1,22 @@
-.shop {
+$shop-bgcolor: #eaeaea;
+$shop-btncolor: #d8d8d8;
+
+
+.shop {}
+.shop--cart {
     padding-top: $navi-height;
     }
 .shop__wall {
     margin: -$grid-gutter;
     }
+.shop__hero {
+    background-color: $shop-bgcolor;
+    }
 .product {
     padding: $grid-gutter;
 
     .button--naira {
-        background-color: #d8d8d8;
+        background-color: $shop-btncolor;
         color: $white;
         font-size: $navi-font-size;
 
@@ -21,9 +29,15 @@
     }
 }
 .product--starred {
+    display: inline-block;
+    padding: 0;
+    vertical-align: middle;
+    width: 100%;
+
     .product__wall {
-        background-color: #eaeaea;
+        background-color: $shop-bgcolor;
         @include flex-space();
+        justify-content: flex-start;
         }
     .product__image,
     .product__info, {
@@ -38,6 +52,9 @@
         margin-top: $expander-mobile / 2;
         }
 }
+.product__image {
+    position: relative;
+    }
 .product__price {
     .sqs-money-native {
         &:before {
@@ -64,4 +81,19 @@
         text-align: right;
         width: 30%;
         }
+}
+.product__hover {
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    transition: opacity $base-duration $ease;
+    top: 0;
+    width: 100%;
+
+    .button {
+        transition: transform $base-duration $ease;
+        transform: translate3d( 0, 100%, 0 );
+    }
 }

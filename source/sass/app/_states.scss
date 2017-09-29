@@ -39,6 +39,15 @@
             transform: translate3d(0, 0, 0);
         }
     }
+    .product__image:hover {
+        .product__hover {
+            opacity: 1;
+
+            .button {
+                transform: translate3d( 0, 0, 0 );
+                }
+        }
+    }
 }
 
 

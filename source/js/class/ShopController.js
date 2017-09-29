@@ -16,15 +16,47 @@ import AnimateController from "./AnimateController";
 class ShopController {
     constructor ( element ) {
         this.element = element;
-        this.addButtons = this.element.find( ".js-shop-addbutton" );
         this.shopCart = this.element.find( ".js-shop-cart" );
 
         this.bind();
-        this.view();
+        this.loadCart();
     }
 
 
-    view () {
+    bind () {
+        this.element.on( "click", ".js-shop-addbutton", ( e ) => {
+            const elem = $( e.target );
+            const data = elem.data();
+            const payload = {
+                sku: null,
+                itemId: data.itemId,
+                quantity: 1,
+                additionalFields: null
+            };
+            // {additionalFields, itemId, sku, quantity}
+
+            this.addCart( payload );
+        });
+
+        this.element.on( "click", ".js-shop-removebutton", ( e ) => {
+            const elem = $( e.target );
+            const product = elem.closest( ".js-shop-product" );
+            const data = elem.data();
+            const payload = {
+                sku: data.sku,
+                itemId: data.itemId,
+                quantity: 0
+            };
+            // {itemId, sku, quantity}
+
+            this.addCart( payload, data.entryId );
+
+            product.remove();
+        });
+    }
+
+
+    loadCart () {
         if ( this.shopCart.length ) {
             this.getCart().then(( json ) => {
                 this.shopCart[ 0 ].innerHTML = shopCartView( json );
@@ -38,35 +70,20 @@ class ShopController {
     }
 
 
-    bind () {
-        this.addButtons.on( "click", ( e ) => {
-            const elem = $( e.target );
-            const data = elem.data();
-
-            // {additionalFields, itemId, sku, quantity}
-            data.additionalFields = null;
-            data.quantity = 1;
-            data.sku = null;
-
-            this.addCart( data );
-        });
-    }
-
-
     getCart () {
         return $.ajax({
-            url: `/api/commerce/shopping-cart?crumb=${Store.crumb}`,
+            url: `/api/commerce/shopping-cart/?crumb=${Store.crumb}`,
             method: "GET",
             dataType: "json"
         });
     }
 
 
-    addCart ( payload ) {
+    addCart ( payload, id ) {
         $.ajax({
-            url: `/api/commerce/shopping-cart/entries?crumb=${Store.crumb}`,
+            url: `/api/commerce/shopping-cart/entries/${id ? id : ""}?crumb=${Store.crumb}`,
             payload: payload,
-            method: "POST",
+            method: (id ? "PUT" : "POST"),
             headers: {
                 "Content-Type": "application/json"
             },
