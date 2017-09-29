@@ -2,19 +2,7 @@ $shop-bgcolor: #eaeaea;
 $shop-btncolor: #d8d8d8;
 
 
-.shop {}
-.shop--cart {
-    padding-top: $navi-height;
-    }
-.shop__wall {
-    margin: -$grid-gutter;
-    }
-.shop__hero {
-    background-color: $shop-bgcolor;
-    }
-.product {
-    padding: $grid-gutter;
-
+.shop {
     .button--naira {
         background-color: $shop-btncolor;
         color: $white;
@@ -28,6 +16,25 @@ $shop-btncolor: #d8d8d8;
             }
     }
 }
+.shop--cart {
+    padding-top: $navi-height;
+    }
+.shop__wall {
+    margin: -$grid-gutter;
+    }
+.shop__hero {
+    background-color: $shop-bgcolor;
+    }
+.shop__header {
+    padding-bottom: $expander-two;
+    padding-top: $expander-two;
+    }
+.shop__checkout {
+    padding-top: $expander-one;
+    }
+.product {
+    padding: $grid-gutter;
+    }
 .product--starred {
     display: inline-block;
     padding: 0;
@@ -38,6 +45,8 @@ $shop-btncolor: #d8d8d8;
         background-color: $shop-bgcolor;
         @include flex-space();
         justify-content: flex-start;
+        max-height: 100vh;
+        overflow: hidden;
         }
     .product__image,
     .product__info, {
