@@ -70,7 +70,7 @@ $mobile-breakpoint: $break-tablet-small;
             text-align: center;
 
             &:before {
-                background-color: orange;
+                background-color: $orange;
                 }
 
             .button__main,

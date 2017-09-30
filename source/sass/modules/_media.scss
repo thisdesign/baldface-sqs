@@ -20,6 +20,23 @@
 
 
 
+.progress {
+    height: 2px;
+    position: relative;
+    width: 32px;
+    }
+.progress__fill {
+    background-color: $white;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: width 50ms $ease;
+    width: 100%;
+    }
+
+
+
 .aspect {
     overflow: hidden;
     position: relative;

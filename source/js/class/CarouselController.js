@@ -1,5 +1,5 @@
 import * as core from "../core";
-import $ from "properjs-hobo";
+// import $ from "properjs-hobo";
 
 
 
@@ -33,9 +33,68 @@ class Carousel {
 
         this.bind();
         this.prep();
+        this.check( this.active );
 
         if ( this.auto.enabled ) {
             this.update();
+        }
+    }
+
+
+    check ( active ) {
+        this.activeVideo = active.find( ".js-carousel-video" );
+
+        if ( this.activeVideo.length ) {
+            this.activeEmbed = this.activeVideo.find( ".js-embed-iframe" );
+            this.activeVideoData = this.activeVideo.data();
+
+            if ( this.activeEmbed.length && this.activeVideoData.provider === "vimeo" ) {
+                this.handleVimeo( active );
+            }
+        }
+    }
+
+    postEmbed ( method, value ) {
+        const data = {
+            value,
+            method
+        };
+        const message = JSON.stringify( data );
+
+        this.activeEmbed[ 0 ].contentWindow.postMessage( message, "*" );
+    }
+
+
+    handleVimeo ( active ) {
+        this.activeProgress = active.find( ".js-progress" );
+        this.activeProgressFill = this.activeProgress.find( ".js-progress-fill" );
+        this.activeEmbed[ 0 ].src = this.activeEmbed.data().src;
+    }
+
+
+    onMessage ( e ) {
+        if ( e.data ) {
+            const data = JSON.parse( e.data );
+
+            if ( data.event === "ready" ) {
+                this.postEmbed( "addEventListener", "play" );
+                this.postEmbed( "addEventListener", "finish" );
+                this.postEmbed( "addEventListener", "playProgress" );
+                core.log( "[Carousel] iframe embed is ready" );
+
+            } else if ( data.event === "play" ) {
+                core.log( "[Carousel] iframe embed playback start" );
+
+            } else if ( data.event === "playProgress" ) {
+                if ( this.activeProgressFill.length ) {
+                    this.activeProgressFill[ 0 ].style.width = `${100 - (data.data.percent * 100)}%`;
+                }
+
+            } else if ( data.event === "finish" ) {
+                this.activeEmbed[ 0 ].src = "";
+                this.advance();
+                core.log( "[Carousel] iframe embed playback end" );
+            }
         }
     }
 
@@ -55,20 +114,24 @@ class Carousel {
 
 
     bind () {
-        this.element.on( "click", ( e ) => {
-            const target = $( e.target );
-            const suppress = target.is( ".js-carousel-suppress" ) ? target : target.closest( ".js-carousel-suppress" );
+        // this.element.on( "click", ( e ) => {
+        //     const target = $( e.target );
+        //     const suppress = target.is( ".js-carousel-suppress" ) ? target : target.closest( ".js-carousel-suppress" );
+        //
+        //     if ( this.auto.enabled ) {
+        //         this.auto.enabled = false;
+        //
+        //         core.log( "[Carousel]::Disable auto transition" );
+        //     }
+        //
+        //     if ( !suppress.length ) {
+        //         this.advance();
+        //     }
+        // });
 
-            if ( this.auto.enabled ) {
-                this.auto.enabled = false;
+        this._onMessage = this.onMessage.bind( this );
 
-                core.log( "[Carousel]::Disable auto transition" );
-            }
-
-            if ( !suppress.length ) {
-                this.advance();
-            }
-        });
+        window.addEventListener( "message", this._onMessage, false );
     }
 
 
@@ -102,15 +165,15 @@ class Carousel {
     }
 
 
-    transition ( $next, $curr ) {
-        this.active = $next;
+    transition ( next, curr ) {
+        this.active = next;
 
-        $curr.removeClass( "is-active" ).addClass( "is-exiting" );
-        $next.addClass( "is-entering" );
+        curr.removeClass( "is-active" ).addClass( "is-exiting" );
+        next.addClass( "is-entering" );
 
         this.data.timeout = setTimeout( () => {
-            $curr.removeClass( "is-exiting" );
-            $next.removeClass( "is-entering" ).addClass( "is-active" );
+            curr.removeClass( "is-exiting" );
+            next.removeClass( "is-entering" ).addClass( "is-active" );
 
             if ( this.auto.enabled ) {
                 this.update();
@@ -131,8 +194,11 @@ class Carousel {
             this.data.index++;
         }
 
+        const next = this.items.eq( this.data.index );
+
+        this.check( next );
         this.transition(
-            this.items.eq( this.data.index ),
+            next,
             this.active
         );
     }
@@ -149,8 +215,11 @@ class Carousel {
             this.data.index--;
         }
 
+        const next = this.items.eq( this.data.index );
+
+        this.check( next );
         this.transition(
-            this.items.eq( this.data.index ),
+            next,
             this.active
         );
     }
@@ -159,6 +228,10 @@ class Carousel {
     destroy () {
         this.clear();
         this.clearAuto();
+
+        if ( this._onMessage ) {
+            window.removeEventListener( "message", this._onMessage, false );
+        }
     }
 }
 
