@@ -17,20 +17,6 @@ import detect from "./detect";
 
 /**
  *
- * @description Add pixel units when inline styling
- * @method px
- * @param {string} str The value to pixel-ify
- * @memberof util
- * @returns {string}
- *
- */
-const px = function ( str ) {
-    return `${str}px`;
-};
-
-
-/**
- *
  * @description Apply a translate3d transform
  * @method translate3d
  * @param {object} el The element to transform
@@ -334,7 +320,6 @@ const getAspectRatioFit = function ( srcWidth, srcHeight, maxWidth, maxHeight ) 
  * Export
 *******************************************************************************/
 export {
-    px,
     noop,
     shuffle,
     loadImages,

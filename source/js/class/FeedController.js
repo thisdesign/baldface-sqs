@@ -379,7 +379,7 @@ class FeedController {
 
                 // Shim process for style width calculation
                 this.searchShim[ 0 ].innerHTML = `"${tag}"`;
-                this.searchTxt[ 0 ].style.width = core.util.px( this.searchShim[ 0 ].getBoundingClientRect().width );
+                this.searchTxt[ 0 ].style.width = `${this.searchShim[ 0 ].getBoundingClientRect().width}px`;
 
                 // Apply the `next` attribute text value and trigger animation
                 this.searchTxt.attr( "data-next", `"${tag}"` );
