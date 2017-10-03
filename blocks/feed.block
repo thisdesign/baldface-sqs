@@ -15,5 +15,5 @@
             {@|apply svg-search.block}
         </div>
     </menu>
-    <section class="grid grid--feed feed__layout js-feed-layout -wrap"></section>
+    <section class="grid grid--feed feed__layout js-feed-layout js-hover -wrap"></section>
 </div>

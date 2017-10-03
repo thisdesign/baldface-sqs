@@ -8,16 +8,16 @@ export default ( items ) => {
             const jsClass = (item.ig ? "" : "js-feed-modal-link");
             const target = (item.ig ? `target="_blank"` : "");
             const padBottom = item.image.height / item.image.width * 100;
-            const caption = item.caption ? `<div class="feed__caption p">${item.caption.replace( rTags, "" )}</div>` : null;
-            const title = item.title ? `<div class="feed__title h3">${item.title.replace( rTags, "" )}</div>` : null;
+            const caption = item.caption ? `<div class="grid__caption p">${item.caption.replace( rTags, "" )}</div>` : null;
+            const title = item.title ? `<div class="grid__title h3">${item.title.replace( rTags, "" )}</div>` : null;
 
             return `
-                <a href="${url}" class="grid__item feed__item -column animate-lift js-feed-anim js-feed-item ${jsClass}" data-id="${item.id}" ${target}>
+                <a href="${url}" class="grid__item feed__item -column animate-lift js-feed-anim js-hover-item ${jsClass}" data-id="${item.id}" ${target}>
                     <div class="animate__el -poino">
                         <div class="feed__aspect js-feed-image -cover" data-img-src="${item.image.url}" style="padding-bottom:${padBottom}%;"></div>
                         <div class="feed__icon">${icon}</div>
-                        <div class="feed__hover ghost">
-                            <div class="feed__hover__el ghost__child">
+                        <div class="grid__hover ghost">
+                            <div class="grid__hover__el ghost__child">
                                 ${title || ""}
                                 ${caption || ""}
                             </div>

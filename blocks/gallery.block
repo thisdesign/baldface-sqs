@@ -1,7 +1,15 @@
-<div class="grid grid--{collection.title|slugify}">
+<div class='grid grid--{collection.title|slugify} {.equal? collection.urlId "staff"}js-hover{.end}'>
     {.repeated section items}
-        <div class="grid__item -column animate js-animate">
-            {@|apply image-aspect.block}
+        <div class='grid__item -column animate js-animate {.equal? collection.urlId "staff"}js-hover-item{.end}'>
+            <div class="-poino">
+                {@|apply image-aspect.block}
+                <div class="grid__hover ghost">
+                    <div class="grid__hover__el ghost__child">
+                        <div class="grid__title h3">{title}</div>
+                        <div class="grid__caption p">{body|truncate 250}</div>
+                    </div>
+                </div>
+            </div>
         </div>
     {.end}
 </div>

@@ -360,27 +360,6 @@ class FeedController {
                 overlay.open( overlayImageView( this.currentItem ) );
             }
         });
-
-        this.element.on( "mouseenter", ".js-feed-item", ( e ) => {
-            const elem = $( e.target );
-            const data = elem.data();
-
-            if ( data.timeout ) {
-                clearTimeout( data.timeout );
-                elem.removeClass( "is-hover is-unhover" );
-            }
-
-            elem.addClass( "is-hover" );
-
-        });
-
-        this.element.on( "mouseleave", ".js-feed-item", ( e ) => {
-            const elem = $( e.target );
-
-            elem.addClass( "is-unhover" );
-
-            elem.data( "timeout", setTimeout(() => elem.removeClass( "is-hover is-unhover" ), core.config.defaultDuration ) );
-        });
     }
 
 

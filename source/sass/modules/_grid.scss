@@ -12,14 +12,123 @@
 .grid--staff {
     column-count: 5;
 
+    @include respond( $break-laptop-medium ) {
+        column-count: 3;
+    }
+
     @include respond( $break-mobile-full ) {
         column-count: 1;
     }
 }
 .grid__item {
     margin-bottom: $grid-gutter;
+    position: relative;
     width: 100%;
     }
+.grid__title + .grid__caption {
+    margin-top: 10px;
+    }
+.grid__hover {
+    background-color: rgba( 0, 0, 0, 0.85 );
+    color: $white;
+    overflow: hidden;
+    padding: 0 $expander-mobile;
+    text-align: center;
+    z-index: 1;
+
+    // animation styles...
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    transform: translate3d( -50%, -50%, 0 );
+
+    .is-hover & {
+        animation: grid-hover $base-duration forwards;
+    }
+    .is-unhover & {
+        animation: grid-unhover $base-duration forwards;
+    }
+    .is-hover & .grid__hover__el {
+        animation: grid-hover-el $base-duration forwards;
+    }
+    .is-unhover & .grid__hover__el {
+        animation: grid-unhover-el $base-duration forwards;
+    }
+}
+@keyframes grid-hover {
+    0% {
+        height: 0;
+        width: 0;
+    }
+    25% {
+        height: 10px;
+        width: #{"~\"calc( 100% - 20px )\""};
+    }
+    50% {
+        height: #{"~\"calc( 100% - 20px )\""};
+        width: #{"~\"calc( 100% - 20px )\""};
+    }
+    100% {
+        height: #{"~\"calc( 100% - 20px )\""};
+        width: #{"~\"calc( 100% - 20px )\""};
+    }
+}
+@keyframes grid-unhover {
+    100% {
+        height: 0;
+        width: 0;
+    }
+    50% {
+        height: 0;
+        width: 0;
+    }
+    25% {
+        height: 10px;
+        width: #{"~\"calc( 100% - 20px )\""};
+    }
+    0% {
+        height: #{"~\"calc( 100% - 20px )\""};
+        width: #{"~\"calc( 100% - 20px )\""};
+    }
+}
+@keyframes grid-hover-el {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes grid-unhover-el {
+    100% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 0;
+    }
+    0% {
+        opacity: 1;
+    }
+}
+
+
 
 /******************************************************************************
  * Columns

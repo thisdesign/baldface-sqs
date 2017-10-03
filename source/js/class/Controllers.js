@@ -8,6 +8,7 @@ import FeedController from "./FeedController";
 import VideoController from "./VideoController";
 import AspectController from "./AspectController";
 import ShopController from "./ShopController";
+import HoverController from "./HoverController";
 
 
 /**
@@ -65,6 +66,7 @@ class Controllers {
         this.push( "carousel", this.element.find( core.config.carouselSelector ), CarouselController, true );
         this.push( "animate", this.element.find( core.config.animSelector ), AnimateController, true );
         this.push( "feed", this.element.find( core.config.feedSelector ), FeedController, true );
+        this.push( "hover", core.dom.body.find( core.config.hoverSelector ), HoverController, true );
         this.push( "shop", core.dom.body.find( core.config.shopSelector ), ShopController, true );
         this.push( "form", core.dom.body.find( core.config.formSelector ), FormController, true );
         this.push( "query", ["q"], QueryController, true );

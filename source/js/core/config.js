@@ -222,6 +222,17 @@ const config = {
     /**
      *
      * @public
+     * @member hoverSelector
+     * @memberof core.config
+     * @description The string selector used for <hover>.
+     *
+     */
+    hoverSelector: ".js-hover",
+
+
+    /**
+     *
+     * @public
      * @member lazyImageAttr
      * @memberof core.config
      * @description The string attribute for lazy image source URLs.
