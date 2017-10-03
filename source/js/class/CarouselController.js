@@ -1,6 +1,7 @@
 import * as core from "../core";
 import $ from "properjs-hobo";
 import ScrollController from "properjs-scrollcontroller";
+import ResizeController from "properjs-resizecontroller";
 
 
 
@@ -149,6 +150,11 @@ class Carousel {
             }
         });
 
+        this._resizer = new ResizeController();
+        this._resizer.on( "resize", () => {
+            this.index();
+        });
+
         this._scroller = new ScrollController();
         this._scroller.on( "scroll", () => {
             const shouldPause = !core.util.isElementVisible( this.element[ 0 ] ) && this.activeEmbed;
@@ -262,6 +268,10 @@ class Carousel {
 
         if ( this._onMessage ) {
             window.removeEventListener( "message", this._onMessage, false );
+        }
+
+        if ( this._resizer ) {
+            this._resizer.off( "resize" );
         }
 
         if ( this._scroller ) {

@@ -49,9 +49,10 @@
     }
 .carousel__index {
     bottom: $expander-mobile;
-    left: 50%;
+    left: 0;
     position: absolute;
-    transform: translateX( -50% );
+    text-align: center;
+    width: 100%;
     z-index: 2;
     }
 .carousel__index__item {
