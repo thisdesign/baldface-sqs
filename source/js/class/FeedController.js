@@ -161,7 +161,7 @@ class FeedController {
                     width,
                     height
                 },
-                timestamp: post.updatedOn,
+                timestamp: post.publishOn,
                 icon: getIcon( post.categories, post.tags ),
                 url: post.fullUrl,
                 id: post.id,
@@ -300,7 +300,7 @@ class FeedController {
 
 
     filter () {
-        const items = this.data.items.filter(( item ) => {
+        let items = this.data.items.filter(( item ) => {
             const cat = this.channel.replace( "#", "" );
 
             // Just Instagram content
@@ -316,6 +316,28 @@ class FeedController {
             // Just Squarespace content matching category
             // Only Squarespace has category data
             return item.categories.indexOf( cat ) !== -1;
+        });
+        const buckets = [];
+        const columns = this.getColumns();
+
+        // Create 2D Array of columns
+        for ( let i = columns; i > 0; i-- ) {
+            buckets.push( [] );
+        }
+
+        // Push 2D Array of items into columns
+        while ( items.length ) {
+            const cut = items.splice( 0, columns );
+
+            cut.forEach(( item, i ) => {
+                buckets[ i ].push( item );
+            });
+        }
+
+        // Join 2D Array of columns back into flat Array
+        items = [];
+        buckets.forEach(( bucket ) => {
+            items = items.concat( bucket );
         });
 
         this.layoutEl[ 0 ].innerHTML = feedLayoutView( items );
@@ -424,6 +446,11 @@ class FeedController {
 
     getTag () {
         return this.data.tags[ Math.floor( Math.random() * this.data.tags.length ) ];
+    }
+
+
+    getColumns () {
+        return parseInt( getComputedStyle( this.layoutEl[ 0 ] )[ "column-count" ], 10 );
     }
 
 
