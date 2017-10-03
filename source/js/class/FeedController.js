@@ -8,7 +8,10 @@ import overlayVideoView from "../views/overlay-video";
 import AnimateController from "./AnimateController";
 
 
-// Special icon parser runs against `categories` and `tags`...
+
+/******************************************************************************
+ * Special icon parser runs against `categories` and `tags`...
+*******************************************************************************/
 const iconMap = [
     { icon: "photo", regex: /.*?/i },
     { icon: "news", regex: /news/i },
@@ -33,7 +36,7 @@ const getIcon = ( cats, tags ) => {
  * @public
  * @global
  * @class FeedController
- * @classdesc Handle crazy ass feed thing...
+ * @classdesc Do the crazy ass feed thing...
  *
  */
 class FeedController {
@@ -50,6 +53,7 @@ class FeedController {
         };
         this.filterEl = this.element.find( ".js-feed-filter" );
         this.filterList = this.filterEl.find( ".js-feed-filter-list" );
+        this.filterToggle = this.filterEl.find( ".js-feed-filter-toggle" );
         this.searchEl = this.element.find( ".js-feed-search" );
         this.searchInp = this.searchEl.find( ".js-feed-search-input" );
         this.searchTxt = this.searchEl.find( ".js-feed-search-text" );
@@ -72,6 +76,10 @@ class FeedController {
     }
 
 
+/******************************************************************************
+ * Loading + Initialization of logics
+ * @returns {Promise}
+*******************************************************************************/
     load () {
         return new Promise(( resolve ) => {
             const args = [
@@ -187,19 +195,92 @@ class FeedController {
         this.bindFeed();
         this.bindSearch();
         this.bindFilter();
+        this.bindOverlay();
         this.sort();
-        this.filter();
-        this.filterList[ 0 ].innerHTML = feedFilterView( this.data.categories );
-        this.filterCats = this.filterEl.find( ".js-feed-filter-cat" );
+        this.renderFilters();
+        this.renderFiltered( this.filter() );
 
         if ( !core.detect.isDevice() ) {
             this.initTagCron();
         }
-
-        // console.log( this );
     }
 
 
+/******************************************************************************
+ * Filter handling
+*******************************************************************************/
+    bindFilter () {
+        this.element.on( "click", ".js-feed-filter-toggle", () => {
+            this.filterList.toggleClass( "is-active" );
+            this.filterToggle.toggleClass( "is-active" );
+        });
+
+        this.element.on( "click", ".js-feed-filter-cat", ( e ) => {
+            const target = $( e.target );
+
+            this.filterCats.removeClass( "is-active" );
+            target.addClass( "is-active" );
+
+            this.resetSearch();
+            this.channel = e.target.hash;
+            this.renderFiltered( this.filter() );
+        });
+    }
+
+
+    resetFilter () {
+        this.channel = this.all;
+        this.filterCats.removeClass( "is-active" );
+        this.filterCats.filter( `[href="${this.all}"]` ).addClass( "is-active" );
+        this.filterEl.removeClass( "is-active" );
+    }
+
+
+    renderFiltered ( items ) {
+        const buckets = this.getBuckets( items );
+
+        // Join 2D Array of columns back into flat Array
+        items = [];
+        buckets.forEach(( bucket ) => {
+            items = items.concat( bucket );
+        });
+
+        this.layoutEl[ 0 ].innerHTML = feedLayoutView( items );
+        this.imageLoader = core.util.loadImages( this.element.find( ".js-feed-image" ) );
+        this.animController = new AnimateController( this.element.find( ".js-feed-anim" ) );
+    }
+
+
+    renderFilters () {
+        this.filterList[ 0 ].innerHTML = feedFilterView( this.data.categories );
+        this.filterCats = this.filterEl.find( ".js-feed-filter-cat" );
+    }
+
+
+    filter () {
+        return this.data.items.filter(( item ) => {
+            const cat = this.channel.replace( "#", "" );
+
+            // Just Instagram content
+            if ( this.channel === this.ig ) {
+                // Only Instagram has user data
+                return item.ig;
+
+            // Back to Squarespace AND Instagram content
+            } else if ( this.channel === this.all ) {
+                return true;
+            }
+
+            // Just Squarespace content matching category
+            // Only Squarespace has category data
+            return item.categories.indexOf( cat ) !== -1;
+        });
+    }
+
+
+/******************************************************************************
+ * Search handling
+*******************************************************************************/
     bindSearch () {
         this.searchInp.on( "keydown", ( e ) => {
             // Enter key
@@ -207,7 +288,7 @@ class FeedController {
                 e.preventDefault();
                 this.resetFilter();
                 this.query = this.searchEl[ 0 ].value;
-                this.search();
+                this.renderSearch( this.search() );
             }
         });
 
@@ -227,146 +308,16 @@ class FeedController {
     }
 
 
-    bindFilter () {
-        this.element.on( "click", ".js-feed-filter-toggle", () => {
-            this.filterList.toggleClass( "is-active" );
-        });
-
-        this.element.on( "click", ".js-feed-filter-cat", ( e ) => {
-            const target = $( e.target );
-
-            this.filterCats.removeClass( "is-active" );
-            target.addClass( "is-active" );
-
-            this.resetSearch();
-            this.channel = e.target.hash;
-            this.filter();
-        });
-    }
-
-
-    bindFeed () {
-        this.element.on( "click", ".js-feed-modal-link", ( e ) => {
-            const elem = $( e.target );
-            const data = elem.data();
-            const item = this.find( data.id );
-            let node = null;
-
-            // Video
-            if ( item.video && item.video.provider ) {
-                node = $( overlayVideoView( item ) );
-
-                overlay.open( node );
-
-            // Image
-            } else {
-                node = $( overlayImageView( item ) );
-
-                core.util.loadImages( node, core.util.noop ).on( "done", () => overlay.open( node ) );
-            }
-        });
-
-        this.element.on( "mouseenter", ".js-feed-item", ( e ) => {
-            const elem = $( e.target );
-            const data = elem.data();
-
-            if ( data.timeout ) {
-                clearTimeout( data.timeout );
-                elem.removeClass( "is-hover is-unhover" );
-            }
-
-            elem.addClass( "is-hover" );
-
-        }).on( "mouseleave", ".js-feed-item", ( e ) => {
-            const elem = $( e.target );
-
-            elem.addClass( "is-unhover" );
-
-            elem.data( "timeout", setTimeout(() => elem.removeClass( "is-hover is-unhover" ), core.config.defaultDuration ) );
-        });
-    }
-
-
-    sort () {
-        // Sort by timestamp, newest at the top
-        this.data.items = this.data.items.sort(( itemA, itemB ) => {
-            if ( itemA.timestamp > itemB.timestamp ) {
-                return -1;
-            }
-
-            return 1;
-        });
-    }
-
-
-    filter () {
-        let items = this.data.items.filter(( item ) => {
-            const cat = this.channel.replace( "#", "" );
-
-            // Just Instagram content
-            if ( this.channel === this.ig ) {
-                // Only Instagram has user data
-                return item.ig;
-
-            // Back to Squarespace AND Instagram content
-            } else if ( this.channel === this.all ) {
-                return true;
-            }
-
-            // Just Squarespace content matching category
-            // Only Squarespace has category data
-            return item.categories.indexOf( cat ) !== -1;
-        });
-        const buckets = [];
-        const columns = this.getColumns();
-
-        // Create 2D Array of columns
-        for ( let i = columns; i > 0; i-- ) {
-            buckets.push( [] );
-        }
-
-        // Push 2D Array of items into columns
-        while ( items.length ) {
-            const cut = items.splice( 0, columns );
-
-            cut.forEach(( item, i ) => {
-                buckets[ i ].push( item );
-            });
-        }
-
-        // Join 2D Array of columns back into flat Array
-        items = [];
-        buckets.forEach(( bucket ) => {
-            items = items.concat( bucket );
-        });
-
-        this.layoutEl[ 0 ].innerHTML = feedLayoutView( items );
-        this.imageLoader = core.util.loadImages( this.element.find( ".js-feed-image" ) );
-        this.animController = new AnimateController( this.element.find( ".js-feed-anim" ) );
-    }
-
-
-    resetFilter () {
-        this.channel = this.all;
-        this.filterCats.removeClass( "is-active" );
-        this.filterCats.filter( `[href="${this.all}"]` ).addClass( "is-active" );
-        this.filterEl.removeClass( "is-active" );
-    }
-
-
     search () {
         const regex = new RegExp( this.query, "gi" );
-        const items = this.data.items.filter(( item ) => {
+
+        return this.data.items.filter(( item ) => {
             if ( item.tags.length && regex.test( item.tags.join( "" ).toLowerCase() ) ) {
                 return true;
             }
 
             return false;
         });
-
-        this.layoutEl[ 0 ].innerHTML = feedLayoutView( items );
-        this.imageLoader = core.util.loadImages( this.element.find( ".js-feed-image" ) );
-        this.animController = new AnimateController( this.element.find( ".js-feed-anim" ) );
     }
 
 
@@ -382,11 +333,87 @@ class FeedController {
     }
 
 
-    find ( id ) {
-        return this.data.items.find(( item ) => (id === item.id) );
+    renderSearch ( items ) {
+        this.layoutEl[ 0 ].innerHTML = feedLayoutView( items );
+        this.imageLoader = core.util.loadImages( this.element.find( ".js-feed-image" ) );
+        this.animController = new AnimateController( this.element.find( ".js-feed-anim" ) );
     }
 
 
+/******************************************************************************
+ * Grid handling
+*******************************************************************************/
+    bindFeed () {
+        this.element.on( "click", ".js-feed-modal-link", ( e ) => {
+            const elem = $( e.target );
+            const data = elem.data();
+            const item = this.find( data.id );
+
+            this.currentItem = item;
+
+            // Video
+            if ( this.currentItem.video && this.currentItem.video.provider ) {
+                overlay.open( overlayVideoView( this.currentItem ) );
+
+            // Image
+            } else {
+                overlay.open( overlayImageView( this.currentItem ) );
+            }
+        });
+
+        this.element.on( "mouseenter", ".js-feed-item", ( e ) => {
+            const elem = $( e.target );
+            const data = elem.data();
+
+            if ( data.timeout ) {
+                clearTimeout( data.timeout );
+                elem.removeClass( "is-hover is-unhover" );
+            }
+
+            elem.addClass( "is-hover" );
+
+        });
+
+        this.element.on( "mouseleave", ".js-feed-item", ( e ) => {
+            const elem = $( e.target );
+
+            elem.addClass( "is-unhover" );
+
+            elem.data( "timeout", setTimeout(() => elem.removeClass( "is-hover is-unhover" ), core.config.defaultDuration ) );
+        });
+    }
+
+
+/******************************************************************************
+ * Overlay handling
+*******************************************************************************/
+    bindOverlay () {
+        const handler = ( item ) => {
+            this.currentItem = item;
+
+            // Video
+            if ( this.currentItem.video && this.currentItem.video.provider ) {
+                overlay.update( overlayVideoView( this.currentItem ) );
+
+            // Image
+            } else {
+                overlay.update( overlayImageView( this.currentItem ) );
+            }
+        };
+
+        core.emitter.on( "app--overlay-next", () => {
+            handler( this.getAdjacent( 1 ) );
+        });
+
+        core.emitter.on( "app--overlay-prev", () => {
+            handler( this.getAdjacent( -1 ) );
+        });
+    }
+
+
+/******************************************************************************
+ * Tag handling
+*******************************************************************************/
     initTagCron () {
         const doSwap = () => {
             // Ensure current tag is present
@@ -449,8 +476,68 @@ class FeedController {
     }
 
 
+/******************************************************************************
+ * Generic methods...
+*******************************************************************************/
+    sort () {
+        // Sort by timestamp, newest at the top
+        this.data.items = this.data.items.sort(( itemA, itemB ) => {
+            if ( itemA.timestamp > itemB.timestamp ) {
+                return -1;
+            }
+
+            return 1;
+        });
+    }
+
+
+    find ( id ) {
+        return this.data.items.find(( item ) => (id === item.id) );
+    }
+
+
     getColumns () {
         return parseInt( getComputedStyle( this.layoutEl[ 0 ] )[ "column-count" ], 10 );
+    }
+
+
+    getBuckets ( items ) {
+        const buckets = [];
+        const columns = this.getColumns();
+
+        // Create 2D Array of columns
+        for ( let i = columns; i > 0; i-- ) {
+            buckets.push( [] );
+        }
+
+        // Push 2D Array of items into columns
+        while ( items.length ) {
+            const cut = items.splice( 0, columns );
+
+            cut.forEach(( item, i ) => {
+                buckets[ i ].push( item );
+            });
+        }
+
+        return buckets;
+    }
+
+
+    getAdjacent ( one ) {
+        const len = this.data.items.length - 1;
+        const currIdx = this.data.items.indexOf( this.currentItem );
+        let nextIdx = currIdx + one;
+
+        // Circle back to the beginning
+        if ( nextIdx > len ) {
+            nextIdx = 0;
+
+        // Circle back to the ending
+        } else if ( nextIdx < 0 ) {
+            nextIdx = len;
+        }
+
+        return this.data.items[ nextIdx ];
     }
 
 

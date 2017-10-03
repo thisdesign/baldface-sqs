@@ -1,1 +1,5 @@
-{@|apply gallery.block}
+{.equal? collection.urlId "feed"}
+    {@|apply feed.block}
+{.or}
+    {@|apply gallery.block}
+{.end}

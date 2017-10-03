@@ -1,5 +1,7 @@
 import * as core from "./core";
 import tranny from "./tranny";
+import $ from "properjs-hobo";
+import overlayInnerView from "./views/overlay-inner";
 
 
 /**
@@ -20,18 +22,33 @@ const overlay = {
     },
 
 
+    load () {
+        this.image = this.node.find( ".js-overlay-image" );
+
+        if ( this.image.length ) {
+            core.util.loadImages( this.image, core.util.noop );
+        }
+    },
+
+
     bind () {
-        this.element.on( "click", ( e ) => {
-            if ( e.target === this.element[ 0 ] ) {
-                this.close();
-            }
+        this.element.on( "click", ".js-overlay-close", () => {
+            this.close();
+        });
+
+        this.element.on( "click", ".js-overlay-navi", ( e ) => {
+            const elem = $( e.target );
+            const data = elem.data();
+
+            core.emitter.fire( `app--overlay-${data.navi}` );
         });
     },
 
 
-    open ( node ) {
+    open ( html ) {
         if ( !this.isOpen ) {
-            this.node = node;
+            this.node = $( overlayInnerView( html ) );
+            this.load();
             this.element.addClass( "is-active" ).append( this.node );
             core.dom.html.addClass( "is-clipped" );
             this.isOpen = true;
@@ -55,6 +72,14 @@ const overlay = {
                 });
 
             }, this.duration );
+        }
+    },
+
+
+    update ( html ) {
+        if ( this.isOpen ) {
+            this.node.find( ".js-overlay-media" )[ 0 ].innerHTML = html;
+            this.load();
         }
     }
 };

@@ -5,4 +5,8 @@
     > .page:first-child {
         padding-top: $expander-one + $navi-height;
     }
+
+    @include state( "feed", "page" ) {
+        padding-top: $expander-one + $navi-height;
+    }
 }

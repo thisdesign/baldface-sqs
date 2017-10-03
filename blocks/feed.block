@@ -1,0 +1,19 @@
+<section class="feed js-feed">
+    <menu class="feed__actions -wrap -exp">
+        <div class="feed__filter js-feed-filter -column">
+            <a class="feed__filter-toggle js-feed-filter-toggle -column" href="#">
+                {@|apply svg-filters.block}
+            </a>
+            <div class="feed__category-list js-feed-filter-list -column"></div>
+        </div>
+        <div class="feed__search js-feed-search -column">
+            <input placeholder="" type="text" class="form__input feed__search-input js-feed-search-input -column" />
+            <span class="feed__search-text">
+                <span>Try searching</span>&nbsp;<span data-curr="" data-next="" class="feed__search-tag js-feed-search-text"></span>
+                <span class="feed__search-shim js-feed-search-shim"></span>
+            </span>
+            {@|apply svg-search.block}
+        </div>
+    </menu>
+    <section class="grid grid--feed feed__layout js-feed-layout -wrap"></section>
+</div>

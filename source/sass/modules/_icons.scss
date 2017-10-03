@@ -40,6 +40,19 @@
             }
     }
 
+    &.icon--list--close {
+        .ex1,
+        .ex2 {
+            opacity: 1;
+            }
+        .ex1 {
+            transform: rotate( -45deg );
+            }
+        .ex2 {
+            transform: rotate( 45deg );
+            }
+    }
+
     span {
         background-color: $black;
         height: 2px;

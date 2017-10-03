@@ -1,6 +1,13 @@
 .feed__actions {
-    @include flex-space();
+    align-items: flex-start;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
     }
+
+/******************************************************************************
+ * Filters
+*******************************************************************************/
 .feed__filter-toggle {
     margin-right: 10px;
 
@@ -18,17 +25,8 @@
             transition: transform $fast-duration $ease;
             }
     }
-}
-.feed__category-list {
 
-}
-.feed__category-list.is-active {
-    .feed__category {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translate3d( 0, 0, 0 );
-        }
-    .feed__filter-toggle {
+    &.is-active {
         .-svg {
             rect:nth-child( 1 ) {
                 transform: rotate( -45deg ) translateX( 2px ) translateY( -2px );
@@ -45,6 +43,23 @@
         }
     }
 }
+.feed__filter {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: 50%;
+}
+.feed__category-list {
+    font-size: $navi-font-size;
+
+    &.is-active {
+        .feed__category {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translate3d( 0, 0, 0 );
+            }
+    }
+}
 .feed__category {
     opacity: 0;
     padding: 0 10px;
@@ -54,9 +69,9 @@
                 opacity $fast-duration $ease,
                 transform $fast-duration $ease;
 
-    @include respond( $break-tablet-full ) {
-        padding: 0 5px;
-    }
+    // @include respond( $break-tablet-full ) {
+    //     padding: 0 5px;
+    // }
     @include hover() {
         color: $black;
     }
@@ -72,8 +87,13 @@
         }
     }
 }
+
+/******************************************************************************
+ * Search
+*******************************************************************************/
 .feed__search {
     position: relative;
+    width: 50%;
 
     .-svg {
         pointer-events: none;
@@ -84,11 +104,85 @@
         width: 22px;
         }
     .form__input {
+        font-size: $navi-font-size;
         padding: 0 32px 0 0;
         text-align: right;
-        width: 300px;
+        width: 100%;
         }
+
+    &.is-active {
+        .feed__search-text {
+            display: none;
+            }
+    }
 }
+.feed__search-text {
+    @include bs();
+    font-size: $navi-font-size;
+    left: 0;
+    padding: 0 32px 0 0;
+    pointer-events: none;
+    position: absolute;
+    text-align: right;
+    top: 50%;
+    transform: translateY( -50% );
+    white-space: nowrap;
+    width: 100%;
+}
+.feed__search-shim {
+    left: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    }
+.feed__search-tag {
+    display: inline-block;
+    line-height: 1;
+    padding-bottom: 5px;
+    position: relative;
+    text-align: left;
+    transition: width $fast-duration $ease;
+
+    &:before,
+    &:after {
+        line-height: 1;
+    }
+
+    &:before {
+        content: attr( data-curr );
+        opacity: 1;
+        position: relative;
+        transform: translate3d( 0, 0, 0 );
+        }
+    &:after {
+        content: attr( data-next );
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        transform: translate3d( 0, 100%, 0 );
+        }
+
+    &.is-switch {
+        &:before,
+        &:after {
+            transition: opacity $fast-duration $ease,
+                        transform $fast-duration $ease;
+            }
+        &:before {
+            opacity: 0;
+            transform: translate3d( 0, -100%, 0 );
+            }
+        &:after {
+            opacity: 1;
+            transform: translate3d( 0, -50%, 0 );
+            }
+    }
+}
+
+/******************************************************************************
+ * Gridwall
+*******************************************************************************/
 .feed__layout {
     padding-bottom: $expander-mobile;
 }
@@ -113,6 +207,10 @@
 .feed__title + .feed__caption {
     margin-top: 10px;
     }
+
+/******************************************************************************
+ * Gridwall Hovers
+*******************************************************************************/
 .feed__hover {
     background-color: rgba( 0, 0, 0, 0.85 );
     color: $white;
@@ -210,76 +308,5 @@
     }
     0% {
         opacity: 1;
-    }
-}
-
-
-
-.feed__search.is-active {
-    .feed__search-text {
-        display: none;
-        }
-}
-.feed__search-text {
-    @include bs();
-    height: 100%;
-    left: 0;
-    padding: 0 32px 0 0;
-    pointer-events: none;
-    position: absolute;
-    text-align: right;
-    top: 50%;
-    transform: translateY( -50% );
-    white-space: nowrap;
-    width: 100%;
-}
-.feed__search-shim {
-    left: 0;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-    }
-.feed__search-tag {
-    display: inline-block;
-    line-height: 1;
-    padding-bottom: 5px;
-    position: relative;
-    text-align: left;
-    transition: width $fast-duration $ease;
-
-    &:before,
-    &:after {
-        line-height: 1;
-    }
-
-    &:before {
-        content: attr( data-curr );
-        opacity: 1;
-        position: relative;
-        transform: translate3d( 0, 0, 0 );
-        }
-    &:after {
-        content: attr( data-next );
-        left: 0;
-        opacity: 0;
-        position: absolute;
-        top: 50%;
-        transform: translate3d( 0, 100%, 0 );
-        }
-
-    &.is-switch {
-        &:before,
-        &:after {
-            transition: opacity $fast-duration $ease,
-                        transform $fast-duration $ease;
-            }
-        &:before {
-            opacity: 0;
-            transform: translate3d( 0, -100%, 0 );
-            }
-        &:after {
-            opacity: 1;
-            transform: translate3d( 0, -50%, 0 );
-            }
     }
 }
