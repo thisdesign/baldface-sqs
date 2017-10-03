@@ -47,3 +47,47 @@
 .carousel__progress {
     margin-top: $expander-mobile / 2;
     }
+.carousel__index {
+    bottom: $expander-mobile;
+    left: 50%;
+    position: absolute;
+    transform: translateX( -50% );
+    z-index: 2;
+    }
+.carousel__index__item {
+    background-color: $white;
+    display: inline-block;
+    height: 2px;
+    vertical-align: middle;
+    width: 30px;
+
+    & + .carousel__index__item {
+        margin-left: 30px;
+        }
+}
+.carousel__index__active {
+    background-color: $white;
+    height: 4px;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    transform: translateY( -50% );
+    transition: transform $base-duration $ease;
+    width: 30px;
+    }
+.carousel__navi__item {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: $expander-one;
+    z-index: 2;
+
+    &[data-navi="next"] {
+        cursor: e-resize;
+        right: 0;
+        }
+    &[data-navi="prev"] {
+        cursor: w-resize;
+        left: 0;
+        }
+}

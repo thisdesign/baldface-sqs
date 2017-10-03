@@ -1,0 +1,4 @@
+<div class="carousel__navi js-carousel-navi">
+    <div class="carousel__navi__item js-carousel-navi-item" data-navi="next"></div>
+    <div class="carousel__navi__item js-carousel-navi-item" data-navi="prev"></div>
+</div>

@@ -1,5 +1,5 @@
 import * as core from "../core";
-// import $ from "properjs-hobo";
+import $ from "properjs-hobo";
 
 
 
@@ -19,11 +19,14 @@ class Carousel {
         this.videos = this.element.find( ".js-carousel-video" );
         this.copy = this.element.find( ".js-carousel-copy" );
         this.active = this.items.eq( 0 ).addClass( "is-active" );
-        this.auto = {
-            enabled: false,
-            duration: 5000,
-            timeout: null
-        };
+        this.indexes = this.element.find( ".js-carousel-index-item" );
+        this.activeIndex = this.element.find( ".js-carousel-index-active" );
+        this.naviItems = this.element.find( ".js-carousel-navi-item" );
+        // this.auto = {
+        //     enabled: false,
+        //     duration: 5000,
+        //     timeout: null
+        // };
         this.data = {
             index: 0,
             length: this.items.length,
@@ -34,10 +37,23 @@ class Carousel {
         this.bind();
         this.prep();
         this.check( this.active );
+        this.index();
 
-        if ( this.auto.enabled ) {
-            this.update();
-        }
+        // if ( this.auto.enabled ) {
+        //     this.update();
+        // }
+    }
+
+
+    index () {
+        const index = this.indexes.eq( this.data.index );
+
+        core.util.translate3d(
+            this.activeIndex[ 0 ],
+            `${index[ 0 ].offsetLeft}px`,
+            "-50%",
+            0
+        );
     }
 
 
@@ -91,7 +107,7 @@ class Carousel {
                 }
 
             } else if ( data.event === "finish" ) {
-                this.activeEmbed[ 0 ].src = "";
+                this.clearEmbed();
                 this.advance();
                 core.log( "[Carousel] iframe embed playback end" );
             }
@@ -114,20 +130,23 @@ class Carousel {
 
 
     bind () {
-        // this.element.on( "click", ( e ) => {
-        //     const target = $( e.target );
-        //     const suppress = target.is( ".js-carousel-suppress" ) ? target : target.closest( ".js-carousel-suppress" );
-        //
-        //     if ( this.auto.enabled ) {
-        //         this.auto.enabled = false;
-        //
-        //         core.log( "[Carousel]::Disable auto transition" );
-        //     }
-        //
-        //     if ( !suppress.length ) {
-        //         this.advance();
-        //     }
-        // });
+        this.naviItems.on( "click", ( e ) => {
+            const target = $( e.target );
+            const data = target.data();
+
+            // if ( this.auto.enabled ) {
+            //     this.auto.enabled = false;
+            // }
+
+            this.clearEmbed();
+
+            if ( data.navi === "next" ) {
+                this.advance();
+
+            } else {
+                this.rewind();
+            }
+        });
 
         this._onMessage = this.onMessage.bind( this );
 
@@ -135,12 +154,10 @@ class Carousel {
     }
 
 
-    clear () {
-        try {
-            clearTimeout( this.auto.timeout );
-
-        } catch ( error ) {
-            core.log( "warn", error );
+    clearEmbed () {
+        if ( this.activeEmbed ) {
+            this.activeEmbed[ 0 ].src = "";
+            this.activeProgressFill[ 0 ].style.width = "100%";
         }
     }
 
@@ -150,19 +167,19 @@ class Carousel {
     }
 
 
-    clearAuto () {
-        try {
-            clearTimeout( this.auto.timeout );
+    // clearAuto () {
+    //     try {
+    //         clearTimeout( this.auto.timeout );
+    //
+    //     } catch ( error ) {
+    //         core.log( "warn", error );
+    //     }
+    // }
 
-        } catch ( error ) {
-            core.log( "warn", error );
-        }
-    }
 
-
-    update () {
-        this.auto.timeout = setTimeout( this.advance.bind( this ), this.auto.duration );
-    }
+    // update () {
+    //     this.auto.timeout = setTimeout( this.advance.bind( this ), this.auto.duration );
+    // }
 
 
     transition ( next, curr ) {
@@ -175,16 +192,16 @@ class Carousel {
             curr.removeClass( "is-exiting" );
             next.removeClass( "is-entering" ).addClass( "is-active" );
 
-            if ( this.auto.enabled ) {
-                this.update();
-            }
+            // if ( this.auto.enabled ) {
+            //     this.update();
+            // }
 
         }, this.data.duration );
     }
 
 
     advance () {
-        this.clear();
+        // this.clearAuto();
         this.clearClass();
 
         if ( this.data.index === (this.data.length - 1) ) {
@@ -197,6 +214,7 @@ class Carousel {
         const next = this.items.eq( this.data.index );
 
         this.check( next );
+        this.index();
         this.transition(
             next,
             this.active
@@ -205,7 +223,7 @@ class Carousel {
 
 
     rewind () {
-        this.clear();
+        // this.clearAuto();
         this.clearClass();
 
         if ( this.data.index === 0 ) {
@@ -218,6 +236,7 @@ class Carousel {
         const next = this.items.eq( this.data.index );
 
         this.check( next );
+        this.index();
         this.transition(
             next,
             this.active
@@ -226,8 +245,7 @@ class Carousel {
 
 
     destroy () {
-        this.clear();
-        this.clearAuto();
+        // this.clearAuto();
 
         if ( this._onMessage ) {
             window.removeEventListener( "message", this._onMessage, false );

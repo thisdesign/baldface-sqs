@@ -1,0 +1,22 @@
+<section class="carousel js-carousel hero hero--{title|slugify}">
+    <div class="carousel__items js-carousel-items">
+        {.repeated section items}
+            <div class="carousel__item js-carousel-item hero__item ghost {.equal? @index 1}is-active{.end}">
+                {.equal? recordTypeLabel "video"}
+                    <div class="carousel__vid hero__vid js-carousel-video js-video" data-url="{oembed.url}" data-provider="{oembed.resolvedBy}" data-width="{oembed.width}" data-height="{oembed.height}"></div>
+                {.or}
+                    <div class="carousel__img hero__img js-carousel-image js-lazy-image -cover" data-img-src="{assetUrl}" data-variants="{systemDataVariants}"></div>
+                {.end}
+                <div class="carousel__main hero__main -wrap ghost__child">
+                    <div class="carousel__title hero__title h1 -light -cutoff">{title}</div>
+                    <div class="carousel__copy hero__copy js-carousel-copy p -light -cutoff">{body}</div>
+                    {.equal? recordTypeLabel "video"}
+                        <div class="carousel__progress progress js-progress"><div class="progress__fill js-progress-fill"></div></div>
+                    {.end}
+                </div>
+            </div>
+        {.end}
+    </div>
+    {@|apply carousel-index.block}
+    {@|apply carousel-navi.block}
+</section>

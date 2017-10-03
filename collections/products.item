@@ -3,5 +3,15 @@
         {.section item}
             {@|apply product-starred.block}
         {.end}
+        {.section pagination}
+            <div class="carousel__navi js-carousel-navi">
+                {.section nextItem}
+                    <a href="{fullUrl}" class="carousel__navi__item" data-navi="next"></a>
+                {.end}
+                {.section prevItem}
+                    <a href="{fullUrl}" class="carousel__navi__item" data-navi="prev"></a>
+                {.end}
+            </div>
+        {.end}
     </div>
 </div>

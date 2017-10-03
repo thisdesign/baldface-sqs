@@ -1,7 +1,7 @@
 {.section collection}
     {.repeated section collections}
         {.equal? typeName "gallery-hero"}
-            {@|apply hero.block}
+            {@|apply carousel-hero.block}
         {.end}
     {.end}
     <section class="feed js-feed">

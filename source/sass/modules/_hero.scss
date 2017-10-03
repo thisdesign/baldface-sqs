@@ -26,12 +26,12 @@
     opacity: 0;
     transition: opacity $fast-duration $ease,
                 transform $fast-duration $ease;
-    transform: translate3d( 0, 50%, 0 );
+    transform: translate3d( 0, $expander-mobile, 0 );
 }
 .hero__item.is-exiting {
     .hero__main {
         opacity: 0;
-        transform: translate3d( 0, -50%, 0 );
+        transform: translate3d( 0, -$expander-mobile, 0 );
         }
 }
 .hero__item.is-entering {
