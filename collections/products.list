@@ -24,7 +24,7 @@
             {.repeated section items}
                 {.if starred}
                 {.or}
-                    <a href="{fullUrl}" class="product -column -column--1of3 -vtop animate js-animate">
+                    <a href="{fullUrl}" class="product product--basic -column -column--1of3 -vtop animate js-animate">
                         <div class="product__image">
                             {@|apply image-aspect.block}
                         </div>
