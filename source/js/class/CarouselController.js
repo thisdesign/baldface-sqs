@@ -1,5 +1,6 @@
 import * as core from "../core";
 import $ from "properjs-hobo";
+import ScrollController from "properjs-scrollcontroller";
 
 
 
@@ -148,8 +149,20 @@ class Carousel {
             }
         });
 
-        this._onMessage = this.onMessage.bind( this );
+        this._scroller = new ScrollController();
+        this._scroller.on( "scroll", () => {
+            const shouldPause = !core.util.isElementVisible( this.element[ 0 ] ) && this.activeEmbed;
+            const shouldPlay = core.util.isElementVisible( this.element[ 0 ] ) && this.activeEmbed;
 
+            if ( shouldPause ) {
+                this.postEmbed( "pause", 1 );
+
+            } else if ( shouldPlay ) {
+                this.postEmbed( "play", 1 );
+            }
+        });
+
+        this._onMessage = this.onMessage.bind( this );
         window.addEventListener( "message", this._onMessage, false );
     }
 
@@ -249,6 +262,10 @@ class Carousel {
 
         if ( this._onMessage ) {
             window.removeEventListener( "message", this._onMessage, false );
+        }
+
+        if ( this._scroller ) {
+            this._scroller.off( "scroll" );
         }
     }
 }
