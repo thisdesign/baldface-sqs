@@ -18,6 +18,7 @@
 
 
 $mobile-breakpoint: $break-tablet-small;
+$navi-logo-width: 72px;
 
 
 
@@ -53,6 +54,7 @@ $mobile-breakpoint: $break-tablet-small;
         left: 0;
         position: absolute;
         transition: opacity $fast-duration $ease;
+        width: $navi-logo-width;
 
         @include state( "navi", "mobile" ) {
             opacity: 0;
@@ -62,6 +64,11 @@ $mobile-breakpoint: $break-tablet-small;
         @include respond( $mobile-breakpoint ) {
             display: block;
         }
+
+        .-svg {
+            fill: $white;
+            width: 100%;
+            }
     }
     .navi__li--book-now {
         .button {
@@ -90,8 +97,10 @@ $mobile-breakpoint: $break-tablet-small;
             }
     }
     .navi__a--home {
+        background-color: $black;
         font-size: 0;
         padding: 0;
+        width: $navi-logo-width;
         }
     .navi__logo {
         height: $navi-height;
