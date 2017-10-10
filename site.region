@@ -76,7 +76,7 @@
                 </div>
             </div>
             <div class="footer__copy">
-                <div class="p">&copy; Copyright 2017 {website.location.addressTitle}.</div>
+                <div class="p">&copy; Copyright {website.contentModifiedOn|date %Y} {website.location.addressTitle}.</div>
             </div>
         </footer>
         {@|apply screens.block}
