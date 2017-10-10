@@ -14,14 +14,11 @@ class HoverController {
     constructor ( element ) {
         this.element = element;
 
-        console.log( this );
-
         this.bind();
     }
 
     bind () {
         this.element.on( "mouseenter", ".js-hover-item", ( e ) => {
-            console.log( e );
             const elem = $( e.target );
             const data = elem.data();
 
@@ -35,7 +32,6 @@ class HoverController {
         });
 
         this.element.on( "mouseleave", ".js-hover-item", ( e ) => {
-            console.log( e );
             const elem = $( e.target );
 
             elem.addClass( "is-unhover" );
