@@ -61,7 +61,8 @@
     border: none;
     padding: 0px;
     overflow: hidden;
-    width: 255px;
+    max-width: 256px;
+    width: 100%;
 }
 .button--itzel::before {
     content: '';
