@@ -58,7 +58,9 @@
         width: 90px;
         }
 }
-.footer__main {
+.footer__main,
+.footer__copy,
+.footer__logos {
     padding-top: $expander-two;
 
     @include respond( $break-tablet-small ) {
@@ -72,13 +74,6 @@
             text-align: center;
             width: 100%;
         }
-    }
-}
-.footer__copy {
-    padding-top: $expander-two;
-
-    @include respond( $break-tablet-small ) {
-        padding-top: $expander-one;
     }
 }
 

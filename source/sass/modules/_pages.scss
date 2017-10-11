@@ -20,3 +20,92 @@
         }
     }
 }
+
+
+
+.article--cover {
+    background-color: $black-off;
+    position: relative;
+    z-index: 1;
+
+    &:after {
+        background: url( $data-uri-noise-1 );
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+    }
+
+    .button--naira {
+        border-color: $white;
+        color: $white;
+
+        .button__hover {
+            color: $charcoal;
+            }
+
+        &:before {
+            background-color: $white;
+            }
+    }
+}
+.article__logo {
+    .image {
+        width: 100px;
+        }
+}
+.article__wrap {
+    position: relative;
+    }
+.article__info {
+    padding-left: $padding-wrap;
+    padding-right: $padding-wrap;
+    }
+.article__image {
+    position: relative;
+    z-index: 1;
+
+    &:after {
+        background-image: url( $data-uri-noise-2 );
+        content: "";
+        opacity: 0.18;
+        position: absolute;
+        z-index: -1;
+        }
+    &.figure--tall:after {
+        bottom: $expander-one;
+        left: 0;
+        right: 0;
+        top: $expander-one;
+        }
+    &.figure--wide:after {
+        bottom: 0;
+        left: $expander-one;
+        right: $expander-one;
+        top: 0;
+        }
+
+    .image {
+        left: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateX( -50% ) translateY( -50% );
+        }
+    .image--tall {
+        height: 100%;
+        width: auto;
+        }
+    .image--wide {
+        height: auto;
+        width: 100%;
+        }
+}
+.article__body {
+    margin-top: 60px;
+    }
+.article__button {
+    margin-top: 60px;
+    }

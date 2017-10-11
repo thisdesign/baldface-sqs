@@ -20,6 +20,9 @@
         column-count: 1;
     }
 }
+.grid--sponsors {
+    background-color: $black;
+}
 .grid__item {
     margin-bottom: $grid-gutter;
     position: relative;

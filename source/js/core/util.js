@@ -132,6 +132,7 @@ const loadImages = function ( images, handler, useVariant ) {
         return parseInt( vnt, 10 );
     };
     let $img = null;
+    let $fig = null;
     let data = null;
     let dims = null;
     let vars = null;
@@ -166,12 +167,15 @@ const loadImages = function ( images, handler, useVariant ) {
         // Pre-process portrait vs landscape using originalSize
         if ( data.originalSize ) {
             dims = getOriginalDims( data.originalSize );
+            $fig = $img.closest( config.lazyFigureSelector );
 
             if ( dims.width > dims.height ) {
                 $img.addClass( "image--wide" );
+                $fig.addClass( "figure--wide" );
 
             } else {
                 $img.addClass( "image--tall" );
+                $fig.addClass( "figure--tall" );
             }
         }
 

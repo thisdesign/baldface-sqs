@@ -107,6 +107,7 @@ const config = {
      *
      */
     lazyImageSelector: ".js-lazy-image",
+    lazyFigureSelector: ".js-lazy-figure",
 
 
     /**

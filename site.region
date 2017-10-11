@@ -72,6 +72,15 @@
                     <squarespace:block-field id="footer-blocks" columns="1" />
                 </div>
             </div>
+            <div class="footer__logos">
+                <squarespace:query collection="sponsors" featured="true">
+                    {.repeated section items}
+                        <a href="{fullUrl}" class="-column -column--1of5 animate js-animate">
+                            {@|apply image-aspect.block}
+                        </a>
+                    {.end}
+                </squarespace:query>
+            </div>
             <div class="footer__copy">
                 <div class="p">&copy; Copyright {website.contentModifiedOn|date %Y} {website.location.addressTitle}.</div>
             </div>

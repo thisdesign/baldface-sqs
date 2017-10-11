@@ -1,15 +1,43 @@
-<div class='grid grid--{collection.title|slugify} {.equal? collection.urlId "staff"}js-hover{.end}'>
-    {.repeated section items}
-        <div class='grid__item -column animate js-animate {.equal? collection.urlId "staff"}js-hover-item{.end}'>
-            <div class="-poino">
-                {@|apply image-aspect.block}
-                <div class="grid__hover ghost">
-                    <div class="grid__hover__el ghost__child">
-                        <div class="grid__title h3">{title}</div>
-                        <div class="grid__caption p">{body|truncate 250}</div>
+{# Staff page #}
+{.equal? collection.id "599f4446e6f2e1efb37295e4"}
+    <div class="grid grid--{collection.title|slugify} js-hover">
+        {.repeated section items}
+            <div class="grid__item -column animate js-animate js-hover-item">
+                <div class="-poino">
+                    {@|apply image-aspect.block}
+                    <div class="grid__hover ghost">
+                        <div class="grid__hover__el ghost__child">
+                            <div class="grid__title h3">{title}</div>
+                            <div class="grid__caption p">{body|truncate 250}</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {.end}
-</div>
+        {.end}
+    </div>
+
+{# Sponsors page #}
+{.or equal? collection.id "599f468359cc68b53a3c74a1"}
+    <div class="grid grid--{collection.title|slugify}">
+        {.repeated section items}
+            {.if starred}
+                <div class="grid__item -column animate js-animate">
+                    <div class="-poino">
+                        {@|apply image-aspect.block}
+                    </div>
+                </div>
+            {.end}
+        {.end}
+    </div>
+
+{.or}
+    <div class="grid grid--{collection.title|slugify}">
+        {.repeated section items}
+            <div class="grid__item -column animate js-animate">
+                <div class="-poino">
+                    {@|apply image-aspect.block}
+                </div>
+            </div>
+        {.end}
+    </div>
+{.end}
