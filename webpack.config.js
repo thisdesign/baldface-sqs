@@ -5,7 +5,9 @@ const nodeModules = "node_modules";
 const webpack = require( "webpack" );
 const autoprefixer = require( "autoprefixer" );
 const execSync = require( "child_process" ).execSync;
-const BrowserSyncPlugin = require( "browser-sync-webpack-plugin" );
+const WebpackOnBuildPlugin = require( "on-build-webpack" );
+const request = require( "request" );
+const lager = require( "properjs-lager" );
 
 
 
@@ -14,14 +16,12 @@ module.exports = {
 
 
     plugins: [
-        new BrowserSyncPlugin({
-            open: true,
-            host: "localhost",
-            port: 9001,
-            proxy: `http://localhost:9000`,
-            files: [
-                "build"
-            ]
+        new WebpackOnBuildPlugin(() => {
+            request({
+                url: "http://localhost:9000/local-api/reload/trigger",
+                method: "GET"
+
+            }, () => lager.server( "Reloading Squarespace dev server..." ) );
         }),
         new webpack.LoaderOptionsPlugin({
             options: {
