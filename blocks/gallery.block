@@ -18,17 +18,7 @@
 
 {# Sponsors page #}
 {.or equal? collection.id "599f468359cc68b53a3c74a1"}
-    <div class="grid grid--{collection.title|slugify}">
-        {.repeated section items}
-            {.if starred}
-                <div class="grid__item -column animate js-animate">
-                    <div class="-poino">
-                        {@|apply image-aspect.block}
-                    </div>
-                </div>
-            {.end}
-        {.end}
-    </div>
+    {@|apply sponsors.block}
 
 {.or}
     <div class="grid grid--{collection.title|slugify}">

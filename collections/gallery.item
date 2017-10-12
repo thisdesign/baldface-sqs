@@ -1,8 +1,8 @@
 {# Sponsors detail page #}
 {.equal? collection.id "599f468359cc68b53a3c74a1"}
     {.section item}
-        <article class="article article--cover ghost -light -exp-2">
-            <div class="article__wrap ghost__child -full">
+        <article class="article article--cover ghost -light">
+            <div class="article__wrap ghost__child -full -exp-1">
                 <div class="article__col -column -column--2of4">
                     <div class="article__info">
                         <div class="-cutoff">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="article__col -column -column--2of4">
-                    <div class="article__image -square js-lazy-figure">
+                    <div class="article__image">
                         {.section customContent.extraImages}
                             {.repeated section @}
                                 {@|apply image.block}

@@ -36,53 +36,51 @@
             {.end}
         </main>
         <footer class="footer js-footer -wrap -exp-1 -text--center">
-            <div class="footer__logo">
-                <div>
-                    <a class="-column" href="/">
-                        {@|apply svg-logo.block}
-                    </a>
-                </div>
-                <div>
-                    <a class="h2 a" href="tel:{websiteSettings.contactPhoneNumber}">
-                        {websiteSettings.contactPhoneNumber}
-                    </a>
-                </div>
-                <div>
-                    <a class="h3 a" href="mailto:{websiteSettings.contactEmail}">
-                        get {websiteSettings.contactEmail}
-                    </a>
-                </div>
-            </div>
-            <div class="footer__main -fzero">
-                <div class="footer__col footer__links -column -column--1of5 -vtop -text--left">
-                    <squarespace:navigation navigationId="navi-footer" template="navi-footer" />
-                </div>
-                <div class="footer__col footer__form -column -column--3of5 -vtop">
-                    <div class="button button--itzel button--border-thin placeholder js-placeholder">
-                        <form class="button__hover form js-form" action="http://campaign.theoutlawpartners.com/t/r/s/najtj/" method="post">
-                            <input class="form__input js-form-field" name="cm-najtj-najtj" type="email" required placeholder="Your email dude" />
-                        </form>
-                        <div class="button__main placeholder__cta p">
-                            <span class="placeholder__a">Subscribe to Newsletter</span>
-                            <span class="placeholder__b">Totes subscribed broh!</span>
-                        </div>
+            <div class="footer__wrap">
+                <div class="footer__logo">
+                    <div>
+                        <a class="-column" href="/">
+                            {@|apply svg-logo.block}
+                        </a>
+                    </div>
+                    <div>
+                        <a class="h2 a" href="tel:{websiteSettings.contactPhoneNumber}">
+                            {websiteSettings.contactPhoneNumber}
+                        </a>
+                    </div>
+                    <div>
+                        <a class="h3 a" href="mailto:{websiteSettings.contactEmail}">
+                            get {websiteSettings.contactEmail}
+                        </a>
                     </div>
                 </div>
-                <div class="footer__col footer__social -column -column--1of5 -vtop -text--right">
-                    <squarespace:block-field id="footer-blocks" columns="1" />
+                <div class="footer__main -fzero">
+                    <div class="footer__col footer__links -column -column--1of5 -vtop -text--left">
+                        <squarespace:navigation navigationId="navi-footer" template="navi-footer" />
+                    </div>
+                    <div class="footer__col footer__form -column -column--3of5 -vtop">
+                        <div class="button button--itzel button--border-thin placeholder js-placeholder">
+                            <form class="button__hover form js-form" action="http://campaign.theoutlawpartners.com/t/r/s/najtj/" method="post">
+                                <input class="form__input js-form-field" name="cm-najtj-najtj" type="email" required placeholder="Your email dude" />
+                            </form>
+                            <div class="button__main placeholder__cta p">
+                                <span class="placeholder__a">Subscribe to Newsletter</span>
+                                <span class="placeholder__b">Totes subscribed broh!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer__col footer__social -column -column--1of5 -vtop -text--right">
+                        <squarespace:block-field id="footer-blocks" columns="1" />
+                    </div>
                 </div>
-            </div>
-            <div class="footer__logos">
-                <squarespace:query collection="sponsors" featured="true">
-                    {.repeated section items}
-                        <a href="{fullUrl}" class="-column -column--1of5 animate js-animate">
-                            {@|apply image-aspect.block}
-                        </a>
-                    {.end}
-                </squarespace:query>
-            </div>
-            <div class="footer__copy">
-                <div class="p">&copy; Copyright {website.contentModifiedOn|date %Y} {website.location.addressTitle}.</div>
+                <div class="footer__logos -fzero">
+                    <squarespace:query collection="sponsors">
+                        {@|apply sponsors.block}
+                    </squarespace:query>
+                </div>
+                <div class="footer__copy">
+                    <div class="p">&copy; Copyright {website.contentModifiedOn|date %Y} {website.location.addressTitle}.</div>
+                </div>
             </div>
         </footer>
         {@|apply screens.block}

@@ -49,6 +49,11 @@
             }
     }
 }
+.footer__wrap {
+    margin: 0 auto;
+    max-width: $break-tablet-full;
+    width: 100%;
+    }
 .footer__logo {
     > div + div {
         margin-top: $expander-mobile / 2;
