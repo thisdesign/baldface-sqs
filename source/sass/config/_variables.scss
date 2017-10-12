@@ -1,8 +1,8 @@
 /******************************************************************************
  * Fonts
 *******************************************************************************/
-$font-family-sans: "Source Sans Pro", sans-serif;
-$font-family-serif: "Source Serif Pro", serif;
+$font-family-body: "Heebo", sans-serif;
+$font-family-headline: "Druk", sans-serif;
 
 
 
@@ -47,7 +47,7 @@ $padding-wrap: 8vw;
 $wrap-copy: 700px;
 $logo-width: 128px;
 $navi-height: 60px;
-$navi-font-size: 15px;
+$navi-font-size: 14px;
 $footer-font-size: 14px;
 
 
@@ -56,22 +56,25 @@ $footer-font-size: 14px;
 /******************************************************************************
  * Typography
 *******************************************************************************/
-$p-size: 18px;
-$p-line: 1.8;
-$h1-size: 48px;
-$h1-line: 1.3;
-$h2-size: 40px;
-$h2-line: 1.3;
-$h3-size: 21px;
-$h3-line: 1.5;
+$p-size: 12px;
+$p-h1-size: 48px;
+$p-h2-size: 32px;
+$p-h3-size: 24px;
+$p-line: 2;
+$h1-size: 72px;
+$h1-line: 1;
+$h2-size: 72px;
+$h2-line: 1;
+$h3-size: 48px;
+$h3-line: 1;
 $track-1: 0.02em;
 $track-2: 0.03em;
-$btn-size-small: 14px;
-$btn-size-medium: 16px;
-$btn-size-large: 18px;
+$btn-size-small: 12px;
+$btn-size-medium: 14px;
+$btn-size-large: 16px;
 $btn-pad: 1em 3em;
 $navi-pad: 22px 30px;
-$meta-size: 15px;
+$meta-size: 12px;
 
 
 

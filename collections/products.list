@@ -30,7 +30,7 @@
                         </div>
                         <div class="product__infocard">
                             <div class="-column -vtop">
-                                <div class="product__title h3 -dark">{title}</div>
+                                <div class="product__title p p--h3 -dark">{title}</div>
                                 {.repeated section variants}
                                     {.if attributes.Style}
                                         {.equal? @index 1}
@@ -40,7 +40,7 @@
                                 {.end}
                             </div>
                             <div class="-column -vtop">
-                                <div class="product__price h3 -dark">
+                                <div class="product__price p p--h2 -dark">
                                     {@|product-price}
                                 </div>
                             </div>

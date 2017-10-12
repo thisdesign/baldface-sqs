@@ -7,7 +7,7 @@
                     {@|apply image-aspect.block}
                     <div class="grid__hover ghost">
                         <div class="grid__hover__el ghost__child">
-                            <div class="grid__title h3">{title}</div>
+                            <div class="grid__title p p--h3">{title}</div>
                             <div class="grid__caption p">{body|truncate 250}</div>
                         </div>
                     </div>

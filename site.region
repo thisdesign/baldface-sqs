@@ -17,7 +17,7 @@
         <meta name="msapplication-square150x150logo" content="/assets/touch/mediumtile.png?v={squarespace.template-revision}" />
         <meta name="msapplication-wide310x150logo" content="/assets/touch/widetile.png?v={squarespace.template-revision}" />
         <meta name="msapplication-square310x310logo" content="/assets/touch/largetile.png?v={squarespace.template-revision}" />
-        <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700|Source+Serif+Pro:400,600,700" rel="stylesheet" />
+        <link href="//fonts.googleapis.com/css?family=Heebo:400,500,700" rel="stylesheet" />
         {squarespace-headers}
     </head>
     <body class="-fzero">
@@ -44,11 +44,11 @@
                                 {@|apply svg-logo.block}
                             </a>
                         </div>
-                        <div class="h3">
+                        <div class="p">
                             get <a class="a" href="mailto:{websiteSettings.contactEmail}?subject=Website Information Request">{websiteSettings.contactEmail}</a> or call
                         </div>
                         <div>
-                            <a class="h2 a" href="tel:{websiteSettings.contactPhoneNumber}">
+                            <a class="h3 a" href="tel:{websiteSettings.contactPhoneNumber}">
                                 {websiteSettings.contactPhoneNumber}
                             </a>
                         </div>

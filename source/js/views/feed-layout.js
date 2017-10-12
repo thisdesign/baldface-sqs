@@ -9,7 +9,7 @@ export default ( items ) => {
             const target = (item.ig ? `target="_blank"` : "");
             const padBottom = item.image.height / item.image.width * 100;
             const caption = item.caption ? `<div class="grid__caption p">${item.caption.replace( rTags, "" )}</div>` : null;
-            const title = item.title ? `<div class="grid__title h3">${item.title.replace( rTags, "" )}</div>` : null;
+            const title = item.title ? `<div class="grid__title p p--h3">${item.title.replace( rTags, "" )}</div>` : null;
 
             return `
                 <a href="${url}" class="grid__item feed__item -column animate-lift js-feed-anim js-hover-item ${jsClass}" data-id="${item.id}" ${target}>

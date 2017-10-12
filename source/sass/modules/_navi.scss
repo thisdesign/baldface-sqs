@@ -74,6 +74,7 @@ $navi-logo-width: 72px;
             @include navi-btn-bg();
             height: $navi-height;
             text-align: center;
+            width: $padding-wrap;
 
             &:before {
                 background-color: $orange;

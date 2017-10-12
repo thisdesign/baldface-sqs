@@ -12,6 +12,21 @@
         @include bs();
         }
     }
+.p--h1 {
+    font-size: $p-h1-size;
+    line-height: 1;
+    @include bs();
+    }
+.p--h2 {
+    font-size: $p-h2-size;
+    line-height: 1;
+    @include bs();
+    }
+.p--h3 {
+    font-size: $p-h3-size;
+    line-height: 1;
+    @include bs();
+    }
 
 
 /******************************************************************************

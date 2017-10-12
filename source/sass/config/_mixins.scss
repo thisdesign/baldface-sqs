@@ -11,12 +11,12 @@
 /******************************************************************************
  * Fonts: Styles
 *******************************************************************************/
-@mixin font-sans() {
-    font-family: $font-family-sans;
+@mixin font-body() {
+    font-family: $font-family-body;
     @include font-normal();
 }
-@mixin font-serif() {
-    font-family: $font-family-serif;
+@mixin font-headline() {
+    font-family: $font-family-headline;
     @include font-normal();
 }
 
@@ -28,18 +28,18 @@
     font-size: $p-size;
     line-height: $p-line;
     letter-spacing: $track-1;
-    @include font-sans();
+    @include font-body();
 }
 @mixin a() {
     display: inline;
     text-decoration: none;
-    @include font-sans();
+    @include font-body();
 }
 @mixin b() {
     font-weight: 700;
 }
 @mixin bs() {
-    font-weight: 600;
+    font-weight: 500;
 }
 @mixin li() {
     padding-left: 20px;
@@ -58,21 +58,24 @@
     font-size: $h1-size;
     line-height: $h1-line;
     letter-spacing: $track-2;
-    @include font-serif();
+    text-transform: uppercase;
+    @include font-headline();
     @include b();
 }
 @mixin h2() {
     font-size: $h2-size;
     line-height: $h2-line;
     letter-spacing: $track-2;
-    @include font-sans();
+    text-transform: uppercase;
+    @include font-headline();
     @include bs();
 }
 @mixin h3() {
     font-size: $h3-size;
     letter-spacing: $track-2;
     line-height: $h3-line;
-    @include font-sans();
+    text-transform: uppercase;
+    @include font-headline();
     @include bs();
 }
 @mixin btn() {
@@ -90,7 +93,7 @@
     width: auto;
     z-index: 1;
     -webkit-appearance: none;
-    @include font-sans();
+    @include font-body();
     @include b();
 }
 
