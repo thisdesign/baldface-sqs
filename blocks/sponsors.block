@@ -1,6 +1,6 @@
 <div class="sponsors">
     {.repeated section items}
-        <a href="{fullUrl}" class="sponsors__item -column -column--1of5 animate js-animate">
+        <a href="{fullUrl}" class="sponsors__item -column -column--1of6 animate js-animate">
             {@|apply image-aspect.block}
         </a>
     {.end}

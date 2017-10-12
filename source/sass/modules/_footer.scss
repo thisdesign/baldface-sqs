@@ -1,3 +1,7 @@
+$footer-grey-bg: #a1a1a1;
+
+
+
 .footer {
     background-color: $grey-bg;
     color: $white;
@@ -27,6 +31,9 @@
     .button--itzel .button__main {
         padding: 12px 24px;
         }
+    .button--itzel {
+        max-width: 355px;
+        }
     .button--itzel .button__main {
         pointer-events: none;
         }
@@ -49,6 +56,18 @@
             }
     }
 }
+.footer__upper {
+    padding-top: $expander-one;
+    }
+.footer__lower {
+    background-color: $footer-grey-bg;
+    padding-bottom: $expander-one;
+    padding-top: $expander-two;
+
+    @include respond( $break-tablet-small ) {
+        padding-top: $expander-one;
+    }
+}
 .footer__wrap {
     margin: 0 auto;
     max-width: $break-tablet-full;
@@ -63,9 +82,8 @@
         width: 90px;
         }
 }
-.footer__main,
-.footer__copy,
-.footer__logos {
+.footer__form,
+.footer__cols {
     padding-top: $expander-two;
 
     @include respond( $break-tablet-small ) {

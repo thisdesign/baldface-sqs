@@ -26,10 +26,10 @@
 .sponsors {
     .sponsors__item {
         @include respond( $break-tablet-medium ) {
-            width: 25%;
+            width: 20%;
         }
         @include respond( $break-tablet-small ) {
-            width: 33.333333%;
+            width: 25%;
         }
     }
 }

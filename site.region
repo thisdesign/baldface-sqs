@@ -35,51 +35,55 @@
                 {squarespace.main-content}
             {.end}
         </main>
-        <footer class="footer js-footer -wrap -exp-1 -text--center">
-            <div class="footer__wrap">
-                <div class="footer__logo">
-                    <div>
-                        <a class="-column" href="/">
-                            {@|apply svg-logo.block}
-                        </a>
+        <footer class="footer js-footer -text--center">
+            <div class="footer__upper -wrap">
+                <div class="footer__wrap">
+                    <div class="footer__logo">
+                        <div>
+                            <a class="-column" href="/">
+                                {@|apply svg-logo.block}
+                            </a>
+                        </div>
+                        <div class="h3">
+                            get <a class="a" href="mailto:{websiteSettings.contactEmail}?subject=Website Information Request">{websiteSettings.contactEmail}</a> or call
+                        </div>
+                        <div>
+                            <a class="h2 a" href="tel:{websiteSettings.contactPhoneNumber}">
+                                {websiteSettings.contactPhoneNumber}
+                            </a>
+                        </div>
                     </div>
-                    <div>
-                        <a class="h2 a" href="tel:{websiteSettings.contactPhoneNumber}">
-                            {websiteSettings.contactPhoneNumber}
-                        </a>
-                    </div>
-                    <div>
-                        <a class="h3 a" href="mailto:{websiteSettings.contactEmail}">
-                            get {websiteSettings.contactEmail}
-                        </a>
-                    </div>
-                </div>
-                <div class="footer__main -fzero">
-                    <div class="footer__col footer__links -column -column--1of5 -vtop -text--left">
-                        <squarespace:navigation navigationId="navi-footer" template="navi-footer" />
-                    </div>
-                    <div class="footer__col footer__form -column -column--3of5 -vtop">
+                    <div class="footer__form -fzero">
                         <div class="button button--itzel button--border-thin placeholder js-placeholder">
                             <form class="button__hover form js-form" action="http://campaign.theoutlawpartners.com/t/r/s/najtj/" method="post">
-                                <input class="form__input js-form-field" name="cm-najtj-najtj" type="email" required placeholder="Your email dude" />
+                                <input class="form__input js-form-field" name="cm-najtj-najtj" type="email" required placeholder="Your email here. Enter to SEND IT!" />
                             </form>
                             <div class="button__main placeholder__cta p">
-                                <span class="placeholder__a">Subscribe to Newsletter</span>
-                                <span class="placeholder__b">Totes subscribed broh!</span>
+                                <span class="placeholder__a">Subscribe to the Newsletter</span>
+                                <span class="placeholder__b">SFD!</span>
                             </div>
                         </div>
                     </div>
-                    <div class="footer__col footer__social -column -column--1of5 -vtop -text--right">
-                        <squarespace:block-field id="footer-blocks" columns="1" />
+                </div>
+            </div>
+            <div class="footer__lower -wrap">
+                <div class="footer__wrap">
+                    <div class="footer__logos -fzero">
+                        <squarespace:query collection="sponsors" limit="100">
+                            {@|apply sponsors.block}
+                        </squarespace:query>
                     </div>
-                </div>
-                <div class="footer__logos -fzero">
-                    <squarespace:query collection="sponsors" limit="100">
-                        {@|apply sponsors.block}
-                    </squarespace:query>
-                </div>
-                <div class="footer__copy">
-                    <div class="p">&copy; Copyright {website.contentModifiedOn|date %Y} {website.location.addressTitle}.</div>
+                    <div class="footer__cols -fzero">
+                        <div class="footer__col footer__links -column -column--1of5 -vtop -text--left">
+                            <squarespace:navigation navigationId="navi-footer" template="navi-footer" />
+                        </div>
+                        <div class="footer__col footer__copy -column -column--3of5 -vtop">
+                            <div class="p">&copy; Copyright {website.contentModifiedOn|date %Y} {website.location.addressTitle}.</div>
+                        </div>
+                        <div class="footer__col footer__social -column -column--1of5 -vtop -text--right">
+                            <squarespace:block-field id="footer-blocks" columns="1" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>
