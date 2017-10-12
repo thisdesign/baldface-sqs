@@ -89,7 +89,8 @@ class FeedController {
                     method: "GET",
                     dataType: "json",
                     data: {
-                        format: "json"
+                        format: "json",
+                        timestamp: Date.now()
                     }
                 },
                 // Instagram feed
