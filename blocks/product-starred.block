@@ -8,7 +8,7 @@
             {.repeated section variants}
                 {.if attributes.Style}
                     {.equal? @index 1}
-                        <div class="product__style p -meta">{attributes.Style}</div>
+                        <div class="product__style p -meta js-shop-variant-display">{attributes.Style}</div>
                     {.end}
                 {.end}
             {.end}
@@ -26,6 +26,8 @@
                     <div class="button__main">{customAddButtonText}</div>
                 </button>
             </div>
+            <div class="product__variants js-shop-variants" data-json="{structuredContent|json|htmlattr}"></div>
+            <div class="product__quantity js-shop-quantity" data-json="{structuredContent|json|htmlattr}"></div>
             <div style="display:none;">
                 {@|product-checkout}
             </div>

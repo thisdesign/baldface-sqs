@@ -74,7 +74,7 @@
                     </div>
                 </div>
                 <div class="footer__logos -fzero">
-                    <squarespace:query collection="sponsors">
+                    <squarespace:query collection="sponsors" limit="100">
                         {@|apply sponsors.block}
                     </squarespace:query>
                 </div>
