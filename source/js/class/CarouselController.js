@@ -40,6 +40,7 @@ class Carousel {
         this.prep();
         this.check( this.active );
         this.index();
+        this.display( this.active );
 
         // if ( this.auto.enabled ) {
         //     this.update();
@@ -56,6 +57,11 @@ class Carousel {
             "-50%",
             0
         );
+    }
+
+
+    display ( active ) {
+        this.element.removeClass( "-dark -light" ).addClass( active.data( "display" ) );
     }
 
 
@@ -234,6 +240,7 @@ class Carousel {
 
         this.check( next );
         this.index();
+        this.display( next );
         this.transition(
             next,
             this.active
@@ -256,6 +263,7 @@ class Carousel {
 
         this.check( next );
         this.index();
+        this.display( next );
         this.transition(
             next,
             this.active
