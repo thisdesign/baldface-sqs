@@ -107,7 +107,7 @@ $navi-logo-width: 72px;
         .navi__shop-cart__qty {
             @include p();
             @include b();
-            background-color: $grey-bg;
+            background-color: $orange;
             border-radius: 16px;
             color: $white;
             display: none;
