@@ -234,6 +234,17 @@ const config = {
     /**
      *
      * @public
+     * @member footerSelector
+     * @memberof core.config
+     * @description The string selector used for <footer>.
+     *
+     */
+    footerSelector: ".js-footer",
+
+
+    /**
+     *
+     * @public
      * @member lazyImageAttr
      * @memberof core.config
      * @description The string attribute for lazy image source URLs.

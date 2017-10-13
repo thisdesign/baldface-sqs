@@ -96,7 +96,18 @@ const dom = {
      * @description The cached <overlay> nodes.
      *
      */
-    overlay: $( config.overlaySelector )
+    overlay: $( config.overlaySelector ),
+
+
+    /**
+     *
+     * @public
+     * @member footer
+     * @memberof core.dom
+     * @description The cached <footer> nodes.
+     *
+     */
+    footer: $( config.footerSelector )
 };
 
 
