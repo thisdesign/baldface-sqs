@@ -50,8 +50,6 @@
     width: 50%;
 }
 .feed__category-list {
-    font-size: $navi-font-size;
-
     &.is-active {
         .feed__category {
             opacity: 1;
@@ -104,7 +102,6 @@
         width: 22px;
         }
     .form__input {
-        font-size: $navi-font-size;
         padding: 0 32px 0 0;
         text-align: right;
         width: 100%;
@@ -118,7 +115,6 @@
 }
 .feed__search-text {
     @include bs();
-    font-size: $navi-font-size;
     left: 0;
     padding: 0 32px 0 0;
     pointer-events: none;

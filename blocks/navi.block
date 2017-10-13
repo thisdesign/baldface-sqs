@@ -20,7 +20,7 @@
                             </a>
                         {# Shop #}
                         {.or equal? id "59badbaaf09ca461181021b9"}
-                            <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end} -column" href="{fullUrl}">{title}</a>
+                            <a class="navi__a navi__a--{title|slugify} p js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end} -column" href="{fullUrl}">{title}</a>
                             <a class="navi__shop-cart -column" href="/shop-cart/">
                                 <div class="navi__shop-cart__icon -column">
                                     {@|apply svg-shop-cart.block}
@@ -28,7 +28,7 @@
                                 <div class="navi__shop-cart__qty p -column js-shop-cart-global"></div>
                             </a>
                         {.or}
-                            <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end} -column" href="{fullUrl}">{title}</a>
+                            <a class="navi__a navi__a--{title|slugify} p js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end} -column" href="{fullUrl}">{title}</a>
                         {.end}
                     </li>
                 {.end}
@@ -53,7 +53,18 @@
                     {.if homepage}
                     {.or}
                         <li class="navi__mobile__li navi__mobile__li--{title|slugify}">
-                            <a class="navi__mobile__a navi__mobile__a--{title|slugify} js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end}" href="{fullUrl}">{title}</a>
+                            {# Shop #}
+                            {.equal? id "59badbaaf09ca461181021b9"}
+                                <a class="navi__mobile__a navi__mobile__a--{title|slugify} p js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end}" href="{fullUrl}">{title}</a>
+                                <a class="navi__shop-cart -column" href="/shop-cart/">
+                                    <div class="navi__shop-cart__icon -column">
+                                        {@|apply svg-shop-cart.block}
+                                    </div>
+                                    <div class="navi__shop-cart__qty p -column js-shop-cart-global"></div>
+                                </a>
+                            {.or}
+                                <a class="navi__mobile__a navi__mobile__a--{title|slugify} p js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end}" href="{fullUrl}">{title}</a>
+                            {.end}
                         </li>
                     {.end}
                 {.end}

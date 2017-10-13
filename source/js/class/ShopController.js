@@ -184,11 +184,15 @@ ShopController.updateCart = () => {
     ShopController.getCart().then(( json ) => {
         if ( json.entries && json.entries.length ) {
             ShopController.globalCart.addClass( "is-active" );
-            ShopController.globalCart[ 0 ].innerHTML = json.totalQuantity;
+            ShopController.globalCart.forEach(( el ) => {
+                el.innerHTML = json.totalQuantity;
+            });
 
         } else {
             ShopController.globalCart.removeClass( "is-active" );
-            ShopController.globalCart[ 0 ].innerHTML = "";
+            ShopController.globalCart.forEach(( el ) => {
+                el.innerHTML = "";
+            });
         }
 
     }).catch(( error ) => {

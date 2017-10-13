@@ -6,7 +6,6 @@
     background-color: rgba( 154, 154, 154, 0.5 );
 }
 @mixin navi-txt() {
-    font-size: $navi-font-size;
     letter-spacing: $track-1;
     line-height: 1;
     padding: $navi-pad;
@@ -80,7 +79,6 @@ $mobile-breakpoint: $break-tablet-small;
             .button__main,
             .button__hover {
                 @include navi-btn();
-                font-size: $navi-font-size;
                 height: $navi-height;
                 }
         }
@@ -155,6 +153,7 @@ $mobile-breakpoint: $break-tablet-small;
     }
     .navi__mobile__a {
         @include navi-txt();
+        display: block;
     }
     .navi__mobile__a--book-now {
         bottom: 0;
