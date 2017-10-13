@@ -17,7 +17,6 @@
 
 
 $mobile-breakpoint: $break-tablet-small;
-$navi-logo-width: 72px;
 
 
 
@@ -72,6 +71,7 @@ $navi-logo-width: 72px;
             @include navi-btn-bg();
             height: $navi-height;
             text-align: center;
+            width: $book-button-width;
 
             &:before {
                 background-color: $orange;

@@ -3,7 +3,11 @@
     height: 100vh;
     overflow: hidden;
     width: 100vw;
+
+    &.hero--header-video-home {
+        background-color: transparent;
     }
+}
 .hero__img,
 .hero__vid {
     bottom: 0;
@@ -15,6 +19,12 @@
 .hero__vid {
     pointer-events: none;
 
+    .hero--header-video-home & {
+        left: $navi-logo-width;
+        overflow: hidden;
+        right: $book-button-width;
+    }
+
     .embed {
         left: 50%;
         position: absolute;
@@ -22,12 +32,15 @@
         transform: translateX( -50% ) translateY( -50% );
         }
 }
+.hero__copy {
+    padding-right: $padding-wrap;
+    }
 .hero__main {
     opacity: 0;
     transition: opacity $fast-duration $ease,
                 transform $fast-duration $ease;
     transform: translate3d( 0, $expander-mobile, 0 );
-}
+    }
 .hero__item.is-exiting {
     .hero__main {
         opacity: 0;

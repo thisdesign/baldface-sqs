@@ -7,11 +7,11 @@
                 {.or}
                     <div class="carousel__img hero__img js-carousel-image js-lazy-image -cover" data-img-src="{assetUrl}" data-variants="{systemDataVariants}"></div>
                 {.end}
-                <div class="carousel__main hero__main -wrap ghost__child">
-                    <div class="carousel__title hero__title h1 -light -cutoff">{title}</div>
-                    <div class="carousel__copy hero__copy js-carousel-copy p -light -cutoff">{body}</div>
+                <div class="carousel__main hero__main -wrap {.if customContent.darkText}-dark{.or}-light{.end} ghost__child">
+                    <div class="carousel__title hero__title h1 -cutoff">{title}</div>
+                    <div class="carousel__copy hero__copy js-carousel-copy p -cutoff">{body}</div>
                     {.equal? recordTypeLabel "video"}
-                        <div class="carousel__progress progress js-progress"><div class="progress__fill js-progress-fill"></div></div>
+                        <div class="carousel__progress progress js-progress"><div class="progress__fill js-progress-fill" style="background-color:{.if customContent.darkText}black{.or}white{.end};"></div></div>
                     {.end}
                 </div>
             </div>
