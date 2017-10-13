@@ -6,6 +6,7 @@ require( "../sass/screen.scss" );
 import navi from "./navi";
 import tranny from "./tranny";
 import router from "./router";
+import social from "./social";
 import footer from "./footer";
 import overlay from "./overlay";
 import * as core from "./core";
@@ -25,6 +26,7 @@ class App {
         this.navi = navi;
         this.tranny = tranny;
         this.router = router;
+        this.social = social;
         this.footer = footer;
         this.overlay = overlay;
 
@@ -62,6 +64,7 @@ class App {
         // Views
         this.navi.init();
         this.tranny.init();
+        this.social.init();
         this.footer.init();
         this.overlay.init();
 

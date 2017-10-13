@@ -1,5 +1,6 @@
 import $ from "properjs-hobo";
 import * as core from "../core";
+import social from "../social";
 import overlay from "../overlay";
 import feedFilterView from "../views/feed-filter";
 import feedLayoutView from "../views/feed-layout";
@@ -59,10 +60,6 @@ class FeedController {
         this.searchTxt = this.searchEl.find( ".js-feed-search-text" );
         this.searchShim = this.searchEl.find( ".js-feed-search-shim" );
         this.layoutEl = this.element.find( ".js-feed-layout" );
-        this.instagram = {
-            userId: "297115335",
-            accessToken: "297115335.3d264f9.68585bfbb56d4010afa93d099ea41978"
-        };
 
         if ( !this.data.items.length ) {
             this.load().then(() => {
@@ -82,48 +79,26 @@ class FeedController {
 *******************************************************************************/
     load () {
         return new Promise(( resolve ) => {
-            const args = [
-                // Squarespace collection
-                {
-                    url: "/feed/",
-                    method: "GET",
-                    dataType: "json",
-                    data: {
-                        format: "json",
-                        timestamp: Date.now()
-                    }
-                },
-                // Instagram feed
-                {
-                    url: `https://api.instagram.com/v1/users/${this.instagram.userId}/media/recent`,
-                    method: "GET",
-                    dataType: "jsonp",
-                    data: {
-                        access_token: this.instagram.accessToken
-                    }
+            $.ajax({
+                url: "/feed/",
+                method: "GET",
+                dataType: "json",
+                data: {
+                    format: "json",
+                    timestamp: Date.now()
                 }
-            ];
-            const request = ( params ) => {
-                $.ajax( params ).then(( json ) => {
-                    // Squarespace
-                    if ( json.collection ) {
-                        this.createSqs( json );
 
-                    // Instagram
-                    } else {
-                        this.createIg( json );
-                    }
+            }).then(( sqsJson ) => {
+                // Squarespace
+                this.createSqs( sqsJson );
 
-                    if ( !args.length ) {
-                        resolve();
+                // Instagram
+                social.getInstagram().then(( igJson ) => {
+                    this.createIg( igJson );
 
-                    } else {
-                        request( args.shift() );
-                    }
+                    resolve();
                 });
-            };
-
-            request( args.shift() );
+            });
         });
     }
 
