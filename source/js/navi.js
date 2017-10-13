@@ -1,11 +1,12 @@
 import * as core from "./core";
+import ShopController from "./class/ShopController";
 
 
 /**
  *
  * @public
  * @namespace navi
- * @description Performs the branded load-in screen sequence.
+ * @description Performs the navigation actions.
  *
  */
 const navi = {
@@ -15,6 +16,8 @@ const navi = {
         this.mobileNav = this.element.find( ".js-navi-mobile" );
         this.mobileLink = this.element.find( ".js-navi-link-mobile" );
         this.mobileized = false;
+
+        ShopController.updateCart();
 
         this.bind();
     },

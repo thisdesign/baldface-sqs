@@ -25,7 +25,8 @@
             <squarespace:navigation navigationId="navi" template="navi" />
         </header>
         <main class="main js-main" data-content-field="main-content" data-website-id="{website.id}" {.section collection}data-collection-id="{collection.id}" data-collection-title="{.if collection.homepage}{website.siteTitle}{.or}{collection.title} – {website.siteTitle}{.end}"{.end} {.section item}data-item-id="{item.id}" data-item-title="{item.title} – {collection.title} – {website.siteTitle}"{.end}>
-            {.equal? collection.urlId "shop-cart"}
+            {# Shop Cart #}
+            {.equal? collection.id "59dfa31703596e06f36a2ca7"}
                 {@|apply shop-cart.block}
             {.or equal? collection.typeName "page"}
                 {.section collection}

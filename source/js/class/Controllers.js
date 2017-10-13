@@ -71,9 +71,9 @@ class Controllers {
         this.push( "form", core.dom.body.find( core.config.formSelector ), FormController, true );
         this.push( "query", ["q"], QueryController, true );
 
-        this.aspect = core.dom.body.find( core.config.aspectSelector );
+        this.aspect = this.element.find( core.config.aspectSelector );
         this.aspectController = new AspectController( this.aspect );
-        this.images = core.dom.body.find( core.config.lazyImageSelector );
+        this.images = this.element.find( core.config.lazyImageSelector );
         this.imageController = new ImageController( this.images );
         this.imageController.on( "preloaded", () => {
             this.init();

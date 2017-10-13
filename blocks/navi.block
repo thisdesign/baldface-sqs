@@ -4,22 +4,31 @@
             {.section collection}
                 {.if homepage}
                     <li class="navi__li navi__li--home js-navi-home">
-                        <a class="navi__a navi__a--home js-navi-a js-navi--home ghost" href="{fullUrl}">
+                        <a class="navi__a navi__a--home js-navi-a js-navi--home ghost -column" href="{fullUrl}">
                             <div class="ghost__child">
-                                <svg class="-svg -svg--logo" xmlns="http://www.w3.org/2000/svg" version="1.1" x="0" y="0" viewBox="0 0 90 54" xml:space="preserve"><g transform="translate(-467.000000, -136.000000)"><g transform="translate(467.000000, 136.000000)"/></g><path d="M87.7 17.2c-1.1-1.4-6.2-4.3-6.4-4.4C77.9 10.5 55.8-3 50.8 0.9 18.8 25.4 30.7 19 36.5 18.1c3.6-0.5 6.4 2 8.2 1.7 4.1-0.6 5.3-4.1 10.5-4.2 1.4 0 24.2 3.3 17.3 5.3 -0.9 0.3-6.2 0.5-7.4 0.7 -5.7 0.7-2.3 3.7-7.3 4.9 -3.1 0.7-10.8-5.4-11.8-3.1 -1.7 3.6-4.6 10.1-3.9 11.3 1.7 2.7 7-0.9 7.5 0.4 0.7 1.9-3.2 3.3-4.2 5.4 -2.6 5.5 5.8 3.2 5.8 7.7 0 1.8 0.1 4.1 1 4.9C59 58.7 79 37.4 87 28.1 87 28.1 92.4 21.6 87.7 17.2zM2.2 40.7c0 0-1.8 1.4-1.9 3.3 -0.2 2.7-1 8.4 2.2 7.9 1.5-0.3 3.1-2.8 4.3-4.6C9 44 13.2 38.1 22.9 27.1L2.2 40.7C2.2 40.7 2.2 40.7 2.2 40.7z"/></svg>
+                                {@|apply svg-logo.block}
                             </div>
                         </a>
                     </li>
                 {.or}
                     <li class="navi__li navi__li--{title|slugify}">
-                        {# Book Now Button #}
+                        {# Book Now #}
                         {.equal? id "59975d4459cc681e873ee431"}
                             <a href="{fullUrl}" class="button button--size-large button--naira button--naira-up">
                                 <div class="button__hover">SFD!</div>
                                 <div class="button__main">{title}</div>
                             </a>
+                        {# Shop #}
+                        {.or equal? id "59badbaaf09ca461181021b9"}
+                            <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end} -column" href="{fullUrl}">{title}</a>
+                            <a class="navi__shop-cart -column" href="/shop-cart/">
+                                <div class="navi__shop-cart__icon -column">
+                                    {@|apply svg-shop-cart.block}
+                                </div>
+                                <div class="navi__shop-cart__qty p -column js-shop-cart-global"></div>
+                            </a>
                         {.or}
-                            <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end}" href="{fullUrl}">{title}</a>
+                            <a class="navi__a navi__a--{title|slugify} js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end} -column" href="{fullUrl}">{title}</a>
                         {.end}
                     </li>
                 {.end}

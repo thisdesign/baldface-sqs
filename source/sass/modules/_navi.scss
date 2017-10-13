@@ -6,7 +6,6 @@
     background-color: rgba( 154, 154, 154, 0.5 );
 }
 @mixin navi-txt() {
-    display: block;
     font-size: $navi-font-size;
     letter-spacing: $track-1;
     line-height: 1;
@@ -40,7 +39,6 @@ $navi-logo-width: 72px;
         position: relative;
         z-index: $z_layer_infront + 1;
         }
-    .navi__ul {}
     .navi__li {
         display: inline-block;
         height: $navi-height;
@@ -74,7 +72,6 @@ $navi-logo-width: 72px;
             @include navi-btn-bg();
             height: $navi-height;
             text-align: center;
-            width: $padding-wrap;
 
             &:before {
                 background-color: $orange;
@@ -95,6 +92,36 @@ $navi-logo-width: 72px;
         &.is-active {
             color: $black;
             }
+    }
+    .navi__shop-cart {
+        height: $navi-height;
+        padding: $navi-pad;
+
+        .navi__shop-cart__icon {
+            width: 21px;
+
+            .-svg {
+                transform: translateY( -2px );
+                }
+        }
+        .navi__shop-cart__qty {
+            @include p();
+            @include b();
+            background-color: $grey-bg;
+            border-radius: 16px;
+            color: $white;
+            display: none;
+            font-size: 10px;
+            height: 16px;
+            line-height: 16px;
+            margin-left: 8px;
+            text-align: center;
+            width: 16px;
+
+            &.is-active {
+                display: inline-block;
+                }
+        }
     }
     .navi__a--home {
         background-color: $black;

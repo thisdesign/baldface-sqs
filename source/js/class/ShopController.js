@@ -139,6 +139,10 @@ class ShopController {
 
 
 
+ShopController.globalCart = core.dom.body.find( ".js-shop-cart-global" );
+
+
+
 ShopController.getCart = () => {
     return $.ajax({
         url: `/api/commerce/shopping-cart/?crumb=${Store.crumb}`,
@@ -165,9 +169,29 @@ ShopController.addCart = ( payload, id ) => {
             core.log( "warn", "Crumb fail. Trying again." );
 
             ShopController.addCart( payload );
+
+        } else {
+            ShopController.updateCart();
         }
     })
     .catch(( error ) => {
+        core.log( "warn", error );
+    });
+};
+
+
+ShopController.updateCart = () => {
+    ShopController.getCart().then(( json ) => {
+        if ( json.entries ) {
+            ShopController.globalCart.addClass( "is-active" );
+            ShopController.globalCart[ 0 ].innerHTML = json.totalQuantity;
+
+        } else {
+            ShopController.globalCart.removeClass( "is-active" );
+            ShopController.globalCart[ 0 ].innerHTML = "";
+        }
+
+    }).catch(( error ) => {
         core.log( "warn", error );
     });
 };

@@ -7,7 +7,7 @@ export default ( data ) => {
 
     // Empty cart
     if ( data.message ) {
-        html = `<div class="h1 -exp">${data.message}</div>`;
+        html = `<div class="h3 -exp">${data.message}</div>`;
 
     } else {
         html = data.entries.map(( entry ) => {
@@ -31,7 +31,7 @@ export default ( data ) => {
                     </div>
                     <div class="product__infocard">
                         <div class="-column -vtop">
-                            <div class="product__title h3 -dark">${entry.title}</div>
+                            <div class="product__title p p--h3 -dark">${entry.title}</div>
                             ${entry.item.variants.map(( variant, i ) => {
                                 if ( i === 0 && variant.attributes.Style ) {
                                     return `<div class="product__style p">${variant.attributes.Style}</div>`;
@@ -42,7 +42,7 @@ export default ( data ) => {
                             }).join( "" )}
                         </div>
                         <div class="-column -vtop">
-                            <div class="product__price h3 -dark">${window.Y.Squarespace.Commerce.priceString( entry.item ).replace( /\s|cad/gi, "" )}</div>
+                            <div class="product__price p p--h2 -dark">${window.Y.Squarespace.Commerce.priceString( entry.item ).replace( /\s|cad/gi, "" )}</div>
                         </div>
                     </div>
                 </div>
