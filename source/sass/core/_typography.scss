@@ -56,7 +56,12 @@
 *******************************************************************************/
 .h1 {
     @include h1();
+
+    @include respond( $mobile-breakpoint ) {
+        font-size: $h1-size-2;
+        line-height: $h1-line-2;
     }
+}
 .h2 {
     @include h2();
     }

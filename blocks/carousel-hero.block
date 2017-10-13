@@ -7,7 +7,7 @@
                 {.or}
                     <div class="carousel__img hero__img js-carousel-image js-lazy-image -cover" data-img-src="{assetUrl}" data-variants="{systemDataVariants}"></div>
                 {.end}
-                <div class="carousel__main hero__main -wrap ghost__child">
+                <div class="carousel__main hero__main ghost__child">
                     <div class="carousel__title hero__title h1 -cutoff">{title}</div>
                     <div class="carousel__copy hero__copy js-carousel-copy p -cutoff">{body}</div>
                     {.equal? recordTypeLabel "video"}

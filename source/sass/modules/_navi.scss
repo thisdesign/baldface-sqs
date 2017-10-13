@@ -15,10 +15,6 @@
 
 
 
-$mobile-breakpoint: $break-tablet-small;
-
-
-
 .navi {}
 .navi--header {
     background-color: $white;
@@ -28,6 +24,10 @@ $mobile-breakpoint: $break-tablet-small;
     top: 0;
     width: 100%;
     z-index: $z_layer_infront;
+
+    @include respond( $mobile-breakpoint ) {
+        background-color: transparent;
+    }
 
     .navi__main {
         align-items: flex-end;
