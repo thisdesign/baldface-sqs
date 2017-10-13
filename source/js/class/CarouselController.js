@@ -61,7 +61,11 @@ class Carousel {
 
 
     display ( active ) {
-        this.element.removeClass( "-dark -light" ).addClass( active.data( "display" ) );
+        const display = active.data( "display" );
+
+        if ( display ) {
+            this.element.removeClass( "-dark -light" ).addClass( display );
+        }
     }
 
 
