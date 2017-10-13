@@ -182,7 +182,7 @@ ShopController.addCart = ( payload, id ) => {
 
 ShopController.updateCart = () => {
     ShopController.getCart().then(( json ) => {
-        if ( json.entries ) {
+        if ( json.entries && json.entries.length ) {
             ShopController.globalCart.addClass( "is-active" );
             ShopController.globalCart[ 0 ].innerHTML = json.totalQuantity;
 
