@@ -1,4 +1,4 @@
-<section class="carousel js-carousel hero hero--{title|slugify}">
+<section class="carousel js-carousel hero hero--{title|slugify}" data-type="hero">
     <div class="carousel__items js-carousel-items">
         {.repeated section items}
             <div class="carousel__item js-carousel-item hero__item ghost {.equal? @index 1}is-active{.end}" data-display="{.if customContent.darkText}-dark{.or}-light{.end}">

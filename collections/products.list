@@ -1,5 +1,5 @@
 <section class="shop js-shop">
-    <div class="carousel js-carousel hero hero--{collection.title|slugify} shop__hero">
+    <div class="carousel js-carousel hero hero--{collection.title|slugify} shop__hero" data-type="hero">
         <div class="carousel__items js-carousel-items">
             {.repeated section items}
                 {.if starred}

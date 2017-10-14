@@ -21,7 +21,7 @@
                 {@|product-price}
             </div>
             <div class="product__checkout">
-                <button class="button button--size-medium button--naira button--naira-up js-shop-addbutton js-carousel-suppress" data-item-id="{id}">
+                <button class="button button--size-medium button--naira button--naira-up js-shop-addbutton" data-item-id="{id}">
                     <div class="button__hover">{customAddButtonText}</div>
                     <div class="button__main">{customAddButtonText}</div>
                 </button>

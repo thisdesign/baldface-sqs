@@ -1,7 +1,7 @@
 import * as core from "../core";
 import ImageController from "./ImageController";
 import AnimateController from "./AnimateController";
-import QueryController from "./QueryController";
+// import QueryController from "./QueryController";
 import CarouselController from "./CarouselController";
 import FormController from "./FormController";
 import FeedController from "./FeedController";
@@ -69,7 +69,7 @@ class Controllers {
         this.push( "hover", core.dom.body.find( core.config.hoverSelector ), HoverController, true );
         this.push( "shop", core.dom.body.find( core.config.shopSelector ), ShopController, true );
         this.push( "form", core.dom.body.find( core.config.formSelector ), FormController, true );
-        this.push( "query", ["q"], QueryController, true );
+        // this.push( "query", ["q"], QueryController, true );
 
         this.aspect = this.element.find( core.config.aspectSelector );
         this.aspectController = new AspectController( this.aspect );

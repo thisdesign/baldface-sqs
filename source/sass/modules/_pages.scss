@@ -23,6 +23,80 @@
 
 
 
+.instagram {}
+.instagram__items {
+    background-color: $white;
+    padding-bottom: 100%;
+    position: relative;
+    }
+.instagram__navi {
+    padding-right: $expander-mobile / 2;
+    padding-top: $expander-mobile / 2;
+    text-align: right;
+    user-select: none;
+
+    .p {
+        @include bs();
+        font-size: $p-size-big;
+        line-height: 1;
+        }
+}
+.instagram__pipe {
+    background-color: $medium;
+    height: 20px;
+    margin: 0 12px;
+    width: 2px;
+    }
+.instagram__prev,
+.instagram__next {
+    cursor: pointer;
+    height: 18px;
+    position: relative;
+    width: 24px;
+
+    &:before,
+    &:after {
+        background-color: $medium;
+        content: "";
+        height: 10px;
+        left: 4px;
+        position: absolute;
+        width: 2px;
+        }
+    &:before {
+        bottom: 1px;
+        transform: rotate( -45deg );
+        }
+    &:after {
+        top: 1px;
+        transform: rotate( 45deg );
+        }
+}
+.instagram__next {
+    transform: scaleX( -1 );
+    }
+
+
+
+.home {
+    position: relative;
+
+    .instagram {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY( -50% );
+        width: 25%;
+        z-index: 2;
+
+        @include respond( $break-tablet-full ) {
+            display: none;
+        }
+    }
+}
+
+
+
 .sponsors {
     .sponsors__item {
         @include respond( $break-tablet-medium ) {
