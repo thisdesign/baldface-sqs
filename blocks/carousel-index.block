@@ -1,6 +1,8 @@
 <div class="carousel__index js-carousel-index">
     {.repeated section items}
-        <div class="carousel__index__item js-carousel-index-item"></div>
+        <div class="carousel__index__item js-carousel-index-item">
+            <span></span>
+        </div>
     {.end}
     <div class="carousel__index__active js-carousel-index-active"></div>
 </div>

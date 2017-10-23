@@ -31,6 +31,7 @@ class CarouselCore extends Controller {
         this.videos = this.element.find( ".js-carousel-video" );
         this.active = this.items.eq( 0 ).addClass( "is-active" );
         this.naviItems = this.element.find( ".js-carousel-navi-item" );
+        this.indexItems = this.element.find( ".js-carousel-index-item" );
         this.data = {
             index: 0,
             length: this.items.length,
@@ -55,6 +56,15 @@ class CarouselCore extends Controller {
                 }
             }
         });
+
+        this.indexItems.on( "click", ( e ) => {
+            const target = $( e.target );
+            const index = target.index();
+
+            if ( !this.isMoving ) {
+                this._go( index );
+            }
+        });
     }
 
 
@@ -77,6 +87,20 @@ class CarouselCore extends Controller {
             next.removeClass( "is-entering" ).addClass( "is-active" );
 
         }, this.data.duration );
+    }
+
+
+    _go ( i ) {
+        this._clearClass();
+
+        this.data.index = i;
+
+        const next = this.items.eq( this.data.index );
+
+        this._transition(
+            next,
+            this.active
+        );
     }
 
 

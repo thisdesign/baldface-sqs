@@ -9,7 +9,11 @@
         .progress__fill {
             background-color: $black;
             }
-        .carousel__index__item,
+        .carousel__index__item {
+            &:after {
+                background-color: $black;
+                }
+        }
         .carousel__index__active {
             background-color: $black;
             }
@@ -22,7 +26,11 @@
         .progress__fill {
             background-color: $white;
             }
-        .carousel__index__item,
+        .carousel__index__item {
+            &:after {
+                background-color: $white;
+                }
+        }
         .carousel__index__active {
             background-color: $white;
             }
@@ -78,17 +86,23 @@
     left: 0;
     position: absolute;
     text-align: center;
+    user-select: none;
     width: 100%;
     z-index: 2;
     }
 .carousel__index__item {
+    cursor: pointer;
     display: inline-block;
-    height: 2px;
+    margin: 0 15px;
+    padding: 10px 0;
     vertical-align: middle;
     width: 30px;
 
-    & + .carousel__index__item {
-        margin-left: 30px;
+    &:after {
+        content: "";
+        display: inline-block;
+        height: 2px;
+        width: 100%;
         }
 }
 .carousel__index__active {
