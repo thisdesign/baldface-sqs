@@ -1,7 +1,7 @@
 {.section collection}
     {.repeated section collections}
         {.equal? typeName "gallery-hero"}
-            <section class="home js-home">
+            <section class="home js-home js-hover">
                 {@|apply carousel-hero.block}
                 <section class="carousel js-carousel instagram" data-type="instagram" data-unit="32">
                     <div class="instagram__belt">
