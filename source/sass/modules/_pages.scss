@@ -26,9 +26,11 @@
 .instagram {}
 .instagram__items {
     background-color: $white;
+    overflow: hidden;
     padding-bottom: 100%;
     position: relative;
     }
+.instagram__item {}
 .instagram__navi {
     padding-right: $expander-mobile / 2;
     padding-top: $expander-mobile / 2;
@@ -37,12 +39,10 @@
 
     .p {
         @include bs();
-        font-size: $p-size-big;
-        line-height: 1;
         }
 }
 .instagram__pipe {
-    background-color: $medium;
+    background-color: $grey;
     height: 20px;
     margin: 0 12px;
     width: 2px;
@@ -56,7 +56,7 @@
 
     &:before,
     &:after {
-        background-color: $medium;
+        background-color: $grey;
         content: "";
         height: 10px;
         left: 4px;
@@ -86,7 +86,7 @@
         right: 0;
         top: 50%;
         transform: translateY( -50% );
-        width: 25%;
+        width: 32%;
         z-index: 2;
 
         @include respond( $break-tablet-full ) {

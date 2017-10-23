@@ -45,14 +45,6 @@
     @include respond( $mobile-breakpoint ) {
         padding-left: $padding-wrap;
     }
-
-    .button--naira {
-        font-size: $p-size-big;
-
-        @include respond( $mobile-breakpoint ) {
-            font-size: $p-size-med;
-        }
-    }
 }
 .hero__item.is-exiting {
     .hero__main {

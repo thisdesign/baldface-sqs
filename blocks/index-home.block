@@ -6,11 +6,11 @@
                 <section class="carousel js-carousel instagram" data-type="instagram">
                     <div class="instagram__items js-carousel-items"></div>
                     <div class="instagram__navi js-carousel-navi">
-                        <div class="instagram__prev p -column js-carousel-navi-item" data-navi="prev"></div>
+                        <div class="instagram__prev p -grey -column js-carousel-navi-item" data-navi="prev"></div>
                         <div class="instagram__curr p -dark -column js-carousel-curr"></div>
-                        <div class="instagram__pipe -column"></div>
-                        <div class="instagram__total p -column js-carousel-total"></div>
-                        <div class="instagram__next p -column js-carousel-navi-item" data-navi="next"></div>
+                        <div class="instagram__pipe -grey -column"></div>
+                        <div class="instagram__total p -grey -column js-carousel-total"></div>
+                        <div class="instagram__next p -grey -column js-carousel-navi-item" data-navi="next"></div>
                     </div>
                 </section>
             </section>
