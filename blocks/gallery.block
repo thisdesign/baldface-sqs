@@ -1,8 +1,8 @@
 {# Staff page #}
 {.equal? collection.id "599f4446e6f2e1efb37295e4"}
-    <div class="grid grid--{collection.title|slugify} js-hover">
+    <div class="staff js-hover">
         {.repeated section items}
-            <div class="grid__item -column animate js-animate js-hover-item">
+            <div class="staff__item -column -column--1of5 animate js-animate js-hover-item">
                 <div class="-poino">
                     {@|apply image-aspect.block}
                     <div class="grid__hover ghost">

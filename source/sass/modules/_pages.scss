@@ -118,6 +118,26 @@
 
 
 
+.staff {
+    margin: 0 -2.5px;
+
+    .staff__item {
+        margin-bottom: 5px;
+        padding-left: 2.5px;
+        padding-right: 2.5px;
+        position: relative;
+
+        @include respond( $break-tablet-full ) {
+            width: 33.333333%;
+        }
+        @include respond( $break-tablet-small ) {
+            width: 50%;
+        }
+    }
+}
+
+
+
 .article--cover {
     background-color: $black-off;
     position: relative;

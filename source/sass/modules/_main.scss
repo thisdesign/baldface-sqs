@@ -1,5 +1,6 @@
 .main {
     > .grid:first-child,
+    > .staff:first-child,
     > .article:first-child,
     > .sponsors:first-child {
         padding-top: $navi-height;
