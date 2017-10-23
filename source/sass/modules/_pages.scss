@@ -4,6 +4,10 @@
         .sqs-block-gallery + .sqs-row,
         .sqs-block-gallery + .sqs-block-html .sqs-block-content {
             @include exp-1();
+
+            @include respond( $break-tablet-small ) {
+                @include exp();
+            }
         }
         // Text + Button
         .sqs-block-gallery + .sqs-row {
