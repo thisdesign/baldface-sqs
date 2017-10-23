@@ -12,6 +12,8 @@ class CarouselHero extends CarouselCore {
         this.copy = this.element.find( ".js-carousel-copy" );
         this.indexes = this.element.find( ".js-carousel-index-item" );
         this.activeIndex = this.element.find( ".js-carousel-index-active" );
+        this.imageTimeout = null;
+        this.imageDuration = 6000;
 
         this.bind();
         this.prep();
@@ -24,6 +26,7 @@ class CarouselHero extends CarouselCore {
     bind () {
         this.on( "transition", ( next ) => {
             this.clearEmbed();
+            this.clearImage();
             this.check( next );
             this.index();
             this.display( next );
@@ -97,6 +100,9 @@ class CarouselHero extends CarouselCore {
             if ( this.activeEmbed.length && this.activeVideoData.provider === "vimeo" ) {
                 this.handleVimeo( active );
             }
+
+        } else {
+            this.handleImage( active );
         }
     }
 
@@ -109,6 +115,16 @@ class CarouselHero extends CarouselCore {
         const message = JSON.stringify( data );
 
         this.activeEmbed[ 0 ].contentWindow.postMessage( message, "*" );
+    }
+
+
+    handleImage () {
+        this.imageTimeout = setTimeout(() => {
+            this.clearEmbed();
+            this._advance();
+            core.log( "[Carousel] static image timeout" );
+
+        }, this.imageDuration );
     }
 
 
@@ -150,6 +166,14 @@ class CarouselHero extends CarouselCore {
         if ( this.activeEmbed ) {
             this.activeEmbed[ 0 ].src = "";
             this.activeProgressFill[ 0 ].style.width = "100%";
+        }
+    }
+
+
+    clearImage () {
+        if ( this.imageTimeout ) {
+            clearTimeout( this.imageTimeout );
+            this.imageTimeout = null;
         }
     }
 
