@@ -18,6 +18,7 @@ class CarouselCore extends Controller {
         super();
 
         this.element = element;
+        this.isMoving = false;
 
         this._find();
         this._bind();
@@ -36,6 +37,7 @@ class CarouselCore extends Controller {
             timeout: null,
             duration: core.util.getElementDuration( this.active[ 0 ] )
         };
+        this.elData = this.element.data();
     }
 
 
@@ -44,11 +46,13 @@ class CarouselCore extends Controller {
             const target = $( e.target );
             const data = target.data();
 
-            if ( data.navi === "next" ) {
-                this._advance();
+            if ( !this.isMoving ) {
+                if ( data.navi === "next" ) {
+                    this._advance();
 
-            } else {
-                this._rewind();
+                } else {
+                    this._rewind();
+                }
             }
         });
     }
@@ -60,6 +64,7 @@ class CarouselCore extends Controller {
 
 
     _transition ( next, curr ) {
+        this.isMoving = true;
         this.fire( "transition", next );
         this.active = next;
 
@@ -67,6 +72,7 @@ class CarouselCore extends Controller {
         next.addClass( "is-entering" );
 
         this.data.timeout = setTimeout( () => {
+            this.isMoving = false;
             curr.removeClass( "is-exiting" );
             next.removeClass( "is-entering" ).addClass( "is-active" );
 

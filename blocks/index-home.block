@@ -3,8 +3,10 @@
         {.equal? typeName "gallery-hero"}
             <section class="home js-home">
                 {@|apply carousel-hero.block}
-                <section class="carousel js-carousel instagram" data-type="instagram">
-                    <div class="instagram__items js-carousel-items"></div>
+                <section class="carousel js-carousel instagram" data-type="instagram" data-unit="32">
+                    <div class="instagram__belt">
+                        <div class="instagram__belt__line js-carousel-items"></div>
+                    </div>
                     <div class="instagram__navi js-carousel-navi">
                         <div class="instagram__prev p -grey -column js-carousel-navi-item" data-navi="prev"></div>
                         <div class="instagram__curr p -dark -column js-carousel-curr"></div>

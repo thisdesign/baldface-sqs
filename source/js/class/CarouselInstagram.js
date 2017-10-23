@@ -33,6 +33,12 @@ class CarouselInstagram extends CarouselCore {
     bind () {
         this.on( "transition", ( /*next*/ ) => {
             this.setCurr();
+            core.util.translate3d(
+                this.itemsEl[ 0 ],
+                `-${this.elData.unit * this.data.index}vw`,
+                0,
+                0
+            );
         });
     }
 
