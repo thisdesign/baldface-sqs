@@ -8,10 +8,10 @@
         </div>
         <div class="feed__search js-feed-search -column">
             <input placeholder="" type="text" class="form__input feed__search-input js-feed-search-input -column" />
-            <span class="feed__search-text p">
-                <span>Try searching</span>&nbsp;<span data-curr="" data-next="" class="feed__search-tag js-feed-search-text"></span>
-                <span class="feed__search-shim js-feed-search-shim"></span>
-            </span>
+            <div class="textticker feed__search__ticker p">
+                <span>Try searching</span>&nbsp;<span data-curr="" data-next="" class="textticker__tag js-feed-search-text"></span>
+                <span class="textticker__shim js-feed-search-shim"></span>
+            </div>
             {@|apply svg-search.block}
         </div>
     </menu>

@@ -11,6 +11,9 @@ class CarouselInstagram extends CarouselCore {
 
         this.itemsEl = this.element.find( ".js-carousel-items" );
         this.curr = this.element.find( ".js-carousel-curr" );
+        this.currText = this.curr.find( ".js-carousel-curr-text" );
+        this.currShim = this.curr.find( ".js-carousel-curr-shim" );
+        this.currTicker = this.curr.find( ".js-carousel-curr-ticker" );
         this.total = this.element.find( ".js-carousel-total" );
 
         social.getInstagram().then(( json ) => {
@@ -44,9 +47,37 @@ class CarouselInstagram extends CarouselCore {
 
 
     setCurr () {
-        const value = this.data.index + 1;
+        const newValue = this.data.index + 1;
+        const newText = (newValue < 10 ? `0${newValue}` : newValue);
+        const currData = this.currText.data();
+        const currValue = currData.curr ? parseInt( currData.curr, 10 ) : newValue;
+        const currText = (currValue < 10 ? `0${currValue}` : currValue);
 
-        this.curr[ 0 ].innerHTML = (value < 10 ? `0${value}` : value);
+        // Apply the bi-directional animation
+        if ( parseInt( newValue, 10 ) < parseInt( currValue, 10 ) ) {
+            this.currTicker.addClass( "is-reversed" );
+
+        } else {
+            this.currTicker.removeClass( "is-reversed" );
+        }
+
+        // Ensure current tag is present
+        this.currText.attr( "data-curr", currText );
+
+        // Shim process for style width calculation
+        this.currShim[ 0 ].innerHTML = newText;
+        this.currText[ 0 ].style.width = `${this.currShim[ 0 ].getBoundingClientRect().width}px`;
+
+        // Apply the `next` attribute text value and trigger animation
+        this.currText.attr( "data-next", newText );
+        this.currText.addClass( "is-switch" );
+
+        // Set timeout for animation then reset all text values
+        setTimeout(() => {
+            this.currText.attr( "data-curr", newText );
+            this.currText.removeClass( "is-switch" );
+
+        }, 200 );
     }
 
 

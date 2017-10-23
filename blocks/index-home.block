@@ -9,7 +9,12 @@
                     </div>
                     <div class="instagram__navi js-carousel-navi">
                         <div class="instagram__prev p -grey -column js-carousel-navi-item" data-navi="prev"></div>
-                        <div class="instagram__curr p -dark -column js-carousel-curr"></div>
+                        <div class="instagram__curr p -dark -column js-carousel-curr">
+                            <div class="textticker js-carousel-curr-ticker">
+                                <span class="textticker__tag js-carousel-curr-text" data-curr="" data-next=""></span>
+                                <span class="textticker__shim js-carousel-curr-shim"></span>
+                            </div>
+                        </div>
                         <div class="instagram__pipe -grey -column"></div>
                         <div class="instagram__total p -grey -column js-carousel-total"></div>
                         <div class="instagram__next p -grey -column js-carousel-navi-item" data-navi="next"></div>

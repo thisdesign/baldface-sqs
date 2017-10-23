@@ -113,7 +113,7 @@
             }
     }
 }
-.feed__search-text {
+.feed__search__ticker {
     @include bs();
     left: 0;
     padding: 0 32px 0 0;
@@ -125,56 +125,8 @@
     white-space: nowrap;
     width: 100%;
 }
-.feed__search-shim {
-    left: 0;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-    }
-.feed__search-tag {
-    display: inline-block;
-    line-height: 1;
-    padding-bottom: 5px;
-    position: relative;
-    text-align: left;
-    transition: width $fast-duration $ease;
 
-    &:before,
-    &:after {
-        line-height: 1;
-    }
 
-    &:before {
-        content: attr( data-curr );
-        opacity: 1;
-        position: relative;
-        transform: translate3d( 0, 0, 0 );
-        }
-    &:after {
-        content: attr( data-next );
-        left: 0;
-        opacity: 0;
-        position: absolute;
-        top: 50%;
-        transform: translate3d( 0, 100%, 0 );
-        }
-
-    &.is-switch {
-        &:before,
-        &:after {
-            transition: opacity $fast-duration $ease,
-                        transform $fast-duration $ease;
-            }
-        &:before {
-            opacity: 0;
-            transform: translate3d( 0, -100%, 0 );
-            }
-        &:after {
-            opacity: 1;
-            transform: translate3d( 0, -50%, 0 );
-            }
-    }
-}
 
 /******************************************************************************
  * Gridwall
