@@ -1,5 +1,6 @@
 import CarouselHero from "./CarouselHero";
 import CarouselInstagram from "./CarouselInstagram";
+import CarouselThumbs from "./CarouselThumbs";
 
 
 
@@ -31,6 +32,9 @@ class CarouselController {
 
             } else if ( data.type === "instagram" ) {
                 this.instances.push( new CarouselInstagram( elem, data ) );
+
+            } else if ( data.type === "thumbs" ) {
+                this.instances.push( new CarouselThumbs( elem, data ) );
             }
         });
     }

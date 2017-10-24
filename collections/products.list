@@ -1,30 +1,11 @@
 <section class="shop js-shop">
-    <div class="carousel js-carousel hero hero--{collection.title|slugify} shop__hero" data-type="hero">
-        <div class="carousel__items js-carousel-items">
-            {.repeated section items}
-                {.if starred}
-                    <div class="carousel__item js-carousel-item hero__item ghost">
-                        {@|apply product-starred.block}
-                    </div>
-                {.end}
-            {.end}
-        </div>
-        <div class="carousel__index js-carousel-index">
-            {.repeated section items}
-                {.if starred}
-                    <div class="carousel__index__item js-carousel-index-item">
-                        <span></span>
-                    </div>
-                {.end}
-            {.end}
-            <div class="carousel__index__active js-carousel-index-active"></div>
-        </div>
-        {@|apply carousel-navi.block}
-    </div>
     <div class="-exp -wrap">
         <div class="shop__wall">
             {.repeated section items}
                 {.if starred}
+                    <div class="shop__inline">
+                        {@|apply product-starred.block}
+                    </div>
                 {.or}
                     <a href="{fullUrl}" class="product product--basic -column -column--1of3 -vtop animate js-animate">
                         <div class="product__image">

@@ -1,0 +1,9 @@
+<div class="carousel__thumbs js-carousel-thumbs">
+    {.repeated section items}
+        <div class="carousel__thumb js-carousel-thumb">
+            <div class="-poino">
+                {@|apply image-static.block}
+            </div>
+        </div>
+    {.end}
+</div>

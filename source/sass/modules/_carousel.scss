@@ -130,3 +130,22 @@
         left: 0;
         }
 }
+.carousel__thumbs {
+    left: $navi-logo-width;
+    position: absolute;
+    top: 50%;
+    transform: translateY( -50% );
+    width: $navi-logo-width;
+    z-index: 2;
+
+    .carousel__thumb {
+        cursor: pointer;
+        position: relative;
+        transition: box-shadow $fast-duration $ease;
+
+        &.is-active {
+            box-shadow: 0px 0px 15px 5px rgba( 0, 0, 0, 0.2 );
+            z-index: 1;
+            }
+        }
+}

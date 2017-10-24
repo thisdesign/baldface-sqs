@@ -31,6 +31,12 @@ $shop-btncolor: #d8d8d8;
 .shop__checkout {
     padding-top: $expander-one;
     }
+.shop__inline {
+    left: -$padding-wrap;
+    margin: $grid-gutter 0;
+    position: relative;
+    width: 100vw;
+    }
 .product {
     padding: $grid-gutter;
     }
@@ -49,14 +55,13 @@ $shop-btncolor: #d8d8d8;
         background-color: $shop-bgcolor;
         @include flex-space();
         justify-content: flex-start;
-        height: 100vh;
         }
-    .product__image,
-    .product__info, {
+    .product__image {
         width: 50%;
         }
     .product__info {
         padding-right: $padding-wrap;
+        width: 50%;
         }
     .product__excerpt,
     .product__price,

@@ -1,7 +1,16 @@
 <div class="product product--starred animate js-animate js-shop-product">
     <div class="product__wall">
         <div class="product__image -column">
-            {@|apply image-aspect.block}
+            <div class="carousel js-carousel" data-type="thumbs">
+                <div class="carousel__items js-carousel-items aspect js-aspect" data-original="{.repeated section items}{.equal? @index 1}{originalSize}{.end}{.end}">
+                    {.repeated section items}
+                        <div class="carousel__item js-carousel-item">
+                            {@|apply image-static.block}
+                        </div>
+                    {.end}
+                </div>
+                {@|apply carousel-thumbs.block}
+            </div>
         </div>
         <div class="product__info -column -cutoff">
             <div class="product__title p p--h1 -dark">{title}</div>
