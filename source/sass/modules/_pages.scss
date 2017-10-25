@@ -18,6 +18,56 @@
                 padding-top: 70px;
                 }
         }
+        // Layout engine
+        .sqs-row {
+            > .col > .sqs-row {
+                padding-bottom: $expander-mobile;
+                padding-top: $expander-mobile;
+            }
+            > .sqs-col-6 {
+                .sqs-block-button {
+                    @include exp();
+                }
+
+                @include respond( $break-tablet-medium ) {
+                    width: 100%;
+                }
+            }
+            > .sqs-col-6:first-child .sqs-block-html,
+            > .sqs-col-6:first-child .sqs-block-button {
+                text-align: right;
+
+                @include respond( $break-tablet-medium ) {
+                    text-align: center;
+                }
+            }
+            > .sqs-col-6:last-child .sqs-block-html,
+            > .sqs-col-6:last-child .sqs-block-button {
+                text-align: left;
+
+                @include respond( $break-tablet-medium ) {
+                    text-align: center;
+                }
+            }
+            > .sqs-col-0 {
+                display: none;
+            }
+            > .sqs-col-6:first-child {
+                padding-right: $padding-wrap / 2;
+
+                @include respond( $break-tablet-medium ) {
+                    padding-right: 0;
+                }
+            }
+            > .sqs-col-6:last-child {
+                padding-left: $padding-wrap / 2;
+
+                @include respond( $break-tablet-medium ) {
+                    padding-left: 0;
+                    padding-top: $expander-mobile;
+                }
+            }
+        }
     }
 }
 
