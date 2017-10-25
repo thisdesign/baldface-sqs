@@ -157,6 +157,8 @@
 *******************************************************************************/
 .sqs-block-html,
 .sqs-block-button {
+    text-align: center;
+
     .sqs-block-content {
         text-align: left;
         @include wrap-copy();
