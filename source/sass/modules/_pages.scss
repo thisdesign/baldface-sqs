@@ -284,7 +284,7 @@
         z-index: 1;
 
         @include respond( $break-tablet-medium ) {
-            padding-bottom: 60%;
+            padding: 60px 0;
         }
     }
     .figure:after {
@@ -312,11 +312,23 @@
         position: absolute;
         top: 50%;
         transform: translateX( -50% ) translateY( -50% );
+
+        @include respond( $break-tablet-medium ) {
+            left: auto;
+            position: relative;
+            top: auto;
+            transform: none;
         }
+    }
     .image--tall {
         height: 100%;
         width: auto;
-        }
+
+        // @include respond( $break-tablet-medium ) {
+        //     height: auto;
+        //     width: 100%;
+        // }
+    }
     .image--wide {
         height: auto;
         width: 100%;
