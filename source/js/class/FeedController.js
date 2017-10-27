@@ -147,7 +147,7 @@ class FeedController {
                 },
                 timestamp: post.publishOn,
                 icon: getIcon( post.categories, post.tags ),
-                url: post.fullUrl,
+                url: post.clickthroughUrl || null,
                 id: post.id,
                 title: post.title,
                 caption: post.body
