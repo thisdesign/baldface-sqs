@@ -146,12 +146,12 @@ const config = {
     /**
      *
      * @public
-     * @member formSelector
+     * @member subscribeSelector
      * @memberof core.config
-     * @description The string selector used for <forms>.
+     * @description The string selector used for <subscribes>.
      *
      */
-    formSelector: ".js-form",
+    subscribeSelector: ".js-subscribe",
 
 
     /**

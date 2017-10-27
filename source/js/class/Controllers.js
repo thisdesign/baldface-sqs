@@ -3,7 +3,7 @@ import ImageController from "./ImageController";
 import AnimateController from "./AnimateController";
 // import QueryController from "./QueryController";
 import CarouselController from "./CarouselController";
-import FormController from "./FormController";
+import SubscribeController from "./SubscribeController";
 import FeedController from "./FeedController";
 import VideoController from "./VideoController";
 import AspectController from "./AspectController";
@@ -68,7 +68,7 @@ class Controllers {
         this.push( "feed", this.element.find( core.config.feedSelector ), FeedController, true );
         this.push( "hover", core.dom.body.find( core.config.hoverSelector ), HoverController, true );
         this.push( "shop", core.dom.body.find( core.config.shopSelector ), ShopController, true );
-        this.push( "form", core.dom.body.find( core.config.formSelector ), FormController, true );
+        this.push( "subscribe", core.dom.body.find( core.config.subscribeSelector ), SubscribeController, true );
         // this.push( "query", ["q"], QueryController, true );
 
         this.aspect = this.element.find( core.config.aspectSelector );
