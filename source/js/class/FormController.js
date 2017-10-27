@@ -14,7 +14,7 @@ import * as core from "../core";
 class FormController {
     constructor ( element ) {
         this.element = element;
-        this.fields = this.element.find( ".js-form-field" );
+        this.inputs = this.element.find( ".js-form-input" );
         this.placeholder = this.element.closest( ".js-placeholder" );
         this.validations = {
             email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -27,8 +27,8 @@ class FormController {
     isValid () {
         let ret = true;
 
-        this.fields.forEach(( field ) => {
-            if ( !this.validations[ field.type ].test( field.value ) ) {
+        this.inputs.forEach(( input ) => {
+            if ( !this.validations[ input.type ].test( input.value ) ) {
                 ret = false;
             }
         });
@@ -47,14 +47,30 @@ class FormController {
 
             return false;
         });
+
+        this.inputs.on( "focus", ( e ) => {
+            const input = $( e.target );
+            const field = input.closest( ".js-form-field" );
+
+            field.addClass( "is-focused" );
+        });
+
+        this.inputs.on( "blur", ( e ) => {
+            const input = $( e.target );
+            const field = input.closest( ".js-form-field" );
+
+            if ( input[ 0 ].value === "" ) {
+                field.removeClass( "is-focused" );
+            }
+        });
     }
 
 
     data () {
         const data = {};
 
-        this.fields.forEach(( field ) => {
-            data[ field.name ] = field.value;
+        this.inputs.forEach(( input ) => {
+            data[ input.name ] = input.value;
         });
 
         return data;
@@ -62,8 +78,8 @@ class FormController {
 
 
     clear () {
-        this.fields.forEach(( field ) => {
-            field.value = "";
+        this.inputs.forEach(( input ) => {
+            input.value = "";
         });
     }
 

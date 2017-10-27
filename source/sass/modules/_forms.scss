@@ -10,12 +10,36 @@
     @include p();
     @include bs();
     }
+.form__placeholder {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 12px 24px;
+    @include p();
+    @include bs();
+
+    .is-focused & {
+        display: none;
+        }
+}
 
 
 
 .placeholder {
     text-align: center;
+
+    &.is-placeholder {
+        .placeholder__a {
+            display: none;
+            }
+        .placeholder__b {
+            display: block;
+            }
     }
+}
 .placeholder__cta {
     @include bs();
     }
@@ -23,11 +47,3 @@
 .placeholder__b {
     display: none;
     }
-.placeholder.is-placeholder {
-    .placeholder__a {
-        display: none;
-        }
-    .placeholder__b {
-        display: block;
-        }
-}
