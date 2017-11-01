@@ -7,6 +7,8 @@ import feedLayoutView from "../views/feed-layout";
 import overlayImageView from "../views/overlay-image";
 import overlayVideoView from "../views/overlay-video";
 import AnimateController from "./AnimateController";
+import ResizeController from "properjs-resizecontroller";
+import throttle from "properjs-throttle";
 
 
 
@@ -59,6 +61,8 @@ class FeedController {
         this.searchTxt = this.searchEl.find( ".js-feed-search-text" );
         this.searchShim = this.searchEl.find( ".js-feed-search-shim" );
         this.layoutEl = this.element.find( ".js-feed-layout" );
+        this.resizer = new ResizeController();
+        this.columns = this.getColumns();
 
         if ( !this.data.items.length ) {
             this.load().then(() => {
@@ -337,6 +341,16 @@ class FeedController {
                 overlay.open( overlayImageView( this.currentItem ) );
             }
         });
+
+        this.resizer.on( "resize", throttle(() => {
+            const cols = this.getColumns();
+
+            if ( cols !== this.columns ) {
+                this.columns = cols;
+                this.renderFiltered( this.filter() );
+            }
+
+        }, 250 ));
     }
 
 
@@ -497,7 +511,11 @@ class FeedController {
     }
 
 
-    destroy () {}
+    destroy () {
+        if ( this.resizer ) {
+            this.resizer.destroy();
+        }
+    }
 }
 
 

@@ -9,11 +9,9 @@
         column-count: 1;
     }
 }
-.grid--staff {
-    column-count: 5;
-
-    @include respond( $break-laptop-medium ) {
-        column-count: 3;
+.grid--feed {
+    @include respond( $break-tablet-full ) {
+        column-count: 2;
     }
 
     @include respond( $break-mobile-full ) {
