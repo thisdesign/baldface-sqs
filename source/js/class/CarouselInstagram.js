@@ -52,6 +52,7 @@ class CarouselInstagram extends CarouselCore {
         const currData = this.currText.data();
         const currValue = currData.curr ? parseInt( currData.curr, 10 ) : newValue;
         const currText = (currValue < 10 ? `0${currValue}` : currValue);
+        let currWidth = null;
 
         // Apply the bi-directional animation
         if ( parseInt( newValue, 10 ) < parseInt( currValue, 10 ) ) {
@@ -66,7 +67,11 @@ class CarouselInstagram extends CarouselCore {
 
         // Shim process for style width calculation
         this.currShim[ 0 ].innerHTML = newText;
-        this.currText[ 0 ].style.width = `${this.currShim[ 0 ].getBoundingClientRect().width}px`;
+        currWidth = this.currShim[ 0 ].getBoundingClientRect().width;
+
+        if ( currWidth > 0 ) {
+            this.currText[ 0 ].style.width = `${currWidth}px`;
+        }
 
         // Apply the `next` attribute text value and trigger animation
         this.currText.attr( "data-next", newText );
