@@ -177,6 +177,10 @@
         padding-right: 2.5px;
         position: relative;
 
+        .grid__hover {
+            padding: 0 10%;
+            }
+
         @include respond( $break-laptop-medium ) {
             width: 33.333333%;
         }

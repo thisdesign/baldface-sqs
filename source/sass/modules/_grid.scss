@@ -25,6 +25,14 @@
     position: relative;
     width: 100%;
     }
+.grid__title {
+    font-size: 14px;
+    line-height: 2.1428571429;
+    @include bs();
+    }
+.grid__caption {
+    font-size: 12px;
+    }
 .grid__title + .grid__caption {
     margin-top: 10px;
     }
@@ -32,7 +40,7 @@
     background-color: rgba( 0, 0, 0, 0.85 );
     color: $white;
     overflow: hidden;
-    padding: 0 $expander-mobile;
+    padding: 0 25%;
     text-align: center;
     z-index: 1;
 
