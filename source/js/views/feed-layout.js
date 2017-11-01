@@ -8,7 +8,7 @@ export default ( items ) => {
         const target = (item.url ? `target="_blank"` : "");
         const padBottom = item.image.height / item.image.width * 100;
         const caption = item.caption ? `<div class="grid__caption p">${item.caption.replace( rTags, "" )}</div>` : null;
-        const title = item.title ? `<div class="grid__title p p--h3">${item.title.replace( rTags, "" )}</div>` : null;
+        const title = item.title ? `<div class="grid__title p">${item.title.replace( rTags, "" )}</div>` : null;
         const media = (item.ig && item.video ? `<video class="-full" src="${item.video.url}" loop muted preload autoplay playsinline></video>` : `<div class="feed__aspect js-feed-image -cover" data-img-src="${item.image.url}" style="padding-bottom:${padBottom}%;"></div>`);
 
         return `

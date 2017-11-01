@@ -1,9 +1,18 @@
+$search-pad: 0 32px 0 0;
+$search-pad-2: 0 0 0 32px;
+
+
+
 .feed__actions {
     align-items: flex-start;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+
+    @include respond( $break-tablet-full ) {
+        display: block;
     }
+}
 
 /******************************************************************************
  * Filters
@@ -44,10 +53,12 @@
     }
 }
 .feed__filter {
-    overflow-x: auto;
-    overflow-y: hidden;
-    white-space: nowrap;
-    width: 50%;
+    order: 1;
+
+    @include respond( $break-tablet-full ) {
+        order: 2;
+        width: 100%;
+    }
 }
 .feed__category-list {
     &.is-active {
@@ -67,9 +78,6 @@
                 opacity $fast-duration $ease,
                 transform $fast-duration $ease;
 
-    // @include respond( $break-tablet-full ) {
-    //     padding: 0 5px;
-    // }
     @include hover() {
         color: $black;
     }
@@ -90,8 +98,20 @@
  * Search
 *******************************************************************************/
 .feed__search {
+    order: 2;
     position: relative;
-    width: 50%;
+
+    &.is-active {
+        .feed__search__ticker {
+            visibility: hidden;
+            }
+    }
+
+    @include respond( $break-tablet-full ) {
+        margin-bottom: 20px;
+        order: 1;
+        width: 100%;
+    }
 
     .-svg {
         pointer-events: none;
@@ -100,30 +120,38 @@
         top: 50%;
         transform: translateY( -50% );
         width: 22px;
+
+        @include respond( $break-tablet-full ) {
+            left: 0;
+            right: auto;
         }
+    }
     .form__input {
-        padding: 0 32px 0 0;
+        padding: $search-pad;
+        position: absolute;
         text-align: right;
         width: 100%;
-        }
 
-    &.is-active {
-        .feed__search-text {
-            display: none;
-            }
+        @include respond( $break-tablet-full ) {
+            padding: $search-pad-2;
+            text-align: left;
+        }
     }
 }
+.feed__search__wrap {
+    position: relative;
+    }
 .feed__search__ticker {
     @include bs();
-    left: 0;
-    padding: 0 32px 0 0;
+    padding: $search-pad;
     pointer-events: none;
-    position: absolute;
     text-align: right;
-    top: 50%;
-    transform: translateY( -50% );
     white-space: nowrap;
     width: 100%;
+
+    @include respond( $break-tablet-full ) {
+        padding: $search-pad-2;
+    }
 }
 
 

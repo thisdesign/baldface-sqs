@@ -54,7 +54,6 @@ class FeedController {
         };
         this.filterEl = this.element.find( ".js-feed-filter" );
         this.filterList = this.filterEl.find( ".js-feed-filter-list" );
-        this.filterToggle = this.filterEl.find( ".js-feed-filter-toggle" );
         this.searchEl = this.element.find( ".js-feed-search" );
         this.searchInp = this.searchEl.find( ".js-feed-search-input" );
         this.searchTxt = this.searchEl.find( ".js-feed-search-text" );
@@ -112,7 +111,8 @@ class FeedController {
                 tags: post.tags || [],
                 categories: post.categories || [],
                 image: post.images.standard_resolution,
-                timestamp: post.created_time,
+                // IG uses UNIX timestamp so we have to convert it here
+                timestamp: parseInt( post.created_time, 10 ) * 1000,
                 icon: "instagram",
                 url: post.link,
                 id: post.id,
@@ -230,6 +230,7 @@ class FeedController {
     renderFilters () {
         this.filterList[ 0 ].innerHTML = feedFilterView( this.data.categories );
         this.filterCats = this.filterEl.find( ".js-feed-filter-cat" );
+        this.filterToggle = this.filterEl.find( ".js-feed-filter-toggle" );
     }
 
 

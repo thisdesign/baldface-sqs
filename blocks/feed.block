@@ -1,18 +1,17 @@
 <section class="feed js-feed">
     <menu class="feed__actions -wrap -exp">
-        <div class="feed__filter js-feed-filter -column">
-            <a class="feed__filter-toggle js-feed-filter-toggle -column" href="#">
-                {@|apply svg-filters.block}
-            </a>
-            <div class="feed__category-list js-feed-filter-list -column"></div>
-        </div>
         <div class="feed__search js-feed-search -column">
-            <input placeholder="" type="text" class="form__input feed__search-input js-feed-search-input -column" />
-            <div class="textticker feed__search__ticker p">
-                <span>Try searching</span>&nbsp;<span data-curr="" data-next="" class="textticker__tag js-feed-search-text"></span>
-                <span class="textticker__shim js-feed-search-shim"></span>
+            <div class="feed__search__wrap -column">
+                <input placeholder="" type="text" class="form__input feed__search-input js-feed-search-input -column" />
+                <div class="textticker feed__search__ticker p">
+                    <span>Try searching</span>&nbsp;<span data-curr="" data-next="" class="textticker__tag js-feed-search-text"></span>
+                    <span class="textticker__shim js-feed-search-shim"></span>
+                </div>
+                {@|apply svg-search.block}
             </div>
-            {@|apply svg-search.block}
+        </div>
+        <div class="feed__filter js-feed-filter -column">
+            <div class="feed__category-list js-feed-filter-list"></div>
         </div>
     </menu>
     <section class="grid grid--feed feed__layout js-feed-layout js-hover -wrap"></section>
