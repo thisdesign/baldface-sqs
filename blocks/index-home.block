@@ -23,10 +23,6 @@
             </section>
         {.end}
     {.end}
-    <section class="hero weather js-weather ghost -text--center">
-        <div class="ghost__child">
-            <div class="h1">WeatherLink</div>
-        </div>
-    </section>
+    <section class="weather js-weather cover"></section>
     {@|apply feed.block}
 {.end}

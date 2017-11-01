@@ -73,6 +73,117 @@
 
 
 
+.cover {
+    background-color: $black-off;
+    position: relative;
+    z-index: 1;
+
+    &:after {
+        background: url( $data-uri-noise-1 );
+        content: "";
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+    }
+}
+
+
+
+.weather {
+    background-color: $black;
+    color: $white;
+    padding: 20vh 0 10vh;
+
+    @include respond( $break-tablet-small ) {
+        padding: 10vh 0;
+    }
+}
+.weather__paddle {
+    padding-left: $padding-wrap;
+}
+.weather__primary {
+    display: inline-block;
+    position: relative;
+    }
+.weather__beaker {
+    background-image: url( $data-uri-noise-2 );
+    bottom: -10vh;
+    left: 100%;
+    opacity: 0.25;
+    position: absolute;
+    top: -10vh;
+    transform: translateX( -10vw );
+    width: 40vh;
+
+    &:after {
+        background-color: $white;
+        bottom: 0;
+        content: "";
+        height: 3px;
+        left: 0;
+        position: absolute;
+        right: 0;
+    }
+
+    div {
+        background: linear-gradient( to top, transparent, transparent 47px, $white 0, $white );
+        background-size: 100% 50px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: rotate( 180deg );
+        width: 20px;
+    }
+
+    @include respond( $break-tablet-small ) {
+        display: none;
+    }
+}
+.weather__temp {
+    @include respond( $break-tablet-small ) {
+        width: 100%;
+    }
+}
+.weather__depth {
+    @include respond( $break-tablet-small ) {
+        padding-left: 0;
+        padding-top: $padding-wrap;
+        width: 100%;
+    }
+}
+.weather__secondary {
+    padding-top: 30vh;
+
+    @include respond( $break-tablet-small ) {
+        padding-top: 10vh;
+    }
+}
+.weather__stat {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    white-space: nowrap;
+
+    div {
+        width: 50%;
+        }
+    span {
+        background-color: $white;
+        height: 1px;
+        margin: 0 10px;
+        width: 100%;
+        }
+    div:last-child {
+        text-align: right;
+        }
+}
+
+
+
 .instagram {}
 .instagram__belt {
     overflow: hidden;
@@ -276,21 +387,6 @@
 
 
 .article--cover {
-    background-color: $black-off;
-    position: relative;
-    z-index: 1;
-
-    &:after {
-        background: url( $data-uri-noise-1 );
-        content: "";
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: -1;
-    }
-
     .button--naira {
         border-color: $white;
         color: $white;
@@ -373,11 +469,6 @@
     .image--tall {
         height: 100%;
         width: auto;
-
-        // @include respond( $break-tablet-medium ) {
-        //     height: auto;
-        //     width: 100%;
-        // }
     }
     .image--wide {
         height: auto;

@@ -3,7 +3,7 @@ import * as core from "../core";
 import social from "../social";
 import overlay from "../overlay";
 import feedFilterView from "../views/feed-filter";
-import feedLayoutView from "../views/feed-layout";
+import feedGridView from "../views/feed-grid";
 import overlayImageView from "../views/overlay-image";
 import overlayVideoView from "../views/overlay-video";
 import AnimateController from "./AnimateController";
@@ -225,7 +225,7 @@ class FeedController {
             items = items.concat( bucket );
         });
 
-        this.layoutEl[ 0 ].innerHTML = feedLayoutView( items );
+        this.layoutEl[ 0 ].innerHTML = feedGridView( items );
         this.imageLoader = core.util.loadImages( this.element.find( ".js-feed-image" ) );
         this.animController = new AnimateController( this.element.find( ".js-feed-anim" ) );
     }
@@ -315,7 +315,7 @@ class FeedController {
 
 
     renderSearch ( items ) {
-        this.layoutEl[ 0 ].innerHTML = feedLayoutView( items );
+        this.layoutEl[ 0 ].innerHTML = feedGridView( items );
         this.imageLoader = core.util.loadImages( this.element.find( ".js-feed-image" ) );
         this.animController = new AnimateController( this.element.find( ".js-feed-anim" ) );
     }

@@ -27,6 +27,14 @@
     line-height: 1;
     @include bs();
     }
+.p--hh {
+    font-size: $p-hh-size;
+    line-height: 1;
+
+    @include respond( $break-tablet-full ) {
+        font-size: $p-size-med;
+    }
+}
 
 
 /******************************************************************************
@@ -61,6 +69,9 @@
         font-size: $h1-size-2;
         line-height: $h1-line-2;
     }
+}
+.hh1 {
+    @include hh1();
 }
 .h2 {
     @include h2();

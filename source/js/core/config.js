@@ -245,6 +245,17 @@ const config = {
     /**
      *
      * @public
+     * @member weatherSelector
+     * @memberof core.config
+     * @description The string selector used for <weather>.
+     *
+     */
+    weatherSelector: ".js-weather",
+
+
+    /**
+     *
+     * @public
      * @member lazyImageAttr
      * @memberof core.config
      * @description The string attribute for lazy image source URLs.
