@@ -8,6 +8,9 @@ const execSync = require( "child_process" ).execSync;
 const WebpackOnBuildPlugin = require( "on-build-webpack" );
 const request = require( "request" );
 const lager = require( "properjs-lager" );
+const open = require( "open" );
+const local = "http://localhost:9000";
+let isOpen = false;
 
 
 
@@ -17,11 +20,17 @@ module.exports = {
 
     plugins: [
         new WebpackOnBuildPlugin(() => {
-            request({
-                url: "http://localhost:9000/local-api/reload/trigger",
-                method: "GET"
+            if ( !isOpen ) {
+                isOpen = true;
+                open( local );
 
-            }, () => lager.server( "Reloading Squarespace dev server..." ) );
+            } else {
+                request({
+                    url: `${local}/local-api/reload/trigger`,
+                    method: "GET"
+
+                }, () => lager.server( "local-api reload trigger..." ) );
+            }
         }),
         new webpack.LoaderOptionsPlugin({
             options: {
