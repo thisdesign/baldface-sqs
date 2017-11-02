@@ -155,10 +155,27 @@
 /******************************************************************************
  * Layout copy width
 *******************************************************************************/
-.sqs-block-html,
+.sqs-block-html {
+    .sqs-block-content {
+        > p,
+        > h1,
+        > h2,
+        > h3,
+        > ol,
+        > ul,
+        > blockquote {
+            text-align: left;
+            @include wrap-copy();
+        }
+        > blockquote,
+        > .text-align-center {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+}
 .sqs-block-button {
-    text-align: center;
-
     .sqs-block-content {
         text-align: left;
         @include wrap-copy();
