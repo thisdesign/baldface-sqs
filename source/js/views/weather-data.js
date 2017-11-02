@@ -24,9 +24,6 @@ export default ( /*data*/ ) => {
                     <div>8CM in Last 24</div>
                 </div>
             </div>
-            <div class="weather__beaker">
-                <div></div>
-            </div>
         </div>
         <div class="weather__secondary -wrap">
             <div class="weather__wind-dir -column -vtop">
@@ -40,6 +37,9 @@ export default ( /*data*/ ) => {
                 </div>
                 <div class="p p--hh">Wind Speed</div>
             </div>
+        </div>
+        <div class="weather__beaker">
+            <div></div>
         </div>
     `;
 };
