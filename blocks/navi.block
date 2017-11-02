@@ -14,7 +14,7 @@
                     <li class="navi__li navi__li--{title|slugify}">
                         {# Book Now #}
                         {.equal? id "59975d4459cc681e873ee431"}
-                            <a href="{fullUrl}" class="button button--size-large button--naira button--naira-up">
+                            <a href="{fullUrl}" class="button button--size-large button--naira button--naira-up js-router--ignore">
                                 <div class="button__hover">SFD!</div>
                                 <div class="button__main">{title}</div>
                             </a>
@@ -62,6 +62,9 @@
                                     </div>
                                     <div class="navi__shop-cart__qty p -column js-shop-cart-global"></div>
                                 </a>
+                            {# Book Now #}
+                            {.or equal? id "59975d4459cc681e873ee431"}
+                                <a class="navi__mobile__a navi__mobile__a--{title|slugify} p js-navi-a js-navi--{title|slugify} js-router--ignore" href="{fullUrl}">{title}</a>
                             {.or}
                                 <a class="navi__mobile__a navi__mobile__a--{title|slugify} p js-navi-a js-navi--{title|slugify} {.if active}is-active{.end} {.if folderActive}is-active{.end}" href="{fullUrl}">{title}</a>
                             {.end}
