@@ -128,9 +128,7 @@ class CarouselHero extends CarouselCore {
     }
 
 
-    handleVimeo ( active ) {
-        this.activeProgress = active.find( ".js-progress" );
-        this.activeProgressFill = this.activeProgress.find( ".js-progress-fill" );
+    handleVimeo ( /*active*/ ) {
         this.activeEmbed[ 0 ].src = this.activeEmbed.data().src;
     }
 
@@ -142,16 +140,10 @@ class CarouselHero extends CarouselCore {
             if ( data.event === "ready" ) {
                 this.postEmbed( "addEventListener", "play" );
                 this.postEmbed( "addEventListener", "finish" );
-                this.postEmbed( "addEventListener", "playProgress" );
                 core.log( "[Carousel] iframe embed is ready" );
 
             } else if ( data.event === "play" ) {
                 core.log( "[Carousel] iframe embed playback start" );
-
-            } else if ( data.event === "playProgress" ) {
-                if ( this.activeProgressFill.length ) {
-                    this.activeProgressFill[ 0 ].style.width = `${100 - (data.data.percent * 100)}%`;
-                }
 
             } else if ( data.event === "finish" ) {
                 this.clearEmbed();
@@ -165,7 +157,6 @@ class CarouselHero extends CarouselCore {
     clearEmbed () {
         if ( this.activeEmbed ) {
             this.activeEmbed[ 0 ].src = "";
-            this.activeProgressFill[ 0 ].style.width = "100%";
         }
     }
 

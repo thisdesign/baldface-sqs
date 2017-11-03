@@ -6,9 +6,6 @@
             background-color: $black;
             color: $white;
             }
-        .progress__fill {
-            background-color: $black;
-            }
         .carousel__index__item {
             &:after {
                 background-color: $black;
@@ -22,9 +19,6 @@
         .button--naira {
             background-color: $white;
             color: $black;
-            }
-        .progress__fill {
-            background-color: $white;
             }
         .carousel__index__item {
             &:after {
@@ -78,9 +72,6 @@
         margin-top: $expander-mobile / 2;
         }
 }
-.carousel__progress {
-    margin-top: $expander-mobile / 2;
-    }
 .carousel__index {
     bottom: $expander-mobile;
     left: 0;
