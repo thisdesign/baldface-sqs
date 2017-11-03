@@ -24,17 +24,6 @@ const config = {
     /**
      *
      * @public
-     * @member defaultEasing
-     * @memberof core.config
-     * @description The default easing function for javascript Tweens.
-     *
-     */
-    defaultEasing: Easing.easeInOutCubic,
-
-
-    /**
-     *
-     * @public
      * @member defaultDuration
      * @memberof core.config
      * @description The default duration for javascript Tweens.
@@ -251,6 +240,17 @@ const config = {
      *
      */
     weatherSelector: ".js-weather",
+
+
+    /**
+     *
+     * @public
+     * @member scrolljackSelector
+     * @memberof core.config
+     * @description The string selector used for <scrolljack>.
+     *
+     */
+    scrolljackSelector: ".js-scrolljack",
 
 
     /**

@@ -83,7 +83,7 @@ class FeedController {
     load () {
         return new Promise(( resolve ) => {
             $.ajax({
-                url: "/feed/",
+                url: "/home/feed/",
                 method: "GET",
                 dataType: "json",
                 data: {

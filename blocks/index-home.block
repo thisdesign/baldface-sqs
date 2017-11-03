@@ -1,28 +1,52 @@
 {.section collection}
-    {.repeated section collections}
-        {.equal? typeName "gallery-hero"}
-            <section class="home js-home js-hover">
-                {@|apply carousel-hero.block}
-                <section class="carousel js-carousel instagram" data-type="instagram" data-unit="32">
-                    <div class="instagram__belt">
-                        <div class="instagram__belt__line js-carousel-items"></div>
-                    </div>
-                    <div class="instagram__navi js-carousel-navi">
-                        <div class="instagram__prev p -grey -column js-carousel-navi-item" data-navi="prev"></div>
-                        <div class="instagram__curr p -dark -column js-carousel-curr">
-                            <div class="textticker js-carousel-curr-ticker">
-                                <span class="textticker__tag js-carousel-curr-text" data-curr="" data-next=""></span>
-                                <span class="textticker__shim js-carousel-curr-shim"></span>
+    <div class="scrolljack js-scrolljack">
+        {.repeated section collections}
+            {# Hero Carousel #}
+            {.equal? typeName "gallery-hero"}
+                <section class="splash js-splash js-hover js-scrolljack-section">
+                    {@|apply carousel-hero.block}
+                    <section class="carousel js-carousel instagram" data-type="instagram" data-unit="32">
+                        <div class="instagram__belt">
+                            <div class="instagram__belt__line js-carousel-items"></div>
+                        </div>
+                        <div class="instagram__navi js-carousel-navi">
+                            <div class="instagram__prev p -grey -column js-carousel-navi-item" data-navi="prev"></div>
+                            <div class="instagram__curr p -dark -column js-carousel-curr">
+                                <div class="textticker js-carousel-curr-ticker">
+                                    <span class="textticker__tag js-carousel-curr-text" data-curr="" data-next=""></span>
+                                    <span class="textticker__shim js-carousel-curr-shim"></span>
+                                </div>
+                            </div>
+                            <div class="instagram__pipe -grey -column"></div>
+                            <div class="instagram__total p -grey -column js-carousel-total"></div>
+                            <div class="instagram__next p -grey -column js-carousel-navi-item" data-navi="next"></div>
+                        </div>
+                    </section>
+                </section>
+            {# Weather #}
+            {.or equal? id "59fcaa7d9140b791c0bd4385"}
+                <section class="weather js-weather hero cover js-scrolljack-section" data-bind="true"></section>
+            {# Feed #}
+            {.or equal? id "599f7cc7ccc5c58f6c3d49aa"}
+                <section class="feed js-feed js-scrolljack-section" data-unbind="true">
+                    <menu class="feed__actions -wrap -exp">
+                        <div class="feed__search js-feed-search -column">
+                            <div class="feed__search__wrap -column">
+                                <input placeholder="" type="text" class="form__input feed__search-input js-feed-search-input -column" />
+                                <div class="textticker feed__search__ticker p">
+                                    <span>Try searching</span>&nbsp;<span data-curr="" data-next="" class="textticker__tag js-feed-search-text"></span>
+                                    <span class="textticker__shim js-feed-search-shim"></span>
+                                </div>
+                                {@|apply svg-search.block}
                             </div>
                         </div>
-                        <div class="instagram__pipe -grey -column"></div>
-                        <div class="instagram__total p -grey -column js-carousel-total"></div>
-                        <div class="instagram__next p -grey -column js-carousel-navi-item" data-navi="next"></div>
-                    </div>
-                </section>
-            </section>
+                        <div class="feed__filter js-feed-filter -column">
+                            <div class="feed__category-list js-feed-filter-list"></div>
+                        </div>
+                    </menu>
+                    <section class="grid grid--feed feed__layout js-feed-layout js-hover -wrap"></section>
+                </div>
+            {.end}
         {.end}
-    {.end}
-    <section class="weather js-weather cover"></section>
-    {@|apply feed.block}
+    </div>
 {.end}

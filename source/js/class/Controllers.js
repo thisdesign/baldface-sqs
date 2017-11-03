@@ -9,6 +9,7 @@ import AspectController from "./AspectController";
 import ShopController from "./ShopController";
 import HoverController from "./HoverController";
 import WeatherController from "./WeatherController";
+import ScrollJack from "./ScrollJack";
 
 
 /**
@@ -67,7 +68,8 @@ class Controllers {
         this.push( "animate", core.dom.body.find( core.config.animSelector ), AnimateController, true );
         this.push( "feed", this.element.find( core.config.feedSelector ), FeedController, true );
         this.push( "weather", this.element.find( core.config.weatherSelector ), WeatherController, true );
-        this.push( "hover", core.dom.body.find( core.config.hoverSelector ), HoverController, true );
+        this.push( "scrolljack", this.element.find( core.config.scrolljackSelector ), ScrollJack, !core.detect.isDevice() );
+        this.push( "hover", core.dom.body.find( core.config.hoverSelector ), HoverController, !core.detect.isDevice() );
         this.push( "shop", core.dom.body.find( core.config.shopSelector ), ShopController, true );
         this.push( "subscribe", core.dom.body.find( core.config.subscribeSelector ), SubscribeController, true );
 
