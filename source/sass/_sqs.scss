@@ -185,14 +185,9 @@
 
 
 /******************************************************************************
- * Layout responsive
+ * Layout hacks
 *******************************************************************************/
-// @media only screen and ( max-width: $break-mobile-full ) {
-//     [class*=sqs-col] {
-//         display: block;
-//         width: 100% !important;
-//         }
-//     [class*=sqs-col] + [class*=sqs-col] {
-//         margin-top: $expander-mobile;
-//         }
-// }
+.sqs-gallery-controls .previous,
+.sqs-gallery-controls .next {
+    background: transparent !important;
+}
