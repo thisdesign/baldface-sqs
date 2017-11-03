@@ -1,14 +1,41 @@
+{.if item}
+    {.var @hero item}
+    {.var @body item.body}
+{.or}
+    {.var @hero collection.mainImage}
+    {.if mainContent}
+        {.var @body mainContent}
+    {.or}
+        {.var @body squarespace.main-content}
+    {.end}
+{.end}
 <div class="page page--{title|slugify}">
-    {.section collection.mainImage}
+    {.section @hero}
         <div class="page__header hero">
             <div class="hero__img js-lazy-image -cover" data-img-src="{assetUrl}" data-variants="{systemDataVariants}"></div>
         </div>
     {.end}
-    <div class="page__content -wrap -exp-1">
-        {.if mainContent}
-            {mainContent}
-        {.or}
-            {squarespace.main-content}
-        {.end}
-    </div>
+    {.section @body}
+        <div class="page__content -wrap -exp-1">{@}</div>
+    {.end}
+    {.section pagination}
+        <div class="page__navi -wrap -exp">
+            <div class="page__navi__item -column -column--2of4">
+                {.section prevItem}
+                    <a href="{fullUrl}" class="button button--size-medium button--naira button--naira-up button--border-medium">
+                        <div class="button__hover">Previous</div>
+                        <div class="button__main">Previous</div>
+                    </a>
+                {.end}
+            </div>
+            <div class="page__navi__item -column -column--2of4 -text--right">
+                {.section nextItem}
+                    <a href="{fullUrl}" class="button button--size-medium button--naira button--naira-up button--border-medium">
+                        <div class="button__hover">Next</div>
+                        <div class="button__main">Next</div>
+                    </a>
+                {.end}
+            </div>
+        </div>
+    {.end}
 </div>
