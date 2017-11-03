@@ -29,9 +29,7 @@
             {.equal? collection.id "59dfa31703596e06f36a2ca7"}
                 {@|apply shop-cart.block}
             {.or equal? collection.typeName "page"}
-                {.section collection}
-                    {@|apply page.block}
-                {.end}
+                {@|apply page.block}
             {.or}
                 {squarespace.main-content}
             {.end}

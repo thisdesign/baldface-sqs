@@ -1,7 +1,14 @@
-<div class="page page--{title|slugify} -wrap -exp-1">
-    {.if mainContent}
-        {mainContent}
-    {.or}
-        {squarespace.main-content}
+<div class="page page--{title|slugify}">
+    {.section collection.mainImage}
+        <div class="page__header hero">
+            <div class="hero__img js-lazy-image -cover" data-img-src="{assetUrl}" data-variants="{systemDataVariants}"></div>
+        </div>
     {.end}
+    <div class="page__content -wrap -exp-1">
+        {.if mainContent}
+            {mainContent}
+        {.or}
+            {squarespace.main-content}
+        {.end}
+    </div>
 </div>
