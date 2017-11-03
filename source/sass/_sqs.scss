@@ -154,26 +154,8 @@
     ul li {
         @include ul-li();
         }
-
-    .sqs-block-content {
-        > p,
-        > h1,
-        > h2,
-        > h3,
-        > ol,
-        > ul,
-        > blockquote {
-            text-align: left;
-            @include wrap-copy();
-        }
-        > blockquote,
-        > .text-align-center {
-            display: block;
-            margin: 0 auto;
-            text-align: center;
-        }
-    }
 }
+.sqs-block-html,
 .sqs-block-button,
 .sqs-block-calendar {
     .sqs-block-content {

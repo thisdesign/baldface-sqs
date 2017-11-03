@@ -1,4 +1,12 @@
 .section {
+    &:first-child {
+        > .sqs-layout {
+            .sqs-block-html {
+                text-align: center;
+            }
+        }
+    }
+
     // Squarespace layout overrides
     > .sqs-layout {
         .sqs-block-gallery + .sqs-row,
@@ -35,19 +43,11 @@
             }
             > .sqs-col-6:first-child .sqs-block-html,
             > .sqs-col-6:first-child .sqs-block-button {
-                text-align: right;
-
-                @include respond( $break-tablet-medium ) {
-                    text-align: center;
-                }
+                text-align: left;
             }
             > .sqs-col-6:last-child .sqs-block-html,
             > .sqs-col-6:last-child .sqs-block-button {
                 text-align: left;
-
-                @include respond( $break-tablet-medium ) {
-                    text-align: center;
-                }
             }
             > .sqs-col-0 {
                 display: none;
