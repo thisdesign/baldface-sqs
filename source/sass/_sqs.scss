@@ -72,22 +72,6 @@
         }
 
 
-    ol,
-    ul {
-        @include li();
-
-        strong {
-            @include b();
-            }
-    }
-    ol li {
-        @include ol-li();
-        }
-    ul li {
-        @include ul-li();
-        }
-
-
     p {
         @include p();
 
@@ -156,6 +140,21 @@
  * Layout copy width
 *******************************************************************************/
 .sqs-block-html {
+    ol,
+    ul {
+        @include li();
+
+        strong {
+            @include b();
+            }
+    }
+    ol li {
+        @include ol-li();
+        }
+    ul li {
+        @include ul-li();
+        }
+
     .sqs-block-content {
         > p,
         > h1,
@@ -185,7 +184,20 @@
 .sqs-block-calendar {
     .sqs-block-content {
         @include exp();
+
+        h1,
+        h2,
+        h3,
+        p {
+            @include p();
+            font-size: 13px !important;
+        }
     }
+}
+.yui3-squarespacecalendar .small-layout .yui3-calendar-header h1 {
+    font-size: 13px !important;
+    line-height: 1 !important;
+    @include b();
 }
 
 
