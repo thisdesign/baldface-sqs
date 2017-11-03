@@ -96,6 +96,7 @@ const router = {
     initPage ( data ) {
         this.changeClass( data );
         this.controllers.exec();
+        this.bookNowLinks();
     },
 
 
@@ -210,6 +211,7 @@ const router = {
     changePageIn ( /* data */ ) {
         this.controllers.exec();
         this.execSquarespace();
+        this.bookNowLinks();
 
         setTimeout( () => tranny.out(), this.pageDuration );
     },
@@ -267,6 +269,11 @@ const router = {
             window.Squarespace.initializeSummaryV2Block( window.Y );
 
         }, 0 );
+    },
+
+
+    bookNowLinks () {
+        core.dom.body.find( "a[href*='book-now']" ).addClass( "js-router--ignore" );
     }
 };
 
