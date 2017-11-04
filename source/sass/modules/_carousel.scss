@@ -127,7 +127,7 @@
     top: 50%;
     transform: translateY( -50% );
     width: $navi-logo-width;
-    z-index: 2;
+    z-index: 3;
 
     @include respond( $break-laptop-medium ) {
         left: 0;
