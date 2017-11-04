@@ -1,4 +1,4 @@
-<div class="shop js-shop">
+<div class="shop shop--one js-shop">
     <div class="shop__wall">
         {.section item}
             {@|apply product-starred.block}
@@ -6,10 +6,10 @@
         {.section pagination}
             <div class="carousel__navi js-carousel-navi">
                 {.section nextItem}
-                    <a href="{fullUrl}" class="carousel__navi__item" data-navi="next"></a>
+                    <a href="{fullUrl}" class="carousel__navi__item" title="{nextItem.title}" data-navi="next"></a>
                 {.end}
                 {.section prevItem}
-                    <a href="{fullUrl}" class="carousel__navi__item" data-navi="prev"></a>
+                    <a href="{fullUrl}" class="carousel__navi__item" title="{prevItem.title}" data-navi="prev"></a>
                 {.end}
             </div>
         {.end}

@@ -1,5 +1,5 @@
 export default ( data ) => {
-    return `
+    return data.variantOptionOrdering.length ? `
         <div class="p -meta -dark">${data.variantOptionOrdering[ 0 ]}</div>
         <div class="product__selector">
             ${data.variants.map(( variant, i ) => {
@@ -9,5 +9,5 @@ export default ( data ) => {
 
             }).join( "" )}
         </div>
-    `;
+    ` : ``;
 };

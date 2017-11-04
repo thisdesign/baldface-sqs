@@ -15,7 +15,7 @@ export default ( data ) => {
             const aspect = dims.height / dims.width * 100;
 
             return `
-                <div class="product -column -column--1of3 -vtop animate js-shop-product js-shop-cart-anim">
+                <div class="product product--basic -column -column--1of3 -vtop animate js-shop-product js-shop-cart-anim">
                     <div class="product__image">
                         <div class="aspect" style="padding-bottom:${aspect}%;">
                             <div class="aspect__media js-shop-cart-image -cover" data-img-src="${entry.item.assetUrl}" data-variants="${entry.item.systemDataVariants}"></div>

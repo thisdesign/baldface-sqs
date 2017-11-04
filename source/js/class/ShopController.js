@@ -108,6 +108,10 @@ class ShopController {
 
             product.remove();
         });
+
+        this.element.on( "click", ".js-shop-go-to-checkout", () => {
+            window.Y.Squarespace.Commerce.goToCheckoutPage();
+        });
     }
 
 

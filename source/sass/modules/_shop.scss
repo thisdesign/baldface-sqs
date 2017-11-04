@@ -15,34 +15,66 @@ $shop-btncolor: #d8d8d8;
             }
     }
 }
+.shop--all {
+    @include respond( $break-ipad-pro-width ) {
+        padding-top: $navi-height;
+    }
+}
+.shop--one {
+    padding-top: $navi-height;
+}
 .shop--cart {
     padding-top: $navi-height;
     }
 .shop__wall {
-    margin: -$grid-gutter;
+    .shop--all &,
+    .shop--cart & {
+        margin: -$grid-gutter;
     }
+}
 .shop__hero {
     background-color: $shop-bgcolor;
     }
 .shop__header {
-    padding-bottom: $expander-two;
+    padding-bottom: $expander-one;
     padding-top: $expander-two;
     }
 .shop__checkout {
-    padding-top: $expander-one;
+    padding-bottom: 80px;
+    text-align: right;
+
+    .button {
+        background-color: rgba( 154, 154, 154, 0.5 );
+        width: $book-button-width;
     }
+}
 .shop__inline {
-    left: -$padding-wrap;
+    left: #{"~\"calc( -#{$padding-wrap} + 5px )\""};
     margin: $grid-gutter 0;
     position: relative;
     width: 100vw;
+
+    @include respond( $break-ipad-pro-width ) {
+        display: none;
     }
+}
 .product {
     padding: $grid-gutter;
     }
 .product--basic {
     @include respond( $break-ipad-pro-width ) {
         width: 50%;
+    }
+
+    @include respond( $break-mobile-full ) {
+        width: 100%;
+    }
+}
+.product--basic--alt {
+    display: none;
+
+    @include respond( $break-ipad-pro-width ) {
+        display: inline-block;
     }
 }
 .product--starred {
@@ -57,13 +89,32 @@ $shop-btncolor: #d8d8d8;
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
+
+        @include respond( $break-tablet-small ) {
+            background-color: transparent;
         }
+    }
     .product__image {
         width: 50%;
+
+        @include respond( $break-tablet-small ) {
+            @include wrap();
+            padding-bottom: $expander-one;
+            width: 100%;
         }
+    }
     .product__info {
         padding-right: $padding-wrap;
         width: 50%;
+
+        @include respond( $break-tablet-small ) {
+            padding-bottom: $expander-one;
+            padding-left: $padding-wrap;
+            width: 100%;
+        }
+    }
+    .product__checkout {
+        margin-left: $expander-mobile;
         }
     .product__excerpt,
     .product__price,

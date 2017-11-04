@@ -1,36 +1,56 @@
-<section class="shop js-shop">
-    <div class="-exp -wrap">
-        <div class="shop__wall">
-            {.repeated section items}
-                {.if starred}
-                    <div class="shop__inline">
-                        {@|apply product-starred.block}
+<section class="shop shop--all js-shop -wrap">
+    <div class="shop__wall">
+        {.repeated section items}
+            {.if starred}
+                <div class="shop__inline">
+                    {@|apply product-starred.block}
+                </div>
+                <a href="{fullUrl}" class="product product--basic product--basic--alt -column -column--1of3 -vtop animate js-animate">
+                    <div class="product__image">
+                        {@|apply image-aspect.block}
                     </div>
-                {.or}
-                    <a href="{fullUrl}" class="product product--basic -column -column--1of3 -vtop animate js-animate">
-                        <div class="product__image">
-                            {@|apply image-aspect.block}
-                        </div>
-                        <div class="product__infocard">
-                            <div class="-column -vtop">
-                                <div class="product__title p p--h3 -dark">{title}</div>
-                                {.repeated section variants}
-                                    {.if attributes.Style}
-                                        {.equal? @index 1}
-                                            <div class="product__style p">{attributes.Style}</div>
-                                        {.end}
+                    <div class="product__infocard">
+                        <div class="-column -vtop">
+                            <div class="product__title p p--h3 -dark">{title}</div>
+                            {.repeated section variants}
+                                {.if attributes.Style}
+                                    {.equal? @index 1}
+                                        <div class="product__style p">{attributes.Style}</div>
                                     {.end}
                                 {.end}
-                            </div>
-                            <div class="-column -vtop">
-                                <div class="product__price p p--h2 -dark">
-                                    {@|product-price}
-                                </div>
+                            {.end}
+                        </div>
+                        <div class="-column -vtop">
+                            <div class="product__price p p--h2 -dark">
+                                {@|product-price}
                             </div>
                         </div>
-                    </a>
-                {.end}
+                    </div>
+                </a>
+            {.or}
+                <a href="{fullUrl}" class="product product--basic -column -column--1of3 -vtop animate js-animate">
+                    <div class="product__image">
+                        {@|apply image-aspect.block}
+                    </div>
+                    <div class="product__infocard">
+                        <div class="-column -vtop">
+                            <div class="product__title p p--h3 -dark">{title}</div>
+                            {.repeated section variants}
+                                {.if attributes.Style}
+                                    {.equal? @index 1}
+                                        <div class="product__style p">{attributes.Style}</div>
+                                    {.end}
+                                {.end}
+                            {.end}
+                        </div>
+                        <div class="-column -vtop">
+                            <div class="product__price p p--h2 -dark">
+                                {@|product-price}
+                            </div>
+                        </div>
+                    </div>
+                </a>
             {.end}
-        </div>
+        {.end}
     </div>
 </section>

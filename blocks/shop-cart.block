@@ -1,12 +1,18 @@
-<section class="shop shop--cart js-shop -wrap">
-    <div class="shop__header">
+<section class="shop shop--cart js-shop">
+    <div class="shop__header -wrap">
         <div class="h1">{collection.title}</div>
-        <div class="shop__checkout">
-            <a class="button button--size-medium button--naira button--naira-up" href="https://secure.squarespace.com/checkout?cartId=PZb-VYtUrySMu0Zhk9qFBaZ1caT7RMvZVg704RuC">
-                <div class="button__hover">Checkout</div>
-                <div class="button__main">Checkout</div>
-            </a>
-        </div>
     </div>
-    <div class="shop__wall shop__cart js-shop-cart"></div>
+    <div class="shop__checkout -wrap">
+        <a class="button button--size-medium button--naira button--naira-up js-shop-go-to-checkout" href="#">
+            <div class="button__hover">Checkout</div>
+            <div class="button__main">Checkout</div>
+        </a>
+    </div>
+    <div class="shop__wall shop__cart js-shop-cart -wrap"></div>
+    <div class="shop__checkout -wrap">
+        <a class="button button--size-medium button--naira button--naira-up js-shop-go-to-checkout" href="#">
+            <div class="button__hover">Checkout</div>
+            <div class="button__main">Checkout</div>
+        </a>
+    </div>
 </section>

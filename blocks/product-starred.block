@@ -26,10 +26,10 @@
                     {excerpt}
                 </div>
             {.end}
-            <div class="product__price p p--h2 -dark">
+            <div class="product__price p p--h2 -dark -column">
                 {@|product-price}
             </div>
-            <div class="product__checkout">
+            <div class="product__checkout -column">
                 <button class="button button--size-medium button--naira button--naira-up js-shop-addbutton" data-item-id="{id}">
                     <div class="button__hover">{customAddButtonText}</div>
                     <div class="button__main">{customAddButtonText}</div>

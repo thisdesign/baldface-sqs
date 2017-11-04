@@ -129,6 +129,19 @@
     width: $navi-logo-width;
     z-index: 2;
 
+    @include respond( $break-laptop-medium ) {
+        left: 0;
+    }
+
+    @include respond( $break-tablet-small ) {
+        padding-top: $expander-mobile;
+        position: relative;
+        text-align: left;
+        top: auto;
+        transform: none;
+        width: 100%;
+    }
+
     .carousel__thumb {
         cursor: pointer;
         position: relative;
@@ -138,5 +151,10 @@
             box-shadow: 0px 0px 15px 5px rgba( 0, 0, 0, 0.2 );
             z-index: 1;
             }
+
+        @include respond( $break-tablet-small ) {
+            display: inline-block;
+            width: $navi-logo-width;
         }
+    }
 }
