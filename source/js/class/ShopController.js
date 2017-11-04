@@ -187,10 +187,14 @@ ShopController.addCart = ( payload, id ) => {
 ShopController.updateCart = () => {
     ShopController.getCart().then(( json ) => {
         if ( json.entries && json.entries.length ) {
-            ShopController.globalCart.addClass( "is-active" );
+            ShopController.globalCart.addClass( "is-active is-added" );
             ShopController.globalCart.forEach(( el ) => {
                 el.innerHTML = json.totalQuantity;
             });
+            setTimeout(() => {
+                ShopController.globalCart.removeClass( "is-added" );
+
+            }, core.util.getElementDuration( ShopController.globalCart[ 0 ], "animation" ) );
 
         } else {
             ShopController.globalCart.removeClass( "is-active" );
