@@ -14,10 +14,11 @@ import ScrollController from "properjs-scrollcontroller";
  */
 class ScrollJack {
     constructor ( element ) {
-        this.element = element;
+        this.element = element.addClass( "is-scroll-jacked" );
         this.sections = this.element.find( ".js-scrolljack-section" );
-        this.active = this.sections.eq( 0 );
+        this.active = this.sections.eq( 0 ).addClass( "is-active-section" );
         this.isMoving = false;
+        this.duration = 600;
 
         this.bindWheel();
     }
@@ -83,6 +84,8 @@ class ScrollJack {
 
         if ( section && section.length ) {
             this.active = section;
+            this.sections.removeClass( "is-active-section" );
+            this.active.addClass( "is-active-section" );
 
             offset = section[ 0 ].offsetTop/* - core.dom.navi[ 0 ].getBoundingClientRect().height*/;
 
@@ -90,7 +93,7 @@ class ScrollJack {
                 y: offset,
                 ease: Easing.easeInOutQuad,
                 delay: 0,
-                duration: 600,
+                duration: this.duration,
                 complete: () => {
                     setTimeout(() => {
                         this.isMoving = false;

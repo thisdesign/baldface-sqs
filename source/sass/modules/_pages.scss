@@ -95,8 +95,10 @@
 .weather {
     background-color: $black;
     color: $white;
+    overflow: visible;
     padding: 20vh 0 0;
     position: relative;
+    z-index: 2;
 
     @include respond( $break-tablet-small ) {
         padding: 10vh 0 0;
@@ -107,7 +109,16 @@
 }
 .weather__primary {
     display: inline-block;
+
+    @include state( "scroll", "jacked" ) {
+        transform: translate3d( 0, -120%, 0 );
+        transition: transform $long-duration ease-in-out;
     }
+
+    @include state( "active", "section" ) {
+        transform: translate3d( 0, 0, 0 );
+    }
+}
 .weather__beaker {
     background-image: url( $data-uri-noise-2 );
     bottom: 20vh;
