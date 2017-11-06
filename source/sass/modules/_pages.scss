@@ -111,7 +111,7 @@
     display: inline-block;
 
     @include state( "scroll", "jacked" ) {
-        transform: translate3d( 0, -120%, 0 );
+        transform: translate3d( 0, -30vh, 0 );
         transition: transform $long-duration ease-in-out;
     }
 
