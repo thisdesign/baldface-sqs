@@ -36,9 +36,22 @@ $shop-btncolor: #d8d8d8;
     background-color: $shop-bgcolor;
     }
 .shop__header {
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
     padding-bottom: $expander-one;
     padding-top: $expander-two;
     }
+.shop__header__masthead {}
+.shop__header__checkout {
+    background-color: rgba( 154, 154, 154, 0.5 );
+    width: $book-button-width;
+
+    @include respond( $break-mobile-full ) {
+        display: none;
+    }
+}
 .shop__checkout {
     padding-bottom: 80px;
     text-align: right;

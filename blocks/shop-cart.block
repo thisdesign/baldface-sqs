@@ -1,9 +1,7 @@
 <section class="shop shop--cart js-shop">
     <div class="shop__header -wrap">
-        <div class="h1">{collection.title}</div>
-    </div>
-    <div class="shop__checkout -wrap">
-        <a class="button button--size-medium button--naira button--naira-up js-shop-go-to-checkout" href="#">
+        <div class="shop__header__masthead h1 -column">{collection.title}</div>
+        <a class="shop__header__checkout button button--size-medium button--naira button--naira-up -column js-shop-go-to-checkout" href="#">
             <div class="button__hover">Checkout</div>
             <div class="button__main">Checkout</div>
         </a>
