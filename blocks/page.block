@@ -9,7 +9,7 @@
         {.var @body squarespace.main-content}
     {.end}
 {.end}
-<div class="page page--{title|slugify}">
+<div class="page page--{collection.title|slugify}">
     {.section @hero}
         <div class="page__header hero">
             <div class="hero__img js-lazy-image -cover" data-img-src="{assetUrl}" data-variants="{systemDataVariants}"></div>

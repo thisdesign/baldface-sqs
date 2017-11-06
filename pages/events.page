@@ -1,180 +1,193 @@
-<div class="page__container page--events">
-<div class="illustration__container">
-<div class="eq sticky">
-<div class="eq-bar eq-bar-1"></div>
-<div class="eq-bar eq-bar-2"></div>
-<div class="eq-bar eq-bar-3"></div>
-<div class="eq-bar eq-bar-4"></div>
-</div>
-<audio loop id="audio__nature" src="/static-assets/audio/00_Baldface_Nature.mp3"></audio>
-<div class="parallax illustration__clouds--left" data-speed="5"></div>
-<div class="parallax illustration__clouds--right" data-speed="3"></div>
-<div class="illustration__heli">
-<audio loop id="audio__heli" src="/static-assets/audio/01_Baldface_Helicopter.mp3"></audio>
-</div>
-<div class="illustration__birds">
-<audio loop id="audio__birds" src="/static-assets/audio/02_Baldface_Birds.mp3"></audio>
-</div>
-<div class="illustration__text--intro" data-show="on-scroll">
-<h1 class="main-title">Winter
-Wonderland</h1>
-An all-inclusive resort experience amidst 32,000 acres of epic Canadian Wilderness. Now available to exclusive groups year-round.
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" />
+<!-- <link href="/assets/static/normalize.css" rel="stylesheet" /> -->
+<!-- <link href="/assets/static/style.css" rel="stylesheet" /> -->
+<!-- <link href="/assets/static/layout.css" rel="stylesheet" /> -->
+<!-- <link href="/assets/static/typography.css" rel="stylesheet" /> -->
+<link href="/assets/static/events.css?v={squarespace.template-revision}" rel="stylesheet" />
+<div class="page page--events">
+    <div class="page__container">
+    <div class="illustration__container">
+    <div class="eq sticky">
+    <div class="eq-bar eq-bar-1"></div>
+    <div class="eq-bar eq-bar-2"></div>
+    <div class="eq-bar eq-bar-3"></div>
+    <div class="eq-bar eq-bar-4"></div>
+    </div>
+    <audio loop id="audio__nature" src="/s/00_Baldface_Nature.mp3"></audio>
+    <div class="parallax illustration__clouds--left" data-speed="5"></div>
+    <div class="parallax illustration__clouds--right" data-speed="3"></div>
+    <div class="illustration__heli">
+    <audio loop id="audio__heli" src="/s/01_Baldface_Helicopter.mp3"></audio>
+    </div>
+    <div class="illustration__birds">
+    <audio loop id="audio__birds" src="/s/02_Baldface_Birds.mp3"></audio>
+    </div>
+    <div class="illustration__text--intro" data-show="on-scroll">
+    <h1 class="main-title">Winter<br />
+    Wonderland</h1>
+    <p>An all-inclusive resort experience amidst 32,000 acres of epic Canadian Wilderness. Now available to exclusive groups year-round.</p>
 
-</div>
-<div class="illustration__text--second" data-show="on-scroll">
-<h2>Beyond Pow.</h2>
-The Baldface experience really does go beyond chest deep pow and endless pillow lines. The fact is, we provide a setting unlike anywhere else — regardless of season — where you disconnect in order to reconnect. Whether it’s your brand summit, athlete retreat or design round-table meeting, we customize the experience and accommodate groups up to 60 guests.
+    </div>
+    <div class="illustration__text--second" data-show="on-scroll">
+    <h2>Beyond Pow.</h2>
+    <p>The Baldface experience really does go beyond chest deep pow and endless pillow lines. The fact is, we provide a setting unlike anywhere else — regardless of season — where you disconnect in order to reconnect. Whether it’s your brand summit, athlete retreat or design round-table meeting, we customize the experience and accommodate groups up to 60 guests.</p>
 
-</div>
-<div class="parallax illustration__mountains--rear" data-speed="2"></div>
-<div class="parallax illustration__mountains--mid" data-speed="20">
-<div class="illustration__mountains--mid-inner">
-<div class="illustration__halfpipe-air"></div>
-</div>
-</div>
-<div class="parallax illustration__mountains--front" data-speed="40">
-<div class="illustration__mountains--front-inner">
-<div class="illustration__mountain-bike-1">
-<audio loop id="audio__bikes" src="/static-assets/audio/03_Baldface_MountainBikes.mp3"></audio>
-</div>
-</div>
-</div>
-<div class="parallax illustration__text--third" data-speed="40" data-show="on-scroll">
-<h2>Play Harder.</h2>
-We’ve got you covered—every season, all day long. Think private performance training, gear testing summits, corporate team-building, mountain bike shoots, musical gatherings, high-octane rally truck races, culinary foraging, wellness retreats and anything else you can dream up.
+    </div>
+    <div class="parallax illustration__mountains--rear" data-speed="2"></div>
+    <div class="parallax illustration__mountains--mid" data-speed="20">
+    <div class="illustration__mountains--mid-inner">
+    <div class="illustration__halfpipe-air"></div>
+    </div>
+    </div>
+    <div class="parallax illustration__mountains--front" data-speed="40">
+    <div class="illustration__mountains--front-inner">
+    <div class="illustration__mountain-bike-1">
+    <audio loop id="audio__bikes" src="/s/03_Baldface_MountainBikes.mp3"></audio>
+    </div>
+    </div>
+    </div>
+    <div class="parallax illustration__text--third" data-speed="40" data-show="on-scroll">
+    <h2>Play Harder.</h2>
+    <p>We’ve got you covered—every season, all day long. Think private performance training, gear testing summits, corporate team-building, mountain bike shoots, musical gatherings, high-octane rally truck races, culinary foraging, wellness retreats and anything else you can dream up.</p>
 
-</div>
-<div class="parallax illustration__chalets" data-speed="50">
-<div class="illustration__mountain-bike-2"></div>
-<div class="illustration__guitar"></div>
-<div class="illustration__banjo">
-<audio loop id="audio__banjo" src="/static-assets/audio/04_Baldface_Banjo.mp3"></audio>
-</div>
-</div>
-<div class="illustration__main-lodge">
-<div class="illustration__yogis">
-<audio loop id="audio__yoga" src="/static-assets/audio/05_Baldface_Yoga.mp3"></audio>
-</div>
-<div class="illustration__shades"></div>
-<div class="illustration__swimmer">
-<audio loop id="audio__water" src="/static-assets/audio/06_Baldface_Water.mp3"></audio>
-</div>
-</div>
-<div class="parallax illustration__text--fourth" data-show="on-scroll">
-<h2>Relax, We’ve Got You.</h2>
-Yes, Baldface is known for our on-mountain experience, but those legendary qualities and good vibes are found throughout our lodge and our staff. Gourmet meals with world-class wine pairings, epic massage services and yoga and meditation instruction are always available from a dynamic staff dedicated to making unforgettable, insta-worthy moments.
+    </div>
+    <div class="parallax illustration__chalets" data-speed="50">
+    <div class="illustration__mountain-bike-2"></div>
+    <div class="illustration__guitar"></div>
+    <div class="illustration__banjo">
+    <audio loop id="audio__banjo" src="/s/04_Baldface_Banjo.mp3"></audio>
+    </div>
+    </div>
+    <div class="illustration__main-lodge">
+    <div class="illustration__yogis">
+    <audio loop id="audio__yoga" src="/s/05_Baldface_Yoga.mp3"></audio>
+    </div>
+    <div class="illustration__shades"></div>
+    <div class="illustration__swimmer">
+    <audio loop id="audio__water" src="/s/06_Baldface_Water.mp3"></audio>
+    </div>
+    </div>
+    <div class="parallax illustration__text--fourth" data-show="on-scroll">
+    <h2>Relax, We’ve Got You.</h2>
+    <p>Yes, Baldface is known for our on-mountain experience, but those legendary qualities and good vibes are found throughout our lodge and our staff. Gourmet meals with world-class wine pairings, epic massage services and yoga and meditation instruction are always available from a dynamic staff dedicated to making unforgettable, insta-worthy moments.</p>
 
+    </div>
+    </div>
+    <div class="carousel-events__container--wrap row row--standard-events">
+    <div class="carousel-events__container initial-landing">
+    <ul class="carousel-events ">
+        <li class="carousel-events__item"><img src="/s/dining.jpg" alt="" />
+    <div class="carousel-events__item-desc">
+    <h3>Dining</h3>
+    <p>Like eating at your best friend’s house, if your best friend is a five star chef and “from scratch” is the only catch phrase they know.</p>
+
+    </div></li>
+        <li class="carousel-events__item"><img src="/s/biking.jpg" alt="" />
+    <div class="carousel-events__item-desc">
+    <h3>Biking</h3>
+    <p>Rip jump-laden freeride singletrack that drops from alpine to lakeshore. Equipment rental available upon request.</p>
+
+    </div></li>
+        <li class="carousel-events__item"><img src="/s/hiking.jpg" alt="" />
+    <div class="carousel-events__item-desc">
+    <h3>Hiking</h3>
+    <p>Baldface summertime wilderness offers an interconnected network of endless high-alpine ridgelines — a real hiker’s paradise.</p>
+
+    </div></li>
+        <li class="carousel-events__item"><img src="/s/lodge.jpg" alt="" />
+    <div class="carousel-events__item-desc">
+    <h3>Lodge</h3>
+    <p>Our lodge rivals the on-mountain experience. Of course we have ping pong, pool and darts, but did we mention our wall of sound?</p>
+
+    </div></li>
+        <li class="carousel-events__item"><img src="/s/massage.jpg" alt="" />
+    <div class="carousel-events__item-desc">
+    <h3>Massage</h3>
+    <p>Whether dropping fresh tracks or single tracks, our massage therapists re-energize your body to get you ready for whatever’s next.</p>
+
+    </div></li>
+        <li class="carousel-events__item"><img src="/s/meeting.jpg" alt="" />
+    <div class="carousel-events__item-desc">
+    <h3>Meeting Space</h3>
+    <p>We provide ample space for your media presentations, sales meetings, product roundtables, and flip-cup tournaments.</p>
+
+    </div></li>
+        <li class="carousel-events__item"><img src="/s/music.jpg" alt="" />
+    <div class="carousel-events__item-desc">
+    <h3>Music Venue</h3>
+    <p>It doesn’t hurt that our legendary, impromptu jam sessions are sponsored by Martin, Fender and D’Angelico. Let the good times roll.</p>
+
+    </div></li>
+        <li class="carousel-events__item"><img src="/s/sauna.jpg" alt="" />
+    <div class="carousel-events__item-desc">
+    <h3>Sauna</h3>
+    <p>You say ‘sauna’, we say ‘sow-na’, but everyone says ‘turn up the heat, sweat it out and soothe those aches and pains’.</p>
+
+    </div></li>
+        <li class="carousel-events__item"><img src="/s/shuttle.jpg" alt="" />
+    <div class="carousel-events__item-desc">
+    <h3>Shuttle Service</h3>
+    <p>It’s like an UberPool with people you’ll actually like. Hail it from Spokane or any of the nearby airports.</p>
+
+    </div></li>
+        <li class="carousel-events__item"><img src="/s/theater.jpg" alt="" />
+    <div class="carousel-events__item-desc">
+    <h3>Theater</h3>
+    <p>Parabolic 72” HDTV. 5-channel surround sound. Oh, you want nutrional yeast on your popcorn? We love that shit!</p>
+
+    </div></li>
+        <li class="carousel-events__item"><img src="/s/yoga.jpg" alt="" />
+    <div class="carousel-events__item-desc">
+    <h3>Yoga/Meditation</h3>
+    <p>Finding your ujjayi breath is easy when our lodge has built in cedar aromatherapy. Allow our instructors to guide your practice in the main living area.</p>
+
+    </div></li>
+    </ul>
+    <div class="carousel-events__drag-indicator">
+    <div class="carousel-events__drag-indicator-text">Drag</div>
+    </div>
+    </div>
+    </div>
+    <div class="book-now row">
+    <div class="container">
+    <ul class="partners__list partners__list--left partners__list--desktop">
+        <li><a class="partner__logo partner__logo--dc" href="http://www.dcshoes.com/" target="_blank">DC</a></li>
+        <li><a class="partner__logo partner__logo--northface" href="https://www.thenorthface.com/" target="_blank">The North Face</a></li>
+        <li><a class="partner__logo partner__logo--ford" href="http://www.ford.com/" target="_blank">Ford</a></li>
+        <li><a class="partner__logo partner__logo--underarmour" href="https://www.underarmour.com/en-us/" target="_blank">Under Armour</a></li>
+        <li><a class="partner__logo partner__logo--stance" href="http://www.stance.com/" target="_blank">Stance</a></li>
+        <li><a class="partner__logo partner__logo--aether" href="https://www.aetherapparel.com/" target="_blank">Aether Apparel</a></li>
+    </ul>
+    <div class="book-now__text-container">
+    <h2>We build creative &amp; customizable experiences,</h2>
+    <p>for our amazing brand partners. Allow us to bring your ideal retreat to life. Select dates available year-round. Let our staff help you plan an unforgettable event!</p>
+    <div class="events-button--container button--swap">
+    <div class="button__inner"><a href="mailto:info@baldface.net?subject=Interested in booking a Baldface Event">Inquire Now</a></div>
+    <div class="button__icon">Get Stoked!</div>
+    </div>
+    </div>
+    <ul class="partners__list partners__list--mobile">
+        <li><a class="partner__logo partner__logo--ford" href="http://www.ford.com/" target="_blank">Ford</a></li>
+        <li><a class="partner__logo partner__logo--northface" href="https://www.thenorthface.com/" target="_blank">The North Face</a></li>
+        <li><a class="partner__logo partner__logo--dc" href="http://www.dcshoes.com/" target="_blank">DC</a></li>
+        <li><a class="partner__logo partner__logo--aether" href="https://www.aetherapparel.com/" target="_blank">Aether Apparel</a></li>
+        <li><a class="partner__logo partner__logo--stance" href="http://www.stance.com/" target="_blank">Stance</a></li>
+        <li><a class="partner__logo partner__logo--underarmour" href="https://www.underarmour.com/en-us/" target="_blank">Under Armour</a></li>
+    </ul>
+    <ul class="partners__list partners__list--right">
+        <li><a class="partner__logo partner__logo--burton" href="https://www.burton.com/" target="_blank">Burton</a></li>
+        <li><a class="partner__logo partner__logo--volcom" href="http://www.volcom.com/" target="_blank">Volcom</a></li>
+        <li><a class="partner__logo partner__logo--capita" href="https://www.capitasnowboarding.com/" target="_blank">Capita</a></li>
+        <li><a class="partner__logo partner__logo--electric" href="http://www.electriccalifornia.com/" target="_blank">Electric</a></li>
+        <li><a class="partner__logo partner__logo--vans" href="http://www.vans.com/" target="_blank">Vans</a></li>
+        <li><a class="partner__logo partner__logo--frequency" href="http://www.frqncy.com/" target="_blank">Frequency</a></li>
+    </ul>
+    </div>
+    </div>
+    </div>
 </div>
-</div>
-<div class="carousel__container--wrap row row--standard-events">
-<div class="carousel__container initial-landing">
-<ul class="carousel ">
- 	<li class="carousel__item"><img src="/static-assets/images/events/carousel/dining.jpg" alt="" />
-<div class="carousel__item-desc">
-<h3>Dining</h3>
-Like eating at your best friend’s house, if your best friend is a five star chef and “from scratch” is the only catch phrase they know.
-
-</div></li>
- 	<li class="carousel__item"><img src="/static-assets/images/events/carousel/biking.jpg" alt="" />
-<div class="carousel__item-desc">
-<h3>Biking</h3>
-Rip jump-laden freeride singletrack that drops from alpine to lakeshore. Equipment rental available upon request.
-
-</div></li>
- 	<li class="carousel__item"><img src="/static-assets/images/events/carousel/hiking.jpg" alt="" />
-<div class="carousel__item-desc">
-<h3>Hiking</h3>
-Baldface summertime wilderness offers an interconnected network of endless high-alpine ridgelines — a real hiker’s paradise.
-
-</div></li>
- 	<li class="carousel__item"><img src="/static-assets/images/events/carousel/lodge.jpg" alt="" />
-<div class="carousel__item-desc">
-<h3>Lodge</h3>
-Our lodge rivals the on-mountain experience. Of course we have ping pong, pool and darts, but did we mention our wall of sound?
-
-</div></li>
- 	<li class="carousel__item"><img src="/static-assets/images/events/carousel/massage.jpg" alt="" />
-<div class="carousel__item-desc">
-<h3>Massage</h3>
-Whether dropping fresh tracks or single tracks, our massage therapists re-energize your body to get you ready for whatever’s next.
-
-</div></li>
- 	<li class="carousel__item"><img src="/static-assets/images/events/carousel/meeting.jpg" alt="" />
-<div class="carousel__item-desc">
-<h3>Meeting Space</h3>
-We provide ample space for your media presentations, sales meetings, product roundtables, and flip-cup tournaments.
-
-</div></li>
- 	<li class="carousel__item"><img src="/static-assets/images/events/carousel/music.jpg" alt="" />
-<div class="carousel__item-desc">
-<h3>Music Venue</h3>
-It doesn’t hurt that our legendary, impromptu jam sessions are sponsored by Martin, Fender and D’Angelico. Let the good times roll.
-
-</div></li>
- 	<li class="carousel__item"><img src="/static-assets/images/events/carousel/sauna.jpg" alt="" />
-<div class="carousel__item-desc">
-<h3>Sauna</h3>
-You say ‘sauna’, we say ‘sow-na’, but everyone says ‘turn up the heat, sweat it out and soothe those aches and pains’.
-
-</div></li>
- 	<li class="carousel__item"><img src="/static-assets/images/events/carousel/shuttle.jpg" alt="" />
-<div class="carousel__item-desc">
-<h3>Shuttle Service</h3>
-It’s like an UberPool with people you’ll actually like. Hail it from Spokane or any of the nearby airports.
-
-</div></li>
- 	<li class="carousel__item"><img src="/static-assets/images/events/carousel/theater.jpg" alt="" />
-<div class="carousel__item-desc">
-<h3>Theater</h3>
-Parabolic 72” HDTV. 5-channel surround sound. Oh, you want nutrional yeast on your popcorn? We love that shit!
-
-</div></li>
- 	<li class="carousel__item"><img src="/static-assets/images/events/carousel/yoga.jpg" alt="" />
-<div class="carousel__item-desc">
-<h3>Yoga/Meditation</h3>
-Finding your ujjayi breath is easy when our lodge has built in cedar aromatherapy. Allow our instructors to guide your practice in the main living area.
-
-</div></li>
-</ul>
-<div class="carousel__drag-indicator">
-<div class="carousel__drag-indicator-text">Drag</div>
-</div>
-</div>
-</div>
-<div class="book-now row">
-<div class="container">
-<ul class="partners__list partners__list--left partners__list--desktop">
- 	<li><a class="partner__logo partner__logo--dc" href="http://www.dcshoes.com/" target="_blank">DC</a></li>
- 	<li><a class="partner__logo partner__logo--northface" href="https://www.thenorthface.com/" target="_blank">The North Face</a></li>
- 	<li><a class="partner__logo partner__logo--ford" href="http://www.ford.com/" target="_blank">Ford</a></li>
- 	<li><a class="partner__logo partner__logo--underarmour" href="https://www.underarmour.com/en-us/" target="_blank">Under Armour</a></li>
- 	<li><a class="partner__logo partner__logo--stance" href="http://www.stance.com/" target="_blank">Stance</a></li>
- 	<li><a class="partner__logo partner__logo--aether" href="https://www.aetherapparel.com/" target="_blank">Aether Apparel</a></li>
-</ul>
-<div class="book-now__text-container">
-<h2>We build creative &amp; customizable experiences,</h2>
-for our amazing brand partners. Allow us to bring your ideal retreat to life. Select dates available year-round. Let our staff help you plan an unforgettable event!
-<div class="events-button--container button--swap">
-<div class="button__inner"><a href="mailto:info@baldface.net?subject=Interested in booking a Baldface Event">Inquire Now</a></div>
-<div class="button__icon">Get Stoked!</div>
-</div>
-</div>
-<ul class="partners__list partners__list--mobile">
- 	<li><a class="partner__logo partner__logo--ford" href="http://www.ford.com/" target="_blank">Ford</a></li>
- 	<li><a class="partner__logo partner__logo--northface" href="https://www.thenorthface.com/" target="_blank">The North Face</a></li>
- 	<li><a class="partner__logo partner__logo--dc" href="http://www.dcshoes.com/" target="_blank">DC</a></li>
- 	<li><a class="partner__logo partner__logo--aether" href="https://www.aetherapparel.com/" target="_blank">Aether Apparel</a></li>
- 	<li><a class="partner__logo partner__logo--stance" href="http://www.stance.com/" target="_blank">Stance</a></li>
- 	<li><a class="partner__logo partner__logo--underarmour" href="https://www.underarmour.com/en-us/" target="_blank">Under Armour</a></li>
-</ul>
-<ul class="partners__list partners__list--right">
- 	<li><a class="partner__logo partner__logo--burton" href="https://www.burton.com/" target="_blank">Burton</a></li>
- 	<li><a class="partner__logo partner__logo--volcom" href="http://www.volcom.com/" target="_blank">Volcom</a></li>
- 	<li><a class="partner__logo partner__logo--capita" href="https://www.capitasnowboarding.com/" target="_blank">Capita</a></li>
- 	<li><a class="partner__logo partner__logo--electric" href="http://www.electriccalifornia.com/" target="_blank">Electric</a></li>
- 	<li><a class="partner__logo partner__logo--vans" href="http://www.vans.com/" target="_blank">Vans</a></li>
- 	<li><a class="partner__logo partner__logo--frequency" href="http://www.frqncy.com/" target="_blank">Frequency</a></li>
-</ul>
-</div>
-</div>
-</div>
+<script type="text/javascript" src="/assets/static/jquery.js?v={squarespace.template-revision}"></script>
+<script type="text/javascript" src="/assets/static/jquery.breakpoints.js?v={squarespace.template-revision}"></script>
+<script type="text/javascript" src="/assets/static/jquery.slick.js?v={squarespace.template-revision}"></script>
+<script type="text/javascript" src="/assets/static/events.js?v={squarespace.template-revision}"></script>

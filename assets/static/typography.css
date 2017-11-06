@@ -1,0 +1,179 @@
+/* TYPOGRAPHY ------------------------------------*/
+
+@font-face{font-family:youngserifregular;font-style:normal;font-weight:400;
+  src:
+    url(/static-assets/fonts/YoungSerif-Regular.eot?#iefix) format("embedded-opentype"),
+    url(/static-assets/fonts/YoungSerif-Regular.woff2) format("woff2"),
+    url(/static-assets/fonts/YoungSerif-Regular.woff) format("woff"),
+    url(/static-assets/fonts/YoungSerif-Regular.ttf) format("truetype"),
+    url(/static-assets/fonts/YoungSerif-Regular.svg#youngserifregular) format("svg")}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html {
+  font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #000;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0 0 1.2em 0;
+  padding: 0;
+  line-height: 1.4em;
+}
+
+h1 {
+  font-weight: 300;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.4em;
+  margin-bottom: 1.4em;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 1.8em;
+  font-weight: 700;
+  margin-bottom: 0.6em;
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 1.8em;
+  font-weight: 700;
+  margin-bottom: 0.5em;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-position: outside;
+  margin: 0;
+  padding: 0;
+}
+
+dl,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #999;
+  position: relative;
+}
+
+a:after{
+	position:absolute;
+	display:block;
+	content:'';
+	bottom:0;
+	left:0;
+	height:1px;
+	width:0;
+	background:#000;
+	transition:all .5s ease
+}
+
+/*a:hover,a:active {
+  color: #000;
+}
+
+.footer--link{position:relative;color:#fff}
+.footer--link:after{position:absolute;display:block;content:'';bottom:0;left:0;height:1px;width:0;background:#fff;transition:all .5s ease}
+.footer--link:hover:after{width:100%}
+
+*/
+
+a:hover:after {
+	width=100%;
+}
+
+a,:focus {
+  outline: none !important;
+}
+
+
+ul.formatted,
+ol.formatted {
+  margin: 0 0 1.4em 0;
+  padding: 0;
+}
+
+ul.formatted li,
+ol.formatted li {
+  font-weight: 300;
+  list-style-position: outside;
+  margin: 0 0 .7em 1.2em;
+  padding: 0;
+  line-height: 1.4em;
+}
+
+ul.formatted.formatted--indented li,
+ol.formatted--indented li {
+  margin-left: 2em;
+}
+
+ul.formatted.formatted--margin-bottom-l,
+ol.formatted.formatted--margin-bottom-l {
+  margin-bottom: 3.5em;
+}
+
+/* Breakpoint: Tablet */
+@media only screen and (min-width: 768px) {
+  h2 {
+    font-size: 24px;
+  }
+  h3 {
+    font-size: 24px;
+  }
+  h4 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 20px;
+  }
+  cite {
+    font-size: 16px;
+  }
+  blockquote {
+    padding: 130px 80px 50px 80px;
+  }
+  blockquote::before {
+    top: 39px;
+    left: 80px;
+    width: 60px;
+    height: 56px;
+  }
+  ul.formatted li,
+  ol.formatted li {
+    font-size: 20px;
+  }
+}
+
+/* Breakpoint: Desktop */
+@media only screen and (min-width: 960px) {
+  h3 {
+    font-size: 26px;
+  }
+}

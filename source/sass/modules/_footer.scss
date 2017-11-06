@@ -4,6 +4,7 @@ $footer-grey-bg: #a1a1a1;
 
 .footer {
     background-color: $grey-bg;
+    clear: both; // @note: For shitty /events page...
     color: $white;
 
     .a {

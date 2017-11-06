@@ -1,0 +1,76 @@
+/* LAYOUT ------------------------------------*/
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-width: 320px;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+body {
+  background: #fff;
+  overflow-x: hidden;
+}
+
+.page__container {
+  width: 100%;
+  height: auto;
+}
+
+.main {
+  float: left;
+  position: relative;
+  width: 100%;
+  background: #fff;
+  height: auto;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  padding: 0 15px;
+}
+
+.row {
+  float: left;
+  width: 100%;
+  clear: both;
+}
+
+.row--standard {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background: #cfcfcf;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* Breakpoint: Tablet */
+@media only screen and (min-width: 768px) {
+  .container {
+    padding: 0 50px;
+  }
+  .row--standard {
+    padding-top: 75px;
+    padding-bottom: 75px;
+  }
+}
+
+/* Breakpoint: Desktop */
+@media only screen and (min-width: 960px) {
+
+}
