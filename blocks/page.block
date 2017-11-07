@@ -13,6 +13,11 @@
     {.section @hero}
         <div class="page__header hero">
             <div class="hero__img js-lazy-image -cover" data-img-src="{assetUrl}" data-variants="{systemDataVariants}"></div>
+            {.if collection.description}
+                <div class="page__title ghost -wrap -tall">
+                    <div class="ghost__child h1 -column -light">{collection.description|safe}</div>
+                </div>
+            {.end}
         </div>
     {.end}
     {.section @body}

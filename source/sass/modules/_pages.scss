@@ -1,3 +1,10 @@
+.page {}
+.page__title {
+    position: relative;
+    }
+
+
+
 .section {
     &:first-child {
         > .sqs-layout {
