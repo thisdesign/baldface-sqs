@@ -96,7 +96,7 @@ const router = {
     initPage ( data ) {
         this.changeClass( data );
         this.controllers.exec();
-        this.bookNowLinks();
+        this.setIgnoreLinks();
     },
 
 
@@ -211,7 +211,7 @@ const router = {
     changePageIn ( /* data */ ) {
         this.controllers.exec();
         this.execSquarespace();
-        this.bookNowLinks();
+        this.setIgnoreLinks();
 
         setTimeout( () => tranny.out(), this.pageDuration );
     },
@@ -272,8 +272,14 @@ const router = {
     },
 
 
-    bookNowLinks () {
-        core.dom.body.find( "a[href*='book-now']" ).addClass( "js-router--ignore" );
+    setIgnoreLinks () {
+        core.dom.body.find( "a[href*='/events']" ).addClass( "js-router--ignore" );
+        core.dom.body.find( "a[href*='/book-now']" ).addClass( "js-router--ignore" );
+
+        // @note: Remove event binding for shitty /events page...
+        if ( window.jQuery ) {
+            window.jQuery( window ).off( "scroll" );
+        }
     }
 };
 
