@@ -1,0 +1,127 @@
+.weather {
+    background-color: $black;
+    color: $white;
+    overflow: visible;
+    padding: 20vh 0 0;
+    position: relative;
+    z-index: 2;
+
+    @include respond( $break-tablet-small ) {
+        height: auto;
+        padding: 10vh 0 0;
+    }
+}
+.weather__paddle {
+    padding-left: $padding-wrap;
+}
+.weather__primary {
+    display: inline-block;
+
+    @include state( "scroll", "jacked" ) {
+        transform: translate3d( 0, -30vh, 0 );
+        transition: transform $long-duration ease-in-out;
+    }
+
+    @include state( "active", "section" ) {
+        transform: translate3d( 0, 0, 0 );
+    }
+}
+.weather__beaker {
+    background-image: url( $data-uri-noise-2 );
+    bottom: 20vh;
+    opacity: 0.25;
+    position: absolute;
+    right: $book-button-width;
+    top: 10vh;
+    width: 40vh;
+
+    &:after {
+        background-color: $white;
+        bottom: 0;
+        content: "";
+        height: 3px;
+        left: 0;
+        position: absolute;
+        right: 0;
+    }
+
+    div {
+        background: linear-gradient( to top, transparent, transparent 47px, $white 0, $white );
+        background-size: 100% 50px;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: rotate( 180deg );
+        width: 20px;
+    }
+
+    @include respond( $break-tablet-small ) {
+        display: none;
+    }
+}
+.weather__temp {
+    @include respond( $break-tablet-small ) {
+        width: 100%;
+    }
+}
+.weather__depth {
+    @include respond( $break-tablet-small ) {
+        padding-left: 0;
+        padding-top: $expander-mobile;
+        width: 100%;
+    }
+}
+.weather__secondary {
+    bottom: 0;
+    padding-bottom: 10vh;
+    position: absolute;
+
+    @include respond( $break-tablet-small ) {
+        padding-top: $expander-mobile;
+        position: relative;
+    }
+}
+.weather__wind-dir {
+    @include respond( $break-tablet-small ) {
+        width: 100%;
+    }
+
+    .h2 {
+        @include respond( $break-tablet-small ) {
+            @include hh1();
+        }
+    }
+}
+.weather__wind-speed {
+    @include respond( $break-tablet-small ) {
+        padding-left: 0;
+        padding-top: $expander-mobile;
+        width: 100%;
+    }
+
+    .h2 {
+        @include respond( $break-tablet-small ) {
+            @include hh1();
+        }
+    }
+}
+.weather__stat {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    white-space: nowrap;
+
+    div {
+        width: 50%;
+        }
+    span {
+        background-color: $white;
+        height: 1px;
+        margin: 0 10px;
+        width: 100%;
+        }
+    div:last-child {
+        text-align: right;
+        }
+}

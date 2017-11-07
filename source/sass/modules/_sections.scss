@@ -1,0 +1,72 @@
+.section {
+    &:first-child {
+        > .sqs-layout {
+            .sqs-block-html {
+                text-align: center;
+            }
+        }
+    }
+
+    // Squarespace layout overrides
+    > .sqs-layout {
+        .sqs-block-gallery + .sqs-row,
+        .sqs-block-gallery + .sqs-block-html .sqs-block-content {
+            @include exp();
+        }
+        // Text + Button
+        .sqs-block-gallery + .sqs-row {
+            .col,
+            .sqs-col-6 {
+                width: auto;
+                }
+            .sqs-block-html .sqs-block-content {
+                padding-right: $expander-one;
+                }
+            .sqs-block-button .sqs-block-content {
+                padding-top: 70px;
+                }
+        }
+        // Layout engine
+        .sqs-row {
+            > .col > .sqs-row {
+                padding-bottom: $expander-mobile;
+                padding-top: $expander-mobile;
+            }
+            > .sqs-col-6 {
+                .sqs-block-button {
+                    @include exp();
+                }
+
+                @include respond( $break-tablet-medium ) {
+                    width: 100%;
+                }
+            }
+            > .sqs-col-6:first-child .sqs-block-html,
+            > .sqs-col-6:first-child .sqs-block-button {
+                text-align: left;
+            }
+            > .sqs-col-6:last-child .sqs-block-html,
+            > .sqs-col-6:last-child .sqs-block-button {
+                text-align: left;
+            }
+            > .sqs-col-0 {
+                display: none;
+            }
+            > .sqs-col-6:first-child {
+                padding-right: $padding-wrap / 2;
+
+                @include respond( $break-tablet-medium ) {
+                    padding-right: 0;
+                }
+            }
+            > .sqs-col-6:last-child {
+                padding-left: $padding-wrap / 2;
+
+                @include respond( $break-tablet-medium ) {
+                    padding-left: 0;
+                    padding-top: $expander-mobile;
+                }
+            }
+        }
+    }
+}

@@ -2,6 +2,8 @@ import * as core from "../core";
 import scroll2 from "properjs-scroll2";
 import Easing from "properjs-easing";
 import ScrollController from "properjs-scrollcontroller";
+import ResizeController from "properjs-resizecontroller";
+import throttle from "properjs-throttle";
 
 
 /**
@@ -14,13 +16,52 @@ import ScrollController from "properjs-scrollcontroller";
  */
 class ScrollJack {
     constructor ( element ) {
-        this.element = element.addClass( "is-scroll-jacked" );
+        this.element = element;
         this.sections = this.element.find( ".js-scrolljack-section" );
         this.active = this.sections.eq( 0 ).addClass( "is-active-section" );
         this.isMoving = false;
+        this.isBroken = false;
         this.duration = 600;
+        this.breakpoint = 1280;
 
-        this.bindWheel();
+        // If we can't JACK right away...
+        if ( window.innerWidth > this.breakpoint ) {
+            this.bindWheel();
+            this.element.addClass( "is-scroll-jacked" );
+        }
+
+        // ... Then we might be able to on resize...
+        this.bindResize();
+    }
+
+
+    bindResize () {
+        this.resizer = new ResizeController();
+        this.resizer.on( "resize", throttle(() => {
+            if ( window.innerWidth <= this.breakpoint && !this.isBroken ) {
+                this.isBroken = true;
+                this.unbindScroll();
+                this.unbindWheel();
+                this.element.removeClass( "is-scroll-jacked" );
+            }
+
+            if ( window.innerWidth > this.breakpoint && this.isBroken ) {
+                this.isBroken = false;
+                this.bindWheel();
+                this.element.addClass( "is-scroll-jacked" );
+                window.scrollTo( 0, this.active[ 0 ].offsetTop );
+            }
+
+        }, 250 ));
+    }
+
+
+    unbindResize () {
+        if ( this.resizer ) {
+            this.resizer.off( "resize" );
+            this.resizer.stop();
+            this.resizer = null;
+        }
     }
 
 
@@ -118,6 +159,7 @@ class ScrollJack {
     destroy () {
         this.unbindScroll();
         this.unbindWheel();
+        this.unbindResize();
     }
 }
 

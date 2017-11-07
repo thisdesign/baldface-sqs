@@ -1,3 +1,4 @@
+// Basic pages
 .page {}
 .page__title {
     position: relative;
@@ -5,265 +6,17 @@
 
 
 
-.section {
-    &:first-child {
-        > .sqs-layout {
-            .sqs-block-html {
-                text-align: center;
-            }
-        }
-    }
-
-    // Squarespace layout overrides
-    > .sqs-layout {
-        .sqs-block-gallery + .sqs-row,
-        .sqs-block-gallery + .sqs-block-html .sqs-block-content {
-            @include exp();
-        }
-        // Text + Button
-        .sqs-block-gallery + .sqs-row {
-            .col,
-            .sqs-col-6 {
-                width: auto;
-                }
-            .sqs-block-html .sqs-block-content {
-                padding-right: $expander-one;
-                }
-            .sqs-block-button .sqs-block-content {
-                padding-top: 70px;
-                }
-        }
-        // Layout engine
-        .sqs-row {
-            > .col > .sqs-row {
-                padding-bottom: $expander-mobile;
-                padding-top: $expander-mobile;
-            }
-            > .sqs-col-6 {
-                .sqs-block-button {
-                    @include exp();
-                }
-
-                @include respond( $break-tablet-medium ) {
-                    width: 100%;
-                }
-            }
-            > .sqs-col-6:first-child .sqs-block-html,
-            > .sqs-col-6:first-child .sqs-block-button {
-                text-align: left;
-            }
-            > .sqs-col-6:last-child .sqs-block-html,
-            > .sqs-col-6:last-child .sqs-block-button {
-                text-align: left;
-            }
-            > .sqs-col-0 {
-                display: none;
-            }
-            > .sqs-col-6:first-child {
-                padding-right: $padding-wrap / 2;
-
-                @include respond( $break-tablet-medium ) {
-                    padding-right: 0;
-                }
-            }
-            > .sqs-col-6:last-child {
-                padding-left: $padding-wrap / 2;
-
-                @include respond( $break-tablet-medium ) {
-                    padding-left: 0;
-                    padding-top: $expander-mobile;
-                }
-            }
-        }
-    }
-}
-
-
-
-.cover {
-    background-color: $black-off;
-    position: relative;
-    z-index: 1;
-
-    &:after {
-        background: url( $data-uri-noise-1 );
-        content: "";
-        height: 100%;
-        left: 0;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        z-index: -1;
-    }
-}
-
-
-
-.weather {
-    background-color: $black;
-    color: $white;
-    overflow: visible;
-    padding: 20vh 0 0;
-    position: relative;
-    z-index: 2;
-
-    @include respond( $break-tablet-small ) {
-        padding: 10vh 0 0;
-    }
-}
-.weather__paddle {
-    padding-left: $padding-wrap;
-}
-.weather__primary {
-    display: inline-block;
-
-    @include state( "scroll", "jacked" ) {
-        transform: translate3d( 0, -30vh, 0 );
-        transition: transform $long-duration ease-in-out;
-    }
-
-    @include state( "active", "section" ) {
-        transform: translate3d( 0, 0, 0 );
-    }
-}
-.weather__beaker {
-    background-image: url( $data-uri-noise-2 );
-    bottom: 20vh;
-    opacity: 0.25;
-    position: absolute;
-    right: $book-button-width;
-    top: 10vh;
-    width: 40vh;
-
-    &:after {
-        background-color: $white;
-        bottom: 0;
-        content: "";
-        height: 3px;
-        left: 0;
-        position: absolute;
-        right: 0;
-    }
-
-    div {
-        background: linear-gradient( to top, transparent, transparent 47px, $white 0, $white );
-        background-size: 100% 50px;
-        height: 100%;
-        position: absolute;
-        right: 0;
-        top: 0;
-        transform: rotate( 180deg );
-        width: 20px;
-    }
-
-    @include respond( $break-tablet-small ) {
-        display: none;
-    }
-}
-.weather__temp {
-    @include respond( $break-tablet-small ) {
-        width: 100%;
-    }
-}
-.weather__depth {
-    @include respond( $break-tablet-small ) {
-        padding-left: 0;
-        padding-top: 10vh;
-        width: 100%;
-    }
-}
-.weather__secondary {
-    bottom: 0;
-    padding-bottom: 10vh;
-    position: absolute;
-}
-.weather__stat {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    white-space: nowrap;
-
-    div {
-        width: 50%;
-        }
-    span {
-        background-color: $white;
-        height: 1px;
-        margin: 0 10px;
-        width: 100%;
-        }
-    div:last-child {
-        text-align: right;
-        }
-}
-
-
-
-.instagram {}
-.instagram__belt {
-    overflow: hidden;
-    white-space: nowrap;
-    }
-.instagram__belt__line {
-    transition: transform $fast-duration $ease;
-    }
-.instagram__item {
-    background-color: $white;
-    padding-bottom: 100%;
-    position: relative;
-    transition-duration: $fast-duration;
-    white-space: normal;
-    width: 100%;
-    }
-.instagram__navi {
-    padding-right: $expander-mobile / 2;
-    padding-top: $expander-mobile / 2;
-    text-align: right;
-    user-select: none;
-
-    .p {
-        @include bs();
-        }
-}
-.instagram__pipe {
-    background-color: $grey;
-    height: 20px;
-    margin: 0 12px;
-    width: 2px;
-    }
-.instagram__prev,
-.instagram__next {
-    cursor: pointer;
-    height: 18px;
-    position: relative;
-    width: 24px;
-
-    &:before,
-    &:after {
-        background-color: $grey;
-        content: "";
-        height: 10px;
-        left: 4px;
-        position: absolute;
-        width: 2px;
-        }
-    &:before {
-        bottom: 1px;
-        transform: rotate( -45deg );
-        }
-    &:after {
-        top: 1px;
-        transform: rotate( 45deg );
-        }
-}
-.instagram__next {
-    transform: scaleX( -1 );
-    }
-
-
-
+// Homepage
 .splash {
+    overflow: hidden;
     position: relative;
+
+    .hero {
+        @include state( "scroll", "jacked" ) {
+            transform: translate3d( 0, 50%, 0 );
+            transition: transform $long-duration ease-in-out;
+        }
+    }
 
     .instagram {
         position: absolute;
@@ -273,14 +26,29 @@
         width: 32vw;
         z-index: 2;
 
+        @include state( "scroll", "jacked" ) {
+            transform: translate3d( 0, 0, 0 );
+            transition: transform $long-duration ease-in-out;
+        }
+
         @include respond( $break-tablet-full ) {
             display: none;
+        }
+    }
+
+    &.is-active-section {
+        .hero {
+            transform: translate3d( 0, 0, 0 );
+        }
+        .instagram {
+            transform: translate3d( 0, -50%, 0 );
         }
     }
 }
 
 
 
+// Footer logos grid
 .sponsors {
     .sponsors__item {
         @include respond( $break-tablet-medium ) {
@@ -294,6 +62,7 @@
 
 
 
+// Staff page grid
 .staff {
     margin: 0 -2.5px;
 
@@ -313,191 +82,5 @@
         @include respond( $break-tablet-small ) {
             width: 50%;
         }
-    }
-}
-
-
-
-.textticker {
-    position: relative;
-
-    &.is-reversed {
-        .textticker__tag {
-            &:before {
-                transform: translate3d( 0, 0, 0 );
-                }
-            &:after {
-                transform: translate3d( 0, -100%, 0 );
-                }
-
-            &.is-switch {
-                &:before,
-                &:after {
-                    transition: opacity $fast-duration $ease,
-                                transform $fast-duration $ease;
-                    }
-                &:before {
-                    opacity: 0;
-                    transform: translate3d( 0, 100%, 0 );
-                    }
-                &:after {
-                    opacity: 1;
-                    transform: translate3d( 0, 0, 0 );
-                    }
-            }
-        }
-    }
-}
-.textticker__shim {
-    left: 0;
-    position: absolute;
-    top: 0;
-    visibility: hidden;
-    }
-.textticker__tag {
-    display: inline-block;
-    line-height: 1;
-    padding-bottom: 5px;
-    position: relative;
-    text-align: left;
-    transition: width $fast-duration $ease;
-
-    &:before,
-    &:after {
-        line-height: 1;
-    }
-
-    &:before {
-        content: attr( data-curr );
-        opacity: 1;
-        position: relative;
-        transform: translate3d( 0, 0, 0 );
-        }
-    &:after {
-        content: attr( data-next );
-        left: 0;
-        opacity: 0;
-        position: absolute;
-        top: 0;
-        transform: translate3d( 0, 100%, 0 );
-        }
-
-    &.is-switch {
-        &:before,
-        &:after {
-            transition: opacity $fast-duration $ease,
-                        transform $fast-duration $ease;
-            }
-        &:before {
-            opacity: 0;
-            transform: translate3d( 0, -100%, 0 );
-            }
-        &:after {
-            opacity: 1;
-            transform: translate3d( 0, 0, 0 );
-            }
-    }
-}
-
-
-
-.article--cover {
-    .button--naira {
-        border-color: $white;
-        color: $white;
-
-        .button__hover {
-            color: $charcoal;
-            }
-
-        &:before {
-            background-color: $white;
-            }
-    }
-}
-.article__logo {
-    .image {
-        width: 100px;
-        }
-}
-.article__wrap {
-    position: relative;
-    }
-.article__col {
-    @include respond( $break-tablet-medium ) {
-        width: 100%;
-    }
-
-    &:last-child {
-        @include respond( $break-tablet-medium ) {
-            padding: 0 $padding-wrap;
-        }
-    }
-}
-.article__info {
-    padding-left: $padding-wrap;
-    padding-right: $padding-wrap;
-    }
-.article__image {
-    .figure {
-        padding-bottom: 100%;
-        position: relative;
-        z-index: 1;
-
-        @include respond( $break-tablet-medium ) {
-            padding: 60px 0;
-        }
-    }
-    .figure:after {
-        background-image: url( $data-uri-noise-2 );
-        content: "";
-        opacity: 0.18;
-        position: absolute;
-        z-index: -1;
-        }
-    .figure--tall:after {
-        bottom: $expander-one;
-        left: 0;
-        right: 0;
-        top: $expander-one;
-        }
-    .figure--wide:after {
-        bottom: 0;
-        left: $expander-one;
-        right: $expander-one;
-        top: 0;
-    }
-
-    .image {
-        left: 50%;
-        position: absolute;
-        top: 50%;
-        transform: translateX( -50% ) translateY( -50% );
-
-        @include respond( $break-tablet-medium ) {
-            left: auto;
-            position: relative;
-            top: auto;
-            transform: none;
-        }
-    }
-    .image--tall {
-        height: 100%;
-        width: auto;
-    }
-    .image--wide {
-        height: auto;
-        width: 100%;
-        }
-}
-.article__logo {
-    display: none;
-    }
-.article__body,
-.article__button {
-    margin-top: 60px;
-
-    @include respond( $break-tablet-medium ) {
-        margin-top: 30px;
     }
 }
