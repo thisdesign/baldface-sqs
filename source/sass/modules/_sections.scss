@@ -9,6 +9,20 @@
 
     // Squarespace layout overrides
     > .sqs-layout {
+        // Top level block padding
+        > .sqs-row > .col {
+            .sqs-block-html,
+            .sqs-block-button,
+            .sqs-block-gallery {
+                @include wrap();
+            }
+            .sqs-block-gallery {
+                @include respond( $mobile-breakpoint ) {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+        }
         .sqs-block-gallery + .sqs-row,
         .sqs-block-gallery + .sqs-block-html .sqs-block-content {
             @include exp();

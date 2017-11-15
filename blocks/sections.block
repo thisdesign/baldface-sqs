@@ -1,4 +1,4 @@
-<section class="sections sections--{title|slugify} -wrap -exp-1">
+<section class="sections sections--{title|slugify} -exp-1">
     {.repeated section items}
         <div class="section section--{title|slugify}">
             {body}
