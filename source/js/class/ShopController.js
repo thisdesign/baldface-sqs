@@ -15,6 +15,7 @@ class ShopProduct {
         this.shopQty = null;
         this.shopVariants = this.element.find( ".js-shop-variants" );
         this.shopQuantity = this.element.find( ".js-shop-quantity" );
+        this.shopVariantDisplay = this.element.find( ".js-shop-variant-display" );
 
         this.bind();
         this.loadVariants();
@@ -43,6 +44,7 @@ class ShopProduct {
             this.shopVariants.find( ".js-shop-variant" ).removeClass( "is-active" );
             elem.addClass( "is-active" );
 
+            this.shopVariantDisplay[ 0 ].innerHTML = data.style;
             this.shopSku = data.sku;
 
             this.loadQuantity();
