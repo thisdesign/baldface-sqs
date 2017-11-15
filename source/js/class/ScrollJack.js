@@ -111,6 +111,7 @@ class ScrollJack {
 
 
     handle ( e ) {
+        let data = null;
         let offset = null;
         let section = null;
 
@@ -128,7 +129,12 @@ class ScrollJack {
             this.sections.removeClass( "is-active-section" );
             this.active.addClass( "is-active-section" );
 
-            offset = section[ 0 ].offsetTop/* - core.dom.navi[ 0 ].getBoundingClientRect().height*/;
+            data = this.active.data();
+            offset = section[ 0 ].offsetTop;
+
+            if ( data.navi ) {
+                offset -= core.dom.navi[ 0 ].getBoundingClientRect().height;
+            }
 
             scroll2({
                 y: offset,
@@ -138,8 +144,6 @@ class ScrollJack {
                 complete: () => {
                     setTimeout(() => {
                         this.isMoving = false;
-
-                        const data = this.active.data();
 
                         if ( data.unbind ) {
                             this.unbindWheel();

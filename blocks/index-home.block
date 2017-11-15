@@ -28,7 +28,7 @@
                 <section class="weather js-weather hero cover js-scrolljack-section" data-bind="true"></section>
             {# Feed #}
             {.or equal? id "599f7cc7ccc5c58f6c3d49aa"}
-                <section class="feed js-feed js-scrolljack-section" data-unbind="true">
+                <section class="feed js-feed js-scrolljack-section" data-navi="true" data-unbind="true">
                     <menu class="feed__actions -wrap -exp">
                         <div class="feed__search js-feed-search -column">
                             <div class="feed__search__wrap -column">
