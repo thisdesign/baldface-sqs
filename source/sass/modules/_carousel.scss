@@ -89,26 +89,26 @@
 .carousel__index__item {
     cursor: pointer;
     display: inline-block;
-    margin: 0 15px;
+    margin: 0 9px;
     vertical-align: middle;
 
     &:after {
-        border-radius: 8px;
+        border-radius: 4px;
         content: "";
         display: inline-block;
-        height: 8px;
-        width: 8px;
+        height: 4px;
+        width: 4px;
         }
 }
 .carousel__index__active {
-    border-radius: 10px;
-    height: 10px;
+    border-radius: 7px;
+    height: 7px;
     left: 0;
     position: absolute;
     top: 50%;
     transform: translateY( -50% );
     transition: transform $base-duration $ease;
-    width: 10px;
+    width: 7px;
     }
 .carousel__navi__item {
     height: 100%;
