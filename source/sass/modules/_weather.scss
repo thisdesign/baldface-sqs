@@ -66,6 +66,8 @@
     }
 }
 .weather__depth {
+    display: none; // @note: temporary?
+
     @include respond( $break-tablet-small ) {
         padding-left: 0;
         padding-top: $expander-mobile;
