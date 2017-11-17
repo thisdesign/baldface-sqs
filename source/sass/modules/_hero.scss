@@ -57,7 +57,7 @@ $pp-03: #333;
     padding-right: $padding-wrap;
 
     @include respond( $mobile-breakpoint ) {
-        font-size: $p-size-med;
+        font-size: $p-size;
     }
 }
 .hero__main {
