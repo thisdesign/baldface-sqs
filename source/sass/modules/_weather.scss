@@ -126,3 +126,21 @@
         text-align: right;
         }
 }
+.weather__toggle {
+    bottom: 0;
+    padding-bottom: 10vh;
+    position: absolute;
+    right: 0;
+
+    @include respond( $break-tablet-small ) {
+        position: relative;
+    }
+}
+.weather__toggle__system {
+    cursor: pointer;
+    @include bs();
+
+    &.is-active {
+        border-bottom: 1px solid $white;
+        }
+}
