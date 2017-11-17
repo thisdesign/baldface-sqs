@@ -1,6 +1,6 @@
-<section class="sections sections--{title|slugify} -exp-1">
+<section class="sections sections--{id} -exp-1">
     {.repeated section items}
-        <div class="section section--{title|slugify}">
+        <div class="section section--{id}">
             {body}
         </div>
     {.end}

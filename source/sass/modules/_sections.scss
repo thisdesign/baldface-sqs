@@ -1,5 +1,5 @@
 .section {
-    &:first-child {
+    &:not( .section--59a4b8caf5e231d8776cbb71 ):first-child {
         > .sqs-layout {
             .sqs-block-html {
                 text-align: center;
