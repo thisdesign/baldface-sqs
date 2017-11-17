@@ -35,7 +35,7 @@ class CoverController extends Controller {
         this.go(() => {
             let isCover = false;
 
-            this.elements.forEach(( el, i ) => {
+            this.elements.forEach(( el ) => {
                 const bounds = el.getBoundingClientRect();
 
                 if ( bounds.top <= 0 && bounds.bottom > 0 ) {
