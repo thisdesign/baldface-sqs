@@ -145,10 +145,13 @@
 .weather__toggle {
     bottom: 0;
     padding-bottom: 10vh;
+    padding-left: $padding-wrap;
+    padding-right: $book-button-width;
     position: absolute;
     right: 0;
 
     @include respond( $break-tablet-small ) {
+        padding-right: 0;
         position: relative;
     }
 }

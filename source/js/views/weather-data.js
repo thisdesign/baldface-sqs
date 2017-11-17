@@ -11,10 +11,23 @@ export default ( data, system ) => {
     const speedunit = isMetric ? "KPH" : "MPH";
     const lengthunit = isMetric ? "CM" : "IN";
     const cm2in = 0.393701;
+    const html = [];
     let snowfall = parseInt( window.Y.Squarespace.Template.getTweakValue( "snowfall" ), 10 );
+    let snowdepth = parseInt( window.Y.Squarespace.Template.getTweakValue( "snowdepth" ), 10 );
+    let percent = snowfall / snowdepth * 100;
+    let notches = (snowdepth / 5);
 
     if ( !isMetric ) {
         snowfall = Math.ceil( snowfall * cm2in );
+        snowdepth = Math.ceil( snowdepth * cm2in );
+        percent = snowfall / snowdepth * 100;
+        notches = snowdepth / 2;
+    }
+
+    html.push( `<div class="weather__beaker__snowfall" style="top:${percent}%;"></div>` );
+
+    for ( let i = 0; i <= notches; i++ ) {
+        html.push( `<div class="weather__beaker__notch" style="top:${(i * notches)}%;"></div>` );
     }
 
     return data.response.error ? `
@@ -37,14 +50,14 @@ export default ( data, system ) => {
             </div>
             <div class="weather__depth weather__paddle -column -vtop">
                 <div class="weather__depth__curr">
-                    <div class="hh1 -column -vtop">${snowfall}</div>
+                    <div class="hh1 -column -vtop">${snowdepth}</div>
                     <div class="h2 -column -vtop -sup">${lengthunit}</div>
                 </div>
-                <!--<div class="weather__stat p p--hh">
-                    <div>20${lengthunit} Storm Total</div>
+                <div class="weather__stat p p--hh">
+                    <div>Total Snowfall</div>
                     <span></span>
-                    <div>8${lengthunit} in Last 24</div>
-                </div>-->
+                    <div>${snowfall}${lengthunit} Recent</div>
+                </div>
             </div>
         </div>
         <div class="weather__secondary -wrap">
@@ -60,8 +73,10 @@ export default ( data, system ) => {
                 <div class="p p--hh">Wind Speed</div>
             </div>
         </div>
-        <div class="weather__beaker js-weather-beaker"></div>
-        <div class="weather__toggle -wrap">
+        <div class="weather__beaker">
+            ${html.join( "" )}
+        </div>
+        <div class="weather__toggle">
             <div class="weather__toggle__system p -light -column ${isMetric ? "is-active" : ""} js-weather-toggle" data-system="metric">Metric</div>
             <div class="p -light -column">&nbsp;/&nbsp;</div>
             <div class="weather__toggle__system p -light -column ${isMetric ? "" : "is-active"} js-weather-toggle" data-system="imperial">Imperial</div>

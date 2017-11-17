@@ -32,7 +32,6 @@ class WeatherController {
 
             this.system = data.system;
             this.render();
-            this.renderDepth();
         });
     }
 
@@ -46,40 +45,12 @@ class WeatherController {
         }).then(( json ) => {
             this.data = json;
             this.render();
-            this.renderDepth();
         });
     }
 
 
     render () {
         this.element[ 0 ].innerHTML = weatherDataView( this.data, this.system );
-    }
-
-
-    renderDepth () {
-        const cm2in = 0.393701;
-        const beaker = this.element.find( ".js-weather-beaker" );
-        const html = [];
-        let snowfall = parseInt( window.Y.Squarespace.Template.getTweakValue( "snowfall" ), 10 );
-        let snowdepth = parseInt( window.Y.Squarespace.Template.getTweakValue( "snowdepth" ), 10 );
-        let percent = snowfall / snowdepth * 100;
-        let notches = (snowdepth / 5);
-
-        // Imperial toggle
-        if ( this.system !== "metric" ) {
-            snowfall = Math.ceil( snowfall * cm2in );
-            snowdepth = Math.ceil( snowdepth * cm2in );
-            percent = snowfall / snowdepth * 100;
-            notches = snowdepth / 2;
-        }
-
-        html.push( `<div class="weather__beaker__snowfall" style="top:${percent}%;"></div>` );
-
-        for ( let i = 0; i <= notches; i++ ) {
-            html.push( `<div class="weather__beaker__notch" style="top:${(i * notches)}%;"></div>` );
-        }
-
-        beaker[ 0 ].innerHTML = html.join( "" );
     }
 
 
