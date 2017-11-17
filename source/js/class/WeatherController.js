@@ -16,7 +16,7 @@ class WeatherController {
         this.element = element;
         this.apiKey = "d183d92692749a09";
         this.apiPWS = "ICENTRAL179";
-        this.apiUrl = `http://api.wunderground.com/api/${this.apiKey}/conditions/forecast/q/pws:${this.apiPWS}.json`;
+        this.apiUrl = `//api.wunderground.com/api/${this.apiKey}/conditions/forecast/q/pws:${this.apiPWS}.json`;
 
         this.load();
     }
