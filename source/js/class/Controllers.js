@@ -10,6 +10,7 @@ import ShopController from "./ShopController";
 import HoverController from "./HoverController";
 import WeatherController from "./WeatherController";
 import ScrollJack from "./ScrollJack";
+import CoverController from "./CoverController";
 
 
 /**
@@ -72,6 +73,7 @@ class Controllers {
         this.push( "weather", this.element.find( core.config.weatherSelector ), WeatherController, true );
         this.push( "shop", core.dom.body.find( core.config.shopSelector ), ShopController, true );
         this.push( "subscribe", core.dom.body.find( core.config.subscribeSelector ), SubscribeController, true );
+        this.push( "cover", core.dom.body.find( core.config.coverSelector ), CoverController, true );
 
         this.aspect = this.element.find( core.config.aspectSelector );
         this.aspectController = new AspectController( this.aspect );

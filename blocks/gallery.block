@@ -1,19 +1,21 @@
 {# Staff page #}
 {.equal? collection.id "599f4446e6f2e1efb37295e4"}
     <div class="staff js-hover">
-        {.repeated section items}
-            <div class="staff__item -column -column--1of5 -vtop animate js-animate js-hover-item">
-                <div class="-poino">
-                    {@|apply image-aspect.block}
-                    <div class="grid__hover ghost">
-                        <div class="grid__hover__el ghost__child">
-                            <div class="grid__title p p--h3">{title}</div>
-                            <div class="grid__caption p">{body|truncate 250}</div>
+        <div class="js-cover">
+            {.repeated section items}
+                <div class="staff__item -column -column--1of5 -vtop animate js-animate js-hover-item">
+                    <div class="-poino">
+                        {@|apply image-aspect.block}
+                        <div class="grid__hover ghost">
+                            <div class="grid__hover__el ghost__child">
+                                <div class="grid__title p p--h3">{title}</div>
+                                <div class="grid__caption p">{body|truncate 250}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {.end}
+            {.end}
+        </div>
     </div>
 
 {# Sponsors page #}

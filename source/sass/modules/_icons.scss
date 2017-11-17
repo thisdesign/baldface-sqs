@@ -62,7 +62,15 @@
                     opacity $fast-duration $ease,
                     transform $fast-duration $ease;
         width: 100%;
+
+        @include state( "cover", "view" ) {
+            background-color: $white;
         }
+
+        @include state( "navi", "mobile" ) {
+            background-color: $black;
+        }
+    }
 
     .top {
         top: 0;
