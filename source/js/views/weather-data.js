@@ -9,6 +9,13 @@ export default ( data, system ) => {
     const windspeed = isMetric ? forecast.avewind.kph : forecast.avewind.mph;
     const tempunit = isMetric ? "C" : "F";
     const speedunit = isMetric ? "KPH" : "MPH";
+    const lengthunit = isMetric ? "CM" : "IN";
+    const cm2in = 0.393701;
+    let snowfall = parseInt( window.Y.Squarespace.Template.getTweakValue( "snowfall" ), 10 );
+
+    if ( !isMetric ) {
+        snowfall = Math.ceil( snowfall * cm2in );
+    }
 
     return data.response.error ? `
         <div class="weather__error -wrap">
@@ -30,14 +37,14 @@ export default ( data, system ) => {
             </div>
             <div class="weather__depth weather__paddle -column -vtop">
                 <div class="weather__depth__curr">
-                    <div class="hh1 -column -vtop">258</div>
-                    <div class="h2 -column -vtop -sup">CM</div>
+                    <div class="hh1 -column -vtop">${snowfall}</div>
+                    <div class="h2 -column -vtop -sup">${lengthunit}</div>
                 </div>
-                <div class="weather__stat p p--hh">
-                    <div>20CM Storm Total</div>
+                <!--<div class="weather__stat p p--hh">
+                    <div>20${lengthunit} Storm Total</div>
                     <span></span>
-                    <div>8CM in Last 24</div>
-                </div>
+                    <div>8${lengthunit} in Last 24</div>
+                </div>-->
             </div>
         </div>
         <div class="weather__secondary -wrap">
@@ -53,9 +60,7 @@ export default ( data, system ) => {
                 <div class="p p--hh">Wind Speed</div>
             </div>
         </div>
-        <div class="weather__beaker">
-            <div></div>
-        </div>
+        <div class="weather__beaker js-weather-beaker"></div>
         <div class="weather__toggle -wrap">
             <div class="weather__toggle__system p -light -column ${isMetric ? "is-active" : ""} js-weather-toggle" data-system="metric">Metric</div>
             <div class="p -light -column">&nbsp;/&nbsp;</div>
