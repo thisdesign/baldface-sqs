@@ -2,6 +2,7 @@ import * as core from "../core";
 import CarouselCore from "./CarouselCore";
 import ScrollController from "properjs-scrollcontroller";
 import ResizeController from "properjs-resizecontroller";
+import Hammer from "hammerjs";
 
 
 
@@ -32,26 +33,41 @@ class CarouselHero extends CarouselCore {
             this.display( next );
         });
 
-        this.resizer = new ResizeController();
-        this.resizer.on( "resize", () => {
-            this.index();
-        });
+        // Not for mobile devices and SHIT...
+        if ( !core.detect.isDevice() ) {
+            this.resizer = new ResizeController();
+            this.resizer.on( "resize", () => {
+                this.index();
+            });
 
-        this.scroller = new ScrollController();
-        this.scroller.on( "scroll", () => {
-            const shouldPause = !core.util.isElementVisible( this.element[ 0 ] ) && this.activeEmbed;
-            const shouldPlay = core.util.isElementVisible( this.element[ 0 ] ) && this.activeEmbed;
+            this.scroller = new ScrollController();
+            this.scroller.on( "scroll", () => {
+                const shouldPause = !core.util.isElementVisible( this.element[ 0 ] ) && this.activeEmbed;
+                const shouldPlay = core.util.isElementVisible( this.element[ 0 ] ) && this.activeEmbed;
 
-            if ( shouldPause ) {
-                this.postEmbed( "pause", 1 );
+                if ( shouldPause ) {
+                    this.postEmbed( "pause", 1 );
 
-            } else if ( shouldPlay ) {
-                this.postEmbed( "play", 1 );
-            }
-        });
+                } else if ( shouldPlay ) {
+                    this.postEmbed( "play", 1 );
+                }
+            });
 
-        this._onMessage = this.onMessage.bind( this );
-        window.addEventListener( "message", this._onMessage, false );
+            this._onMessage = this.onMessage.bind( this );
+            window.addEventListener( "message", this._onMessage, false );
+
+        // For mobile devices and SHIT...
+        } else {
+            this.hammer = new Hammer( this.element[ 0 ] );
+            this.hammer.on( "swipe", ( e ) => {
+                if ( e.direction === Hammer.DIRECTION_LEFT ) {
+                    this._advance();
+
+                } else if ( e.direction === Hammer.DIRECTION_RIGHT ) {
+                    this._rewind();
+                }
+            });
+        }
     }
 
 
@@ -180,6 +196,10 @@ class CarouselHero extends CarouselCore {
 
         if ( this.scroller ) {
             this.scroller.off( "scroll" );
+        }
+
+        if ( this.hammer ) {
+            this.hammer.destroy();
         }
     }
 }
