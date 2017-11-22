@@ -27,10 +27,18 @@
     font-size: 14px;
     line-height: 2.1428571429;
     @include bs();
+
+    @include respond( $break-mobile-full ) {
+        font-size: 12px;
     }
+}
 .grid__caption {
     font-size: 12px;
+
+    @include respond( $break-mobile-full ) {
+        font-size: 10px;
     }
+}
 .grid__title + .grid__caption {
     margin-top: 10px;
     }
