@@ -2,7 +2,8 @@ import * as core from "../core";
 import $ from "properjs-hobo";
 import Store from "../core/Store";
 import shopCartView from "../views/shop-cart";
-import shopVariantsView from "../views/shop-variants";
+import shopStyleView from "../views/shop-style";
+import shopSizeView from "../views/shop-size";
 import shopQuantityView from "../views/shop-quantity";
 import AnimateController from "./AnimateController";
 
@@ -13,12 +14,15 @@ class ShopProduct {
         this.element = element;
         this.shopSku = null;
         this.shopQty = null;
-        this.shopVariants = this.element.find( ".js-shop-variants" );
+        this.shopStyle = this.element.find( ".js-shop-styles" );
+        this.shopSize = this.element.find( ".js-shop-sizes" );
         this.shopQuantity = this.element.find( ".js-shop-quantity" );
-        this.shopVariantDisplay = this.element.find( ".js-shop-variant-display" );
+        this.shopStyleDisplay = this.element.find( ".js-shop-style-display" );
 
         this.bind();
         this.loadVariants();
+        this.applyVariant();
+        this.loadQuantity();
     }
 
 
@@ -34,19 +38,26 @@ class ShopProduct {
             };
             // {additionalFields, itemId, sku, quantity}
 
-            ShopController.addCart( payload );
+            if ( payload.sku ) {
+                ShopController.addCart( payload );
+            }
         });
 
-        this.element.on( "click", ".js-shop-variant", ( e ) => {
+        this.element.on( "click", ".js-shop-style", ( e ) => {
             const elem = $( e.target );
             const data = elem.data();
 
-            this.shopVariants.find( ".js-shop-variant" ).removeClass( "is-active" );
+            this.shopStyle.find( ".js-shop-style" ).removeClass( "is-active" );
             elem.addClass( "is-active" );
 
-            this.shopVariantDisplay[ 0 ].innerHTML = data.style;
-            this.shopSku = data.sku;
+            this.shopStyleDisplay[ 0 ].innerHTML = data.style;
 
+            this.applyVariant();
+            this.loadQuantity();
+        });
+
+        this.element.on( "change", ".js-shop-size-selector", () => {
+            this.applyVariant();
             this.loadQuantity();
         });
 
@@ -56,11 +67,32 @@ class ShopProduct {
     }
 
 
+    applyVariant () {
+        // Find correct sku based on Style and Size
+        // Find correct qty based on Sku
+        const data = this.shopStyle.data().json;
+        const style = this.shopStyle.find( ".is-active" ).data().style;
+        const size = this.shopSize.find( ".js-shop-size-selector" )[ 0 ].value;
+        const variant = data.variants.find(( vari ) => {
+            return vari.attributes.Style === style && vari.attributes.Size === size;
+        });
+
+        if ( variant ) {
+            this.shopSku = variant.sku;
+
+        } else {
+            this.shopSku = null;
+        }
+    }
+
+
     loadVariants () {
-        if ( this.shopVariants.length ) {
-            this.shopVariants[ 0 ].innerHTML = shopVariantsView( this.shopVariants.data().json );
-            this.shopSku = this.shopVariants.find( ".js-shop-variant" ).eq( 0 ).data().sku;
-            this.loadQuantity();
+        if ( this.shopStyle.length ) {
+            this.shopStyle[ 0 ].innerHTML = shopStyleView( this.shopStyle.data().json );
+        }
+
+        if ( this.shopSize.length ) {
+            this.shopSize[ 0 ].innerHTML = shopSizeView( this.shopSize.data().json );
         }
     }
 
@@ -177,6 +209,7 @@ ShopController.addCart = ( payload, id ) => {
             ShopController.addCart( payload );
 
         } else {
+            console.log( json );
             ShopController.updateCart();
         }
     })

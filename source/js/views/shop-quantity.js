@@ -19,6 +19,14 @@ export default ( data, sku ) => {
                 }).join( "" )}
             </select>
         `;
+
+    } else {
+        ret = `
+            <div class="p -meta -dark">Quantity</div>
+            <select class="product__selector js-shop-quantity-selector p -meta">
+                <option value="0" selected>Not in stock</option>
+            </select>
+        `;
     }
 
     return ret;

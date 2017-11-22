@@ -128,6 +128,8 @@ $shop-btncolor: #d8d8d8;
     }
     .product__checkout {
         margin-left: $expander-mobile;
+        position: relative;
+        z-index: 3;
         }
     .product__excerpt,
     .product__price,
