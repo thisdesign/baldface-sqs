@@ -71,10 +71,12 @@ class ShopProduct {
         // Find correct sku based on Style and Size
         // Find correct qty based on Sku
         const data = this.shopStyle.data().json;
-        const style = this.shopStyle.find( ".is-active" ).data().style;
-        const size = this.shopSize.find( ".js-shop-size-selector" )[ 0 ].value;
+        const sizeEl = this.shopSize.find( ".js-shop-size-selector" );
+        const styleEl = this.shopStyle.find( ".is-active" );
+        const style = styleEl.data().style;
+        const size = sizeEl.length ? sizeEl[ 0 ].value : null;
         const variant = data.variants.find(( vari ) => {
-            return vari.attributes.Style === style && vari.attributes.Size === size;
+            return vari.attributes.Style === style && (size ? vari.attributes.Size === size : true);
         });
 
         if ( variant ) {
@@ -88,11 +90,19 @@ class ShopProduct {
 
     loadVariants () {
         if ( this.shopStyle.length ) {
-            this.shopStyle[ 0 ].innerHTML = shopStyleView( this.shopStyle.data().json );
+            const styleJson = this.shopStyle.data().json;
+
+            if ( styleJson.variantOptionOrdering[ 0 ] ) {
+                this.shopStyle[ 0 ].innerHTML = shopStyleView( styleJson );
+            }
         }
 
         if ( this.shopSize.length ) {
-            this.shopSize[ 0 ].innerHTML = shopSizeView( this.shopSize.data().json );
+            const sizeJson = this.shopSize.data().json;
+
+            if ( sizeJson.variantOptionOrdering[ 1 ] ) {
+                this.shopSize[ 0 ].innerHTML = shopSizeView( sizeJson );
+            }
         }
     }
 
