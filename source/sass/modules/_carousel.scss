@@ -38,23 +38,24 @@
     top: 0;
     transition: opacity $slow-duration $ease;
     width: 100%;
-    z-index: $z_layer_behind;
+    // z-index: $z_layer_behind;
 
     &.is-active {
         opacity: 1;
-        z-index: 2;
+        // z-index: 2;
         }
     &.is-exiting {
         opacity: 0;
-        z-index: 2;
+        // z-index: 2;
         }
     &.is-entering {
         opacity: 1;
-        z-index: 1;
+        // z-index: 1;
         }
 }
 .carousel__main {
     position: relative;
+    z-index: 3;
 
     .button--naira {
         &:before {

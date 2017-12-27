@@ -156,22 +156,22 @@ class CarouselHero extends CarouselCore {
             if ( data.event === "ready" ) {
                 this.postEmbed( "addEventListener", "play" );
                 this.postEmbed( "addEventListener", "finish" );
-                core.log( "[Carousel] iframe embed is ready" );
+                // core.log( "[Carousel] iframe embed is ready" );
 
             } else if ( data.event === "play" ) {
-                core.log( "[Carousel] iframe embed playback start" );
+                // core.log( "[Carousel] iframe embed playback start" );
 
             } else if ( data.event === "finish" ) {
                 this.clearEmbed();
                 this._advance();
-                core.log( "[Carousel] iframe embed playback end" );
+                // core.log( "[Carousel] iframe embed playback end" );
             }
         }
     }
 
 
     clearEmbed () {
-        if ( this.activeEmbed ) {
+        if ( this.activeEmbed && this.activeEmbed.length ) {
             this.activeEmbed[ 0 ].src = "";
         }
     }

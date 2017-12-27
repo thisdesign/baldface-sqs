@@ -1,5 +1,5 @@
 import $ from "properjs-hobo";
-// import * as core from "../core";
+import * as core from "../core";
 import VideoFS from "./VideoFS";
 import embedVideoView from "../views/embed-video";
 
@@ -18,8 +18,15 @@ class Video {
         this.element = element;
         this.data = this.element.data();
         this.embed = $( embedVideoView( this.data ) );
-        this.element.append( this.embed );
-        this.videoFS = new VideoFS( this.element, this.embed, this.data );
+
+        if ( core.detect.isDevice() ) {
+            this.element.addClass( "-cover" );
+            core.util.loadImages( this.element, core.util.noop );
+
+        } else {
+            this.element.append( this.embed );
+            this.videoFS = new VideoFS( this.element, this.embed, this.data );
+        }
     }
 
 
