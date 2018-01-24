@@ -12,22 +12,21 @@ export default ( data, system ) => {
     const lengthunit = isMetric ? "CM" : "IN";
     const cm2in = 0.393701;
     const html = [];
+    const notches = 10;
     let snowfall = parseInt( window.Y.Squarespace.Template.getTweakValue( "snowfall" ), 10 );
     let snowdepth = parseInt( window.Y.Squarespace.Template.getTweakValue( "snowdepth" ), 10 );
-    let percent = snowfall / snowdepth * 100;
-    let notches = (snowdepth / 5);
 
     if ( !isMetric ) {
         snowfall = Math.ceil( snowfall * cm2in );
         snowdepth = Math.ceil( snowdepth * cm2in );
-        percent = snowfall / snowdepth * 100;
-        notches = snowdepth / 2;
     }
 
-    html.push( `<div class="weather__beaker__snowfall" style="top:${percent}%;"></div>` );
+    html.push( `<div class="weather__beaker__snowfill" style="height:${snowfall / snowdepth * 100}%;"></div>` );
+    html.push( `<div class="weather__beaker__snowdepth" style="top:0;" data-value="${snowdepth}"></div>` );
+    html.push( `<div class="weather__beaker__snowfall" style="top:${snowfall / snowdepth * 100}%;" data-value="${snowdepth - snowfall}"></div>` );
 
     for ( let i = 0; i <= notches; i++ ) {
-        html.push( `<div class="weather__beaker__notch" style="top:${(i * notches)}%;"></div>` );
+        html.push( `<div class="weather__beaker__notch weather__beaker__notch--${i}" style="top:${(i / notches) * 100}%;" data-value="${Math.ceil( snowdepth - ((i / notches) * snowdepth) )}"></div>` );
     }
 
     return data.response.error ? `
@@ -63,14 +62,14 @@ export default ( data, system ) => {
         <div class="weather__secondary -wrap">
             <div class="weather__wind-dir -column -vtop">
                 <div class="h2">${winddir}</div>
-                <div class="p p--hh">Wind Direction</div>
+                <div class="p">Wind Direction</div>
             </div>
             <div class="weather__wind-speed weather__paddle -column -vtop">
                 <div class="weather__wind-speed__curr">
                     <div class="h2 -column -vtop">${windspeed}</div>
                     <div class="h3 -column -vtop -sup">${speedunit}</div>
                 </div>
-                <div class="p p--hh">Wind Speed</div>
+                <div class="p">Wind Speed</div>
             </div>
         </div>
         <div class="weather__beaker">

@@ -102,11 +102,14 @@ class ScrollJack {
 
             return false;
         });
+
+        core.dom.html.addClass( "is-scroll-jacked" );
     }
 
 
     unbindWheel () {
         core.dom.doc.off( "DOMMouseScroll mousewheel" );
+        core.dom.html.removeClass( "is-scroll-jacked" );
     }
 
 

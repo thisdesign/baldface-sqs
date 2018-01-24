@@ -1,4 +1,5 @@
 import * as core from "../core";
+import $ from "properjs-hobo";
 import ImageController from "./ImageController";
 import AnimateController from "./AnimateController";
 import CarouselController from "./CarouselController";
@@ -11,6 +12,7 @@ import HoverController from "./HoverController";
 import WeatherController from "./WeatherController";
 import ScrollJack from "./ScrollJack";
 import CoverController from "./CoverController";
+import SnowController from "./SnowController";
 
 
 /**
@@ -74,6 +76,7 @@ class Controllers {
         this.push( "shop", core.dom.body.find( core.config.shopSelector ), ShopController, true );
         this.push( "subscribe", core.dom.body.find( core.config.subscribeSelector ), SubscribeController, true );
         this.push( "cover", core.dom.body.find( core.config.coverSelector ), CoverController, true );
+        this.push( "snow", $( "html.is-home-page body.snowing" ), SnowController, !core.detect.isDevice() );
 
         this.aspect = this.element.find( core.config.aspectSelector );
         this.aspectController = new AspectController( this.aspect );

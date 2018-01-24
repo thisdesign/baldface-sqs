@@ -27,13 +27,12 @@
 }
 .weather__beaker {
     height: 60vh;
-    overflow: hidden;
+    // overflow: hidden;
     position: absolute;
-    right: $book-button-width;
+    right: 0;
     top: 50%;
     transform: translateY( -50% );
-    width: 40vh;
-        display: none;
+    width: 30vw;
 
     &:before {
         background-image: url( $data-uri-noise-2 );
@@ -50,33 +49,76 @@
         background-color: $white;
         bottom: 0;
         content: "";
-        height: 3px;
+        height: 1px;
         left: 0;
-        opacity: 0.25;
+        opacity: 0.5;
         position: absolute;
         right: 0;
     }
 
-    @include respond( $break-tablet-small ) {
+    @include respond( $break-tablet-medium ) {
         display: none;
     }
 }
 .weather__beaker__notch {
     background-color: $white;
-    height: 2px;
-    opacity: 0.25;
+    height: 1px;
+    opacity: 0.5;
     position: absolute;
     right: 0;
     top: 0;
-    width: 25px;
+    width: 6%;
+
+    &:before {
+        @include p();
+        @include b();
+        color: $white;
+        content: attr( data-value );
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY( -50% ) translateX( -150% );
+    }
+}
+.weather__beaker__notch--0,
+.weather__beaker__notch--10 {
+    display: none;
 }
 .weather__beaker__snowfall {
     background-color: $white;
-    height: 2px;
+    height: 1px;
     position: absolute;
     right: 0;
     top: 0;
-    width: 50px;
+    width: 102%;
+}
+.weather__beaker__snowdepth {
+    background-color: $white;
+    height: 1px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 102%;
+}
+.weather__beaker__snowfill {
+    background-color: rgba( 255, 255, 255, 0.25 );
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+.weather__beaker__snowfall,
+.weather__beaker__snowdepth {
+    &:before {
+        @include p();
+        @include b();
+        color: $white;
+        content: attr( data-value );
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY( -50% ) translateX( -150% );
+    }
 }
 .weather__temp {
     @include respond( $break-tablet-small ) {
@@ -146,13 +188,12 @@
 .weather__toggle {
     bottom: 0;
     padding-bottom: 10vh;
-    padding-left: $padding-wrap;
-    padding-right: $book-button-width;
     position: absolute;
     right: 0;
+    width: 30vw;
 
     @include respond( $break-tablet-small ) {
-        padding-right: 0;
+        padding-left: $padding-wrap;
         position: relative;
     }
 }
@@ -163,4 +204,21 @@
     &.is-active {
         border-bottom: 1px solid $white;
         }
+}
+
+
+
+.snowcanvas {
+    display: none;
+    height: 100%;
+    left: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: $z_layer_infront + 1;
+
+    @include state( "scroll", "jacked" ) {
+        display: block;
+    }
 }

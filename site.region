@@ -20,7 +20,7 @@
         <link href="//fonts.googleapis.com/css?family=Heebo:400,500,700" rel="stylesheet" />
         {squarespace-headers}
     </head>
-    <body class="-fzero">
+    <body class="{squarespace.page-classes} -fzero">
         <header class="header js-header">
             <squarespace:navigation navigationId="navi" template="navi" />
         </header>
