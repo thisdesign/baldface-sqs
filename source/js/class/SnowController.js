@@ -24,7 +24,7 @@ class SnowController extends Controller {
         this.canvas.className = "snowcanvas";
         this.context = this.canvas.getContext( "2d" );
         this.flakes = [];
-        this.total = 200;
+        this.total = parseInt( window.Y.Squarespace.Template.getTweakValue( "snowflakes" ), 10 );
         this.images = [
             "/assets/snow/flake1.png",
             "/assets/snow/flake2.png",
