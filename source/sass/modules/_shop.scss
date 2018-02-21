@@ -147,6 +147,8 @@ $shop-btncolor: #d8d8d8;
     position: relative;
     }
 .product__price {
+    text-align: right;
+
     &.h3 {
         font-size: 32px;
         }
@@ -159,6 +161,8 @@ $shop-btncolor: #d8d8d8;
         &:after {
             @include p();
             color: $grey;
+            display: block;
+            line-height: 1;
             }
     }
 }
