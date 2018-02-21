@@ -33,6 +33,7 @@
     top: 50%;
     transform: translateY( -50% );
     width: 30vw;
+        display: none;
 
     &:before {
         background-image: url( $data-uri-noise-2 );
