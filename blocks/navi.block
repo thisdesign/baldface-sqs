@@ -13,7 +13,7 @@
                 {.or}
                     <li class="navi__li navi__li--{title|slugify}">
                         {# Book Now #}
-                        {.equal? id "59975d4459cc681e873ee431"}
+                        {.equal? id "5a78f9f7f9619a68bdfa6daa"}
                             <a href="{fullUrl}" class="button button--size-large button--naira button--naira-up">
                                 <div class="button__hover">SFD!</div>
                                 <div class="button__main">{title}</div>
