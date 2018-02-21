@@ -2,7 +2,7 @@
     <div class="shop__wall">
         {.repeated section items}
             {.if starred}
-                <div class="shop__inline">
+                <div class="shop__inline {.equal? @index 1}js-cover js-cover-scroll{.end}">
                     {@|apply product-starred.block}
                 </div>
                 <a href="{fullUrl}" class="product product--basic product--basic--alt -column -column--1of3 -vtop animate js-animate">

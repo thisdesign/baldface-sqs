@@ -85,3 +85,53 @@
         }
     }
 }
+
+
+
+// Silly mouse scroll thing
+@keyframes scrolls {
+    0% {
+        top: 10px;
+        opacity: 1;
+        height: 4px;
+    }
+    95% {
+        top: 18px;
+        opacity: 0;
+        height: 10px;
+    }
+    100% {
+        top: 8px;
+        opacity: 1;
+        height: 4px;
+    }
+}
+
+.mouse-wrapper {
+    margin: 0 auto;
+    display: none;
+    width: 28px;
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    bottom: 37px;
+
+    .mouse {
+        width: 30px;
+        height: 47px;
+        border: 2px solid $white;
+        border-radius: 14px;
+    }
+
+    .mouse-scroll {
+        width: 4px;
+        height: 4px;
+        border-radius: 2px;
+        background: $white;
+        position: relative;
+        top: 10px;
+        left: 11px;
+        -webkit-animation: scrolls 1.3s ease-out infinite;
+    }
+}

@@ -89,6 +89,7 @@
                 </div>
             </div>
         </footer>
+        {@|apply mouse.block}
         {@|apply screens.block}
         <script type="text/javascript" src="/scripts/app.js?v={squarespace.template-revision}"></script>
         {@|apply google.block}

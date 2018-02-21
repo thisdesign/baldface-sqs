@@ -16,7 +16,8 @@ class CoverController extends Controller {
         super();
 
         this.elements = elements;
-        this.isActive = false;
+        this.isCoverActive = false;
+        this.isScrollActive = false;
 
         this.start();
     }
@@ -34,22 +35,37 @@ class CoverController extends Controller {
         // Call on parent cycle
         this.go(() => {
             let isCover = false;
+            let isScroll = false;
 
-            this.elements.forEach(( el ) => {
+            this.elements.forEach(( el, i ) => {
                 const bounds = el.getBoundingClientRect();
+                const scroll = this.elements.eq( i ).is( ".js-cover-scroll" );
 
                 if ( bounds.top <= 0 && bounds.bottom > 0 ) {
                     isCover = true;
                 }
+
+                if ( scroll ) {
+                    isScroll = (bounds.bottom >= window.innerHeight);
+                }
             });
 
-            if ( isCover && !this.isActive ) {
-                this.isActive = true;
+            if ( isCover && !this.isCoverActive ) {
+                this.isCoverActive = true;
                 core.dom.html.addClass( "is-cover-view" );
 
-            } else if ( !isCover && this.isActive ) {
-                this.isActive = false;
+            } else if ( !isCover && this.isCoverActive ) {
+                this.isCoverActive = false;
                 core.dom.html.removeClass( "is-cover-view" );
+            }
+
+            if ( isScroll && !this.isScrollActive ) {
+                this.isScrollActive = true;
+                core.dom.html.addClass( "is-page-scroll" );
+
+            } else if ( !isScroll && this.isScrollActive ) {
+                this.isScrollActive = false;
+                core.dom.html.removeClass( "is-page-scroll" );
             }
         });
     }
@@ -64,7 +80,7 @@ class CoverController extends Controller {
      *
      */
     destroy () {
-        core.dom.html.removeClass( "is-cover-view" );
+        core.dom.html.removeClass( "is-cover-view is-page-scroll" );
         this.stop();
     }
 }

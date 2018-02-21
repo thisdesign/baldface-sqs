@@ -1,0 +1,5 @@
+<div class="mouse-wrapper">
+    <div class="mouse">
+        <div class="mouse-scroll"></div>
+    </div>
+</div>

@@ -63,7 +63,7 @@ $shop-btncolor: #d8d8d8;
 }
 .shop__inline {
     left: #{"~\"calc( -#{$padding-wrap} + 5px )\""};
-    margin: $grid-gutter 0;
+    margin: $grid-gutter 0 $expander-one;
     position: relative;
     width: 100vw;
 
@@ -95,10 +95,6 @@ $shop-btncolor: #d8d8d8;
     padding: 0;
     vertical-align: middle;
     width: 100%;
-
-    .shop--all & {
-        margin-bottom: $expander-one;
-    }
 
     .product__wall {
         background-color: $shop-bgcolor;
