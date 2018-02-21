@@ -6,9 +6,6 @@
 .button:focus {
     outline: none;
 }
-// .button > span {
-//     vertical-align: middle;
-// }
 
 /* Sizes */
 .button--size-small {
@@ -54,6 +51,24 @@
 }
 .button--border-thick {
     border: 3px solid;
+}
+
+/* Disabled // Orange */
+.button--disabled {
+    border-color: $grey-light !important;
+    color: $grey-light !important;
+
+    &:before {
+        background-color: $grey-light !important;
+    }
+}
+.button--corazon-de-oro {
+    &:hover {
+        border-color: $orange !important;
+    }
+    &:before {
+        background-color: $orange !important;
+    }
 }
 
 /* Itzel */
@@ -125,7 +140,7 @@
     color: $charcoal;
     overflow: hidden;
     padding: 0;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, border-color 0.3s;
 }
 .button--naira::before {
     content: '';
