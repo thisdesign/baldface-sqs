@@ -14,7 +14,9 @@ class ShopProduct {
         this.element = element;
         this.shopSku = null;
         this.shopQty = null;
+        this.shopThumbs = this.element.find( ".js-carousel-thumb" );
         this.shopStyle = this.element.find( ".js-shop-styles" );
+        this.shopStyles = this.element.find( ".js-shop-style" );
         this.shopSize = this.element.find( ".js-shop-sizes" );
         this.shopQuantity = this.element.find( ".js-shop-quantity" );
         this.shopStyleDisplay = this.element.find( ".js-shop-style-display" );
@@ -43,17 +45,14 @@ class ShopProduct {
             }
         });
 
+        this.element.on( "click", ".js-carousel-thumb", ( e ) => {
+            this.doShopStyleClick({
+                target: this.shopStyles[ $( e.target ).index() ]
+            });
+        });
+
         this.element.on( "click", ".js-shop-style", ( e ) => {
-            const elem = $( e.target );
-            const data = elem.data();
-
-            this.shopStyle.find( ".js-shop-style" ).removeClass( "is-active" );
-            elem.addClass( "is-active" );
-
-            this.shopStyleDisplay[ 0 ].innerHTML = data.style;
-
-            this.applyVariant();
-            this.loadQuantity();
+            this.doShopStyleClick( e );
         });
 
         this.element.on( "change", ".js-shop-size-selector", () => {
@@ -64,6 +63,20 @@ class ShopProduct {
         this.element.on( "change", ".js-shop-quantity-selector", ( e ) => {
             this.shopQty = parseInt( e.target.value, 10 );
         });
+    }
+
+
+    doShopStyleClick ( e ) {
+        const elem = $( e.target );
+        const data = elem.data();
+
+        this.shopStyle.find( ".js-shop-style" ).removeClass( "is-active" );
+        elem.addClass( "is-active" );
+
+        this.shopStyleDisplay[ 0 ].innerHTML = data.style;
+
+        this.applyVariant();
+        this.loadQuantity();
     }
 
 
