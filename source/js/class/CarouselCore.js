@@ -38,7 +38,6 @@ class CarouselCore extends Controller {
             timeout: null,
             duration: core.util.getElementDuration( this.active[ 0 ] )
         };
-        this.elData = this.element.data();
     }
 
 
@@ -142,7 +141,11 @@ class CarouselCore extends Controller {
     }
 
 
-    destroy () {}
+    destroy () {
+        if ( this.resizer ) {
+            this.resizer.off( "resize" );
+        }
+    }
 }
 
 

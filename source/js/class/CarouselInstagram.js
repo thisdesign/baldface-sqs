@@ -2,6 +2,7 @@ import * as core from "../core";
 import social from "../social";
 import CarouselCore from "./CarouselCore";
 import igItemsView from "../views/instagram-items";
+import ResizeController from "properjs-resizecontroller";
 
 
 
@@ -15,6 +16,7 @@ class CarouselInstagram extends CarouselCore {
         this.currShim = this.curr.find( ".js-carousel-curr-shim" );
         this.currTicker = this.curr.find( ".js-carousel-curr-ticker" );
         this.total = this.element.find( ".js-carousel-total" );
+        this.resizer = new ResizeController();
 
         social.getInstagram().then(( json ) => {
             this.itemsEl[ 0 ].innerHTML = igItemsView( json );
@@ -35,14 +37,22 @@ class CarouselInstagram extends CarouselCore {
 
     bind () {
         this.on( "transition", ( /*next*/ ) => {
-            this.setCurr();
-            core.util.translate3d(
-                this.itemsEl[ 0 ],
-                `-${this.elData.unit * this.data.index}vw`,
-                0,
-                0
-            );
+            this.update();
         });
+        this.resizer.on( "resize", () => {
+            this.update();
+        });
+    }
+
+
+    update () {
+        this.setCurr();
+        core.util.translate3d(
+            this.itemsEl[ 0 ],
+            `-${this.element[ 0 ].getBoundingClientRect().width * this.data.index}px`,
+            0,
+            0
+        );
     }
 
 

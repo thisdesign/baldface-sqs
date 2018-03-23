@@ -5,7 +5,7 @@
             {.equal? typeName "gallery-hero"}
                 <section class="splash js-splash js-hover js-scrolljack-section js-cover">
                     {@|apply carousel-hero.block}
-                    <section class="carousel js-carousel instagram" data-type="instagram" data-unit="32">
+                    <section class="carousel js-carousel instagram" data-type="instagram">
                         <div class="instagram__belt">
                             <div class="instagram__belt__line js-carousel-items"></div>
                         </div>
