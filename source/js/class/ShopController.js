@@ -16,7 +16,6 @@ class ShopProduct {
         this.shopQty = null;
         this.shopThumbs = this.element.find( ".js-carousel-thumb" );
         this.shopStyle = this.element.find( ".js-shop-styles" );
-        this.shopStyles = this.element.find( ".js-shop-style" );
         this.shopSize = this.element.find( ".js-shop-sizes" );
         this.shopQuantity = this.element.find( ".js-shop-quantity" );
         this.shopStyleDisplay = this.element.find( ".js-shop-style-display" );
@@ -107,6 +106,7 @@ class ShopProduct {
 
             if ( styleJson.variantOptionOrdering[ 0 ] ) {
                 this.shopStyle[ 0 ].innerHTML = shopStyleView( styleJson );
+                this.shopStyles = this.element.find( ".js-shop-style" );
             }
         }
 
