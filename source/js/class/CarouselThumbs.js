@@ -10,6 +10,8 @@ class CarouselThumbs extends CarouselCore {
         this.thumbs = this.element.find( ".js-carousel-thumb" );
         this.thumbs.eq( 0 ).addClass( "is-active" );
 
+        this.element.data( "self", this );
+
         this.bind();
     }
 

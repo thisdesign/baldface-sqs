@@ -52,6 +52,9 @@ class ShopProduct {
 
         this.element.on( "click", ".js-shop-style", ( e ) => {
             this.doShopStyleClick( e );
+            this.doThumbClick({
+                target: this.shopThumbs[ $( e.target ).index() ]
+            });
         });
 
         this.element.on( "change", ".js-shop-size-selector", () => {
@@ -76,6 +79,20 @@ class ShopProduct {
 
         this.applyVariant();
         this.loadQuantity();
+    }
+
+    doThumbClick ( e ) {
+        const elem = $( e.target );
+        const index = elem.index();
+        const data = elem.data();
+        const self = data.self;
+
+        console.log(data);
+
+        self.thumbs.removeClass( "is-active" );
+        elem.addClass( "is-active" );
+
+        self._go( index );
     }
 
 
