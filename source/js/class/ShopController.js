@@ -15,6 +15,7 @@ class ShopProduct {
         this.shopSku = null;
         this.shopQty = null;
         this.shopThumbs = this.element.find( ".js-carousel-thumb" );
+        this.shopCarousel = this.element.find( ".js-carousel" );
         this.shopStyle = this.element.find( ".js-shop-styles" );
         this.shopSize = this.element.find( ".js-shop-sizes" );
         this.shopQuantity = this.element.find( ".js-shop-quantity" );
@@ -82,17 +83,12 @@ class ShopProduct {
     }
 
     doThumbClick ( e ) {
-        const elem = $( e.target );
-        const index = elem.index();
-        const data = elem.data();
-        const self = data.self;
+        const data = this.shopCarousel.data();
+        const index = $( e.target ).index();
 
-        console.log(data);
-
-        self.thumbs.removeClass( "is-active" );
-        elem.addClass( "is-active" );
-
-        self._go( index );
+        data.self.doThumbClick({
+            target: this.shopThumbs[ index ]
+        });
     }
 
 

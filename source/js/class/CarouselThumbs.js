@@ -18,14 +18,19 @@ class CarouselThumbs extends CarouselCore {
 
     bind () {
         this.element.on( "click", ".js-carousel-thumb", ( e ) => {
-            const elem = $( e.target );
-            const index = elem.index();
-
-            this.thumbs.removeClass( "is-active" );
-            elem.addClass( "is-active" );
-
-            this._go( index );
+            this.doThumbClick( e );
         });
+    }
+
+
+    doThumbClick ( e ) {
+        const elem = $( e.target );
+        const index = elem.index();
+
+        this.thumbs.removeClass( "is-active" );
+        elem.addClass( "is-active" );
+
+        this._go( index );
     }
 }
 
