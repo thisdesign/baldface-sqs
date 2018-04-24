@@ -161,6 +161,18 @@ $shop-btncolor: #d8d8d8;
             line-height: 1;
             }
     }
+    .original-price {
+      text-align: right;
+      color: $orange;
+      font-size:14pt;
+      text-decoration: line-through;
+
+      .sqs-money-native{
+        &:after{
+          content:'';
+        }
+      }
+    }
 }
 .product__infocard {
     background-color: $white;
