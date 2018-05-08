@@ -165,7 +165,6 @@ $search-pad-2: 0 0 0 32px;
 .feed__item {
     cursor: pointer;
     position: relative;
-    transition: box-shadow $base-duration $ease;
     z-index: 1;
     }
 .feed__icon {

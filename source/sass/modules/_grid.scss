@@ -10,19 +10,26 @@
     }
 }
 .grid--feed {
-    @include respond( $break-tablet-full ) {
-        column-count: 2;
-    }
+    column-count: 1;
 
-    @include respond( $break-mobile-full ) {
-        column-count: 1;
+    .grid__item{
+        width: 23.33%; //33% - 10% margin (calc and scss vars are breaking the site.)
+        margin:5%;
+
+        @include respond( $break-tablet-full ) {
+            width: 40%;
+        }
+
+        @include respond( $break-mobile-full ) {
+            width: 90%;
+        }
     }
 }
 .grid__item {
     margin-bottom: $grid-gutter;
     position: relative;
     width: 100%;
-    }
+}
 .grid__title {
     font-size: 14px;
     line-height: 2.1428571429;
