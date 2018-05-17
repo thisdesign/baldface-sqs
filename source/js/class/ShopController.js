@@ -213,7 +213,10 @@ class ShopController {
 
 
 
-ShopController.globalCart = core.dom.body.find( ".js-shop-cart-global" );
+ShopController.naviCartModule = core.dom.body.find( ".navi__shop-cart" );
+ShopController.globalCart = ShopController.naviCartModule.find( ".js-shop-cart-global" );
+
+console.log('CART: ', ShopController.cartModule);
 
 
 
@@ -258,7 +261,10 @@ ShopController.addCart = ( payload, id ) => {
 ShopController.updateCart = () => {
     ShopController.getCart().then(( json ) => {
         if ( json.entries && json.entries.length ) {
-            ShopController.globalCart.addClass( "is-active is-added" );
+
+            ShopController.naviCartModule.addClass( "is-active" );
+            ShopController.globalCart.addClass( "is-added" );
+
             ShopController.globalCart.forEach(( el ) => {
                 el.innerHTML = json.totalQuantity;
             });
@@ -268,7 +274,7 @@ ShopController.updateCart = () => {
             }, core.util.getElementDuration( ShopController.globalCart[ 0 ], "animation" ) );
 
         } else {
-            ShopController.globalCart.removeClass( "is-active" );
+            ShopController.naviCartModule.removeClass( "is-active" );
             ShopController.globalCart.forEach(( el ) => {
                 el.innerHTML = "";
             });

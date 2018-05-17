@@ -1,178 +1,179 @@
 @mixin navi-btn() {
-    color: $white;
-    padding: $navi-pad;
+  color: $white;
+  padding: $navi-pad;
 }
 @mixin navi-btn-bg() {
-    background-color: rgba( 154, 154, 154, 0.5 );
+  background-color: rgba(154, 154, 154, 0.5);
 }
 @mixin navi-txt() {
-    letter-spacing: $track-1;
-    line-height: 1;
-    padding: $navi-pad;
-    transition: color $base-duration $ease;
-    @include bs();
+  letter-spacing: $track-1;
+  line-height: 1;
+  padding: $navi-pad;
+  transition: color $base-duration $ease;
+  @include bs();
 }
-
-
-
 @keyframes added {
-    50% {
-        transform: scale( 2 );
-        }
+  50% {
+    transform: scale(2);
+  }
 }
-
-
 
 .navi {}
+
 .navi--header {
-    background-color: $white;
+  background-color: $white;
+  height: $navi-height;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: $z_layer_infront;
+  @include respond($mobile-breakpoint) {
+    background-color: transparent;
+  }
+
+  .navi__main {
+    align-items: flex-end;
+    display: flex;
     height: $navi-height;
+    justify-content: flex-end;
+    position: relative;
+    z-index: $z_layer_infront + 1;
+  }
+
+  .navi__li {
+    display: inline-block;
+    height: $navi-height;
+    vertical-align: middle;
+    @include respond($mobile-breakpoint) {
+      display: none;
+    }
+  }
+
+  .navi__li--home {
+    left: 0;
+    position: absolute;
+    transition: opacity $fast-duration $ease;
+    width: $navi-logo-width;
+    @include state("navi", "mobile") {
+      opacity: 0;
+      pointer-events: none;
+    }
+    @include respond($mobile-breakpoint) {
+      display: block;
+    }
+
+    .-svg {
+      width: 100%;
+    }
+  }
+
+  .navi__li--book-now {
+    .button {
+      @include navi-btn-bg();
+      height: $navi-height;
+      text-align: center;
+      width: $book-button-width;
+
+      &:before {
+        background-color: $orange;
+      }
+
+      .button__hover,
+      .button__main {
+        @include navi-btn();
+        height: $navi-height;
+      }
+    }
+  }
+
+  .navi__a {
+    height: $navi-height;
+    @include navi-txt();
+
+    &.is-active {
+      color: $black;
+    }
+  }
+
+  .navi__shop-cart {
+    height: $navi-height;
+    padding: $navi-pad;
+    display: none;
+
+    .navi__shop-cart__icon {
+      width: 21px;
+
+      .-svg {
+        transform: translateY(-2px);
+      }
+    }
+
+    .navi__shop-cart__qty {
+      @include p();
+      @include b();
+      background-color: $orange;
+      border-radius: 16px;
+      color: $white;
+      font-size: 10px;
+      height: 16px;
+      line-height: 16px;
+      margin-left: 8px;
+      text-align: center;
+      width: 16px;
+
+      &.is-added {
+        animation: added 200ms 1;
+      }
+
+    }
+
+
+    &.is-active {
+      display: inline-block;
+    }
+  }
+
+  .navi__a--home {
+    background-color: $black;
+    font-size: 0;
+    padding: 0;
+    width: $navi-logo-width;
+  }
+
+  .navi__logo {
+    height: $navi-height;
+  }
+  // Mobile
+  .navi__li--mobile {
+    display: none;
+    @include respond($mobile-breakpoint) {
+      display: block;
+    }
+  }
+
+  .navi__mobile {
+    display: none;
+    text-align: center;
+    @include state("navi", "mobile") {
+      @include screen-active();
+    }
+    @include respond($mobile-breakpoint) {
+      display: block;
+    }
+  }
+
+  .navi__mobile__a {
+    @include navi-txt();
+    display: block;
+  }
+
+  .navi__mobile__a--book-now {
+    bottom: 0;
     left: 0;
     position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: $z_layer_infront;
-
-    @include respond( $mobile-breakpoint ) {
-        background-color: transparent;
-    }
-
-    .navi__main {
-        align-items: flex-end;
-        display: flex;
-        height: $navi-height;
-        justify-content: flex-end;
-        position: relative;
-        z-index: $z_layer_infront + 1;
-        }
-    .navi__li {
-        display: inline-block;
-        height: $navi-height;
-        vertical-align: middle;
-
-        @include respond( $mobile-breakpoint ) {
-            display: none;
-        }
-    }
-    .navi__li--home {
-        left: 0;
-        position: absolute;
-        transition: opacity $fast-duration $ease;
-        width: $navi-logo-width;
-
-        @include state( "navi", "mobile" ) {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        @include respond( $mobile-breakpoint ) {
-            display: block;
-        }
-
-        .-svg {
-            width: 100%;
-            }
-    }
-    .navi__li--book-now {
-        .button {
-            @include navi-btn-bg();
-            height: $navi-height;
-            text-align: center;
-            width: $book-button-width;
-
-            &:before {
-                background-color: $orange;
-                }
-
-            .button__main,
-            .button__hover {
-                @include navi-btn();
-                height: $navi-height;
-                }
-        }
-    }
-    .navi__a {
-        height: $navi-height;
-        @include navi-txt();
-
-        &.is-active {
-            color: $black;
-            }
-    }
-    .navi__shop-cart {
-        height: $navi-height;
-        padding: $navi-pad;
-
-        .navi__shop-cart__icon {
-            width: 21px;
-
-            .-svg {
-                transform: translateY( -2px );
-                }
-        }
-        .navi__shop-cart__qty {
-            @include p();
-            @include b();
-            background-color: $orange;
-            border-radius: 16px;
-            color: $white;
-            display: none;
-            font-size: 10px;
-            height: 16px;
-            line-height: 16px;
-            margin-left: 8px;
-            text-align: center;
-            width: 16px;
-
-            &.is-added {
-                animation: added 200ms 1;
-                }
-
-            &.is-active {
-                display: inline-block;
-                }
-        }
-    }
-    .navi__a--home {
-        background-color: $black;
-        font-size: 0;
-        padding: 0;
-        width: $navi-logo-width;
-        }
-    .navi__logo {
-        height: $navi-height;
-        }
-
-    // Mobile
-    .navi__li--mobile {
-        display: none;
-
-        @include respond( $mobile-breakpoint ) {
-            display: block;
-        }
-    }
-    .navi__mobile {
-        display: none;
-        text-align: center;
-
-        @include state( "navi", "mobile" ) {
-            @include screen-active();
-        }
-
-        @include respond( $mobile-breakpoint ) {
-            display: block;
-        }
-    }
-    .navi__mobile__a {
-        @include navi-txt();
-        display: block;
-    }
-    .navi__mobile__a--book-now {
-        bottom: 0;
-        left: 0;
-        position: fixed;
-        right: 0;
-        @include navi-btn();
-        @include navi-btn-bg();
-    }
+    right: 0;
+    @include navi-btn();
+    @include navi-btn-bg();
+  }
 }
