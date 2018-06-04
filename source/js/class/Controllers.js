@@ -10,7 +10,7 @@ import AspectController from "./AspectController";
 import ShopController from "./ShopController";
 import HoverController from "./HoverController";
 import WeatherController from "./WeatherController";
-import ScrollJack from "./ScrollJack";
+// import ScrollJack from "./ScrollJack";
 import CoverController from "./CoverController";
 import SnowController from "./SnowController";
 
