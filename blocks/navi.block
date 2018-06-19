@@ -46,6 +46,76 @@
             </div>
         </li>
     </ul>
+
+    <ul class="navi--storeCategories js-storeCategories">
+      <li class="navi--storeCategories__item">
+        <a class="navi--storeCategories__item__a ">
+          <img
+            class="navi--storeCategories__item__preview"
+            src="https://static1.squarespace.com/static/597faf52d7bdce13b056edd2/59badbaaf09ca461181021b9/5b0734951ae6cfbbb74c200a/1529359362665/_Baldface_Ecom_Hoodie09Black%283%29.jpg?format=300w"
+          />
+          <p class="navi--storeCategories__item__desc">
+            Hoodies
+          </p>
+        </a>
+      </li>
+      <li class="navi--storeCategories__item">
+        <a class="navi--storeCategories__item__a ">
+          <img
+            class="navi--storeCategories__item__preview"
+            src="https://static1.squarespace.com/static/597faf52d7bdce13b056edd2/59badbaaf09ca461181021b9/59ef497780bd5e3a95ebe749/1529365144512/Baldface_Beanie02a.jpg?format=1000w"
+          />
+          <p class="navi--storeCategories__item__desc">
+            Beanies
+          </p>
+        </a>
+      </li>
+      <li class="navi--storeCategories__item">
+        <a class="navi--storeCategories__item__a ">
+          <img
+            class="navi--storeCategories__item__preview"
+            src="https://static1.squarespace.com/static/597faf52d7bdce13b056edd2/59badbaaf09ca461181021b9/5a6b9fb78165f5600a1bf6dd/1528238931868/?format=1000w"
+          />
+          <p class="navi--storeCategories__item__desc">
+            Hats
+          </p>
+        </a>
+      </li>
+      <li class="navi--storeCategories__item">
+        <a class="navi--storeCategories__item__a ">
+          <img
+            class="navi--storeCategories__item__preview"
+            src="https://static1.squarespace.com/static/597faf52d7bdce13b056edd2/59badbaaf09ca461181021b9/5a6b9c668165f5600a1afc11/1529365192495/?format=1000w"
+          />
+          <p class="navi--storeCategories__item__desc">
+            Shirts
+          </p>
+        </a>
+      </li>
+      <li class="navi--storeCategories__item">
+        <a class="navi--storeCategories__item__a ">
+          <img
+            class="navi--storeCategories__item__preview"
+            src="https://static1.squarespace.com/static/597faf52d7bdce13b056edd2/59badbaaf09ca461181021b9/5a7dcc4f0852295dfdc36901/1518193745813/_Baldface_Ecom_Bindings.jpg?format=300w"
+          />
+          <p class="navi--storeCategories__item__desc">
+            Hard Goods
+          </p>
+        </a>
+      </li>
+      <li class="navi--storeCategories__item">
+        <a class="navi--storeCategories__item__a ">
+          <img
+            class="navi--storeCategories__item__preview"
+            src="https://static1.squarespace.com/static/597faf52d7bdce13b056edd2/59badbaaf09ca461181021b9/59bb6e279f7456dbda86ac94/1527789868847/_Baldface_Ecom_BottlePack.jpg?format=1000w"
+          />
+          <p class="navi--storeCategories__item__desc">
+            Accessories
+          </p>
+        </a>
+      </li>
+    </ul>
+
     <div class="navi__mobile js-navi-mobile screen screen--light ghost">
         <ul class="navi__mobile__ul ghost__child">
             {.repeated section items}

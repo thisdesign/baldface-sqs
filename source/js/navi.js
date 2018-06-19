@@ -19,6 +19,7 @@ const navi = {
 
         ShopController.updateCart();
 
+        this.storeNav.init(this.element);
         this.bind();
     },
 
@@ -48,6 +49,42 @@ const navi = {
     active ( view ) {
         this.items.removeClass( "is-active" );
         this.items.filter( `.js-navi--${view}` ).addClass( "is-active" );
+    },
+
+    // feel free to add this to its own file.
+    // I didn't know where ot put it.
+    storeNav: {
+        init (elem) {
+            this.element = elem;
+            this.storeLink = this.element.find(" .js-navi--shop ");
+            this.storeCategories = this.element.find(" .js-storeCategories" );
+            this.classToggle = "-isOpen";
+
+            this.handleEvents();
+        },
+
+        handleEvents () {
+            this.storeLink.on( "mouseenter", () => {
+                this.open();
+            });
+            this.storeLink.on( "mouseout", () => {
+                this.close();
+            });
+            this.storeCategories.on( "mouseenter", () => {
+                this.open();
+            });
+            this.storeCategories.on( "mouseout", () => {
+                this.close();
+            });
+        },
+
+        open () {
+            this.storeCategories.addClass("-isOpen");
+        },
+
+        close () {
+            this.storeCategories.removeClass("-isOpen");
+        },
     }
 };
 
