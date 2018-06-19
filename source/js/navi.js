@@ -70,7 +70,7 @@ const navi = {
             this.storeLink.on( "mouseout", () => {
                 this.close();
             });
-            this.storeCategories.on( "mouseenter", () => {
+            this.storeCategories.on( "mouseover", () => {
                 this.open();
             });
             this.storeCategories.on( "mouseout", () => {
