@@ -42,7 +42,7 @@ export default ( data ) => {
                             }).join( "" )}
                         </div>
                         <div class="-column -vtop">
-                            <div class="product__price p p--h2 -dark">${window.Y.Squarespace.Commerce.priceString( entry.item ).replace( /\s|cad/gi, "" )}</div>
+                            <div class="product__price p p--h2 -dark">${window.Y.Squarespace.Commerce.priceString( entry.item ).replace( /\s|cad/gi, " " )}</div>
                         </div>
                     </div>
                 </div>
