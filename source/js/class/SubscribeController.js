@@ -52,6 +52,7 @@ class SubscribeController {
         this.email[ 0 ].blur();
     }
 
+// Something is wrong here, BK
 
     getKey () {
         return $.ajax({
