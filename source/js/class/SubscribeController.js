@@ -52,53 +52,55 @@ class SubscribeController {
         this.email[ 0 ].blur();
     }
 
-// Something is wrong here, BK
+    // getKey () {
+    //     return $.ajax({
+    //         url: "/api/form/FormSubmissionKey",
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json;charset=UTF-8"
+    //         },
+    //         dataType: "json"
+    //     });
+    // }
+    //
+    //
+    // saveForm ( key ) {
+    //     return $.ajax({
+    //         url: "/api/form/SaveFormSubmission",
+    //         method: "POST",
+    //         headers: {
+    //             "Content-Type": "application/json;charset=UTF-8"
+    //         },
+    //         payload: {
+    //             collectionId: "",
+    //             form: JSON.stringify({
+    //                 [ this.data.formYui ]: this.email[ 0 ].value
+    //             }),
+    //             formId: this.data.formId,
+    //             key,
+    //             objectName: "footer-blocks--subscribe",
+    //             pageId: this.data.pageId,
+    //             pagePath: window.location.pathname,
+    //             pageTitle: document.title
+    //         }
+    //     });
+    // }
 
-    getKey () {
-        return $.ajax({
-            url: "/api/form/FormSubmissionKey",
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json;charset=UTF-8"
-            },
-            dataType: "json"
-        });
-    }
-
-
-    saveForm ( key ) {
-        return $.ajax({
-            url: "/api/form/SaveFormSubmission",
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json;charset=UTF-8"
-            },
-            payload: {
-                collectionId: "",
-                form: JSON.stringify({
-                    [ this.data.formYui ]: this.email[ 0 ].value
-                }),
-                formId: this.data.formId,
-                key,
-                objectName: "footer-blocks--subscribe",
-                pageId: this.data.pageId,
-                pagePath: window.location.pathname,
-                pageTitle: document.title
-            }
-        });
-    }
 
 
     send () {
-        this.getKey().then(( json ) => {
-            this.saveForm( json.key ).then(( /*response*/ ) => {
-                this.clear();
+        const { value } = this.email[ 0 ]; // Form value
 
-                if ( this.placeholder.length ) {
-                    this.placeholder.addClass( "is-placeholder" );
-                }
-            });
-        });
+        /*
+          POST TO MAILCHIMP HERE
+        */
+
+        this.clear(); // Clear form
+
+        /* Handle animation */
+        if ( this.placeholder.length ) {
+            this.placeholder.addClass( "is-placeholder" );
+        }
     }
 
 
