@@ -16,6 +16,7 @@ export default ( data ) => {
             const { sku, attributes } = entry.chosenVariant;
             const allSkus = entry.item.variants.map(( variant ) => variant.sku);
             const imgUrl = entry.item.items[ allSkus.indexOf(sku) ].assetUrl;
+            const style = attributes.Style ? attributes.Style : "";
 
             return `
                 <div class="product product--basic -column -column--1of3 -vtop animate js-shop-product js-shop-cart-anim">
@@ -35,7 +36,7 @@ export default ( data ) => {
                     <div class="product__infocard">
                         <div class="-column -vtop">
                             <div class="product__title p p--h3 -dark">${entry.title}</div>
-                            <div class="product__style p">${attributes.Style}</div>
+                            <div class="product__style p">${style}</div>
                         </div>
                         <div class="-column -vtop">
                             <div class="product__price p p--h2 -dark">${window.Y.Squarespace.Commerce.priceString( entry.item ).replace( /\s|cad/gi, " " )}</div>
