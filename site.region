@@ -65,6 +65,9 @@
                                 <span class="placeholder__b">Subscribed!</span>
                             </div>
                         </div>
+                        {.equal? collection.id "5c0e96092b6a2863aea909f2"}
+                            <squarespace:block-field id="footer-blocks--subscribe" columns="1" />
+                        {.end}
                     </div>
                 </div>
             </div>
