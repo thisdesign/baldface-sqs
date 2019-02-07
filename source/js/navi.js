@@ -15,10 +15,10 @@ const navi = {
         this.items = this.element.find( ".js-navi-a" );
         this.mobileNav = this.element.find( ".js-navi-mobile" );
         this.mobileLink = this.element.find( ".js-navi-link-mobile" );
+        this.shopingCart = this.element[ 0 ].querySelector(".js-navi-cart");
         this.mobileized = false;
 
         ShopController.updateCart();
-
         this.bind();
     },
 
@@ -33,6 +33,10 @@ const navi = {
                 this.mobileized = true;
                 core.dom.html.addClass( "is-navi-mobile" );
             }
+        });
+        this.shopingCart.addEventListener("click", (e) => {
+            e.preventDefault();
+            Y.Squarespace.Commerce.goToCheckoutPage();
         });
     },
 
