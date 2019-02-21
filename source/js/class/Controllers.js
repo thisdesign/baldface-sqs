@@ -10,7 +10,7 @@ import AspectController from "./AspectController";
 import ShopController from "./ShopController";
 import HoverController from "./HoverController";
 import WeatherController from "./WeatherController";
-// import ScrollJack from "./ScrollJack";
+import ScrollJack from "./ScrollJack";
 import CoverController from "./CoverController";
 import SnowController from "./SnowController";
 
@@ -66,7 +66,7 @@ class Controllers {
     exec () {
         this.controllers = [];
 
-        // this.push( "scrolljack", this.element.find( core.config.scrolljackSelector ), ScrollJack, !core.detect.isDevice() );
+        this.push( "scrolljack", this.element.find( core.config.scrolljackSelector ), ScrollJack, !core.detect.isDevice() );
         this.push( "hover", core.dom.body.find( core.config.hoverSelector ), HoverController, !core.detect.isDevice() );
         this.push( "video", this.element.find( core.config.videoSelector ), VideoController, true );
         this.push( "carousel", this.element.find( core.config.carouselSelector ), CarouselController, true );
