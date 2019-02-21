@@ -13,7 +13,7 @@ const social = {
     init () {
         this.instagram = {
             userId: "297115335",
-            accessToken: "297115335.3d264f9.68585bfbb56d4010afa93d099ea41978"
+            accessToken: "297115335.3d264f9.fddfdaf39082402490d61b0a0d486df0"
         };
     },
 
